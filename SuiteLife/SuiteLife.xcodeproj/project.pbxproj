@@ -16,6 +16,7 @@
 		CB728E5A1EF05D5300F76321 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E591EF05D5300F76321 /* Item.swift */; };
 		CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */; };
 		CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */; };
+		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CB728E591EF05D5300F76321 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
+		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */,
 				CB577BDE1EEF4AA700903EE9 /* ViewController.swift */,
 				CB577BE01EEF4AA700903EE9 /* Main.storyboard */,
+				CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */,
 				CB728E591EF05D5300F76321 /* Item.swift */,
 				CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */,
 				CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */,
@@ -224,6 +227,7 @@
 				CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */,
 				CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
+				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
