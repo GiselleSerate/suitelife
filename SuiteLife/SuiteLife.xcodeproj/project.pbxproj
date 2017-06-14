@@ -10,6 +10,7 @@
 		2ED8F6C9A37FD660C0FE5799 /* Pods_SuiteLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */; };
 		CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */; };
 		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
+		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
 		CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDE1EEF4AA700903EE9 /* ViewController.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuiteLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB577BDE1EEF4AA700903EE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				CB577BE31EEF4AA700903EE9 /* Assets.xcassets */,
 				CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */,
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
+				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
 			);
 			path = SuiteLife;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */,
 				CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */,
+				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,

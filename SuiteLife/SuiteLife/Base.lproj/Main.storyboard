@@ -10,6 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="unN-6t-Yde">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="2XA-sf-tKE" customClass="ListPantryTabViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fLr-QY-tRd"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lb4-NS-4vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-356" y="-1122"/>
+        </scene>
         <!--Login Screen-->
         <scene sceneID="eca-V9-yY2">
             <objects>
@@ -157,16 +167,6 @@
             </objects>
             <point key="canvasLocation" x="1398" y="666"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="La1-6Y-4Rw">
-            <objects>
-                <pageViewController storyboardIdentifier="ListPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Xe6-zT-E7z" customClass="ListPantryViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GZu-KP-RUJ"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V5k-IX-pnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-350" y="-1122"/>
-        </scene>
         <!--List Table View Controller-->
         <scene sceneID="uTH-j3-Yby">
             <objects>
@@ -234,7 +234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOa-p4-QAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="-1122.1889055472266"/>
+            <point key="canvasLocation" x="313" y="-1122"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hGZ-9X-v4c">
@@ -268,28 +268,12 @@
                         <segue destination="XK6-wy-5dT" kind="relationship" relationship="viewControllers" id="rLc-Df-Ir9"/>
                         <segue destination="3qr-r3-yVq" kind="relationship" relationship="viewControllers" id="20q-8m-3s7"/>
                         <segue destination="Zjm-t4-UWl" kind="relationship" relationship="viewControllers" id="A5r-Pu-gnk"/>
-                        <segue destination="Xe6-zT-E7z" kind="relationship" relationship="viewControllers" id="uRv-ob-vd5"/>
+                        <segue destination="2XA-sf-tKE" kind="relationship" relationship="viewControllers" id="kGE-1M-azm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jh1-BJ-gz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="330" y="-206"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="pHS-4W-yWc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XN1-gf-i6X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Mgs-JM-SJQ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eGn-5V-nfP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SME-Xw-fxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="329" y="-1122"/>
         </scene>
         <!--Pantry Table View Controller-->
         <scene sceneID="3QT-xj-cyB">
@@ -307,23 +291,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-MB-8CL" userLabel="Full Cell">
-                                            <rect key="frame" x="8" y="8" width="106" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-MB-8CL" userLabel="Full Cell">
+                                            <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-Tr-1d7" userLabel="Button Stack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-Tr-1d7" userLabel="Button Stack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="27.5"/>
                                                     <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaV-Ry-s6W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaV-Ry-s6W">
+                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="27.5"/>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Pu-shq" userLabel="Name Stack">
-                                                    <rect key="frame" x="57" y="0.0" width="49" height="31"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Pu-shq" userLabel="Name Stack">
+                                                    <rect key="frame" x="57" y="0.0" width="302" height="27.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZC-bG-qPw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZC-bG-qPw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -337,6 +320,12 @@
                                             </constraints>
                                         </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CGh-MB-8CL" firstAttribute="leading" secondItem="KtO-ep-9Cs" secondAttribute="leadingMargin" id="CD7-n8-4X6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CGh-MB-8CL" secondAttribute="trailing" id="NSV-3L-ltp"/>
+                                        <constraint firstItem="CGh-MB-8CL" firstAttribute="top" secondItem="KtO-ep-9Cs" secondAttribute="topMargin" id="h6l-LF-OfW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="CGh-MB-8CL" secondAttribute="bottom" id="zfe-bB-mBN"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="jZC-bG-qPw" id="q65-Yj-Xuk"/>
@@ -352,7 +341,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UfH-SS-FFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1198" y="-1329"/>
+            <point key="canvasLocation" x="-1039" y="-1122"/>
         </scene>
     </scenes>
 </document>

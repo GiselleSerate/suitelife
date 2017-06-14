@@ -7,6 +7,6 @@ target 'SuiteLife' do
   use_frameworks!
 
   # Pods for SuiteLife
-
+  pod 'Tabman'
 
 end
