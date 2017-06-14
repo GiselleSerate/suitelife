@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import os.log
 
-class ListTableViewController: ItemTableViewController {
+class ListTableViewController: ItemTableViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+            items += savedItems
+        }
+        else {
+            loadDefaults()
+        }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +29,27 @@ class ListTableViewController: ItemTableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        self.saveItems()
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // Save your data here. Maybe.
+//        self.saveItems()
+        
+    }
+    
+
+    //MARK: Display
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListTableViewCell"
@@ -36,7 +66,22 @@ class ListTableViewController: ItemTableViewController {
         
         return cell
     }
-
+    
+    private func loadItems() -> [Item]? {
+        print("Attempting to load saved list items.")
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item] // If it finds something, it will give you an array of items.
+    }
+    
+    private func saveItems() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("List successfully saved.", log: OSLog.default, type: .debug)
+        }
+        else {
+            os_log("Failed to save list.", log: OSLog.default, type: .error)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -8,19 +8,41 @@
 
 import UIKit
 
-class PantryTableViewController: ItemTableViewController {
+class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+            items += savedItems
+        }
+        else {
+            loadDefaults()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+
+    //MARK: Display
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PantryTableViewCell"
@@ -36,6 +58,11 @@ class PantryTableViewController: ItemTableViewController {
         cell.selectButton.isOn = item.checked
         
         return cell
+    }
+    
+    private func loadItems() -> [Item]? {
+        print("Attempting to load saved pantry items.")
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Item.PantryArchiveURL.path) as? [Item] // If it finds something, it will give you an array of items.
     }
 
     /*

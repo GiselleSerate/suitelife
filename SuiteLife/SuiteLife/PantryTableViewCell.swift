@@ -11,7 +11,8 @@ import UIKit
 class PantryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var selectButton: UISwitch!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UITextField!
+
 
 
 }
