@@ -27,7 +27,7 @@ class ItemTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        print("ItemTableViewController believes that the view is disappearing.")
+//        print("ItemTableViewController believes that the view is disappearing.")
     }
 
     override func didReceiveMemoryWarning() {

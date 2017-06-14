@@ -22,13 +22,14 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { // I don't think this ever gets called.
-        
+        print("WE WANT TO RETURN FROM THE TEXT FIELD")
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("BEGAN EDITING")
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

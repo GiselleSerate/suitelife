@@ -28,7 +28,6 @@ class ListTableViewController: ItemTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        print("THE VIEW IS DISAPPEARIN")
         saveItems()
     }
 
@@ -65,7 +64,6 @@ class ListTableViewController: ItemTableViewController {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
             os_log("List successfully saved.", log: OSLog.default, type: .debug)
-            print(loadItems())
         }
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
