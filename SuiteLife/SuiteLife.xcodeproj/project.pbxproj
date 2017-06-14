@@ -17,6 +17,8 @@
 		CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */; };
 		CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */; };
 		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
+		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
+		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
+		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
+		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				CB728E591EF05D5300F76321 /* Item.swift */,
 				CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */,
 				CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */,
+				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
+				CB728E691EF0B12000F76321 /* PantryTableViewController.swift */,
 				CB577BE31EEF4AA700903EE9 /* Assets.xcassets */,
 				CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */,
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
@@ -226,9 +232,11 @@
 				CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */,
 				CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */,
 				CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */,
+				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
+				CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
