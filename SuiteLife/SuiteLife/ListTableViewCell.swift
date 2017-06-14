@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import os.log
 
-class ListTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: Properties
 
@@ -16,4 +17,61 @@ class ListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UITextField!
     
+    var item: Item?
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // I don't think this ever gets called.
+        
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // Save your data here. Maybe.
+        //        self.saveItems()
+        
+        print("We're trying to return the text field.")
+        
+        // Edit the attributes.
+        let name = nameLabel.text ?? ""
+        let checked = selectButton.isOn
+        let isListItem = true
+        item = Item(name: name, checked: checked, isListItem: isListItem) // TODO: You're not actually doing anything with this item. Pass up? Somehow???
+        addSingleItem(item!)
+        
+    }
+    
+    //MARK: NSCoding
+    private func loadItems() -> [Item]? {
+        print("Attempting to load saved list items.")
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item] // If it finds something, it will give you an array of items.
+    }
+    
+    private func addSingleItem(_ item: Item) {
+        print("Attempting to save a single item.")
+        var savedArray = loadItems()
+        
+        // Add item to array
+        if savedArray != nil {
+            savedArray?.append(item)
+        }
+        else {
+            savedArray = [item]
+        }
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(savedArray, toFile: Item.ListArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("List successfully updated.", log: OSLog.default, type: .debug)
+        }
+        else {
+            os_log("Failed to update list.", log: OSLog.default, type: .error)
+        }
+    }
+    
+
 }

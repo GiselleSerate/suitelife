@@ -24,6 +24,11 @@ class ItemTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print("ItemTableViewController believes that the view is disappearing.")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -9,7 +9,8 @@
 import UIKit
 import os.log
 
-class ListTableViewController: ItemTableViewController, UITextFieldDelegate{
+class ListTableViewController: ItemTableViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,31 +25,19 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate{
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print("THE VIEW IS DISAPPEARIN")
+        saveItems()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: UITextFieldDelegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
-        self.saveItems()
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        // Save your data here. Maybe.
-//        self.saveItems()
-        
-    }
-    
-
+   
     //MARK: Display
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,6 +65,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate{
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
             os_log("List successfully saved.", log: OSLog.default, type: .debug)
+            print(loadItems())
         }
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
