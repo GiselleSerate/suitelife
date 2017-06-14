@@ -1,15 +1,14 @@
 //
-//  PantryTableViewController.swift
+//  ListTableViewController.swift
 //  SuiteLife
 //
-//  Created by cssummer17 on 6/13/17.
+//  Created by cssummer17 on 6/14/17.
 //  Copyright © 2017 cssummer17. All rights reserved.
 //
 
 import UIKit
 
-class PantryTableViewController: ItemTableViewController {
-
+class ListTableViewController: ItemTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +22,10 @@ class PantryTableViewController: ItemTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "PantryTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PantryTableViewCell
+        let cellIdentifier = "ListTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListTableViewCell
             else {
-                fatalError("The dequeued cell is not an instance of PantryTableViewCell.")
+                fatalError("The dequeued cell is not an instance of ListTableViewCell.")
         }
         
         // Configure the cell...

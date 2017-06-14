@@ -42,22 +42,7 @@ class ItemTableViewController: UITableViewController {
         return items.count
     }
     
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ItemTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemTableViewCell
-            else {
-                fatalError("The dequeued cell is not an instance of ItemTableViewCell.")
-        }
 
-        // Configure the cell...
-        let item = items[indexPath.row]
-        
-        cell.nameLabel.text = item.name
-        cell.selectButton.isOn = item.checked
-
-        return cell
-    }
     
 
     /*

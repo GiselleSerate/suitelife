@@ -38,8 +38,8 @@ class ListPantryViewController: UIPageViewController {
     */
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return[self.newViewController(name: "List"),
-               self.newViewController(name: "Pantry")]
+        return[               self.newViewController(name: "Pantry"), self.newViewController(name: "List")
+]
     }()
     
     private func newViewController(name: String) -> UIViewController {

@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2ED8F6C9A37FD660C0FE5799 /* Pods_SuiteLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */; };
+		CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */; };
+		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
 		CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDE1EEF4AA700903EE9 /* ViewController.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
 		CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE31EEF4AA700903EE9 /* Assets.xcassets */; };
 		CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */; };
 		CB728E5A1EF05D5300F76321 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E591EF05D5300F76321 /* Item.swift */; };
-		CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */; };
 		CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */; };
 		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
@@ -25,6 +26,8 @@
 		458A92D14D03CA1FBF9E629C /* Pods-SuiteLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.debug.xcconfig"; sourceTree = "<group>"; };
 		817DFD56C089B6817A8880F0 /* Pods-SuiteLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.release.xcconfig"; sourceTree = "<group>"; };
 		8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuiteLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB577BDE1EEF4AA700903EE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +36,6 @@
 		CB577BE61EEF4AA700903EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB577BE81EEF4AA700903EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB728E591EF05D5300F76321 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,10 +97,11 @@
 				CB577BE01EEF4AA700903EE9 /* Main.storyboard */,
 				CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */,
 				CB728E591EF05D5300F76321 /* Item.swift */,
-				CB728E5B1EF05FB200F76321 /* ItemTableViewCell.swift */,
 				CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */,
 				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
 				CB728E691EF0B12000F76321 /* PantryTableViewController.swift */,
+				CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */,
+				CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */,
 				CB577BE31EEF4AA700903EE9 /* Assets.xcassets */,
 				CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */,
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
@@ -230,11 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */,
-				CB728E5C1EF05FB200F76321 /* ItemTableViewCell.swift in Sources */,
 				CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
+				CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */,
+				CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
 				CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */,
 			);

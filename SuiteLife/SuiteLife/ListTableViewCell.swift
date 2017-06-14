@@ -1,5 +1,5 @@
 //
-//  ItemTableViewCell.swift
+//  ListTableViewCell.swift
 //  SuiteLife
 //
 //  Created by cssummer17 on 6/13/17.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell {
     
     //MARK: Properties
-    @IBOutlet weak var nameLabel: UILabel!
+
     @IBOutlet weak var selectButton: UISwitch!
-    
+
+    @IBOutlet weak var nameLabel: UILabel!
     
 }
