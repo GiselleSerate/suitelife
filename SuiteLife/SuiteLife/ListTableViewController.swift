@@ -9,12 +9,11 @@
 import UIKit
 import os.log
 
-class ListTableViewController: ItemTableViewController {
+class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
             items += savedItems
         }
@@ -53,6 +52,13 @@ class ListTableViewController: ItemTableViewController {
         cell.selectButton.isOn = item.checked
         
         return cell
+    }
+    
+    
+    //MARK: Text Field Delegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Adding a new item.")
+        items.append(Item(name: textField.text!, checked: false, isListItem: true)!)
     }
     
     private func loadItems() -> [Item]? {

@@ -19,8 +19,15 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var item: Item?
     
-    //MARK: UITextFieldDelegate
+    //MARK: The internet tells me this function is called reasonably first and often as you scroll around.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        nameLabel.delegate = self // if you don't have this line, text fields don't get handled
+    }
     
+    
+    //MARK: UITextFieldDelegate
+       
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { // I don't think this ever gets called.
         print("WE WANT TO RETURN FROM THE TEXT FIELD")
         // Hide the keyboard.
