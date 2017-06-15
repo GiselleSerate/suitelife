@@ -21,6 +21,10 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var item: Item?
     
+    weak var controller: ListTableViewController?
+    
+//    let otherVC = ListTableViewController()
+    
     //TODO: Maybe it's a useful function. but also i don't want this right now
     func textFieldDidChange(_ textField: UITextField) {
         //        print("someone EDITED the TEXT FIELD")
@@ -34,7 +38,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         selectButton.isOn = selectState
     }
     
-    //MARK: The internet tells me this function is called reasonably first and often as you scroll around.
+    //MARK: The internet tells me this function is called reasonably first and often as you scroll around. They lied about "often."
     override func layoutSubviews() {
         super.layoutSubviews()
         nameLabel.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -57,7 +61,8 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Save your data here. Maybe.
         //        self.saveItems()
-        
+        print(controller?.items)
+        print("Here are the things in the array of items.")
         if nameLabel.text == "" { // delete this item from the thing and also for now just hide the cell. 
             //TODO: use flag? so you can have an empty last cell
             print("Trying to hide this cell.")
@@ -88,42 +93,36 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     private func addSingleItem(_ item: Item) {
         print("Attempting to save a single item.")
-        var savedArray = loadItems()
+
         
         // Add item to array
-        if savedArray != nil {
-            savedArray?.append(item)
-        }
-        else {
-            savedArray = [item]
-        }
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(savedArray, toFile: Item.ListArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("List successfully added to.", log: OSLog.default, type: .debug)
-        }
-        else {
-            os_log("Failed to add to list.", log: OSLog.default, type: .error)
-        }
+//        if savedArray != nil {
+//            savedArray?.append(item)
+//        }
+//        else {
+//            savedArray = [item]
+//        }
+//        
+//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(savedArray, toFile: Item.ListArchiveURL.path)
+//        if isSuccessfulSave {
+//            os_log("List successfully added to.", log: OSLog.default, type: .debug)
+//        }
+//        else {
+//            os_log("Failed to add to list.", log: OSLog.default, type: .error)
+//        }
     }
     
     private func editSingleItem(_ item: Item) {
         print("Attempting to edit a single item.")
-        var savedArray = loadItems()
-        
-        for savedItem in savedArray! {
-            if savedItem.name == storedText {
-                print("Resetting name of item.")
-                savedItem.name = item.name // reset name of item.
+        for thing in (controller?.items)! {
+            print("Iterating")
+            if thing.name == storedText { // apparently comparing the item to itself isn't gonna fly. come back to this maybe but for now use the name as a unique identifier.
+                print(thing.name)
+                print(item.name)
+                print("suddenly everything changes violently it changes")
+                thing.name = item.name
             }
-        }
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(savedArray, toFile: Item.ListArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("List successfully edited.", log: OSLog.default, type: .debug)
-        }
-        else {
-            os_log("Failed to edit list.", log: OSLog.default, type: .error)
+            
         }
     }
     

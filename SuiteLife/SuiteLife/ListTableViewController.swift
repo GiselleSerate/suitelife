@@ -55,6 +55,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         if item.name != "" {
             cell.attachNameLabel(&item.name)
             cell.attachSelectButton(&item.checked)
+            cell.controller = self
         }
         return cell
     }

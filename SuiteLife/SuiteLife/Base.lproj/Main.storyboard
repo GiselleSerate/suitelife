@@ -181,7 +181,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xv-zR-nVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="-1122"/>
+            <point key="canvasLocation" x="289" y="-1122"/>
         </scene>
         <!--My List-->
         <scene sceneID="uTH-j3-Yby">
@@ -250,7 +250,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOa-p4-QAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="-1122"/>
+            <point key="canvasLocation" x="1001" y="-1122"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hGZ-9X-v4c">
@@ -265,7 +265,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="05u-9G-xuW"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="05u-9G-xuW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ale-xB-efJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
