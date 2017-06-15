@@ -167,7 +167,23 @@
             </objects>
             <point key="canvasLocation" x="1398" y="666"/>
         </scene>
-        <!--List Table View Controller-->
+        <!--ListNavTableViewController-->
+        <scene sceneID="uWC-rc-EWl">
+            <objects>
+                <navigationController storyboardIdentifier="ListNavTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5l-wl-NLZ" userLabel="ListNavTableViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PIx-wV-Dvv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="80C-CP-LjL" kind="relationship" relationship="rootViewController" id="Xnu-Jh-aDH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Xv-zR-nVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282" y="-1122"/>
+        </scene>
+        <!--My List-->
         <scene sceneID="uTH-j3-Yby">
             <objects>
                 <tableViewController storyboardIdentifier="ListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="80C-CP-LjL" customClass="ListTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -230,11 +246,11 @@
                             <outlet property="delegate" destination="80C-CP-LjL" id="bmo-xr-Vw3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="mlE-B5-2z1"/>
+                    <navigationItem key="navigationItem" title="My List" id="mlE-B5-2z1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOa-p4-QAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="-1122"/>
+            <point key="canvasLocation" x="990" y="-1122"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hGZ-9X-v4c">
@@ -275,12 +291,36 @@
             </objects>
             <point key="canvasLocation" x="330" y="-206"/>
         </scene>
-        <!--Pantry Table View Controller-->
+        <!--PantryNavTableViewController-->
+        <scene sceneID="iut-SY-wZ1">
+            <objects>
+                <navigationController storyboardIdentifier="PantryNavTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="Awh-GR-F5l" userLabel="PantryNavTableViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kBF-AG-3SE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="AH9-ox-4jQ">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="dNV-Mz-XIh" kind="relationship" relationship="rootViewController" id="us9-fM-NIv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJb-Te-YDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1881" y="-1122"/>
+        </scene>
+        <!--My Pantry-->
         <scene sceneID="3QT-xj-cyB">
             <objects>
                 <tableViewController storyboardIdentifier="PantryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dNV-Mz-XIh" customClass="PantryTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xer-Dl-Eho">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -338,6 +378,7 @@
                             <outlet property="delegate" destination="dNV-Mz-XIh" id="kfQ-oN-wvO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="My Pantry" id="Ot6-U6-Aw3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UfH-SS-FFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

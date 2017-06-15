@@ -21,18 +21,21 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
             appearance.layout.edgeInset = 90 //TODO: figure out what values based on screen size will center this.
         })
+        
+        self.bar.location = .bottom
+    
     }
 
     func viewControllers(forPageboyViewController pageboyViewController: PageboyViewController) -> [UIViewController]? {
-        let viewCon1 = self.newViewController(name: "List")
-        let viewCon2 = self.newViewController(name: "Pantry")
+        let viewCon1 = self.newViewController(name: "Pantry")
+        let viewCon2 = self.newViewController(name: "List")
         let viewControllers = [viewCon1, viewCon2]
-        self.bar.items = [TabmanBarItem(title: "List"), TabmanBarItem(title: "Pantry")]
+        self.bar.items = [TabmanBarItem(title: "Pantry"), TabmanBarItem(title: "List")]
         return viewControllers
     }
     
     private func newViewController(name: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)ViewController")
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)NavTableViewController") // TODO: currently this line is why I dont have navbars lol
     }
     
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex? {

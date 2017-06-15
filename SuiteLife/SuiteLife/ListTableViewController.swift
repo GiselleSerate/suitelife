@@ -13,6 +13,9 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
 
     override func viewDidLoad() {
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+
         super.viewDidLoad()
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
             items += savedItems
@@ -26,6 +29,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("the view is going to disappear")
         super.viewWillDisappear(true)
         saveItems()
     }
@@ -48,9 +52,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         // Configure the cell...
         let item = items[indexPath.row]
         
-        cell.nameLabel.text = item.name
-        cell.selectButton.isOn = item.checked
-        
+        if item.name != "" {
+            cell.attachNameLabel(&item.name)
+            cell.attachSelectButton(&item.checked)
+        }
         return cell
     }
     
@@ -69,12 +74,38 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     private func saveItems() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
-            os_log("List successfully saved.", log: OSLog.default, type: .debug)
+            os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
         }
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
         }
     }
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+ 
+    
+    // TODO: Doesn't do anything currently.
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        
+    }
+ 
     
     /*
     // MARK: - Navigation
