@@ -407,6 +407,10 @@
         <scene sceneID="Bcs-AI-Flb">
             <objects>
                 <viewController id="Ibh-ZD-1qW" customClass="BarcodeScannerViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wQ3-dq-IjZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="njV-nB-WN1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SQe-cR-Q1Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
