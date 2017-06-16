@@ -35,13 +35,7 @@ class Item: NSObject, NSCoding {
     }
     
     //MARK: Initialization
-    init?(name: String, checked: Bool, isListItem: Bool) {
-        // Can't have an empty name.
-        guard !name.isEmpty
-            else {
-                return nil
-        }
-        
+    init(name: String, checked: Bool, isListItem: Bool) {
         self.name = name
         self.checked = checked
         self.isListItem = isListItem

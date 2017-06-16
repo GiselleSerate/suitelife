@@ -52,11 +52,9 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         // Configure the cell...
         let item = items[indexPath.row]
         
-        if item.name != "" {
-            cell.attachNameLabel(&item.name)
-            cell.attachSelectButton(&item.checked)
-            cell.controller = self
-        }
+        cell.attachNameLabel(&item.name)
+        cell.attachSelectButton(&item.checked)
+        cell.controller = self
         return cell
     }
     
@@ -93,20 +91,24 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     private func loadItems() -> [Item]? {
         print("Attempting to load saved list items, but only those that are not blank.")
-        let fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
-        return fullList?.filter{$0.name != ""}
+        var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
+        fullList?.append(Item(name: "", checked: false, isListItem: true))  // Add a blank space at the very end of your loaded items, for adding new items.
+        return fullList
     }
     
     private func saveItems() {
-        print("You asked me to save.")
-        print(items)
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
+        deleteBlanks()
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path) // Only save the items that aren't blank.
         if isSuccessfulSave {
             os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
         }
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
         }
+    }
+    
+    func deleteBlanks() {
+        items = items.filter{$0.name != ""}
     }
     
     

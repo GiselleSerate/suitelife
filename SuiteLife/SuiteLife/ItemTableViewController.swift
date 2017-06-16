@@ -99,16 +99,9 @@ class ItemTableViewController: UITableViewController {
     // TODO: Well, this was private. Maybe it should still be private.
     func loadDefaults() {
         print("No items saved, loading defaults.")
-        guard let instruction1 = Item(name: "You don't have any items yet", checked: false, isListItem: true) else {
-            fatalError("we failed with the instruction1")
-        }
-        guard let instruction2 = Item(name: "Add things here!", checked: true, isListItem: false) else {
-            fatalError("bad things happened to the instruction2")
-        }
-        guard let instruction3 = Item(name: "I need more instructions", checked: true, isListItem: false) else {
-            fatalError("dunno what happened to instruction3")
-        }
-        
+        let instruction1 = Item(name: "You don't have any items yet", checked: false, isListItem: true)
+        let instruction2 = Item(name: "Add things here!", checked: true, isListItem: false)
+        let instruction3 = Item(name: "I need more instructions", checked: true, isListItem: false)
         items += [instruction1, instruction2, instruction3]
     }
 

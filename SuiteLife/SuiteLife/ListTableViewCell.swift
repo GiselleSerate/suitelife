@@ -79,8 +79,13 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: Modifying The List
     
     private func addSingleItem(_ item: Item) {
+        print(controller?.items)
         print("Attempting to save a single item.")
         controller?.items.append(item)
+        controller?.deleteBlanks()
+        controller?.items.append(Item(name: "", checked: false, isListItem: true))
+        print("Reload this from \(controller?.items)")
+        controller?.tableView.reloadData() // Reload table.
     }
     
     private func editSingleItem(_ item: Item) {
@@ -102,6 +107,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         if let delInd = (controller?.items.index(where:{$0.name == self.storedText})) {
             controller?.items.remove(at: delInd)
         }
+        controller?.tableView.reloadData() // Refresh thaaat. 
     }
     
 
