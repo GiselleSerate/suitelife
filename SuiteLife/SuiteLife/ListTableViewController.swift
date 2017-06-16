@@ -50,10 +50,8 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         }
         
         // Configure the cell...
-        let item = items[indexPath.row]
-        
-        cell.attachNameLabel(&item.name)
-        cell.attachSelectButton(&item.checked)
+        var item = items[indexPath.row]
+        cell.attachItem(&item)
         cell.controller = self
         return cell
     }
@@ -86,12 +84,13 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         items.remove(at: fromIndexPath.row)
         items.insert(itemToMove, at: to.row)
         if to.row == items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
-            deleteBlanks() // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
-            addBlank()
+            // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
+            items = items.filter{$0.name != ""}
+            items.append(Item(name: "", checked: false, isListItem: true))
             self.tableView.reloadData()
         }
     }
-     
+    
     
     //MARK: NSCoding
     
@@ -102,29 +101,19 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     private func saveItems() {
-        deleteBlanks() // Only the items that aren't blank get saved to file.
+        // Only the items that aren't blank get saved to file.
+        items = items.filter{$0.name != ""}
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         print(items)
         if isSuccessfulSave {
-            os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
+            os_log("Entire list successfully saved.", log: OSLog.default, type: .debug)
         }
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
         }
     }
     
-    
-    //MARK: Blank Handling
-    
-    func deleteBlanks() {
-        items = items.filter{$0.name != ""}
-    }
-    
-    func addBlank() { // Add a blank item at the very end of your loaded items, where you can add new items.
-        items.append(Item(name: "", checked: false, isListItem: true))
-    }
-    
-    
+
     /*
     // MARK: - Navigation
 

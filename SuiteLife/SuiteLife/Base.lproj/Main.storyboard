@@ -198,22 +198,14 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-1a-74E" userLabel="Name Stack">
-                                                    <rect key="frame" x="58" y="0.0" width="244" height="27.5"/>
+                                                    <rect key="frame" x="58" y="0.0" width="301" height="27.5"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-yl-eh5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="244" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="301" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obm-97-141" userLabel="Button Stack">
-                                                    <rect key="frame" x="310" y="0.0" width="49" height="27.5"/>
-                                                    <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-s2-OWw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="27.5"/>
-                                                        </switch>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -232,7 +224,6 @@
                                 <connections>
                                     <outlet property="checkbox" destination="BAW-ar-ICg" id="Pyk-y3-JCH"/>
                                     <outlet property="nameLabel" destination="Udo-yl-eh5" id="Syo-kf-5e9"/>
-                                    <outlet property="selectButton" destination="uLB-s2-OWw" id="Dy5-u5-onV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
