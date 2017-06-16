@@ -7,260 +7,319 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00C24FB9B0101EC73E0C85480ABCE365 /* Pods-SuiteLife-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7260A24664AD908A7B6F4415C88FBCC /* Pods-SuiteLife-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C136AB552C6565B426ED7CECECD2C0F /* Pageboy.h in Headers */ = {isa = PBXBuildFile; fileRef = 53076FEE8B7C3FE92956B0ADA39789B9 /* Pageboy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		10C944DA8939B2888A3518AE08D109D0 /* PageboyAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D92C1AE13D7F4AFBEC7FEB81391C6F2 /* PageboyAutoLayout.swift */; };
-		10D814D6F3F349C0E905E2708B5B329D /* TransitionOperation+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648929C5F30B81B9A176668D7905AC8 /* TransitionOperation+Action.swift */; };
-		1214F7813E3392F2E0B8BF85550B0225 /* TabmanScrollingBarIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0042A09FA6C41EEC40555524B429 /* TabmanScrollingBarIndicatorTransition.swift */; };
-		1263CDDE62C06DA6F2C62FC9A7CB03E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */; };
-		1B9DD0CCCF7706477967FB537FEC7106 /* TabmanBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED827EACA32DE1AA3B1C8C44E5BBBD8F /* TabmanBarConfig.swift */; };
-		1BA2CA4D3DC4746E1A69FCDCAAF527B0 /* Pageboy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE4E9F361449D0A3021467837FDFC30 /* Pageboy.framework */; };
-		1D97A0A79BC59A35500C6A73052D8790 /* TabmanBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAF8805D170C51C919E8E40D512F9B /* TabmanBar.swift */; };
-		210A8905C5E445C48D79533FB108E73D /* TabmanChevronIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE91765AB1A340056D2BF0E17C8C6CC7 /* TabmanChevronIndicator.swift */; };
-		21EC2269579693D555DE98DF338BE95F /* PositionalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E053E4CDD18C66F4E3434A4D3A98E12 /* PositionalUtils.swift */; };
-		22FC37A94F3D0370A6C5AE0151D02897 /* TabmanButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADECCF161077390DC875BD0890412C8 /* TabmanButtonBar.swift */; };
-		251B967BA570DCE91F1AF1547BB13A5C /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCF61B32BC958C9EB36A2AEFE7084EA /* NSLayoutConstraint+PureLayout.m */; };
-		294E50C6AF343ACC81759F6A8050B9D9 /* Tabman-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7970E3BD5BA9846A0143FA6F7FDD9A8D /* Tabman-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29C071286B0A315F9019B37896BA35A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */; };
-		2C666FACE6713DEFEEA2233A316A92C6 /* TabmanAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881AE78F01E4E0761D20EB2720AD74C5 /* TabmanAutoLayout.swift */; };
-		32BD373DAB8BFD4C5A6F2261EA195CB6 /* TabmanCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C46ECCACE09F92CE1A20AA13AAA16 /* TabmanCircularView.swift */; };
-		34D154E6CF8718231F781157B029FC49 /* TabmanItemColorCrossfadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A068B2F09D9789252B156EE9963DEF /* TabmanItemColorCrossfadeTransition.swift */; };
-		35DF26FD29CD03C6004119138E9FA77E /* Pageboy-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C63FF749B92DB010AA5DD8C5B0DF5AFE /* Pageboy-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		381F678CC753CDA4FB48ACC4424C82AD /* TabmanViewController+Insetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4FF58FC590DC62007EFBDBC6587E4 /* TabmanViewController+Insetting.swift */; };
-		3CEE1F7BC3EE2BADDFBAAD1B5789F0BC /* TabmanLineIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAF39CE6D508ADEF2C3B987F71E8EB /* TabmanLineIndicator.swift */; };
-		3FF359456AF31E04038F04603AA9CEAB /* TabmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE901D6D785A692B14CCAA471E48ED /* TabmanViewController.swift */; };
-		48F2C28B8B4596C8252E3E298BB2C2C5 /* TabmanViewController+Embedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17A92379BE2A5FE5D7A12265AA8B90 /* TabmanViewController+Embedding.swift */; };
-		4B399F1E5488EAA94E5B29F7DAB09074 /* TransitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AA490E7F40873A3607AA070AB4FD7 /* TransitionOperation.swift */; };
-		4B88EEC527DF75EA0158CD18947AC20E /* TabmanBar+Construction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C92FBA573FF55110BF2B3C04BC9DA32 /* TabmanBar+Construction.swift */; };
-		4E407A161634A1A84EDC36BCBF710E9E /* TabmanBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A1FED0C95766E38855ECABB77B48C /* TabmanBarBackgroundView.swift */; };
-		54DB11E00FEDD401F4B357559D8396A4 /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC280215FEBAA1A313FFDFCC2B86285A /* PureLayout.framework */; };
-		55FA6CFF10CBAB6DABA81CEBC70523B3 /* Tabman.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F15A0CEEA036352A20758A756ABEA76 /* Tabman.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58354535D0B3689968F2F1B775165373 /* TabmanSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38001BA4DEFCA4F61003288E27BD4FC /* TabmanSeparator.swift */; };
-		5B5960FD63A34BA08D495B147D19B9EC /* TabmanFixedButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0036113389873149D3A5AB9887648 /* TabmanFixedButtonBar.swift */; };
-		5CF03EB8809C5E04AB90F1C6ED75FADD /* Pageboy-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B852676E3EB2D122BBEC0CD4838FABE9 /* Pageboy-dummy.m */; };
-		5F1FAA707A2EBB3D67009FACBC10FBFA /* TabmanScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA64BE849446D4291E5C3F0A552234 /* TabmanScrollView.swift */; };
-		61163BF36C3E480C683F824A4C0D199D /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8658C3A31457890CD701E7CF756C4813 /* NSArray+PureLayout.m */; };
-		612D90E55DF893159D6774D7FDDF5C97 /* TabmanViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF149B0E2719679DE12E092A10CDA7 /* TabmanViewUtils.swift */; };
-		655960BC6EAA2F4468A865D48A196808 /* TabmanIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5454EB8842F0B252137ACFB7A4E3736C /* TabmanIndicatorTransition.swift */; };
-		665463F5FE9FE864C01ED544F5015A53 /* PureLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF55595B2B552286D1E841633379F9 /* PureLayout-dummy.m */; };
-		66C7A433D021B257140688F186AB73B9 /* PageboyViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCEDB130CB14C55EEEE3BEC05F359A3 /* PageboyViewController+Extras.swift */; };
-		69665DE3160297A212A479D953EEC5AB /* TabmanChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3C5558935F965FD44A32E7C08A28F /* TabmanChevronView.swift */; };
-		69740E3B858DEC1007A01F3ECD0F7027 /* TabmanIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E4D32325E625E3B3D3BACEABE82B8 /* TabmanIndicator.swift */; };
-		6CC848E6DCF65A2F85B0BDB1E3F29BAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */; };
-		72DC14E956F45F642E3207BDA5E5E478 /* PastelGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D0F72A899D8BA3CD257D8C2E9D3DF2 /* PastelGradient.swift */; };
-		736BAADB8878E6E3E7DDCC89D2E620CF /* PageViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45473E0D6651EDE008C6E19DD3F7BE9 /* PageViewControllerUtils.swift */; };
-		76FD2F2D8034899DEE9D74CAD22765B3 /* TabmanItemMaskTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88782B26FA10191F1B9D7DDB22B9F528 /* TabmanItemMaskTransition.swift */; };
-		79EDD359CE4C37685C0606DA8ABC0C56 /* TabmanBar+Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015A59B6BFED90A3F15DB8DDF53B450 /* TabmanBar+Insets.swift */; };
-		7E88F317E1F07BB3364C1442CE245D48 /* NSArray+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 19F74F983CF3130116B822BBFEB7BDAB /* NSArray+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A5124E77594CBE98A9EEA8E8EE06DF9 /* TabmanBar+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A520074E63487AF7D8CC03CF3FCE2E /* TabmanBar+Protocols.swift */; };
-		9033E5470B89E41736E962EF303A1FA9 /* PageboyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9A1B46257B5DA364BD2C7D66BA93E3 /* PageboyViewController.swift */; };
-		96FCB02896AB8163CAB35CD65CB6FF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */; };
-		9B5F9FA7D8845B631DE37BDAD004F0D3 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 893FE4C4A69F2BE2481B25FE72830D61 /* ALView+PureLayout.m */; };
-		9C2DB929E8923737F47ED71D905AFD11 /* TabmanBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156A7B3264555363F0622CCB93762D /* TabmanBar+Appearance.swift */; };
-		9D184EF65DEAC0052567BC4776F7269C /* PageboyViewController+Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328E5868648E72604F142AD307C0CDB /* PageboyViewController+Management.swift */; };
-		9DB47DA0F5BA85AFE0A10B54B6DA4861 /* TabmanBlockTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3376C0C3C82E1413AFE6302914253B /* TabmanBlockTabBar.swift */; };
-		A10FE9ADC036316E5BDD785872F98310 /* TabmanColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0DF3438AEA8B4E8E8FAE1E5EDFC1E /* TabmanColorUtils.swift */; };
-		A3AF517E5ADBB779099CEAD27C3B0D1A /* NSLayoutConstraint+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 83CEB41C52E1CFB6B4DB984EEEEE7B52 /* NSLayoutConstraint+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A54DA43C08603ED643D108334428A1B5 /* PageboyViewController+ScrollDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E6F4D6BCB04B57F9AB2CCA16AFBC2 /* PageboyViewController+ScrollDetection.swift */; };
-		A790DC72C30F1CA73654D340409366F6 /* TabmanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DB09F449C57039CC7DD687266E88B /* TabmanTransition.swift */; };
-		ABF6B1AE09CD26A817EA6669D0E58EB5 /* PureLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53DD1B32FB8955DA356314C2A24862 /* PureLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B29580A4A1B7F51098DEFB5D44898A92 /* TabmanBar+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A469057A77082DAFE4B53F366B0C066 /* TabmanBar+Indicator.swift */; };
-		B5BFD59649FD545A58046B021652F033 /* PageboyViewController+Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB14AB1AE0442021083792218A0EE9 /* PageboyViewController+Transitioning.swift */; };
-		B756D00DCDEDC4CFF88D1276A82FDAE5 /* TabmanLineBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09E722D387C9E08F96F0A4050848DC /* TabmanLineBar.swift */; };
-		B91093247632889C0EF5C209C726E1FC /* TabmanStaticButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9974327A11E04DF767F45997D5C57 /* TabmanStaticButtonBar.swift */; };
-		BA370D64ACE51E2CBBF9893401BC2871 /* TabmanBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783CFDD0D32E5F87C3708033ABA86571 /* TabmanBarItem.swift */; };
-		BC2232C41774BF5FB3EEF1264756ACF8 /* TabmanBlockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B0021167712829535D2F43AFA686E /* TabmanBlockIndicator.swift */; };
-		BF5E7EB1E8B78F107310AF6AEB49A357 /* PureLayoutDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F47D7399704AEBA03CE6E7A8572D6A /* PureLayoutDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2331777B7E4F58477471A3BA9E5C51B /* TabmanScrollingButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2360D2B3BF9A287BBDD4D6B1D5819B /* TabmanScrollingButtonBar.swift */; };
-		C3876E92B5D48CFC1C10A10AE2B3E812 /* PastelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027376CEA63B79BCFBD292BC2588F58C /* PastelView.swift */; };
-		CA8EA50FAFF93996C6719B3BEA8FF251 /* PageboyAutoScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F6E2D86EE6DEAD1BBA5E2085F9BAF /* PageboyAutoScroller.swift */; };
-		CA92339BF8C562057B35BE4F81514CF4 /* Tabman-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6E63F4036E31FAB2EC4D7577FB2E /* Tabman-dummy.m */; };
-		CF137B4D75530AADFC423AA49712BD97 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B31C170D74F2FB62E250014354FC4B7 /* ViewUtils.swift */; };
-		CFC5DBE7016E5CE88C0445C3C9AB250C /* Pods-SuiteLife-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D5CE4D1E40F4C8A65AD1D82EC65CD /* Pods-SuiteLife-dummy.m */; };
-		D37C44AC0B57DCCD292D280C06EBE84F /* TabmanClearIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71238912B12C77A72BF8CA2DE05435C8 /* TabmanClearIndicator.swift */; };
-		D5014607828A741EE99784C8EA78D4C1 /* ALView+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 95998EF9205AC8A5C459C0DBE0D8B6C4 /* ALView+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7F0F3D4A52BE226E89526DB9F14583E /* PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = B0ACB79B140DE9734EC4B44A8E29E357 /* PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D958DA39BF8880F9F86C29B245EB00F9 /* TabmanDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFC5D0C5CE1F0BED350C4A593E6C8F /* TabmanDotIndicator.swift */; };
-		DDC562B1823DE081E53B991EA341B18D /* TabmanStaticBarIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B744412FB07BC052C60C4FAC69F791 /* TabmanStaticBarIndicatorTransition.swift */; };
-		E03F419287F929DF0C7FCE665F0E96EA /* Pastel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46368E722E3EB937011286C3F45289A4 /* Pastel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E22C62DF8700C7DBA619A9CB02956D04 /* TabmanBarTransitionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C70605528D3EAD8ACB5CDD47F261852 /* TabmanBarTransitionStore.swift */; };
-		E4268869183317C5E39F79399AB6EFFB /* Pastel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 661228F1C39A1D26F5022E5DFBA073BC /* Pastel-dummy.m */; };
-		E94D67C6C6FB00B1E00BFD3EC63BC006 /* PureLayout+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF8DF86797314E462AFC9561F03CEDF /* PureLayout+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB123C3EBA776AC3278C32D43454F8E1 /* TabmanItemTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293191A4F27060A13A6FC77E03422218 /* TabmanItemTransition.swift */; };
-		F33066435A9C20E129ADE0D00D073F41 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D2E0311CF766536495EF0292C6340 /* ImageUtils.swift */; };
-		FFD7EC2E785ED7B99BA0071E5C16F575 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */; };
+		01F35DBF08AEAEB672ECA527BC5B216E /* TabmanBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FCD2D8E2596537F1875B7929A17DC /* TabmanBarItem.swift */; };
+		03ECC07F179A8E85FFDC16CD8A6BEDB4 /* TabmanScrollingBarIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15B1DAA6305693F43C7F051463818A /* TabmanScrollingBarIndicatorTransition.swift */; };
+		0C136AB552C6565B426ED7CECECD2C0F /* Pageboy.h in Headers */ = {isa = PBXBuildFile; fileRef = 859D6D40E7D6619AAA5E71475CBA15FF /* Pageboy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C32D29D8813D99DF050424AECBAB61F /* Tabman-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 618CEB7049C0DF0787270B3B048D304A /* Tabman-dummy.m */; };
+		0CD6B812F45DBD88ABBC1DFCE19AE1A9 /* TabmanClearIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB973AAFB91A567EC6147D4484EBE854 /* TabmanClearIndicator.swift */; };
+		10C944DA8939B2888A3518AE08D109D0 /* PageboyAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F0F2B2873065F3ABE5D99A0CB94E4 /* PageboyAutoLayout.swift */; };
+		10D814D6F3F349C0E905E2708B5B329D /* TransitionOperation+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551F7BCEBE865EAE2E88C30B3D989D7 /* TransitionOperation+Action.swift */; };
+		122E3E94B7928F15FC8611B887A037A1 /* TabmanBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103EBFABC99E58F833FC864EB47BD863 /* TabmanBarBackgroundView.swift */; };
+		26CE2674A4C05D5278424DDAA5F869BB /* TabmanSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD79362867A18A67D470F2ECE8F956E /* TabmanSeparator.swift */; };
+		312E801F38FFE1DFB45623B4FB4E6A83 /* TabmanScrollingButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE6996C8C3C20B1AB039E70AEDE7334 /* TabmanScrollingButtonBar.swift */; };
+		3134CACEA0B2C43B7C6DC571B0D7B71C /* ALView+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC70F2A07F377145C4703C05F751909 /* ALView+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3141A4D36B71A39CFD4BC68F507A4CEA /* TabmanAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B842CD725C445F0BA278216BC83A4C /* TabmanAutoLayout.swift */; };
+		35DF26FD29CD03C6004119138E9FA77E /* Pageboy-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B4866F65C626B3AFEF14EF8DB731D602 /* Pageboy-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F62F5A74679DE446F56C0DD65668BA /* TabmanScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF6BE0BC16CE41ED6BB6627D7482619 /* TabmanScrollView.swift */; };
+		3AFA54C6DC0961AD0F4CC8A4F1AF915E /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F31BCE8D62F8935C4C0385585F627 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		3D3999704E0376B2C65333F6A7F8D225 /* TabmanLineIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D44175D4CCB2BA3B79FC3E8E4CD39 /* TabmanLineIndicator.swift */; };
+		3D976DD35C822B9B6971ED06121B4A44 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FF91792D4974F11F9815CAB098064D /* M13CheckboxFlatController.swift */; };
+		3E068234F41D020FF3FB131CC9D51228 /* TabmanColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB114E0A81D9F8A3E4C5F6F48A290E /* TabmanColorUtils.swift */; };
+		3E2FFD3C073383B859F71C2B1411FA89 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DEB821C116A4ABDECEDE3AF702A62E /* M13Checkbox+IB.swift */; };
+		40897730B01BE8C60FB61A02DD7A1F6A /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6AA000743B8A18B0F5D3FD4AC72DC4 /* M13CheckboxStrokeController.swift */; };
+		445378EF15B25DB3370FF77B2F6F42D7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63C77BBC208734920ED90045B309FEC /* M13Checkbox.swift */; };
+		4B399F1E5488EAA94E5B29F7DAB09074 /* TransitionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284C7B5B9B58E3D9A5032B34A35537 /* TransitionOperation.swift */; };
+		4B3EC4DA103F6D4F8D3F5EA0B2FD5C28 /* NSArray+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF19D1D302C52E00E6DACC54093C9AF /* NSArray+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7768AD6B296F27BF9B7F6AACD67855 /* TabmanIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF91913F114D36A6BA3ACEA631641DC /* TabmanIndicatorTransition.swift */; };
+		585D59DE5A8E2BB2849ED9F97A8D4767 /* TabmanBlockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE495F6B184444EFE391BC9A9472B5A /* TabmanBlockIndicator.swift */; };
+		599205C30390EDBCADCDBD452377DB60 /* NSLayoutConstraint+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 418F2BCD08A6A832794F45E199528EE8 /* NSLayoutConstraint+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CD3F88F44D510262FB19108D2E5B198 /* TabmanItemColorCrossfadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE9592DA5EE85306129C01A644023E4 /* TabmanItemColorCrossfadeTransition.swift */; };
+		5CF03EB8809C5E04AB90F1C6ED75FADD /* Pageboy-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C30789C5FAAD57268F1DB2BB408F3B30 /* Pageboy-dummy.m */; };
+		5DAB669C060233ABD52BFF5D9A8CECE4 /* PureLayout+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 36BF3F6BB268A8E62CA467E6A65112FD /* PureLayout+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FBD712DCA3EAB4E399A4274FB835FC3 /* PureLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E61CAB6C52BFDC5A8E3FFB207A4548 /* PureLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66C7A433D021B257140688F186AB73B9 /* PageboyViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7709180EDCC59FDE9556850BEC081 /* PageboyViewController+Extras.swift */; };
+		6A67A4C0B68FD8712C8181770EA2A789 /* PureLayoutDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = EB0AD721A1A07233516B9643C2689451 /* PureLayoutDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B7F6283CE6F6418FD195E43D2216FBF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ADF5D46F8675106ABB3E3D3AB2B090EE /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72DC14E956F45F642E3207BDA5E5E478 /* PastelGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10097BB6F9DE1AD790D0118F60520C2 /* PastelGradient.swift */; };
+		736BAADB8878E6E3E7DDCC89D2E620CF /* PageViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5537709BFAD9662E9D8791362EF0ABF8 /* PageViewControllerUtils.swift */; };
+		76D3E2602CFAE6474D2DFA89F5328A24 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B664B3939E56CBAD5CD68D102C0A985 /* M13CheckboxPathGenerator.swift */; };
+		7C0FD23C203D4B06BBB0B2F8F438B88C /* TabmanDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493247D6FC3F96EBAF1FBBD791E50858 /* TabmanDotIndicator.swift */; };
+		7DDD6E276F4589383C97E94F7F0E493F /* Tabman-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 750CFC84108F8CB07508164ECEAB4FBE /* Tabman-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E142EDA72DD73FC4B0A35418C451608 /* TabmanChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F6740A9B55C83798FE9EE72D02946 /* TabmanChevronView.swift */; };
+		7FA383CAD33A066C6C9C2666FB7A72AE /* PositionalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FFF638C76825F32A6291449635C54D /* PositionalUtils.swift */; };
+		808DB25EDC3E2D24C8FC2521012E8A47 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D1FCE747C80E3D125FAEFD0E4B85F2 /* NSLayoutConstraint+PureLayout.m */; };
+		80CD994ABA1A2B01AD1838A4D4BB794C /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4955A40EFACA64FF65C0717EB0787 /* M13CheckboxFillController.swift */; };
+		80E34254247C5B1984E2FB9EC58774E4 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E80371D1E75772329986135673FB9 /* M13CheckboxDotController.swift */; };
+		85A5AB91C8A84B2A76A22F07507C3593 /* TabmanCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06F87A76924D9E6902076AEC48E96BC /* TabmanCircularView.swift */; };
+		85CB53B9E438E280DA1690CCFD778689 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E8BB84A071B39F99E759A57F04693B /* M13CheckboxRadioPathGenerator.swift */; };
+		8C6261A204C5344BC2F42EDEF4C1135C /* TabmanBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F9ED9D0D697D1BBE388DE0BFB3A18 /* TabmanBarConfig.swift */; };
+		8CD36BE35C3107DC8A00AA84DB922610 /* TabmanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260AA3FFFE29F882FBAD8C2E9580C144 /* TabmanTransition.swift */; };
+		8ED3FB14D1852DD05FDF6E23E94A4657 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E2F6784F0F717CA7580E3DF23B7B /* M13CheckboxAddRemovePathGenerator.swift */; };
+		8ED7A5A274732F617102B2B1AC9C2AEB /* TabmanButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3357A577396636C924BCB36B26B7320B /* TabmanButtonBar.swift */; };
+		900B6F52434A35E9F88CE6D22F0E5160 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		9033E5470B89E41736E962EF303A1FA9 /* PageboyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879A4EDB7C8F26A430392A8D3CD45FF /* PageboyViewController.swift */; };
+		9047190F05DF4D742E753CBE4570715B /* TabmanIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E57C0F0F98DDDA460F58C5B815B4C3 /* TabmanIndicator.swift */; };
+		92AFFB45085BA809F46F186B6496ADE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701056D74609BB8EE98F359FEF2BC213 /* UIKit.framework */; };
+		95553F727C51200DC9897127F32275D4 /* TabmanBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC2AC7BD17CE053E3268915E9A0070 /* TabmanBar.swift */; };
+		96FCB02896AB8163CAB35CD65CB6FF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		9898E63CA60DEE40B23A48E95436BA4F /* TabmanChevronIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622A052F59E15504ACFF6C3BC77A930 /* TabmanChevronIndicator.swift */; };
+		999333B31343BDD1623A71D7BC07F1D0 /* TabmanBlockTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126910554B86C6BFDA00D230185287A2 /* TabmanBlockTabBar.swift */; };
+		9AD128055149F10F2DA6416B8BFCB012 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		9B967715D23467EF88C7922B91132D20 /* TabmanStaticButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A176C59C4C3DBAC828EDF738CE971 /* TabmanStaticButtonBar.swift */; };
+		9D184EF65DEAC0052567BC4776F7269C /* PageboyViewController+Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED1ADEE84CE0639D3AB9FAD4402E5B /* PageboyViewController+Management.swift */; };
+		A54DA43C08603ED643D108334428A1B5 /* PageboyViewController+ScrollDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11A2DF85565C10C38FE919C66888A2 /* PageboyViewController+ScrollDetection.swift */; };
+		AAE54CDA46FD620F4BC54BC583EA255C /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 978088F06488974FB1353F1EC02F9F54 /* M13Checkbox-dummy.m */; };
+		AF1A2A007A2DE47F4BC817D291507C26 /* TabmanBar+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3150395A84E4620D02546A90CC5B867A /* TabmanBar+Protocols.swift */; };
+		AFFFC5626F5713D6F591111FE5ECDDA6 /* PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 598D81EECF10EE093A68855365288777 /* PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5BFD59649FD545A58046B021652F033 /* PageboyViewController+Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDC9B35CF77F36BFB150E6ACCDC0351 /* PageboyViewController+Transitioning.swift */; };
+		B5FB1E7FC8FCC78BD4A66ECA2E47C498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		B69A76045DE0C2AD016A38AAABE3B54A /* TabmanItemTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272FA793E4863E05108CB0BA08A907ED /* TabmanItemTransition.swift */; };
+		B790B23E65A0C59887C1A2CC73ABBBE5 /* TabmanBarTransitionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221B4A6CF9241FAECB8654637B82475E /* TabmanBarTransitionStore.swift */; };
+		B7A8430551485EC961B6F6759215D831 /* PureLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D54601AC04AA88AEF7F7BCB607F5B18C /* PureLayout-dummy.m */; };
+		BCB82BDDA7C30F0B0AFE479CC479B522 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493321651C157CD9FE018A86A0D36B2 /* M13CheckboxExpandController.swift */; };
+		BCC718855592393BD7DDE7A9B5199488 /* TabmanViewController+Embedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257A45B5F965D21E4ED0CC91AE4D6BE3 /* TabmanViewController+Embedding.swift */; };
+		BD21B3001A21F3FABCD51C167F424CDD /* Tabman.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BDCAC6401B82687511BFB4905EE949 /* Tabman.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDBED2AE0FC658389A2BA7B2B23F5454 /* TabmanBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C191788E35401491E9E12FA2B350ED37 /* TabmanBar+Appearance.swift */; };
+		C277B9EAC728D880FF1F15EE98C8B200 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE117FCD4529D049782826C7763A91 /* M13CheckboxController.swift */; };
+		C3876E92B5D48CFC1C10A10AE2B3E812 /* PastelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81574D134277339232CECE9C611C5DE4 /* PastelView.swift */; };
+		C4BFDEC4A5B5FC57C8425305CEBBD3F3 /* Pods-SuiteLife-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7260A24664AD908A7B6F4415C88FBCC /* Pods-SuiteLife-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C62EE0E040E4D7DF3EC4C5E36F21C552 /* TabmanBar+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D943460D3D2B41C11838610032B1541 /* TabmanBar+Indicator.swift */; };
+		C6D0B50C214C9E7CC815F2773D702779 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE88D7FEF30007D26E4A530FFD98F9 /* M13CheckboxAnimationGenerator.swift */; };
+		C8D41C0D4E89BE8510BA40F04EFF4FA8 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A5C23990F27188D288F07A1956277 /* M13CheckboxCheckPathGenerator.swift */; };
+		CA8EA50FAFF93996C6719B3BEA8FF251 /* PageboyAutoScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B535B668B5EB286A523B33B61E14A39 /* PageboyAutoScroller.swift */; };
+		CBAFCCAD0DF40F068FD1ADAC4BDC5E8F /* Pods-SuiteLife-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D5CE4D1E40F4C8A65AD1D82EC65CD /* Pods-SuiteLife-dummy.m */; };
+		CE60A77B45EEE59EF137BEBB1C624171 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		D499A99C65D38207253BE520FAC2A920 /* TabmanBar+Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2352B3A857CB656AEA13A7AA1B0ABFE /* TabmanBar+Insets.swift */; };
+		D557FFFAD229D817A33C94D8687613A2 /* TabmanFixedButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCFDF6252DC76026BDDD4782F82D7 /* TabmanFixedButtonBar.swift */; };
+		D5F73740926C9E77BAC511A1033B34A0 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B45030221AE7BD6160FCCAE15F220 /* ALView+PureLayout.m */; };
+		D6039515F84B2167BBAC8D1CE12A5F4E /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FDD636A4958D8AFCA0685362056E55 /* M13CheckboxGestureRecognizer.swift */; };
+		D8F5265497D23A74A21637775660BDFC /* TabmanViewController+Insetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F312594E6DF0936BEE78CF822DCFBB /* TabmanViewController+Insetting.swift */; };
+		DAA9C537FB68E1A8ECD051A32A498A57 /* Pageboy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D572D2AC1C61DC6C93911A724E90EFBC /* Pageboy.framework */; };
+		DF2C732F254BAC7F3B0AA9CB947D160D /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9EC66EA41CF14A74809FAB871087F8 /* PureLayout.framework */; };
+		E03F419287F929DF0C7FCE665F0E96EA /* Pastel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F0727A2DB0F8FCFC46F82B2FA76D19 /* Pastel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4268869183317C5E39F79399AB6EFFB /* Pastel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D470682B0A0931D953026C17EFB6F9E6 /* Pastel-dummy.m */; };
+		E4B475DC369D1E8C7EE42CE9CEF0C631 /* TabmanLineBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38470AF1B2BF5F8B5044603E9C143C3 /* TabmanLineBar.swift */; };
+		E5998DC391DBBE964A3BE3D16202F755 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9AB425369CD873AD73711E50C7825 /* ImageUtils.swift */; };
+		E6BC5CA4068DA5878E2EA3F3DD9F20F4 /* TabmanItemMaskTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53390825F944303B1B1A56EA6452D6A3 /* TabmanItemMaskTransition.swift */; };
+		EAFC0EA4762962766C946FC37569310A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948AF934E7BF5EE0A54D77EB2ECC3E0E /* CoreGraphics.framework */; };
+		ECE9B79C2980CB4ECF87DBB90755F003 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EF390C2469B81C568D1C7C7A27168591 /* NSArray+PureLayout.m */; };
+		EDCE1D1AAE8EEE592E3398C8F698C866 /* TabmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD6C932B8DBB1A31F369716282C745B /* TabmanViewController.swift */; };
+		F272798414363F0BB33555925C2DD145 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F665D9D6FA913EB57BB7BE07ABD96AD0 /* ViewUtils.swift */; };
+		F2868BCA237CA6084AF66F827CC1E3A0 /* TabmanViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518507FB8D5D9BD48F2319233FA0DF55 /* TabmanViewUtils.swift */; };
+		F7A5B0214108C732898DD2C00BA6FE56 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC90A0F5AE8C4BE5585E5C24BFA01F6 /* M13CheckboxBounceController.swift */; };
+		F99F544E8B1EF778C47293F07DB89AA9 /* TabmanStaticBarIndicatorTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AED58B4D01B0C5E99996034781BD51 /* TabmanStaticBarIndicatorTransition.swift */; };
+		FA2B271AAF040F6C1B860C6C3DF0558F /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4367370F3B0AA8429062754382DC9E4 /* M13CheckboxSpiralController.swift */; };
+		FD697A4BFEFE3925CABF7C80D3FBEB41 /* TabmanBar+Construction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9378721C9756D4312FD33DDF1547CE05 /* TabmanBar+Construction.swift */; };
+		FFD7EC2E785ED7B99BA0071E5C16F575 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */; };
+		FFF489DE367C237C0E8F7E4442DA06D7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA1BB8945AB71CF3524817EA77FE315 /* M13CheckboxFadeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		164A3C88EA53D4170B64A30232D73375 /* PBXContainerItemProxy */ = {
+		16B5073419D6BABCF64BC92F1668F63B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B931B98EF1A8BFB0ACAF73A12FC0C0C4;
-			remoteInfo = Pageboy;
-		};
-		42F2A834EE4F34BCF3AE7B3D594C444C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 100447C83DE4C31ED6266F6E0B94AE84;
+			remoteGlobalIDString = FF7A1D3A7C6A7F608E76E3BECD25BCF4;
 			remoteInfo = Tabman;
 		};
-		7D2AEF382131E7EF25671384439E5B70 /* PBXContainerItemProxy */ = {
+		2D5A352E85FEB332F8120441D74085C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B931B98EF1A8BFB0ACAF73A12FC0C0C4;
 			remoteInfo = Pageboy;
 		};
-		7FEF82B5F17204D636E6DD8619867283 /* PBXContainerItemProxy */ = {
+		6236C8BBF675969EC924DE75AB086183 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A9DD9ABBF08BC57372A26C35327BF1;
+			remoteInfo = M13Checkbox;
+		};
+		7AFA0E87BAB2E1756C3A1D5F52C10C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8E1D092BF86FB8C0ABE055E421219B71;
 			remoteInfo = Pastel;
 		};
-		E60C53F9950BA7E982D058DD20C33B35 /* PBXContainerItemProxy */ = {
+		BCDD6B2BD68ECAA5036DF07DBD99DE84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0D9A1C59A5AE9CC3C922AFE3A5913CA0;
+			remoteGlobalIDString = FAA3DAE8090D2D777724676A42DA3EE4;
 			remoteInfo = PureLayout;
 		};
-		FF9CFC5E5FA493781F7491054AFBDE7E /* PBXContainerItemProxy */ = {
+		D5D4AA323FA6C21E2FD0C6D86A6BBD2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0D9A1C59A5AE9CC3C922AFE3A5913CA0;
+			remoteGlobalIDString = B931B98EF1A8BFB0ACAF73A12FC0C0C4;
+			remoteInfo = Pageboy;
+		};
+		EF937688BD1A2E2FDC372AE6616E0A0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAA3DAE8090D2D777724676A42DA3EE4;
 			remoteInfo = PureLayout;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C92AC13D3DBC36B23C30DAC583248C /* Pastel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pastel.framework; path = Pastel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		01A520074E63487AF7D8CC03CF3FCE2E /* TabmanBar+Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Protocols.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Protocols.swift"; sourceTree = "<group>"; };
-		027376CEA63B79BCFBD292BC2588F58C /* PastelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelView.swift; path = Pastel/Classes/PastelView.swift; sourceTree = "<group>"; };
-		05EE901D6D785A692B14CCAA471E48ED /* TabmanViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanViewController.swift; path = Sources/Tabman/TabmanViewController.swift; sourceTree = "<group>"; };
-		0A469057A77082DAFE4B53F366B0C066 /* TabmanBar+Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Indicator.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Indicator.swift"; sourceTree = "<group>"; };
-		0B31C170D74F2FB62E250014354FC4B7 /* ViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/ViewUtils.swift; sourceTree = "<group>"; };
-		0D92C1AE13D7F4AFBEC7FEB81391C6F2 /* PageboyAutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyAutoLayout.swift; path = Sources/Pageboy/Utilities/PageboyAutoLayout.swift; sourceTree = "<group>"; };
-		0DCEDB130CB14C55EEEE3BEC05F359A3 /* PageboyViewController+Extras.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Extras.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Extras.swift"; sourceTree = "<group>"; };
+		0B535B668B5EB286A523B33B61E14A39 /* PageboyAutoScroller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyAutoScroller.swift; path = Sources/Pageboy/Components/PageboyAutoScroller.swift; sourceTree = "<group>"; };
 		0FE4ED27DC7A77A3E3BE72602DA20274 /* Pods-SuiteLife-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SuiteLife-acknowledgements.plist"; sourceTree = "<group>"; };
-		11D0F72A899D8BA3CD257D8C2E9D3DF2 /* PastelGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelGradient.swift; path = Pastel/Classes/PastelGradient.swift; sourceTree = "<group>"; };
-		1328E5868648E72604F142AD307C0CDB /* PageboyViewController+Management.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Management.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Management.swift"; sourceTree = "<group>"; };
-		15C0DF3438AEA8B4E8E8FAE1E5EDFC1E /* TabmanColorUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanColorUtils.swift; path = Sources/Tabman/Utilities/TabmanColorUtils.swift; sourceTree = "<group>"; };
-		15CFC5D0C5CE1F0BED350C4A593E6C8F /* TabmanDotIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanDotIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanDotIndicator.swift; sourceTree = "<group>"; };
-		19F74F983CF3130116B822BBFEB7BDAB /* NSArray+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+PureLayout.h"; path = "PureLayout/PureLayout/NSArray+PureLayout.h"; sourceTree = "<group>"; };
-		1BE4E9F361449D0A3021467837FDFC30 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E053E4CDD18C66F4E3434A4D3A98E12 /* PositionalUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionalUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/PositionalUtils.swift; sourceTree = "<group>"; };
-		1F9E4D32325E625E3B3D3BACEABE82B8 /* TabmanIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/TabmanIndicator.swift; sourceTree = "<group>"; };
-		209B0021167712829535D2F43AFA686E /* TabmanBlockIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBlockIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanBlockIndicator.swift; sourceTree = "<group>"; };
-		21A068B2F09D9789252B156EE9963DEF /* TabmanItemColorCrossfadeTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemColorCrossfadeTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemColorCrossfadeTransition.swift; sourceTree = "<group>"; };
-		293191A4F27060A13A6FC77E03422218 /* TabmanItemTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemTransition.swift; sourceTree = "<group>"; };
-		2BEC664FD6A70DAA6E39AA21AC539C57 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EFF149B0E2719679DE12E092A10CDA7 /* TabmanViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanViewUtils.swift; path = Sources/Tabman/Utilities/TabmanViewUtils.swift; sourceTree = "<group>"; };
-		2F15A0CEEA036352A20758A756ABEA76 /* Tabman.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Tabman.h; path = Sources/Tabman/Tabman.h; sourceTree = "<group>"; };
-		2FDF55595B2B552286D1E841633379F9 /* PureLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PureLayout-dummy.m"; sourceTree = "<group>"; };
-		38D5CCF4274BBA6399BE42F42A69F460 /* PureLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PureLayout.modulemap; sourceTree = "<group>"; };
-		39E5438CB4525B63AFD12BF86D93C397 /* Tabman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Tabman.framework; path = Tabman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		103EBFABC99E58F833FC864EB47BD863 /* TabmanBarBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarBackgroundView.swift; path = Sources/Tabman/TabmanBar/Components/Background/TabmanBarBackgroundView.swift; sourceTree = "<group>"; };
+		126910554B86C6BFDA00D230185287A2 /* TabmanBlockTabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBlockTabBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanBlockTabBar.swift; sourceTree = "<group>"; };
+		164F31BCE8D62F8935C4C0385585F627 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDisclosurePathGenerator.swift; path = Sources/Paths/M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
+		185D44175D4CCB2BA3B79FC3E8E4CD39 /* TabmanLineIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanLineIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanLineIndicator.swift; sourceTree = "<group>"; };
+		1A1B9C9880E0EE2E3B349037B5311755 /* Pageboy.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pageboy.modulemap; sourceTree = "<group>"; };
+		1D15B1DAA6305693F43C7F051463818A /* TabmanScrollingBarIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollingBarIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanScrollingBarIndicatorTransition.swift; sourceTree = "<group>"; };
+		20AE117FCD4529D049782826C7763A91 /* M13CheckboxController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxController.swift; path = Sources/M13CheckboxController.swift; sourceTree = "<group>"; };
+		20F0727A2DB0F8FCFC46F82B2FA76D19 /* Pastel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-umbrella.h"; sourceTree = "<group>"; };
+		221B4A6CF9241FAECB8654637B82475E /* TabmanBarTransitionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarTransitionStore.swift; path = Sources/Tabman/TabmanBar/Transitioning/TabmanBarTransitionStore.swift; sourceTree = "<group>"; };
+		24D14710E16779AC9C6ECEC62AD34988 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		257A45B5F965D21E4ED0CC91AE4D6BE3 /* TabmanViewController+Embedding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanViewController+Embedding.swift"; path = "Sources/Tabman/TabmanViewController+Embedding.swift"; sourceTree = "<group>"; };
+		25F5DEC6403570F8030DAFBAC30438E1 /* PureLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PureLayout.xcconfig; sourceTree = "<group>"; };
+		260AA3FFFE29F882FBAD8C2E9580C144 /* TabmanTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/TabmanTransition.swift; sourceTree = "<group>"; };
+		272FA793E4863E05108CB0BA08A907ED /* TabmanItemTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemTransition.swift; sourceTree = "<group>"; };
+		2BF91913F114D36A6BA3ACEA631641DC /* TabmanIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanIndicatorTransition.swift; sourceTree = "<group>"; };
+		2C4B45030221AE7BD6160FCCAE15F220 /* ALView+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ALView+PureLayout.m"; path = "PureLayout/PureLayout/ALView+PureLayout.m"; sourceTree = "<group>"; };
+		2CE9592DA5EE85306129C01A644023E4 /* TabmanItemColorCrossfadeTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemColorCrossfadeTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemColorCrossfadeTransition.swift; sourceTree = "<group>"; };
+		3150395A84E4620D02546A90CC5B867A /* TabmanBar+Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Protocols.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Protocols.swift"; sourceTree = "<group>"; };
+		320FCD2D8E2596537F1875B7929A17DC /* TabmanBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarItem.swift; path = Sources/Tabman/TabmanBar/TabmanBarItem.swift; sourceTree = "<group>"; };
+		3357A577396636C924BCB36B26B7320B /* TabmanButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/Abstract/TabmanButtonBar.swift; sourceTree = "<group>"; };
+		3622A052F59E15504ACFF6C3BC77A930 /* TabmanChevronIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanChevronIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanChevronIndicator.swift; sourceTree = "<group>"; };
+		36BF3F6BB268A8E62CA467E6A65112FD /* PureLayout+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PureLayout+Internal.h"; path = "PureLayout/PureLayout/PureLayout+Internal.h"; sourceTree = "<group>"; };
+		3964055D8A28E0BC757C02D27817CCF7 /* Tabman.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Tabman.xcconfig; sourceTree = "<group>"; };
 		3AA86559A636C242972A94099B52C376 /* Pods-SuiteLife-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuiteLife-frameworks.sh"; sourceTree = "<group>"; };
-		3C70605528D3EAD8ACB5CDD47F261852 /* TabmanBarTransitionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarTransitionStore.swift; path = Sources/Tabman/TabmanBar/Transitioning/TabmanBarTransitionStore.swift; sourceTree = "<group>"; };
-		3E6CBEB0C873F751986D137754869CE5 /* Tabman-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Tabman-prefix.pch"; sourceTree = "<group>"; };
-		3EFD6508EF3104B6EB08770C7CBDAA0D /* PureLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PureLayout.xcconfig; sourceTree = "<group>"; };
-		42F0036113389873149D3A5AB9887648 /* TabmanFixedButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanFixedButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanFixedButtonBar.swift; sourceTree = "<group>"; };
-		446AF1323583024C37CC5146E6863BCA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46368E722E3EB937011286C3F45289A4 /* Pastel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-umbrella.h"; sourceTree = "<group>"; };
-		4BECB0E523ED20BB545AB92116B15635 /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PureLayout.framework; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		51E91A98B26DF0783346C8F3B0EEFC7F /* Tabman.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Tabman.xcconfig; sourceTree = "<group>"; };
-		53076FEE8B7C3FE92956B0ADA39789B9 /* Pageboy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Pageboy.h; path = Sources/Pageboy/Pageboy.h; sourceTree = "<group>"; };
-		5454EB8842F0B252137ACFB7A4E3736C /* TabmanIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanIndicatorTransition.swift; sourceTree = "<group>"; };
-		570C65BA948879A073233AC8F093BD79 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B17A92379BE2A5FE5D7A12265AA8B90 /* TabmanViewController+Embedding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanViewController+Embedding.swift"; path = "Sources/Tabman/TabmanViewController+Embedding.swift"; sourceTree = "<group>"; };
-		5DCAF39CE6D508ADEF2C3B987F71E8EB /* TabmanLineIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanLineIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanLineIndicator.swift; sourceTree = "<group>"; };
-		5F156A7B3264555363F0622CCB93762D /* TabmanBar+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Appearance.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Appearance.swift"; sourceTree = "<group>"; };
-		6210736DA60895A4B74DDD2E127E9B33 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pageboy.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63FF2E26183F392E25C476E31268DFE0 /* Pageboy-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pageboy-prefix.pch"; sourceTree = "<group>"; };
-		661228F1C39A1D26F5022E5DFBA073BC /* Pastel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pastel-dummy.m"; sourceTree = "<group>"; };
-		682E6F4D6BCB04B57F9AB2CCA16AFBC2 /* PageboyViewController+ScrollDetection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+ScrollDetection.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+ScrollDetection.swift"; sourceTree = "<group>"; };
-		6D9A0042A09FA6C41EEC40555524B429 /* TabmanScrollingBarIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollingBarIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanScrollingBarIndicatorTransition.swift; sourceTree = "<group>"; };
-		71238912B12C77A72BF8CA2DE05435C8 /* TabmanClearIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanClearIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanClearIndicator.swift; sourceTree = "<group>"; };
-		783CFDD0D32E5F87C3708033ABA86571 /* TabmanBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarItem.swift; path = Sources/Tabman/TabmanBar/TabmanBarItem.swift; sourceTree = "<group>"; };
-		7970E3BD5BA9846A0143FA6F7FDD9A8D /* Tabman-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Tabman-umbrella.h"; sourceTree = "<group>"; };
-		7ADECCF161077390DC875BD0890412C8 /* TabmanButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/Abstract/TabmanButtonBar.swift; sourceTree = "<group>"; };
-		7BBA64BE849446D4291E5C3F0A552234 /* TabmanScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollView.swift; path = Sources/Tabman/Utilities/TabmanScrollView.swift; sourceTree = "<group>"; };
+		3ADE88D7FEF30007D26E4A530FFD98F9 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationGenerator.swift; path = Sources/M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
+		3B664B3939E56CBAD5CD68D102C0A985 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathGenerator.swift; path = Sources/Paths/M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
+		3D494B5DBB4701239D40B03E8DDDEAAE /* Pastel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pastel.framework; path = Pastel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E11A2DF85565C10C38FE919C66888A2 /* PageboyViewController+ScrollDetection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+ScrollDetection.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+ScrollDetection.swift"; sourceTree = "<group>"; };
+		3FC90A0F5AE8C4BE5585E5C24BFA01F6 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceController.swift; path = Sources/Managers/M13CheckboxBounceController.swift; sourceTree = "<group>"; };
+		3FE7709180EDCC59FDE9556850BEC081 /* PageboyViewController+Extras.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Extras.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Extras.swift"; sourceTree = "<group>"; };
+		400D7F5CC3466B1FFB421F353FC3B81B /* Pageboy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pageboy.xcconfig; sourceTree = "<group>"; };
+		418F2BCD08A6A832794F45E199528EE8 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+PureLayout.h"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		426705F9270A1E6150566E3A1B3DEDA7 /* PureLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-prefix.pch"; sourceTree = "<group>"; };
+		45881834DA514156B5437A6CD954BA89 /* Pageboy-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pageboy-prefix.pch"; sourceTree = "<group>"; };
+		493247D6FC3F96EBAF1FBBD791E50858 /* TabmanDotIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanDotIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanDotIndicator.swift; sourceTree = "<group>"; };
+		49FF91792D4974F11F9815CAB098064D /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatController.swift; path = Sources/Managers/M13CheckboxFlatController.swift; sourceTree = "<group>"; };
+		4D943460D3D2B41C11838610032B1541 /* TabmanBar+Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Indicator.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Indicator.swift"; sourceTree = "<group>"; };
+		5047F7055E0C3B84DCA9FD924CAACD4C /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = M13Checkbox.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		518507FB8D5D9BD48F2319233FA0DF55 /* TabmanViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanViewUtils.swift; path = Sources/Tabman/Utilities/TabmanViewUtils.swift; sourceTree = "<group>"; };
+		53390825F944303B1B1A56EA6452D6A3 /* TabmanItemMaskTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemMaskTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemMaskTransition.swift; sourceTree = "<group>"; };
+		54DEB821C116A4ABDECEDE3AF702A62E /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		5537709BFAD9662E9D8791362EF0ABF8 /* PageViewControllerUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageViewControllerUtils.swift; path = Sources/Pageboy/Utilities/PageViewControllerUtils.swift; sourceTree = "<group>"; };
+		57DC35ABC1BBB3DCE025C0D9C5C8CC94 /* Tabman.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Tabman.modulemap; sourceTree = "<group>"; };
+		598D81EECF10EE093A68855365288777 /* PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayout.h; path = PureLayout/PureLayout/PureLayout.h; sourceTree = "<group>"; };
+		5AC70F2A07F377145C4703C05F751909 /* ALView+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ALView+PureLayout.h"; path = "PureLayout/PureLayout/ALView+PureLayout.h"; sourceTree = "<group>"; };
+		5FA1BB8945AB71CF3524817EA77FE315 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeController.swift; path = Sources/Managers/M13CheckboxFadeController.swift; sourceTree = "<group>"; };
+		618CEB7049C0DF0787270B3B048D304A /* Tabman-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Tabman-dummy.m"; sourceTree = "<group>"; };
+		61FDD636A4958D8AFCA0685362056E55 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		62F5D0FBA32563AD3F7E39B958D45DB0 /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
+		64ACE4259CCEF4546670FD67B701C3FF /* Pastel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pastel.xcconfig; sourceTree = "<group>"; };
+		69FFF638C76825F32A6291449635C54D /* PositionalUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionalUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/PositionalUtils.swift; sourceTree = "<group>"; };
+		6C8F6740A9B55C83798FE9EE72D02946 /* TabmanChevronView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanChevronView.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Views/TabmanChevronView.swift; sourceTree = "<group>"; };
+		6C9A5C23990F27188D288F07A1956277 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxCheckPathGenerator.swift; path = Sources/Paths/M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
+		701056D74609BB8EE98F359FEF2BC213 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		70F312594E6DF0936BEE78CF822DCFBB /* TabmanViewController+Insetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanViewController+Insetting.swift"; path = "Sources/Tabman/TabmanViewController+Insetting.swift"; sourceTree = "<group>"; };
+		750CFC84108F8CB07508164ECEAB4FBE /* Tabman-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Tabman-umbrella.h"; sourceTree = "<group>"; };
+		78DC2AC7BD17CE053E3268915E9A0070 /* TabmanBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBar.swift; path = Sources/Tabman/TabmanBar/TabmanBar.swift; sourceTree = "<group>"; };
+		78ED1ADEE84CE0639D3AB9FAD4402E5B /* PageboyViewController+Management.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Management.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Management.swift"; sourceTree = "<group>"; };
+		7CADCFDF6252DC76026BDDD4782F82D7 /* TabmanFixedButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanFixedButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanFixedButtonBar.swift; sourceTree = "<group>"; };
+		7CF19D1D302C52E00E6DACC54093C9AF /* NSArray+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+PureLayout.h"; path = "PureLayout/PureLayout/NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		7DCDBB0995573B37F1D05E06CF5BD944 /* Tabman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Tabman.framework; path = Tabman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DD79362867A18A67D470F2ECE8F956E /* TabmanSeparator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanSeparator.swift; path = Sources/Tabman/TabmanBar/Components/Separator/TabmanSeparator.swift; sourceTree = "<group>"; };
+		7DE6996C8C3C20B1AB039E70AEDE7334 /* TabmanScrollingButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollingButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanScrollingButtonBar.swift; sourceTree = "<group>"; };
+		7F6A176C59C4C3DBAC828EDF738CE971 /* TabmanStaticButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanStaticButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/Abstract/TabmanStaticButtonBar.swift; sourceTree = "<group>"; };
 		7F9D5CE4D1E40F4C8A65AD1D82EC65CD /* Pods-SuiteLife-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SuiteLife-dummy.m"; sourceTree = "<group>"; };
-		8015A59B6BFED90A3F15DB8DDF53B450 /* TabmanBar+Insets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Insets.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Insets.swift"; sourceTree = "<group>"; };
-		809DB09F449C57039CC7DD687266E88B /* TabmanTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/TabmanTransition.swift; sourceTree = "<group>"; };
-		81EF6E63F4036E31FAB2EC4D7577FB2E /* Tabman-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Tabman-dummy.m"; sourceTree = "<group>"; };
+		81574D134277339232CECE9C611C5DE4 /* PastelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelView.swift; path = Pastel/Classes/PastelView.swift; sourceTree = "<group>"; };
 		83603491C2A4EAC57E2972128A44FAC8 /* Pods-SuiteLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuiteLife.release.xcconfig"; sourceTree = "<group>"; };
-		83CEB41C52E1CFB6B4DB984EEEEE7B52 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+PureLayout.h"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
 		84ABFC43AD962B1D8D20500D79BA3FBF /* Pods-SuiteLife.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SuiteLife.modulemap"; sourceTree = "<group>"; };
-		8658C3A31457890CD701E7CF756C4813 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PureLayout.m"; path = "PureLayout/PureLayout/NSArray+PureLayout.m"; sourceTree = "<group>"; };
-		881AE78F01E4E0761D20EB2720AD74C5 /* TabmanAutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanAutoLayout.swift; path = Sources/Tabman/Utilities/TabmanAutoLayout.swift; sourceTree = "<group>"; };
-		88782B26FA10191F1B9D7DDB22B9F528 /* TabmanItemMaskTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanItemMaskTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/ItemTransition/TabmanItemMaskTransition.swift; sourceTree = "<group>"; };
-		893FE4C4A69F2BE2481B25FE72830D61 /* ALView+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ALView+PureLayout.m"; path = "PureLayout/PureLayout/ALView+PureLayout.m"; sourceTree = "<group>"; };
-		8C92FBA573FF55110BF2B3C04BC9DA32 /* TabmanBar+Construction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Construction.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Construction.swift"; sourceTree = "<group>"; };
+		859D6D40E7D6619AAA5E71475CBA15FF /* Pageboy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Pageboy.h; path = Sources/Pageboy/Pageboy.h; sourceTree = "<group>"; };
+		85E8BB84A071B39F99E759A57F04693B /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxRadioPathGenerator.swift; path = Sources/Paths/M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
+		8984F9857D9022EA52C03301A1667818 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
+		9378721C9756D4312FD33DDF1547CE05 /* TabmanBar+Construction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Construction.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Construction.swift"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		943AA490E7F40873A3607AA070AB4FD7 /* TransitionOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionOperation.swift; path = Sources/Pageboy/Utilities/TransitionOperation.swift; sourceTree = "<group>"; };
 		946904C9BBB64DCCD804581019349D5F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95998EF9205AC8A5C459C0DBE0D8B6C4 /* ALView+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ALView+PureLayout.h"; path = "PureLayout/PureLayout/ALView+PureLayout.h"; sourceTree = "<group>"; };
-		9C53DD1B32FB8955DA356314C2A24862 /* PureLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-umbrella.h"; sourceTree = "<group>"; };
-		A0AAF8805D170C51C919E8E40D512F9B /* TabmanBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBar.swift; path = Sources/Tabman/TabmanBar/TabmanBar.swift; sourceTree = "<group>"; };
+		948AF934E7BF5EE0A54D77EB2ECC3E0E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		953B2DB0734A3B84F6DB5CB97E94E1AD /* Pastel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-prefix.pch"; sourceTree = "<group>"; };
+		97164BCA5AA8902F09E164E17853E62B /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PureLayout.framework; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		978088F06488974FB1353F1EC02F9F54 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
+		9BDC9B35CF77F36BFB150E6ACCDC0351 /* PageboyViewController+Transitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Transitioning.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Transitioning.swift"; sourceTree = "<group>"; };
+		9D0E80371D1E75772329986135673FB9 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotController.swift; path = Sources/Managers/M13CheckboxDotController.swift; sourceTree = "<group>"; };
+		A09DC4E4EC6DE168D78956ED06E653B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0CAF6D90A361927E4C79983F07CECAD /* Pods-SuiteLife-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SuiteLife-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A2F3C5558935F965FD44A32E7C08A28F /* TabmanChevronView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanChevronView.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Views/TabmanChevronView.swift; sourceTree = "<group>"; };
-		A45473E0D6651EDE008C6E19DD3F7BE9 /* PageViewControllerUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageViewControllerUtils.swift; path = Sources/Pageboy/Utilities/PageViewControllerUtils.swift; sourceTree = "<group>"; };
+		A4367370F3B0AA8429062754382DC9E4 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralController.swift; path = Sources/Managers/M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		A4AED58B4D01B0C5E99996034781BD51 /* TabmanStaticBarIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanStaticBarIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanStaticBarIndicatorTransition.swift; sourceTree = "<group>"; };
+		A7B842CD725C445F0BA278216BC83A4C /* TabmanAutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanAutoLayout.swift; path = Sources/Tabman/Utilities/TabmanAutoLayout.swift; sourceTree = "<group>"; };
+		A9E028A5CC1221638EDD7FB28073CC9E /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SuiteLife.framework; path = "Pods-SuiteLife.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADF5D46F8675106ABB3E3D3AB2B090EE /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
 		AF56BFEC8032978620E43D9DA27CEFC7 /* Pods-SuiteLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuiteLife.debug.xcconfig"; sourceTree = "<group>"; };
+		AF6AA000743B8A18B0F5D3FD4AC72DC4 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeController.swift; path = Sources/Managers/M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
 		B044EE2D202218CF8F64490A503267A4 /* Pods-SuiteLife-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuiteLife-resources.sh"; sourceTree = "<group>"; };
-		B0ACB79B140DE9734EC4B44A8E29E357 /* PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayout.h; path = PureLayout/PureLayout/PureLayout.h; sourceTree = "<group>"; };
-		B2EB14AB1AE0442021083792218A0EE9 /* PageboyViewController+Transitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PageboyViewController+Transitioning.swift"; path = "Sources/Pageboy/Extensions/PageboyViewController+Transitioning.swift"; sourceTree = "<group>"; };
-		B852676E3EB2D122BBEC0CD4838FABE9 /* Pageboy-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pageboy-dummy.m"; sourceTree = "<group>"; };
-		B8EDE456014353C2CA85DF0804CD6EB3 /* Pastel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pastel.modulemap; sourceTree = "<group>"; };
-		BA5D2E0311CF766536495EF0292C6340 /* ImageUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/ImageUtils.swift; sourceTree = "<group>"; };
-		BC280215FEBAA1A313FFDFCC2B86285A /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BED4FF58FC590DC62007EFBDBC6587E4 /* TabmanViewController+Insetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanViewController+Insetting.swift"; path = "Sources/Tabman/TabmanViewController+Insetting.swift"; sourceTree = "<group>"; };
-		C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C26A32E411D6DEFE2AC45CB63A57C131 /* Pastel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-prefix.pch"; sourceTree = "<group>"; };
-		C63FF749B92DB010AA5DD8C5B0DF5AFE /* Pageboy-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pageboy-umbrella.h"; sourceTree = "<group>"; };
-		C72CB74A5BA87399B1B4E2C6F6D9582D /* Pastel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pastel.xcconfig; sourceTree = "<group>"; };
-		CD1C46ECCACE09F92CE1A20AA13AAA16 /* TabmanCircularView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanCircularView.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Views/TabmanCircularView.swift; sourceTree = "<group>"; };
-		CDCF61B32BC958C9EB36A2AEFE7084EA /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+PureLayout.m"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
-		D6276C2EA83D7188E9435AADB205A915 /* Pageboy.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pageboy.modulemap; sourceTree = "<group>"; };
-		D6B744412FB07BC052C60C4FAC69F791 /* TabmanStaticBarIndicatorTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanStaticBarIndicatorTransition.swift; path = Sources/Tabman/TabmanBar/Transitioning/IndicatorTransition/TabmanStaticBarIndicatorTransition.swift; sourceTree = "<group>"; };
-		D7A9974327A11E04DF767F45997D5C57 /* TabmanStaticButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanStaticButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/Abstract/TabmanStaticButtonBar.swift; sourceTree = "<group>"; };
-		DB0F6E2D86EE6DEAD1BBA5E2085F9BAF /* PageboyAutoScroller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyAutoScroller.swift; path = Sources/Pageboy/Components/PageboyAutoScroller.swift; sourceTree = "<group>"; };
-		DC9A1B46257B5DA364BD2C7D66BA93E3 /* PageboyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyViewController.swift; path = Sources/Pageboy/PageboyViewController.swift; sourceTree = "<group>"; };
-		DE09E722D387C9E08F96F0A4050848DC /* TabmanLineBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanLineBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanLineBar.swift; sourceTree = "<group>"; };
-		DE91765AB1A340056D2BF0E17C8C6CC7 /* TabmanChevronIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanChevronIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanChevronIndicator.swift; sourceTree = "<group>"; };
-		E38001BA4DEFCA4F61003288E27BD4FC /* TabmanSeparator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanSeparator.swift; path = Sources/Tabman/TabmanBar/Components/Separator/TabmanSeparator.swift; sourceTree = "<group>"; };
-		E86C6B7778CC69BC46F787B3D00396F5 /* PureLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-prefix.pch"; sourceTree = "<group>"; };
-		EBF8DF86797314E462AFC9561F03CEDF /* PureLayout+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PureLayout+Internal.h"; path = "PureLayout/PureLayout/PureLayout+Internal.h"; sourceTree = "<group>"; };
-		ED827EACA32DE1AA3B1C8C44E5BBBD8F /* TabmanBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarConfig.swift; path = Sources/Tabman/TabmanBarConfig.swift; sourceTree = "<group>"; };
-		F0F7828BCD9CCF77BD708899B7941081 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F22E7C2B63D729AB663367655D6CEBB7 /* Tabman.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Tabman.modulemap; sourceTree = "<group>"; };
-		F648929C5F30B81B9A176668D7905AC8 /* TransitionOperation+Action.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TransitionOperation+Action.swift"; path = "Sources/Pageboy/Utilities/TransitionOperation+Action.swift"; sourceTree = "<group>"; };
-		F678A328E29E89CC0E0797227EFA13E8 /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SuiteLife.framework; path = "Pods-SuiteLife.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6F47D7399704AEBA03CE6E7A8572D6A /* PureLayoutDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayoutDefines.h; path = PureLayout/PureLayout/PureLayoutDefines.h; sourceTree = "<group>"; };
+		B0BDBCA041E37CFC55A05C42DAEB9D6E /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pageboy.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4866F65C626B3AFEF14EF8DB731D602 /* Pageboy-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pageboy-umbrella.h"; sourceTree = "<group>"; };
+		B51F0F2B2873065F3ABE5D99A0CB94E4 /* PageboyAutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyAutoLayout.swift; path = Sources/Pageboy/Utilities/PageboyAutoLayout.swift; sourceTree = "<group>"; };
+		B53F9ED9D0D697D1BBE388DE0BFB3A18 /* TabmanBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarConfig.swift; path = Sources/Tabman/TabmanBarConfig.swift; sourceTree = "<group>"; };
+		B551F7BCEBE865EAE2E88C30B3D989D7 /* TransitionOperation+Action.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TransitionOperation+Action.swift"; path = "Sources/Pageboy/Utilities/TransitionOperation+Action.swift"; sourceTree = "<group>"; };
+		BBF6BE0BC16CE41ED6BB6627D7482619 /* TabmanScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollView.swift; path = Sources/Tabman/Utilities/TabmanScrollView.swift; sourceTree = "<group>"; };
+		C0E61CAB6C52BFDC5A8E3FFB207A4548 /* PureLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-umbrella.h"; sourceTree = "<group>"; };
+		C191788E35401491E9E12FA2B350ED37 /* TabmanBar+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Appearance.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Appearance.swift"; sourceTree = "<group>"; };
+		C2352B3A857CB656AEA13A7AA1B0ABFE /* TabmanBar+Insets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TabmanBar+Insets.swift"; path = "Sources/Tabman/TabmanBar/TabmanBar+Insets.swift"; sourceTree = "<group>"; };
+		C30789C5FAAD57268F1DB2BB408F3B30 /* Pageboy-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pageboy-dummy.m"; sourceTree = "<group>"; };
+		C493321651C157CD9FE018A86A0D36B2 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandController.swift; path = Sources/Managers/M13CheckboxExpandController.swift; sourceTree = "<group>"; };
+		C495E2F6784F0F717CA7580E3DF23B7B /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAddRemovePathGenerator.swift; path = Sources/Paths/M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
+		C4CA5DF9E3DFE499A4060677DF2A8859 /* PureLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PureLayout.modulemap; sourceTree = "<group>"; };
+		CA9EC66EA41CF14A74809FAB871087F8 /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE95DEEDBABDE3FF687B7691AABFD09D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D38470AF1B2BF5F8B5044603E9C143C3 /* TabmanLineBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanLineBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanLineBar.swift; sourceTree = "<group>"; };
+		D3F9AB425369CD873AD73711E50C7825 /* ImageUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/ImageUtils.swift; sourceTree = "<group>"; };
+		D470682B0A0931D953026C17EFB6F9E6 /* Pastel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pastel-dummy.m"; sourceTree = "<group>"; };
+		D54601AC04AA88AEF7F7BCB607F5B18C /* PureLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PureLayout-dummy.m"; sourceTree = "<group>"; };
+		D572D2AC1C61DC6C93911A724E90EFBC /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63C77BBC208734920ED90045B309FEC /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		D9D1FCE747C80E3D125FAEFD0E4B85F2 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+PureLayout.m"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		DD16FA96079D7D8BD02B3F8A087561B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE7E8273B237449D9F10CABA93993CE6 /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		E4BB114E0A81D9F8A3E4C5F6F48A290E /* TabmanColorUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanColorUtils.swift; path = Sources/Tabman/Utilities/TabmanColorUtils.swift; sourceTree = "<group>"; };
+		E879A4EDB7C8F26A430392A8D3CD45FF /* PageboyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageboyViewController.swift; path = Sources/Pageboy/PageboyViewController.swift; sourceTree = "<group>"; };
+		E9BDCAC6401B82687511BFB4905EE949 /* Tabman.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Tabman.h; path = Sources/Tabman/Tabman.h; sourceTree = "<group>"; };
+		EA284C7B5B9B58E3D9A5032B34A35537 /* TransitionOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionOperation.swift; path = Sources/Pageboy/Utilities/TransitionOperation.swift; sourceTree = "<group>"; };
+		EB0AD721A1A07233516B9643C2689451 /* PureLayoutDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayoutDefines.h; path = PureLayout/PureLayout/PureLayoutDefines.h; sourceTree = "<group>"; };
+		EDE495F6B184444EFE391BC9A9472B5A /* TabmanBlockIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBlockIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanBlockIndicator.swift; sourceTree = "<group>"; };
+		EF390C2469B81C568D1C7C7A27168591 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PureLayout.m"; path = "PureLayout/PureLayout/NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		F06F87A76924D9E6902076AEC48E96BC /* TabmanCircularView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanCircularView.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Views/TabmanCircularView.swift; sourceTree = "<group>"; };
+		F10097BB6F9DE1AD790D0118F60520C2 /* PastelGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelGradient.swift; path = Pastel/Classes/PastelGradient.swift; sourceTree = "<group>"; };
+		F3E57C0F0F98DDDA460F58C5B815B4C3 /* TabmanIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/TabmanIndicator.swift; sourceTree = "<group>"; };
+		F53E08DB854E49366FA5CE6B84A2A949 /* Pastel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pastel.modulemap; sourceTree = "<group>"; };
+		F665D9D6FA913EB57BB7BE07ABD96AD0 /* ViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewUtils.swift; path = Sources/Tabman/TabmanBar/Utilities/ViewUtils.swift; sourceTree = "<group>"; };
+		F6B6D147457C75337AEB5F554D838E05 /* Tabman-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Tabman-prefix.pch"; sourceTree = "<group>"; };
 		F7260A24664AD908A7B6F4415C88FBCC /* Pods-SuiteLife-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SuiteLife-umbrella.h"; sourceTree = "<group>"; };
-		FC2360D2B3BF9A287BBDD4D6B1D5819B /* TabmanScrollingButtonBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanScrollingButtonBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanScrollingButtonBar.swift; sourceTree = "<group>"; };
-		FC3376C0C3C82E1413AFE6302914253B /* TabmanBlockTabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBlockTabBar.swift; path = Sources/Tabman/TabmanBar/Styles/TabmanBlockTabBar.swift; sourceTree = "<group>"; };
-		FCC26501500243396DB12D03027D3747 /* Pageboy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pageboy.xcconfig; sourceTree = "<group>"; };
-		FE2A1FED0C95766E38855ECABB77B48C /* TabmanBarBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanBarBackgroundView.swift; path = Sources/Tabman/TabmanBar/Components/Background/TabmanBarBackgroundView.swift; sourceTree = "<group>"; };
+		F782F3B3E6B55B2883CA519A66069854 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB973AAFB91A567EC6147D4484EBE854 /* TabmanClearIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanClearIndicator.swift; path = Sources/Tabman/TabmanBar/Components/Indicator/Styles/TabmanClearIndicator.swift; sourceTree = "<group>"; };
+		FCD6C932B8DBB1A31F369716282C745B /* TabmanViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabmanViewController.swift; path = Sources/Tabman/TabmanViewController.swift; sourceTree = "<group>"; };
+		FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		FFB4955A40EFACA64FF65C0717EB0787 /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillController.swift; path = Sources/Managers/M13CheckboxFillController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		09CB9E53F57E7BB415B5DDF6F4812C3C /* Frameworks */ = {
+		4DA00A68AAA710A6D8E7634E5516C387 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1263CDDE62C06DA6F2C62FC9A7CB03E5 /* Foundation.framework in Frameworks */,
+				9AD128055149F10F2DA6416B8BFCB012 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62DF7CABB000E8CEEC4618A2631038D8 /* Frameworks */ = {
+		53797C5F84C3B718634123945FF8378E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CC848E6DCF65A2F85B0BDB1E3F29BAD /* Foundation.framework in Frameworks */,
+				EAFC0EA4762962766C946FC37569310A /* CoreGraphics.framework in Frameworks */,
+				900B6F52434A35E9F88CE6D22F0E5160 /* Foundation.framework in Frameworks */,
+				92AFFB45085BA809F46F186B6496ADE5 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,13 +331,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		86C6E85E36D9C5502FC26503537BEEFF /* Frameworks */ = {
+		8E33DE1083C196DC45370DE15AFF20C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29C071286B0A315F9019B37896BA35A3 /* Foundation.framework in Frameworks */,
-				1BA2CA4D3DC4746E1A69FCDCAAF527B0 /* Pageboy.framework in Frameworks */,
-				54DB11E00FEDD401F4B357559D8396A4 /* PureLayout.framework in Frameworks */,
+				CE60A77B45EEE59EF137BEBB1C624171 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC8FB1478CCC674E12FC09A89AC20F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FB1E7FC8FCC78BD4A66ECA2E47C498 /* Foundation.framework in Frameworks */,
+				DAA9C537FB68E1A8ECD051A32A498A57 /* Pageboy.framework in Frameworks */,
+				DF2C732F254BAC7F3B0AA9CB947D160D /* PureLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,161 +360,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B357F4F3E8626EB99DAAA0CDB237944 /* Support Files */ = {
+		0FE256A34EA04569DE7D0ED8CE18A26F /* PureLayout */ = {
 			isa = PBXGroup;
 			children = (
-				570C65BA948879A073233AC8F093BD79 /* Info.plist */,
-				38D5CCF4274BBA6399BE42F42A69F460 /* PureLayout.modulemap */,
-				3EFD6508EF3104B6EB08770C7CBDAA0D /* PureLayout.xcconfig */,
-				2FDF55595B2B552286D1E841633379F9 /* PureLayout-dummy.m */,
-				E86C6B7778CC69BC46F787B3D00396F5 /* PureLayout-prefix.pch */,
-				9C53DD1B32FB8955DA356314C2A24862 /* PureLayout-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/PureLayout";
-			sourceTree = "<group>";
-		};
-		0F5BBCB5B43274C1264ED01516927A95 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F0F7828BCD9CCF77BD708899B7941081 /* Info.plist */,
-				B8EDE456014353C2CA85DF0804CD6EB3 /* Pastel.modulemap */,
-				C72CB74A5BA87399B1B4E2C6F6D9582D /* Pastel.xcconfig */,
-				661228F1C39A1D26F5022E5DFBA073BC /* Pastel-dummy.m */,
-				C26A32E411D6DEFE2AC45CB63A57C131 /* Pastel-prefix.pch */,
-				46368E722E3EB937011286C3F45289A4 /* Pastel-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pastel";
-			sourceTree = "<group>";
-		};
-		32B841E041FC76BADDA9BB37F3D68B65 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				446AF1323583024C37CC5146E6863BCA /* Info.plist */,
-				D6276C2EA83D7188E9435AADB205A915 /* Pageboy.modulemap */,
-				FCC26501500243396DB12D03027D3747 /* Pageboy.xcconfig */,
-				B852676E3EB2D122BBEC0CD4838FABE9 /* Pageboy-dummy.m */,
-				63FF2E26183F392E25C476E31268DFE0 /* Pageboy-prefix.pch */,
-				C63FF749B92DB010AA5DD8C5B0DF5AFE /* Pageboy-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pageboy";
-			sourceTree = "<group>";
-		};
-		367673A8A67A2297E2C0517D2224ABB6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2BEC664FD6A70DAA6E39AA21AC539C57 /* Info.plist */,
-				F22E7C2B63D729AB663367655D6CEBB7 /* Tabman.modulemap */,
-				51E91A98B26DF0783346C8F3B0EEFC7F /* Tabman.xcconfig */,
-				81EF6E63F4036E31FAB2EC4D7577FB2E /* Tabman-dummy.m */,
-				3E6CBEB0C873F751986D137754869CE5 /* Tabman-prefix.pch */,
-				7970E3BD5BA9846A0143FA6F7FDD9A8D /* Tabman-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Tabman";
-			sourceTree = "<group>";
-		};
-		4D1C66786C89C1196499E9F9AFC09766 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ED175F1ACF67F431A4415A3DF981E9A3 /* Pageboy */,
-				739857D664319B8E20D0C8DEA0BB32E7 /* Pastel */,
-				55CC27B0973210199F2214720D1DE8B6 /* PureLayout */,
-				61AB6729F54B4A6C2A3A5231CAA34EE8 /* Tabman */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		55CC27B0973210199F2214720D1DE8B6 /* PureLayout */ = {
-			isa = PBXGroup;
-			children = (
-				95998EF9205AC8A5C459C0DBE0D8B6C4 /* ALView+PureLayout.h */,
-				893FE4C4A69F2BE2481B25FE72830D61 /* ALView+PureLayout.m */,
-				19F74F983CF3130116B822BBFEB7BDAB /* NSArray+PureLayout.h */,
-				8658C3A31457890CD701E7CF756C4813 /* NSArray+PureLayout.m */,
-				83CEB41C52E1CFB6B4DB984EEEEE7B52 /* NSLayoutConstraint+PureLayout.h */,
-				CDCF61B32BC958C9EB36A2AEFE7084EA /* NSLayoutConstraint+PureLayout.m */,
-				B0ACB79B140DE9734EC4B44A8E29E357 /* PureLayout.h */,
-				EBF8DF86797314E462AFC9561F03CEDF /* PureLayout+Internal.h */,
-				F6F47D7399704AEBA03CE6E7A8572D6A /* PureLayoutDefines.h */,
-				0B357F4F3E8626EB99DAAA0CDB237944 /* Support Files */,
+				5AC70F2A07F377145C4703C05F751909 /* ALView+PureLayout.h */,
+				2C4B45030221AE7BD6160FCCAE15F220 /* ALView+PureLayout.m */,
+				7CF19D1D302C52E00E6DACC54093C9AF /* NSArray+PureLayout.h */,
+				EF390C2469B81C568D1C7C7A27168591 /* NSArray+PureLayout.m */,
+				418F2BCD08A6A832794F45E199528EE8 /* NSLayoutConstraint+PureLayout.h */,
+				D9D1FCE747C80E3D125FAEFD0E4B85F2 /* NSLayoutConstraint+PureLayout.m */,
+				598D81EECF10EE093A68855365288777 /* PureLayout.h */,
+				36BF3F6BB268A8E62CA467E6A65112FD /* PureLayout+Internal.h */,
+				EB0AD721A1A07233516B9643C2689451 /* PureLayoutDefines.h */,
+				E0C3F9E54EB61D3636B573E2E5F85D98 /* Support Files */,
 			);
 			name = PureLayout;
 			path = PureLayout;
 			sourceTree = "<group>";
 		};
-		61AB6729F54B4A6C2A3A5231CAA34EE8 /* Tabman */ = {
+		1DCA33EADEE0C1A0DF26C354B30B0EAE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BA5D2E0311CF766536495EF0292C6340 /* ImageUtils.swift */,
-				1E053E4CDD18C66F4E3434A4D3A98E12 /* PositionalUtils.swift */,
-				2F15A0CEEA036352A20758A756ABEA76 /* Tabman.h */,
-				881AE78F01E4E0761D20EB2720AD74C5 /* TabmanAutoLayout.swift */,
-				A0AAF8805D170C51C919E8E40D512F9B /* TabmanBar.swift */,
-				5F156A7B3264555363F0622CCB93762D /* TabmanBar+Appearance.swift */,
-				8C92FBA573FF55110BF2B3C04BC9DA32 /* TabmanBar+Construction.swift */,
-				0A469057A77082DAFE4B53F366B0C066 /* TabmanBar+Indicator.swift */,
-				8015A59B6BFED90A3F15DB8DDF53B450 /* TabmanBar+Insets.swift */,
-				01A520074E63487AF7D8CC03CF3FCE2E /* TabmanBar+Protocols.swift */,
-				FE2A1FED0C95766E38855ECABB77B48C /* TabmanBarBackgroundView.swift */,
-				ED827EACA32DE1AA3B1C8C44E5BBBD8F /* TabmanBarConfig.swift */,
-				783CFDD0D32E5F87C3708033ABA86571 /* TabmanBarItem.swift */,
-				3C70605528D3EAD8ACB5CDD47F261852 /* TabmanBarTransitionStore.swift */,
-				209B0021167712829535D2F43AFA686E /* TabmanBlockIndicator.swift */,
-				FC3376C0C3C82E1413AFE6302914253B /* TabmanBlockTabBar.swift */,
-				7ADECCF161077390DC875BD0890412C8 /* TabmanButtonBar.swift */,
-				DE91765AB1A340056D2BF0E17C8C6CC7 /* TabmanChevronIndicator.swift */,
-				A2F3C5558935F965FD44A32E7C08A28F /* TabmanChevronView.swift */,
-				CD1C46ECCACE09F92CE1A20AA13AAA16 /* TabmanCircularView.swift */,
-				71238912B12C77A72BF8CA2DE05435C8 /* TabmanClearIndicator.swift */,
-				15C0DF3438AEA8B4E8E8FAE1E5EDFC1E /* TabmanColorUtils.swift */,
-				15CFC5D0C5CE1F0BED350C4A593E6C8F /* TabmanDotIndicator.swift */,
-				42F0036113389873149D3A5AB9887648 /* TabmanFixedButtonBar.swift */,
-				1F9E4D32325E625E3B3D3BACEABE82B8 /* TabmanIndicator.swift */,
-				5454EB8842F0B252137ACFB7A4E3736C /* TabmanIndicatorTransition.swift */,
-				21A068B2F09D9789252B156EE9963DEF /* TabmanItemColorCrossfadeTransition.swift */,
-				88782B26FA10191F1B9D7DDB22B9F528 /* TabmanItemMaskTransition.swift */,
-				293191A4F27060A13A6FC77E03422218 /* TabmanItemTransition.swift */,
-				DE09E722D387C9E08F96F0A4050848DC /* TabmanLineBar.swift */,
-				5DCAF39CE6D508ADEF2C3B987F71E8EB /* TabmanLineIndicator.swift */,
-				6D9A0042A09FA6C41EEC40555524B429 /* TabmanScrollingBarIndicatorTransition.swift */,
-				FC2360D2B3BF9A287BBDD4D6B1D5819B /* TabmanScrollingButtonBar.swift */,
-				7BBA64BE849446D4291E5C3F0A552234 /* TabmanScrollView.swift */,
-				E38001BA4DEFCA4F61003288E27BD4FC /* TabmanSeparator.swift */,
-				D6B744412FB07BC052C60C4FAC69F791 /* TabmanStaticBarIndicatorTransition.swift */,
-				D7A9974327A11E04DF767F45997D5C57 /* TabmanStaticButtonBar.swift */,
-				809DB09F449C57039CC7DD687266E88B /* TabmanTransition.swift */,
-				05EE901D6D785A692B14CCAA471E48ED /* TabmanViewController.swift */,
-				5B17A92379BE2A5FE5D7A12265AA8B90 /* TabmanViewController+Embedding.swift */,
-				BED4FF58FC590DC62007EFBDBC6587E4 /* TabmanViewController+Insetting.swift */,
-				2EFF149B0E2719679DE12E092A10CDA7 /* TabmanViewUtils.swift */,
-				0B31C170D74F2FB62E250014354FC4B7 /* ViewUtils.swift */,
-				367673A8A67A2297E2C0517D2224ABB6 /* Support Files */,
+				DD16FA96079D7D8BD02B3F8A087561B2 /* Info.plist */,
+				57DC35ABC1BBB3DCE025C0D9C5C8CC94 /* Tabman.modulemap */,
+				3964055D8A28E0BC757C02D27817CCF7 /* Tabman.xcconfig */,
+				618CEB7049C0DF0787270B3B048D304A /* Tabman-dummy.m */,
+				F6B6D147457C75337AEB5F554D838E05 /* Tabman-prefix.pch */,
+				750CFC84108F8CB07508164ECEAB4FBE /* Tabman-umbrella.h */,
 			);
-			name = Tabman;
-			path = Tabman;
+			name = "Support Files";
+			path = "../Target Support Files/Tabman";
 			sourceTree = "<group>";
 		};
-		739857D664319B8E20D0C8DEA0BB32E7 /* Pastel */ = {
+		23E4EFCF7E152C9B061568EA73B7F970 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				11D0F72A899D8BA3CD257D8C2E9D3DF2 /* PastelGradient.swift */,
-				027376CEA63B79BCFBD292BC2588F58C /* PastelView.swift */,
-				0F5BBCB5B43274C1264ED01516927A95 /* Support Files */,
+				5047F7055E0C3B84DCA9FD924CAACD4C /* M13Checkbox.framework */,
+				B0BDBCA041E37CFC55A05C42DAEB9D6E /* Pageboy.framework */,
+				3D494B5DBB4701239D40B03E8DDDEAAE /* Pastel.framework */,
+				A9E028A5CC1221638EDD7FB28073CC9E /* Pods_SuiteLife.framework */,
+				97164BCA5AA8902F09E164E17853E62B /* PureLayout.framework */,
+				7DCDBB0995573B37F1D05E06CF5BD944 /* Tabman.framework */,
 			);
-			name = Pastel;
-			path = Pastel;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39A6E196D388A36FAC16E40EA4FF961D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC2BD458B225D7B21D28BDDD78F01160 /* M13Checkbox */,
+				7B974D1FDB5C7FBD276C4CDDD22DB3BF /* Pageboy */,
+				991FCAE05911AAF6676965C641FBFEF2 /* Pastel */,
+				0FE256A34EA04569DE7D0ED8CE18A26F /* PureLayout */,
+				C0A1F6C0543792DA18D2F58EEAF91FDA /* Tabman */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B974D1FDB5C7FBD276C4CDDD22DB3BF /* Pageboy */ = {
+			isa = PBXGroup;
+			children = (
+				859D6D40E7D6619AAA5E71475CBA15FF /* Pageboy.h */,
+				B51F0F2B2873065F3ABE5D99A0CB94E4 /* PageboyAutoLayout.swift */,
+				0B535B668B5EB286A523B33B61E14A39 /* PageboyAutoScroller.swift */,
+				E879A4EDB7C8F26A430392A8D3CD45FF /* PageboyViewController.swift */,
+				3FE7709180EDCC59FDE9556850BEC081 /* PageboyViewController+Extras.swift */,
+				78ED1ADEE84CE0639D3AB9FAD4402E5B /* PageboyViewController+Management.swift */,
+				3E11A2DF85565C10C38FE919C66888A2 /* PageboyViewController+ScrollDetection.swift */,
+				9BDC9B35CF77F36BFB150E6ACCDC0351 /* PageboyViewController+Transitioning.swift */,
+				5537709BFAD9662E9D8791362EF0ABF8 /* PageViewControllerUtils.swift */,
+				EA284C7B5B9B58E3D9A5032B34A35537 /* TransitionOperation.swift */,
+				B551F7BCEBE865EAE2E88C30B3D989D7 /* TransitionOperation+Action.swift */,
+				A904EAAB6242FD4B8FF8B2F5AE6D3FA2 /* Support Files */,
+			);
+			name = Pageboy;
+			path = Pageboy;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				9F7E8383231FF2F6521D93F70E00509C /* Frameworks */,
-				4D1C66786C89C1196499E9F9AFC09766 /* Pods */,
-				AC6A7D80867567724041B45DEC1B5BB8 /* Products */,
+				DBB74438D680F09C8CDB102E9B3C57F7 /* Frameworks */,
+				39A6E196D388A36FAC16E40EA4FF961D /* Pods */,
+				23E4EFCF7E152C9B061568EA73B7F970 /* Products */,
 				A6CAB79C10A1A37FBDEB8145CB17CD5A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -470,14 +466,25 @@
 			path = "Target Support Files/Pods-SuiteLife";
 			sourceTree = "<group>";
 		};
-		9F7E8383231FF2F6521D93F70E00509C /* Frameworks */ = {
+		991FCAE05911AAF6676965C641FBFEF2 /* Pastel */ = {
 			isa = PBXGroup;
 			children = (
-				1BE4E9F361449D0A3021467837FDFC30 /* Pageboy.framework */,
-				BC280215FEBAA1A313FFDFCC2B86285A /* PureLayout.framework */,
-				A9F31CAC790362EB4BD1C2357344FC1E /* iOS */,
+				F10097BB6F9DE1AD790D0118F60520C2 /* PastelGradient.swift */,
+				81574D134277339232CECE9C611C5DE4 /* PastelView.swift */,
+				FB02C6134BA6911B5A871A4B04D77089 /* Support Files */,
 			);
-			name = Frameworks;
+			name = Pastel;
+			path = Pastel;
+			sourceTree = "<group>";
+		};
+		A07C187757A43594028C9E4A5A8352B1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				948AF934E7BF5EE0A54D77EB2ECC3E0E /* CoreGraphics.framework */,
+				FEA5208ADDB60D1F0AC626953A7530D1 /* Foundation.framework */,
+				701056D74609BB8EE98F359FEF2BC213 /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		A6CAB79C10A1A37FBDEB8145CB17CD5A /* Targets Support Files */ = {
@@ -488,44 +495,149 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A9F31CAC790362EB4BD1C2357344FC1E /* iOS */ = {
+		A904EAAB6242FD4B8FF8B2F5AE6D3FA2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C182BF427B2E4E650E9AABA3954CF2B8 /* Foundation.framework */,
+				F782F3B3E6B55B2883CA519A66069854 /* Info.plist */,
+				1A1B9C9880E0EE2E3B349037B5311755 /* Pageboy.modulemap */,
+				400D7F5CC3466B1FFB421F353FC3B81B /* Pageboy.xcconfig */,
+				C30789C5FAAD57268F1DB2BB408F3B30 /* Pageboy-dummy.m */,
+				45881834DA514156B5437A6CD954BA89 /* Pageboy-prefix.pch */,
+				B4866F65C626B3AFEF14EF8DB731D602 /* Pageboy-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/Pageboy";
 			sourceTree = "<group>";
 		};
-		AC6A7D80867567724041B45DEC1B5BB8 /* Products */ = {
+		AC2BD458B225D7B21D28BDDD78F01160 /* M13Checkbox */ = {
 			isa = PBXGroup;
 			children = (
-				6210736DA60895A4B74DDD2E127E9B33 /* Pageboy.framework */,
-				00C92AC13D3DBC36B23C30DAC583248C /* Pastel.framework */,
-				F678A328E29E89CC0E0797227EFA13E8 /* Pods_SuiteLife.framework */,
-				4BECB0E523ED20BB545AB92116B15635 /* PureLayout.framework */,
-				39E5438CB4525B63AFD12BF86D93C397 /* Tabman.framework */,
+				D63C77BBC208734920ED90045B309FEC /* M13Checkbox.swift */,
+				54DEB821C116A4ABDECEDE3AF702A62E /* M13Checkbox+IB.swift */,
+				C495E2F6784F0F717CA7580E3DF23B7B /* M13CheckboxAddRemovePathGenerator.swift */,
+				3ADE88D7FEF30007D26E4A530FFD98F9 /* M13CheckboxAnimationGenerator.swift */,
+				3FC90A0F5AE8C4BE5585E5C24BFA01F6 /* M13CheckboxBounceController.swift */,
+				6C9A5C23990F27188D288F07A1956277 /* M13CheckboxCheckPathGenerator.swift */,
+				20AE117FCD4529D049782826C7763A91 /* M13CheckboxController.swift */,
+				164F31BCE8D62F8935C4C0385585F627 /* M13CheckboxDisclosurePathGenerator.swift */,
+				9D0E80371D1E75772329986135673FB9 /* M13CheckboxDotController.swift */,
+				C493321651C157CD9FE018A86A0D36B2 /* M13CheckboxExpandController.swift */,
+				5FA1BB8945AB71CF3524817EA77FE315 /* M13CheckboxFadeController.swift */,
+				FFB4955A40EFACA64FF65C0717EB0787 /* M13CheckboxFillController.swift */,
+				49FF91792D4974F11F9815CAB098064D /* M13CheckboxFlatController.swift */,
+				61FDD636A4958D8AFCA0685362056E55 /* M13CheckboxGestureRecognizer.swift */,
+				3B664B3939E56CBAD5CD68D102C0A985 /* M13CheckboxPathGenerator.swift */,
+				85E8BB84A071B39F99E759A57F04693B /* M13CheckboxRadioPathGenerator.swift */,
+				A4367370F3B0AA8429062754382DC9E4 /* M13CheckboxSpiralController.swift */,
+				AF6AA000743B8A18B0F5D3FD4AC72DC4 /* M13CheckboxStrokeController.swift */,
+				EF3335E179A10E13109D0985B66F65F2 /* Support Files */,
 			);
-			name = Products;
+			name = M13Checkbox;
+			path = M13Checkbox;
 			sourceTree = "<group>";
 		};
-		ED175F1ACF67F431A4415A3DF981E9A3 /* Pageboy */ = {
+		C0A1F6C0543792DA18D2F58EEAF91FDA /* Tabman */ = {
 			isa = PBXGroup;
 			children = (
-				53076FEE8B7C3FE92956B0ADA39789B9 /* Pageboy.h */,
-				0D92C1AE13D7F4AFBEC7FEB81391C6F2 /* PageboyAutoLayout.swift */,
-				DB0F6E2D86EE6DEAD1BBA5E2085F9BAF /* PageboyAutoScroller.swift */,
-				DC9A1B46257B5DA364BD2C7D66BA93E3 /* PageboyViewController.swift */,
-				0DCEDB130CB14C55EEEE3BEC05F359A3 /* PageboyViewController+Extras.swift */,
-				1328E5868648E72604F142AD307C0CDB /* PageboyViewController+Management.swift */,
-				682E6F4D6BCB04B57F9AB2CCA16AFBC2 /* PageboyViewController+ScrollDetection.swift */,
-				B2EB14AB1AE0442021083792218A0EE9 /* PageboyViewController+Transitioning.swift */,
-				A45473E0D6651EDE008C6E19DD3F7BE9 /* PageViewControllerUtils.swift */,
-				943AA490E7F40873A3607AA070AB4FD7 /* TransitionOperation.swift */,
-				F648929C5F30B81B9A176668D7905AC8 /* TransitionOperation+Action.swift */,
-				32B841E041FC76BADDA9BB37F3D68B65 /* Support Files */,
+				D3F9AB425369CD873AD73711E50C7825 /* ImageUtils.swift */,
+				69FFF638C76825F32A6291449635C54D /* PositionalUtils.swift */,
+				E9BDCAC6401B82687511BFB4905EE949 /* Tabman.h */,
+				A7B842CD725C445F0BA278216BC83A4C /* TabmanAutoLayout.swift */,
+				78DC2AC7BD17CE053E3268915E9A0070 /* TabmanBar.swift */,
+				C191788E35401491E9E12FA2B350ED37 /* TabmanBar+Appearance.swift */,
+				9378721C9756D4312FD33DDF1547CE05 /* TabmanBar+Construction.swift */,
+				4D943460D3D2B41C11838610032B1541 /* TabmanBar+Indicator.swift */,
+				C2352B3A857CB656AEA13A7AA1B0ABFE /* TabmanBar+Insets.swift */,
+				3150395A84E4620D02546A90CC5B867A /* TabmanBar+Protocols.swift */,
+				103EBFABC99E58F833FC864EB47BD863 /* TabmanBarBackgroundView.swift */,
+				B53F9ED9D0D697D1BBE388DE0BFB3A18 /* TabmanBarConfig.swift */,
+				320FCD2D8E2596537F1875B7929A17DC /* TabmanBarItem.swift */,
+				221B4A6CF9241FAECB8654637B82475E /* TabmanBarTransitionStore.swift */,
+				EDE495F6B184444EFE391BC9A9472B5A /* TabmanBlockIndicator.swift */,
+				126910554B86C6BFDA00D230185287A2 /* TabmanBlockTabBar.swift */,
+				3357A577396636C924BCB36B26B7320B /* TabmanButtonBar.swift */,
+				3622A052F59E15504ACFF6C3BC77A930 /* TabmanChevronIndicator.swift */,
+				6C8F6740A9B55C83798FE9EE72D02946 /* TabmanChevronView.swift */,
+				F06F87A76924D9E6902076AEC48E96BC /* TabmanCircularView.swift */,
+				FB973AAFB91A567EC6147D4484EBE854 /* TabmanClearIndicator.swift */,
+				E4BB114E0A81D9F8A3E4C5F6F48A290E /* TabmanColorUtils.swift */,
+				493247D6FC3F96EBAF1FBBD791E50858 /* TabmanDotIndicator.swift */,
+				7CADCFDF6252DC76026BDDD4782F82D7 /* TabmanFixedButtonBar.swift */,
+				F3E57C0F0F98DDDA460F58C5B815B4C3 /* TabmanIndicator.swift */,
+				2BF91913F114D36A6BA3ACEA631641DC /* TabmanIndicatorTransition.swift */,
+				2CE9592DA5EE85306129C01A644023E4 /* TabmanItemColorCrossfadeTransition.swift */,
+				53390825F944303B1B1A56EA6452D6A3 /* TabmanItemMaskTransition.swift */,
+				272FA793E4863E05108CB0BA08A907ED /* TabmanItemTransition.swift */,
+				D38470AF1B2BF5F8B5044603E9C143C3 /* TabmanLineBar.swift */,
+				185D44175D4CCB2BA3B79FC3E8E4CD39 /* TabmanLineIndicator.swift */,
+				1D15B1DAA6305693F43C7F051463818A /* TabmanScrollingBarIndicatorTransition.swift */,
+				7DE6996C8C3C20B1AB039E70AEDE7334 /* TabmanScrollingButtonBar.swift */,
+				BBF6BE0BC16CE41ED6BB6627D7482619 /* TabmanScrollView.swift */,
+				7DD79362867A18A67D470F2ECE8F956E /* TabmanSeparator.swift */,
+				A4AED58B4D01B0C5E99996034781BD51 /* TabmanStaticBarIndicatorTransition.swift */,
+				7F6A176C59C4C3DBAC828EDF738CE971 /* TabmanStaticButtonBar.swift */,
+				260AA3FFFE29F882FBAD8C2E9580C144 /* TabmanTransition.swift */,
+				FCD6C932B8DBB1A31F369716282C745B /* TabmanViewController.swift */,
+				257A45B5F965D21E4ED0CC91AE4D6BE3 /* TabmanViewController+Embedding.swift */,
+				70F312594E6DF0936BEE78CF822DCFBB /* TabmanViewController+Insetting.swift */,
+				518507FB8D5D9BD48F2319233FA0DF55 /* TabmanViewUtils.swift */,
+				F665D9D6FA913EB57BB7BE07ABD96AD0 /* ViewUtils.swift */,
+				1DCA33EADEE0C1A0DF26C354B30B0EAE /* Support Files */,
 			);
-			name = Pageboy;
-			path = Pageboy;
+			name = Tabman;
+			path = Tabman;
+			sourceTree = "<group>";
+		};
+		DBB74438D680F09C8CDB102E9B3C57F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D572D2AC1C61DC6C93911A724E90EFBC /* Pageboy.framework */,
+				CA9EC66EA41CF14A74809FAB871087F8 /* PureLayout.framework */,
+				A07C187757A43594028C9E4A5A8352B1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E0C3F9E54EB61D3636B573E2E5F85D98 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A09DC4E4EC6DE168D78956ED06E653B6 /* Info.plist */,
+				C4CA5DF9E3DFE499A4060677DF2A8859 /* PureLayout.modulemap */,
+				25F5DEC6403570F8030DAFBAC30438E1 /* PureLayout.xcconfig */,
+				D54601AC04AA88AEF7F7BCB607F5B18C /* PureLayout-dummy.m */,
+				426705F9270A1E6150566E3A1B3DEDA7 /* PureLayout-prefix.pch */,
+				C0E61CAB6C52BFDC5A8E3FFB207A4548 /* PureLayout-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PureLayout";
+			sourceTree = "<group>";
+		};
+		EF3335E179A10E13109D0985B66F65F2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE95DEEDBABDE3FF687B7691AABFD09D /* Info.plist */,
+				62F5D0FBA32563AD3F7E39B958D45DB0 /* M13Checkbox.modulemap */,
+				DE7E8273B237449D9F10CABA93993CE6 /* M13Checkbox.xcconfig */,
+				978088F06488974FB1353F1EC02F9F54 /* M13Checkbox-dummy.m */,
+				8984F9857D9022EA52C03301A1667818 /* M13Checkbox-prefix.pch */,
+				ADF5D46F8675106ABB3E3D3AB2B090EE /* M13Checkbox-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/M13Checkbox";
+			sourceTree = "<group>";
+		};
+		FB02C6134BA6911B5A871A4B04D77089 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				24D14710E16779AC9C6ECEC62AD34988 /* Info.plist */,
+				F53E08DB854E49366FA5CE6B84A2A949 /* Pastel.modulemap */,
+				64ACE4259CCEF4546670FD67B701C3FF /* Pastel.xcconfig */,
+				D470682B0A0931D953026C17EFB6F9E6 /* Pastel-dummy.m */,
+				953B2DB0734A3B84F6DB5CB97E94E1AD /* Pastel-prefix.pch */,
+				20F0727A2DB0F8FCFC46F82B2FA76D19 /* Pastel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pastel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,95 +660,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5224F0CF8C27D0F7E0AB8BB50EB604CA /* Headers */ = {
+		714DC262BF2FB332E82AC2E7CD6D73D1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00C24FB9B0101EC73E0C85480ABCE365 /* Pods-SuiteLife-umbrella.h in Headers */,
+				6B7F6283CE6F6418FD195E43D2216FBF /* M13Checkbox-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C18A3D09613B0E23EB3C809703440A61 /* Headers */ = {
+		9494F7FB380F364251B65C6485C01529 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5014607828A741EE99784C8EA78D4C1 /* ALView+PureLayout.h in Headers */,
-				7E88F317E1F07BB3364C1442CE245D48 /* NSArray+PureLayout.h in Headers */,
-				A3AF517E5ADBB779099CEAD27C3B0D1A /* NSLayoutConstraint+PureLayout.h in Headers */,
-				E94D67C6C6FB00B1E00BFD3EC63BC006 /* PureLayout+Internal.h in Headers */,
-				ABF6B1AE09CD26A817EA6669D0E58EB5 /* PureLayout-umbrella.h in Headers */,
-				D7F0F3D4A52BE226E89526DB9F14583E /* PureLayout.h in Headers */,
-				BF5E7EB1E8B78F107310AF6AEB49A357 /* PureLayoutDefines.h in Headers */,
+				3134CACEA0B2C43B7C6DC571B0D7B71C /* ALView+PureLayout.h in Headers */,
+				4B3EC4DA103F6D4F8D3F5EA0B2FD5C28 /* NSArray+PureLayout.h in Headers */,
+				599205C30390EDBCADCDBD452377DB60 /* NSLayoutConstraint+PureLayout.h in Headers */,
+				5DAB669C060233ABD52BFF5D9A8CECE4 /* PureLayout+Internal.h in Headers */,
+				5FBD712DCA3EAB4E399A4274FB835FC3 /* PureLayout-umbrella.h in Headers */,
+				AFFFC5626F5713D6F591111FE5ECDDA6 /* PureLayout.h in Headers */,
+				6A67A4C0B68FD8712C8181770EA2A789 /* PureLayoutDefines.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2824380A0556D5C160351B28852238D /* Headers */ = {
+		E2EED30F941360BE5E641FAC9742F9CE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				294E50C6AF343ACC81759F6A8050B9D9 /* Tabman-umbrella.h in Headers */,
-				55FA6CFF10CBAB6DABA81CEBC70523B3 /* Tabman.h in Headers */,
+				C4BFDEC4A5B5FC57C8425305CEBBD3F3 /* Pods-SuiteLife-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3150BC90E6693C9026460A83EFB00E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DDD6E276F4589383C97E94F7F0E493F /* Tabman-umbrella.h in Headers */,
+				BD21B3001A21F3FABCD51C167F424CDD /* Tabman.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0D9A1C59A5AE9CC3C922AFE3A5913CA0 /* PureLayout */ = {
+		20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF0E3EB62B81324620F3F50B3D515252 /* Build configuration list for PBXNativeTarget "PureLayout" */;
+			buildConfigurationList = 08913436C5D3DFB2C8CEA353ED9FF003 /* Build configuration list for PBXNativeTarget "M13Checkbox" */;
 			buildPhases = (
-				F903F563BBCD9873D035E004ACC3E871 /* Sources */,
-				09CB9E53F57E7BB415B5DDF6F4812C3C /* Frameworks */,
-				C18A3D09613B0E23EB3C809703440A61 /* Headers */,
+				923F4E7F3A2B8E74326EFD309DCEEE04 /* Sources */,
+				53797C5F84C3B718634123945FF8378E /* Frameworks */,
+				714DC262BF2FB332E82AC2E7CD6D73D1 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PureLayout;
-			productName = PureLayout;
-			productReference = 4BECB0E523ED20BB545AB92116B15635 /* PureLayout.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		100447C83DE4C31ED6266F6E0B94AE84 /* Tabman */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF8C293361F1A40C03CFA119DCDF0207 /* Build configuration list for PBXNativeTarget "Tabman" */;
-			buildPhases = (
-				8B0231BFB2258AE9A22FEBB8C04C960F /* Sources */,
-				86C6E85E36D9C5502FC26503537BEEFF /* Frameworks */,
-				E2824380A0556D5C160351B28852238D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0C7D53F6383F38D10D803FF85D2C7BE5 /* PBXTargetDependency */,
-				0D14D1E47006A0B15641F44900AED327 /* PBXTargetDependency */,
-			);
-			name = Tabman;
-			productName = Tabman;
-			productReference = 39E5438CB4525B63AFD12BF86D93C397 /* Tabman.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		406FFBB0911484103837303360F67290 /* Pods-SuiteLife */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C1ADBCD705038F248FEE09BEFA1E3AF3 /* Build configuration list for PBXNativeTarget "Pods-SuiteLife" */;
-			buildPhases = (
-				0305A000DA75249EE323876869DF9BB6 /* Sources */,
-				62DF7CABB000E8CEEC4618A2631038D8 /* Frameworks */,
-				5224F0CF8C27D0F7E0AB8BB50EB604CA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2D9F77728041FC8BA6BA0D2091D2F91D /* PBXTargetDependency */,
-				90B0833F3BD5D2C8CD076CADD634BF23 /* PBXTargetDependency */,
-				33D7F7373F2449C35C466F402C9B9005 /* PBXTargetDependency */,
-				FBB969277979CB3D936063279BF66BDD /* PBXTargetDependency */,
-			);
-			name = "Pods-SuiteLife";
-			productName = "Pods-SuiteLife";
-			productReference = F678A328E29E89CC0E0797227EFA13E8 /* Pods_SuiteLife.framework */;
+			name = M13Checkbox;
+			productName = M13Checkbox;
+			productReference = 5047F7055E0C3B84DCA9FD924CAACD4C /* M13Checkbox.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8E1D092BF86FB8C0ABE055E421219B71 /* Pastel */ = {
@@ -653,7 +733,7 @@
 			);
 			name = Pastel;
 			productName = Pastel;
-			productReference = 00C92AC13D3DBC36B23C30DAC583248C /* Pastel.framework */;
+			productReference = 3D494B5DBB4701239D40B03E8DDDEAAE /* Pastel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */ = {
@@ -670,7 +750,65 @@
 			);
 			name = Pageboy;
 			productName = Pageboy;
-			productReference = 6210736DA60895A4B74DDD2E127E9B33 /* Pageboy.framework */;
+			productReference = B0BDBCA041E37CFC55A05C42DAEB9D6E /* Pageboy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C05BA750A0AC046F22BA2205C2CA56BB /* Pods-SuiteLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA7E073BB2E61CA333378D5AE721DD3B /* Build configuration list for PBXNativeTarget "Pods-SuiteLife" */;
+			buildPhases = (
+				4DF5600620D222E0E132EC3A7CBB1073 /* Sources */,
+				4DA00A68AAA710A6D8E7634E5516C387 /* Frameworks */,
+				E2EED30F941360BE5E641FAC9742F9CE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2706FF22D6A4ED074B92FDB4DC003FB5 /* PBXTargetDependency */,
+				85AD77A2C31F3F869BC28FB507CD5203 /* PBXTargetDependency */,
+				7992645A6CBFA2D692167BEEA45FA564 /* PBXTargetDependency */,
+				37106CFFCBA4F593A0C3283596A83EEE /* PBXTargetDependency */,
+				8F9B45CFDCC88179EEBA891A418A10B6 /* PBXTargetDependency */,
+			);
+			name = "Pods-SuiteLife";
+			productName = "Pods-SuiteLife";
+			productReference = A9E028A5CC1221638EDD7FB28073CC9E /* Pods_SuiteLife.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FAA3DAE8090D2D777724676A42DA3EE4 /* PureLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0446DF4B464E46D0D31FCA092E32D6B7 /* Build configuration list for PBXNativeTarget "PureLayout" */;
+			buildPhases = (
+				8D715234878E322230D8CFDD9F8CC5C2 /* Sources */,
+				8E33DE1083C196DC45370DE15AFF20C3 /* Frameworks */,
+				9494F7FB380F364251B65C6485C01529 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PureLayout;
+			productName = PureLayout;
+			productReference = 97164BCA5AA8902F09E164E17853E62B /* PureLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FF7A1D3A7C6A7F608E76E3BECD25BCF4 /* Tabman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F314A474E52FF3E65E7B5F190F300B84 /* Build configuration list for PBXNativeTarget "Tabman" */;
+			buildPhases = (
+				D2154EC37650F185C54699C20075066A /* Sources */,
+				BC8FB1478CCC674E12FC09A89AC20F8C /* Frameworks */,
+				F3150BC90E6693C9026460A83EFB00E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5A7126ED369F1C6489B1B0EC6BC2861 /* PBXTargetDependency */,
+				A3381A48BBCC702E778BADD97311B15B /* PBXTargetDependency */,
+			);
+			name = Tabman;
+			productName = Tabman;
+			productReference = 7DCDBB0995573B37F1D05E06CF5BD944 /* Tabman.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -690,75 +828,37 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = AC6A7D80867567724041B45DEC1B5BB8 /* Products */;
+			productRefGroup = 23E4EFCF7E152C9B061568EA73B7F970 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */,
 				B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */,
 				8E1D092BF86FB8C0ABE055E421219B71 /* Pastel */,
-				406FFBB0911484103837303360F67290 /* Pods-SuiteLife */,
-				0D9A1C59A5AE9CC3C922AFE3A5913CA0 /* PureLayout */,
-				100447C83DE4C31ED6266F6E0B94AE84 /* Tabman */,
+				C05BA750A0AC046F22BA2205C2CA56BB /* Pods-SuiteLife */,
+				FAA3DAE8090D2D777724676A42DA3EE4 /* PureLayout */,
+				FF7A1D3A7C6A7F608E76E3BECD25BCF4 /* Tabman */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0305A000DA75249EE323876869DF9BB6 /* Sources */ = {
+		4DF5600620D222E0E132EC3A7CBB1073 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC5DBE7016E5CE88C0445C3C9AB250C /* Pods-SuiteLife-dummy.m in Sources */,
+				CBAFCCAD0DF40F068FD1ADAC4BDC5E8F /* Pods-SuiteLife-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B0231BFB2258AE9A22FEBB8C04C960F /* Sources */ = {
+		8D715234878E322230D8CFDD9F8CC5C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33066435A9C20E129ADE0D00D073F41 /* ImageUtils.swift in Sources */,
-				21EC2269579693D555DE98DF338BE95F /* PositionalUtils.swift in Sources */,
-				CA92339BF8C562057B35BE4F81514CF4 /* Tabman-dummy.m in Sources */,
-				2C666FACE6713DEFEEA2233A316A92C6 /* TabmanAutoLayout.swift in Sources */,
-				9C2DB929E8923737F47ED71D905AFD11 /* TabmanBar+Appearance.swift in Sources */,
-				4B88EEC527DF75EA0158CD18947AC20E /* TabmanBar+Construction.swift in Sources */,
-				B29580A4A1B7F51098DEFB5D44898A92 /* TabmanBar+Indicator.swift in Sources */,
-				79EDD359CE4C37685C0606DA8ABC0C56 /* TabmanBar+Insets.swift in Sources */,
-				8A5124E77594CBE98A9EEA8E8EE06DF9 /* TabmanBar+Protocols.swift in Sources */,
-				1D97A0A79BC59A35500C6A73052D8790 /* TabmanBar.swift in Sources */,
-				4E407A161634A1A84EDC36BCBF710E9E /* TabmanBarBackgroundView.swift in Sources */,
-				1B9DD0CCCF7706477967FB537FEC7106 /* TabmanBarConfig.swift in Sources */,
-				BA370D64ACE51E2CBBF9893401BC2871 /* TabmanBarItem.swift in Sources */,
-				E22C62DF8700C7DBA619A9CB02956D04 /* TabmanBarTransitionStore.swift in Sources */,
-				BC2232C41774BF5FB3EEF1264756ACF8 /* TabmanBlockIndicator.swift in Sources */,
-				9DB47DA0F5BA85AFE0A10B54B6DA4861 /* TabmanBlockTabBar.swift in Sources */,
-				22FC37A94F3D0370A6C5AE0151D02897 /* TabmanButtonBar.swift in Sources */,
-				210A8905C5E445C48D79533FB108E73D /* TabmanChevronIndicator.swift in Sources */,
-				69665DE3160297A212A479D953EEC5AB /* TabmanChevronView.swift in Sources */,
-				32BD373DAB8BFD4C5A6F2261EA195CB6 /* TabmanCircularView.swift in Sources */,
-				D37C44AC0B57DCCD292D280C06EBE84F /* TabmanClearIndicator.swift in Sources */,
-				A10FE9ADC036316E5BDD785872F98310 /* TabmanColorUtils.swift in Sources */,
-				D958DA39BF8880F9F86C29B245EB00F9 /* TabmanDotIndicator.swift in Sources */,
-				5B5960FD63A34BA08D495B147D19B9EC /* TabmanFixedButtonBar.swift in Sources */,
-				69740E3B858DEC1007A01F3ECD0F7027 /* TabmanIndicator.swift in Sources */,
-				655960BC6EAA2F4468A865D48A196808 /* TabmanIndicatorTransition.swift in Sources */,
-				34D154E6CF8718231F781157B029FC49 /* TabmanItemColorCrossfadeTransition.swift in Sources */,
-				76FD2F2D8034899DEE9D74CAD22765B3 /* TabmanItemMaskTransition.swift in Sources */,
-				EB123C3EBA776AC3278C32D43454F8E1 /* TabmanItemTransition.swift in Sources */,
-				B756D00DCDEDC4CFF88D1276A82FDAE5 /* TabmanLineBar.swift in Sources */,
-				3CEE1F7BC3EE2BADDFBAAD1B5789F0BC /* TabmanLineIndicator.swift in Sources */,
-				1214F7813E3392F2E0B8BF85550B0225 /* TabmanScrollingBarIndicatorTransition.swift in Sources */,
-				C2331777B7E4F58477471A3BA9E5C51B /* TabmanScrollingButtonBar.swift in Sources */,
-				5F1FAA707A2EBB3D67009FACBC10FBFA /* TabmanScrollView.swift in Sources */,
-				58354535D0B3689968F2F1B775165373 /* TabmanSeparator.swift in Sources */,
-				DDC562B1823DE081E53B991EA341B18D /* TabmanStaticBarIndicatorTransition.swift in Sources */,
-				B91093247632889C0EF5C209C726E1FC /* TabmanStaticButtonBar.swift in Sources */,
-				A790DC72C30F1CA73654D340409366F6 /* TabmanTransition.swift in Sources */,
-				48F2C28B8B4596C8252E3E298BB2C2C5 /* TabmanViewController+Embedding.swift in Sources */,
-				381F678CC753CDA4FB48ACC4424C82AD /* TabmanViewController+Insetting.swift in Sources */,
-				3FF359456AF31E04038F04603AA9CEAB /* TabmanViewController.swift in Sources */,
-				612D90E55DF893159D6774D7FDDF5C97 /* TabmanViewUtils.swift in Sources */,
-				CF137B4D75530AADFC423AA49712BD97 /* ViewUtils.swift in Sources */,
+				D5F73740926C9E77BAC511A1033B34A0 /* ALView+PureLayout.m in Sources */,
+				ECE9B79C2980CB4ECF87DBB90755F003 /* NSArray+PureLayout.m in Sources */,
+				808DB25EDC3E2D24C8FC2521012E8A47 /* NSLayoutConstraint+PureLayout.m in Sources */,
+				B7A8430551485EC961B6F6759215D831 /* PureLayout-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +869,32 @@
 				E4268869183317C5E39F79399AB6EFFB /* Pastel-dummy.m in Sources */,
 				72DC14E956F45F642E3207BDA5E5E478 /* PastelGradient.swift in Sources */,
 				C3876E92B5D48CFC1C10A10AE2B3E812 /* PastelView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		923F4E7F3A2B8E74326EFD309DCEEE04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E2FFD3C073383B859F71C2B1411FA89 /* M13Checkbox+IB.swift in Sources */,
+				AAE54CDA46FD620F4BC54BC583EA255C /* M13Checkbox-dummy.m in Sources */,
+				445378EF15B25DB3370FF77B2F6F42D7 /* M13Checkbox.swift in Sources */,
+				8ED3FB14D1852DD05FDF6E23E94A4657 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				C6D0B50C214C9E7CC815F2773D702779 /* M13CheckboxAnimationGenerator.swift in Sources */,
+				F7A5B0214108C732898DD2C00BA6FE56 /* M13CheckboxBounceController.swift in Sources */,
+				C8D41C0D4E89BE8510BA40F04EFF4FA8 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				C277B9EAC728D880FF1F15EE98C8B200 /* M13CheckboxController.swift in Sources */,
+				3AFA54C6DC0961AD0F4CC8A4F1AF915E /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
+				80E34254247C5B1984E2FB9EC58774E4 /* M13CheckboxDotController.swift in Sources */,
+				BCB82BDDA7C30F0B0AFE479CC479B522 /* M13CheckboxExpandController.swift in Sources */,
+				FFF489DE367C237C0E8F7E4442DA06D7 /* M13CheckboxFadeController.swift in Sources */,
+				80CD994ABA1A2B01AD1838A4D4BB794C /* M13CheckboxFillController.swift in Sources */,
+				3D976DD35C822B9B6971ED06121B4A44 /* M13CheckboxFlatController.swift in Sources */,
+				D6039515F84B2167BBAC8D1CE12A5F4E /* M13CheckboxGestureRecognizer.swift in Sources */,
+				76D3E2602CFAE6474D2DFA89F5328A24 /* M13CheckboxPathGenerator.swift in Sources */,
+				85CB53B9E438E280DA1690CCFD778689 /* M13CheckboxRadioPathGenerator.swift in Sources */,
+				FA2B271AAF040F6C1B860C6C3DF0558F /* M13CheckboxSpiralController.swift in Sources */,
+				40897730B01BE8C60FB61A02DD7A1F6A /* M13CheckboxStrokeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,62 +916,107 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F903F563BBCD9873D035E004ACC3E871 /* Sources */ = {
+		D2154EC37650F185C54699C20075066A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B5F9FA7D8845B631DE37BDAD004F0D3 /* ALView+PureLayout.m in Sources */,
-				61163BF36C3E480C683F824A4C0D199D /* NSArray+PureLayout.m in Sources */,
-				251B967BA570DCE91F1AF1547BB13A5C /* NSLayoutConstraint+PureLayout.m in Sources */,
-				665463F5FE9FE864C01ED544F5015A53 /* PureLayout-dummy.m in Sources */,
+				E5998DC391DBBE964A3BE3D16202F755 /* ImageUtils.swift in Sources */,
+				7FA383CAD33A066C6C9C2666FB7A72AE /* PositionalUtils.swift in Sources */,
+				0C32D29D8813D99DF050424AECBAB61F /* Tabman-dummy.m in Sources */,
+				3141A4D36B71A39CFD4BC68F507A4CEA /* TabmanAutoLayout.swift in Sources */,
+				BDBED2AE0FC658389A2BA7B2B23F5454 /* TabmanBar+Appearance.swift in Sources */,
+				FD697A4BFEFE3925CABF7C80D3FBEB41 /* TabmanBar+Construction.swift in Sources */,
+				C62EE0E040E4D7DF3EC4C5E36F21C552 /* TabmanBar+Indicator.swift in Sources */,
+				D499A99C65D38207253BE520FAC2A920 /* TabmanBar+Insets.swift in Sources */,
+				AF1A2A007A2DE47F4BC817D291507C26 /* TabmanBar+Protocols.swift in Sources */,
+				95553F727C51200DC9897127F32275D4 /* TabmanBar.swift in Sources */,
+				122E3E94B7928F15FC8611B887A037A1 /* TabmanBarBackgroundView.swift in Sources */,
+				8C6261A204C5344BC2F42EDEF4C1135C /* TabmanBarConfig.swift in Sources */,
+				01F35DBF08AEAEB672ECA527BC5B216E /* TabmanBarItem.swift in Sources */,
+				B790B23E65A0C59887C1A2CC73ABBBE5 /* TabmanBarTransitionStore.swift in Sources */,
+				585D59DE5A8E2BB2849ED9F97A8D4767 /* TabmanBlockIndicator.swift in Sources */,
+				999333B31343BDD1623A71D7BC07F1D0 /* TabmanBlockTabBar.swift in Sources */,
+				8ED7A5A274732F617102B2B1AC9C2AEB /* TabmanButtonBar.swift in Sources */,
+				9898E63CA60DEE40B23A48E95436BA4F /* TabmanChevronIndicator.swift in Sources */,
+				7E142EDA72DD73FC4B0A35418C451608 /* TabmanChevronView.swift in Sources */,
+				85A5AB91C8A84B2A76A22F07507C3593 /* TabmanCircularView.swift in Sources */,
+				0CD6B812F45DBD88ABBC1DFCE19AE1A9 /* TabmanClearIndicator.swift in Sources */,
+				3E068234F41D020FF3FB131CC9D51228 /* TabmanColorUtils.swift in Sources */,
+				7C0FD23C203D4B06BBB0B2F8F438B88C /* TabmanDotIndicator.swift in Sources */,
+				D557FFFAD229D817A33C94D8687613A2 /* TabmanFixedButtonBar.swift in Sources */,
+				9047190F05DF4D742E753CBE4570715B /* TabmanIndicator.swift in Sources */,
+				4C7768AD6B296F27BF9B7F6AACD67855 /* TabmanIndicatorTransition.swift in Sources */,
+				5CD3F88F44D510262FB19108D2E5B198 /* TabmanItemColorCrossfadeTransition.swift in Sources */,
+				E6BC5CA4068DA5878E2EA3F3DD9F20F4 /* TabmanItemMaskTransition.swift in Sources */,
+				B69A76045DE0C2AD016A38AAABE3B54A /* TabmanItemTransition.swift in Sources */,
+				E4B475DC369D1E8C7EE42CE9CEF0C631 /* TabmanLineBar.swift in Sources */,
+				3D3999704E0376B2C65333F6A7F8D225 /* TabmanLineIndicator.swift in Sources */,
+				03ECC07F179A8E85FFDC16CD8A6BEDB4 /* TabmanScrollingBarIndicatorTransition.swift in Sources */,
+				312E801F38FFE1DFB45623B4FB4E6A83 /* TabmanScrollingButtonBar.swift in Sources */,
+				38F62F5A74679DE446F56C0DD65668BA /* TabmanScrollView.swift in Sources */,
+				26CE2674A4C05D5278424DDAA5F869BB /* TabmanSeparator.swift in Sources */,
+				F99F544E8B1EF778C47293F07DB89AA9 /* TabmanStaticBarIndicatorTransition.swift in Sources */,
+				9B967715D23467EF88C7922B91132D20 /* TabmanStaticButtonBar.swift in Sources */,
+				8CD36BE35C3107DC8A00AA84DB922610 /* TabmanTransition.swift in Sources */,
+				BCC718855592393BD7DDE7A9B5199488 /* TabmanViewController+Embedding.swift in Sources */,
+				D8F5265497D23A74A21637775660BDFC /* TabmanViewController+Insetting.swift in Sources */,
+				EDCE1D1AAE8EEE592E3398C8F698C866 /* TabmanViewController.swift in Sources */,
+				F2868BCA237CA6084AF66F827CC1E3A0 /* TabmanViewUtils.swift in Sources */,
+				F272798414363F0BB33555925C2DD145 /* ViewUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0C7D53F6383F38D10D803FF85D2C7BE5 /* PBXTargetDependency */ = {
+		2706FF22D6A4ED074B92FDB4DC003FB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Pageboy;
-			target = B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */;
-			targetProxy = 7D2AEF382131E7EF25671384439E5B70 /* PBXContainerItemProxy */;
+			name = M13Checkbox;
+			target = 20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */;
+			targetProxy = 6236C8BBF675969EC924DE75AB086183 /* PBXContainerItemProxy */;
 		};
-		0D14D1E47006A0B15641F44900AED327 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PureLayout;
-			target = 0D9A1C59A5AE9CC3C922AFE3A5913CA0 /* PureLayout */;
-			targetProxy = FF9CFC5E5FA493781F7491054AFBDE7E /* PBXContainerItemProxy */;
-		};
-		2D9F77728041FC8BA6BA0D2091D2F91D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Pageboy;
-			target = B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */;
-			targetProxy = 164A3C88EA53D4170B64A30232D73375 /* PBXContainerItemProxy */;
-		};
-		33D7F7373F2449C35C466F402C9B9005 /* PBXTargetDependency */ = {
+		37106CFFCBA4F593A0C3283596A83EEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PureLayout;
-			target = 0D9A1C59A5AE9CC3C922AFE3A5913CA0 /* PureLayout */;
-			targetProxy = E60C53F9950BA7E982D058DD20C33B35 /* PBXContainerItemProxy */;
+			target = FAA3DAE8090D2D777724676A42DA3EE4 /* PureLayout */;
+			targetProxy = EF937688BD1A2E2FDC372AE6616E0A0E /* PBXContainerItemProxy */;
 		};
-		90B0833F3BD5D2C8CD076CADD634BF23 /* PBXTargetDependency */ = {
+		7992645A6CBFA2D692167BEEA45FA564 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Pastel;
 			target = 8E1D092BF86FB8C0ABE055E421219B71 /* Pastel */;
-			targetProxy = 7FEF82B5F17204D636E6DD8619867283 /* PBXContainerItemProxy */;
+			targetProxy = 7AFA0E87BAB2E1756C3A1D5F52C10C51 /* PBXContainerItemProxy */;
 		};
-		FBB969277979CB3D936063279BF66BDD /* PBXTargetDependency */ = {
+		85AD77A2C31F3F869BC28FB507CD5203 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Pageboy;
+			target = B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */;
+			targetProxy = D5D4AA323FA6C21E2FD0C6D86A6BBD2F /* PBXContainerItemProxy */;
+		};
+		8F9B45CFDCC88179EEBA891A418A10B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Tabman;
-			target = 100447C83DE4C31ED6266F6E0B94AE84 /* Tabman */;
-			targetProxy = 42F2A834EE4F34BCF3AE7B3D594C444C /* PBXContainerItemProxy */;
+			target = FF7A1D3A7C6A7F608E76E3BECD25BCF4 /* Tabman */;
+			targetProxy = 16B5073419D6BABCF64BC92F1668F63B /* PBXContainerItemProxy */;
+		};
+		A3381A48BBCC702E778BADD97311B15B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PureLayout;
+			target = FAA3DAE8090D2D777724676A42DA3EE4 /* PureLayout */;
+			targetProxy = BCDD6B2BD68ECAA5036DF07DBD99DE84 /* PBXContainerItemProxy */;
+		};
+		F5A7126ED369F1C6489B1B0EC6BC2861 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Pageboy;
+			target = B931B98EF1A8BFB0ACAF73A12FC0C0C4 /* Pageboy */;
+			targetProxy = 2D5A352E85FEB332F8120441D74085C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12952724D202DF31A7375A8605BA4E21 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C72CB74A5BA87399B1B4E2C6F6D9582D /* Pastel.xcconfig */;
+			baseConfigurationReference = 64ACE4259CCEF4546670FD67B701C3FF /* Pastel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -926,9 +1097,9 @@
 			};
 			name = Debug;
 		};
-		25549A375240C81EE1A36FC11F027ED3 /* Release */ = {
+		17FEB18E828CB20883759DC6AFFC64A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51E91A98B26DF0783346C8F3B0EEFC7F /* Tabman.xcconfig */;
+			baseConfigurationReference = 25F5DEC6403570F8030DAFBAC30438E1 /* PureLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -942,14 +1113,82 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PureLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		28C41ECCE1169D798BACA998B383639B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3964055D8A28E0BC757C02D27817CCF7 /* Tabman.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Tabman/Tabman-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Tabman/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Tabman/Tabman.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Tabman;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5B817DFC476867BD02DA7E3B92FA88A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE7E8273B237449D9F10CABA93993CE6 /* M13Checkbox.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = M13Checkbox;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -959,6 +1198,45 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		669DB567512C53A58487424763149ECF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF56BFEC8032978620E43D9DA27CEFC7 /* Pods-SuiteLife.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SuiteLife/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SuiteLife/Pods-SuiteLife.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SuiteLife;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		707B86CFB21B645E37109F39754D4051 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1004,9 +1282,9 @@
 			};
 			name = Release;
 		};
-		7E322C77FD28CA024EFE46A748EF109E /* Debug */ = {
+		9F7AA469D5B3C0204DF47697C2977D5D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51E91A98B26DF0783346C8F3B0EEFC7F /* Tabman.xcconfig */;
+			baseConfigurationReference = DE7E8273B237449D9F10CABA93993CE6 /* M13Checkbox.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1020,14 +1298,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Tabman/Tabman-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Tabman/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Tabman/Tabman.modulemap";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Tabman;
+				PRODUCT_NAME = M13Checkbox;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1039,7 +1317,75 @@
 			};
 			name = Debug;
 		};
-		8817F573BCDFDCE30FDE794FA7D0ED19 /* Release */ = {
+		A0D3C5E843CCBA03F53EB5EED3455E41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 400D7F5CC3466B1FFB421F353FC3B81B /* Pageboy.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pageboy/Pageboy-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pageboy/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pageboy/Pageboy.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Pageboy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BE3A1DDBFCB0FFDF7008A2B0E7AE1104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25F5DEC6403570F8030DAFBAC30438E1 /* PureLayout.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PureLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CC48842E38FD2AB5BFC02ECDD2570CB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83603491C2A4EAC57E2972128A44FAC8 /* Pods-SuiteLife.release.xcconfig */;
 			buildSettings = {
@@ -1077,44 +1423,9 @@
 			};
 			name = Release;
 		};
-		A0D3C5E843CCBA03F53EB5EED3455E41 /* Debug */ = {
+		D769FF5187E251318E921DCF25AEE11E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCC26501500243396DB12D03027D3747 /* Pageboy.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pageboy/Pageboy-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pageboy/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pageboy/Pageboy.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Pageboy;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		BC9F0E24F4606655802DA48B5EBC7117 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EFD6508EF3104B6EB08770C7CBDAA0D /* PureLayout.xcconfig */;
+			baseConfigurationReference = 3964055D8A28E0BC757C02D27817CCF7 /* Tabman.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1128,16 +1439,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Tabman/Tabman-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Tabman/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Tabman/Tabman.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = PureLayout;
+				PRODUCT_NAME = Tabman;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1145,48 +1457,9 @@
 			};
 			name = Release;
 		};
-		D9EAF71BCC37B28E773ADDE9A9CC395D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF56BFEC8032978620E43D9DA27CEFC7 /* Pods-SuiteLife.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SuiteLife/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SuiteLife/Pods-SuiteLife.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SuiteLife;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		DE88F48405372831384623080EE67DD2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C72CB74A5BA87399B1B4E2C6F6D9582D /* Pastel.xcconfig */;
+			baseConfigurationReference = 64ACE4259CCEF4546670FD67B701C3FF /* Pastel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1220,7 +1493,7 @@
 		};
 		DE9C002D2E53410A20CB1EA529A00F28 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCC26501500243396DB12D03027D3747 /* Pageboy.xcconfig */;
+			baseConfigurationReference = 400D7F5CC3466B1FFB421F353FC3B81B /* Pageboy.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1252,42 +1525,27 @@
 			};
 			name = Release;
 		};
-		E1C4B0366A2C4F1061EB518B94C41A89 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EFD6508EF3104B6EB08770C7CBDAA0D /* PureLayout.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = PureLayout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0446DF4B464E46D0D31FCA092E32D6B7 /* Build configuration list for PBXNativeTarget "PureLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3A1DDBFCB0FFDF7008A2B0E7AE1104 /* Debug */,
+				17FEB18E828CB20883759DC6AFFC64A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08913436C5D3DFB2C8CEA353ED9FF003 /* Build configuration list for PBXNativeTarget "M13Checkbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F7AA469D5B3C0204DF47697C2977D5D /* Debug */,
+				5B817DFC476867BD02DA7E3B92FA88A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1315,29 +1573,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF8C293361F1A40C03CFA119DCDF0207 /* Build configuration list for PBXNativeTarget "Tabman" */ = {
+		BA7E073BB2E61CA333378D5AE721DD3B /* Build configuration list for PBXNativeTarget "Pods-SuiteLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7E322C77FD28CA024EFE46A748EF109E /* Debug */,
-				25549A375240C81EE1A36FC11F027ED3 /* Release */,
+				669DB567512C53A58487424763149ECF /* Debug */,
+				CC48842E38FD2AB5BFC02ECDD2570CB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1ADBCD705038F248FEE09BEFA1E3AF3 /* Build configuration list for PBXNativeTarget "Pods-SuiteLife" */ = {
+		F314A474E52FF3E65E7B5F190F300B84 /* Build configuration list for PBXNativeTarget "Tabman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9EAF71BCC37B28E773ADDE9A9CC395D /* Debug */,
-				8817F573BCDFDCE30FDE794FA7D0ED19 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF0E3EB62B81324620F3F50B3D515252 /* Build configuration list for PBXNativeTarget "PureLayout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E1C4B0366A2C4F1061EB518B94C41A89 /* Debug */,
-				BC9F0E24F4606655802DA48B5EBC7117 /* Release */,
+				28C41ECCE1169D798BACA998B383639B /* Debug */,
+				D769FF5187E251318E921DCF25AEE11E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

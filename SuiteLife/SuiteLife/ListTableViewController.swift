@@ -104,6 +104,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     private func saveItems() {
         deleteBlanks() // Only the items that aren't blank get saved to file.
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
+        print(items)
         if isSuccessfulSave {
             os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
         }

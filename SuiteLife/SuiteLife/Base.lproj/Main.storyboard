@@ -202,29 +202,49 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pKz-Hr-rtu" userLabel="Full Cell">
                                             <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obm-97-141" userLabel="Button Stack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="27.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iw-CF-Ah9" userLabel="Checkbox Stack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="27.5"/>
                                                     <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-s2-OWw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="27.5"/>
-                                                        </switch>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAW-ar-ICg" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="27.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="boxLineWidth">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="checkListener:" destination="bSQ-zd-AKY" eventType="valueChanged" id="AZ9-pV-mCu"/>
+                                                            </connections>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-1a-74E" userLabel="Name Stack">
-                                                    <rect key="frame" x="57" y="0.0" width="302" height="27.5"/>
+                                                    <rect key="frame" x="58" y="0.0" width="244" height="27.5"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-yl-eh5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="27.5"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-yl-eh5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="244" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obm-97-141" userLabel="Button Stack">
+                                                    <rect key="frame" x="310" y="0.0" width="49" height="27.5"/>
+                                                    <subviews>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-s2-OWw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="27.5"/>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4gn-1a-74E" firstAttribute="centerY" secondItem="obm-97-141" secondAttribute="centerY" id="6Yz-yb-PBC"/>
-                                                <constraint firstItem="obm-97-141" firstAttribute="centerY" secondItem="4gn-1a-74E" secondAttribute="centerY" id="8L2-7r-C1N"/>
+                                                <constraint firstItem="4gn-1a-74E" firstAttribute="leading" secondItem="pKz-Hr-rtu" secondAttribute="leading" constant="58" id="3O3-7p-1uD"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -236,6 +256,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkbox" destination="BAW-ar-ICg" id="Pyk-y3-JCH"/>
                                     <outlet property="nameLabel" destination="Udo-yl-eh5" id="Syo-kf-5e9"/>
                                     <outlet property="selectButton" destination="uLB-s2-OWw" id="Dy5-u5-onV"/>
                                 </connections>
@@ -250,7 +271,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOa-p4-QAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="-1122"/>
+            <point key="canvasLocation" x="1000.8" y="-1122.1889055472266"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hGZ-9X-v4c">

@@ -1,4 +1,5 @@
 PODS:
+  - M13Checkbox (3.1.3)
   - Pageboy (1.1.0)
   - Pastel (0.3.0)
   - PureLayout (3.0.2)
@@ -7,15 +8,17 @@ PODS:
     - PureLayout (~> 3.0.0)
 
 DEPENDENCIES:
+  - M13Checkbox
   - Pastel
   - Tabman
 
 SPEC CHECKSUMS:
+  M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   Pageboy: 148f353304deb45dda732863aebd2bb575426e8b
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Tabman: f25dc5456b98e8738177d98a6cb540d5d21fed35
 
-PODFILE CHECKSUM: 1a851796b3f68f6531c2ee343f552107e292b608
+PODFILE CHECKSUM: c9992abf9d5cefa8d8e1efce0938c1d0a80ff82b
 
 COCOAPODS: 1.2.1
