@@ -12,7 +12,6 @@
 		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
-		CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDE1EEF4AA700903EE9 /* ViewController.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
 		CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE31EEF4AA700903EE9 /* Assets.xcassets */; };
 		CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */; };
@@ -23,6 +22,8 @@
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
 		CB8624771EF330A00027C96C /* TallerNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8624761EF330A00027C96C /* TallerNavBar.swift */; };
 		CB8624791EF334340027C96C /* CustomTabmanBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8624781EF334340027C96C /* CustomTabmanBar.swift */; };
+		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
+		CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +35,6 @@
 		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB577BDE1EEF4AA700903EE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB577BE11EEF4AA700903EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB577BE31EEF4AA700903EE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB577BE61EEF4AA700903EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +46,8 @@
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
 		CB8624761EF330A00027C96C /* TallerNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallerNavBar.swift; sourceTree = "<group>"; };
 		CB8624781EF334340027C96C /* CustomTabmanBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabmanBar.swift; sourceTree = "<group>"; };
+		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedItemList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */,
-				CB577BDE1EEF4AA700903EE9 /* ViewController.swift */,
 				CB577BE01EEF4AA700903EE9 /* Main.storyboard */,
+				CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */,
+				CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */,
 				CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */,
 				CB728E591EF05D5300F76321 /* Item.swift */,
 				CB728E5D1EF0610400F76321 /* ItemTableViewController.swift */,
@@ -153,7 +156,7 @@
 				TargetAttributes = {
 					CB577BD81EEF4AA700903EE9 = {
 						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -243,13 +246,14 @@
 			files = (
 				CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */,
 				CB8624771EF330A00027C96C /* TallerNavBar.swift in Sources */,
-				CB577BDF1EEF4AA700903EE9 /* ViewController.swift in Sources */,
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
+				CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
 				CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */,
 				CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */,
+				CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
 				CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */,
 				CB8624791EF334340027C96C /* CustomTabmanBar.swift in Sources */,
@@ -378,10 +382,14 @@
 			baseConfigurationReference = 458A92D14D03CA1FBF9E629C /* Pods-SuiteLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuiteLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -391,10 +399,14 @@
 			baseConfigurationReference = 817DFD56C089B6817A8880F0 /* Pods-SuiteLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuiteLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

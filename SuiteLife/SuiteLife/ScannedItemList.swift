@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+// Singleton to contain the items scanned by BarcodeScannerController.
+
+class ScannedItemList {
+    static var sharedInstance = ScannedItemList()
+    private init() {}
+    
+    var items = [Item]()
+    
+}
