@@ -30,8 +30,8 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         print("the view is going to disappear")
-        super.viewWillDisappear(true)
         saveItems()
+        super.viewWillDisappear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,19 +60,46 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         return cell
     }
     
-    
-    //MARK: Text Field Delegate
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("Adding a new item.")
-        items.append(Item(name: textField.text!, checked: false, isListItem: true)!)
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("TRYNA DELETE THIS THING \(items)")
+            // Delete the row from the data source
+            items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print("after: \(items)")
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
     }
     
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        print("TRYNA MOVE THIS THING \(items)")
+        let itemToMove = items[fromIndexPath.row]
+        items.remove(at: fromIndexPath.row)
+        items.insert(itemToMove, at: to.row)
+        print("after: \(items)")
+    }
+     
+    
+    //MARK: NSCoding
+    
     private func loadItems() -> [Item]? {
-        print("Attempting to load saved list items.")
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item] // If it finds something, it will give you an array of items.
+        print("Attempting to load saved list items, but only those that are not blank.")
+        let fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
+        return fullList?.filter{$0.name != ""}
     }
     
     private func saveItems() {
+        print("You asked me to save.")
+        print(items)
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
             os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
@@ -82,31 +109,6 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         }
     }
     
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
- 
-    
-    // TODO: Doesn't do anything currently.
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        
-    }
- 
     
     /*
     // MARK: - Navigation
