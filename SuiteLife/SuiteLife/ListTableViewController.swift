@@ -29,7 +29,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("the view is going to disappear")
+        print("The view is going to disappear.")
         saveItems()
         super.viewWillDisappear(true)
     }
@@ -61,12 +61,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("TRYNA DELETE THIS THING \(items)")
             // Delete the row from the data source
             items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            print("after: \(items)")
-        } else if editingStyle == .insert {
+        } else if editingStyle == .insert { // Possibly I could have implemented this instead of writing my own thing.
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
@@ -74,31 +72,38 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.row == items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+            return false
+        }
+        else {
+            return true
+        }
     }
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        print("TRYNA MOVE THIS THING \(items)")
         let itemToMove = items[fromIndexPath.row]
         items.remove(at: fromIndexPath.row)
         items.insert(itemToMove, at: to.row)
-        print("after: \(items)")
+        if to.row == items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
+            deleteBlanks() // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
+            addBlank()
+            self.tableView.reloadData()
+        }
     }
      
     
     //MARK: NSCoding
     
-    private func loadItems() -> [Item]? {
-        print("Attempting to load saved list items, but only those that are not blank.")
+    private func loadItems() -> [Item]? { // Attempts to load saved list items, but only those that are not blank.
         var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
-        fullList?.append(Item(name: "", checked: false, isListItem: true))  // Add a blank space at the very end of your loaded items, for adding new items.
+        fullList?.append(Item(name: "", checked: false, isListItem: true))
         return fullList
     }
     
     private func saveItems() {
-        deleteBlanks()
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path) // Only save the items that aren't blank.
+        deleteBlanks() // Only the items that aren't blank get saved to file.
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
             os_log("ENTIRE list successfully saved.", log: OSLog.default, type: .debug)
         }
@@ -107,8 +112,15 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         }
     }
     
+    
+    //MARK: Blank Handling
+    
     func deleteBlanks() {
         items = items.filter{$0.name != ""}
+    }
+    
+    func addBlank() { // Add a blank item at the very end of your loaded items, where you can add new items.
+        items.append(Item(name: "", checked: false, isListItem: true))
     }
     
     
