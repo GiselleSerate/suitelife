@@ -29,10 +29,13 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         nameLabel.text = name
     }
     
-    func attachSelectButton(_ selectState: inout Bool) {
+    func attachSelectButton(_ selectState: inout Bool) { // This also runs on reload. 
         selectButton.isOn = selectState
         if selectState {
             checkbox.setCheckState(.checked, animated: false)
+        }
+        else {
+            checkbox.setCheckState(.unchecked, animated: false)
         }
     }
     
