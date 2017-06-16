@@ -9,5 +9,7 @@ target 'SuiteLife' do
   # Pods for SuiteLife
   pod 'Tabman'
   pod 'M13Checkbox'
-
+  pod 'Alamofire'
+  pod 'BarcodeScanner'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
