@@ -95,9 +95,9 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     //MARK: NSCoding
     
     private func loadItems() -> [Item]? { // Attempts to load saved pantry items, but only those that are not blank.
-        var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
-        fullList?.append(Item(name: "", checked: false, price: 0))
-        return fullList
+        var fullPantry = NSKeyedUnarchiver.unarchiveObject(withFile: Item.PantryArchiveURL.path) as? [Item]
+        fullPantry?.append(Item(name: "", checked: false, price: 0))
+        return fullPantry
     }
     
     private func saveItems() {
