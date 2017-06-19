@@ -24,8 +24,6 @@ class Item: NSObject, NSCoding {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ListArchiveURL = DocumentsDirectory.appendingPathComponent("list")
     static let PantryArchiveURL = DocumentsDirectory.appendingPathComponent("pantry")
-    // Store both list and pantry in the same place.
-//    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("inventory")
     
     //MARK: Types
     struct PropertyKey {

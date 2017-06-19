@@ -335,9 +335,9 @@
         <!--PantryNavTableViewController-->
         <scene sceneID="iut-SY-wZ1">
             <objects>
-                <navigationController storyboardIdentifier="PantryNavTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="Awh-GR-F5l" userLabel="PantryNavTableViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PantryNavTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Awh-GR-F5l" userLabel="PantryNavTableViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kBF-AG-3SE">
@@ -349,81 +349,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="dNV-Mz-XIh" kind="relationship" relationship="rootViewController" id="us9-fM-NIv"/>
+                        <segue destination="VgH-qa-LDT" kind="relationship" relationship="rootViewController" id="Yx8-ER-PlN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJb-Te-YDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1881" y="-1122"/>
-        </scene>
-        <!--My Pantry-->
-        <scene sceneID="3QT-xj-cyB">
-            <objects>
-                <tableViewController storyboardIdentifier="PantryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dNV-Mz-XIh" customClass="PantryTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xer-Dl-Eho">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PantryTableViewCell" id="eGj-IO-tCL" customClass="PantryTableViewCell" customModule="SuiteLife" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGj-IO-tCL" id="KtO-ep-9Cs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-MB-8CL" userLabel="Full Cell">
-                                            <rect key="frame" x="8" y="8" width="359" height="27.5"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-Tr-1d7" userLabel="Button Stack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="27.5"/>
-                                                    <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaV-Ry-s6W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="27.5"/>
-                                                        </switch>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Pu-shq" userLabel="Name Stack">
-                                                    <rect key="frame" x="57" y="0.0" width="302" height="27.5"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fM7-82-WDQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="27.5"/>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="9DF-Pu-shq" firstAttribute="centerY" secondItem="tOA-Tr-1d7" secondAttribute="centerY" id="Jwl-h3-g0y"/>
-                                                <constraint firstItem="tOA-Tr-1d7" firstAttribute="centerY" secondItem="9DF-Pu-shq" secondAttribute="centerY" id="qtq-2O-cv3"/>
-                                            </constraints>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="CGh-MB-8CL" firstAttribute="leading" secondItem="KtO-ep-9Cs" secondAttribute="leadingMargin" id="CD7-n8-4X6"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="CGh-MB-8CL" secondAttribute="trailing" id="NSV-3L-ltp"/>
-                                        <constraint firstItem="CGh-MB-8CL" firstAttribute="top" secondItem="KtO-ep-9Cs" secondAttribute="topMargin" id="h6l-LF-OfW"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="CGh-MB-8CL" secondAttribute="bottom" id="zfe-bB-mBN"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="nameLabel" destination="fM7-82-WDQ" id="dYY-6V-0eI"/>
-                                    <outlet property="selectButton" destination="uaV-Ry-s6W" id="TVu-z6-mZD"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="dNV-Mz-XIh" id="z5f-2T-3lS"/>
-                            <outlet property="delegate" destination="dNV-Mz-XIh" id="kfQ-oN-wvO"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="My Pantry" id="Ot6-U6-Aw3"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UfH-SS-FFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1039" y="-1122"/>
         </scene>
         <!--Barcode Scanner View Controller-->
         <scene sceneID="Bcs-AI-Flb">
@@ -442,6 +373,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tek-zB-Ktc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2177" y="-175"/>
+        </scene>
+        <!--My Pantry-->
+        <scene sceneID="hTl-wo-7RD">
+            <objects>
+                <tableViewController storyboardIdentifier="PantryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VgH-qa-LDT" userLabel="My Pantry" customClass="PantryTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SXV-Yg-RXf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PantryTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PantryTableViewCell" id="Zy7-35-78a" userLabel="PantryTableViewCell" customClass="PantryTableViewCell" customModule="SuiteLife" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zy7-35-78a" id="WAl-yk-2tm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ij6-qR-gUX" userLabel="Full Cell">
+                                            <rect key="frame" x="8" y="8" width="359" height="27.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxt-cf-YWa" userLabel="Checkbox Stack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="27.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lH-sY-vOy" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="27.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="boxLineWidth">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="checkListener:" destination="Zy7-35-78a" eventType="valueChanged" id="aGe-Oe-20f"/>
+                                                            </connections>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-WJ-MPA" userLabel="Name Stack">
+                                                    <rect key="frame" x="58" y="0.0" width="233" height="27.5"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFS-In-TcV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="233" height="27.5"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGt-s4-Ws4" userLabel="Price Stack">
+                                                    <rect key="frame" x="299" y="0.0" width="60" height="27.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnA-rW-J1R" userLabel="$">
+                                                            <rect key="frame" x="0.0" y="0.0" width="11" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7A-1Q-oHn" userLabel="Price Label">
+                                                            <rect key="frame" x="11" y="0.0" width="49" height="27.5"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="1kp-Us-7R9" userLabel="width = 150"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gVg-WJ-MPA" firstAttribute="leading" secondItem="ij6-qR-gUX" secondAttribute="leading" constant="58" id="9Zq-B8-UeF"/>
+                                                <constraint firstAttribute="trailing" secondItem="uGt-s4-Ws4" secondAttribute="trailing" id="kuy-wb-LkW"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ij6-qR-gUX" secondAttribute="bottom" id="4xC-hI-aus"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ij6-qR-gUX" secondAttribute="trailing" id="hkp-GC-QuT"/>
+                                        <constraint firstItem="ij6-qR-gUX" firstAttribute="top" secondItem="WAl-yk-2tm" secondAttribute="topMargin" id="osc-WT-VJD"/>
+                                        <constraint firstItem="ij6-qR-gUX" firstAttribute="leading" secondItem="WAl-yk-2tm" secondAttribute="leadingMargin" id="wWn-G5-Uax"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkbox" destination="3lH-sY-vOy" id="20A-yn-75D"/>
+                                    <outlet property="nameLabel" destination="dFS-In-TcV" id="M0i-up-afv"/>
+                                    <outlet property="priceLabel" destination="c7A-1Q-oHn" id="uoU-jP-hQt"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VgH-qa-LDT" id="14e-4l-KaK"/>
+                            <outlet property="delegate" destination="VgH-qa-LDT" id="3nj-RZ-Cba"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My List" id="Vmv-lL-th3"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Amt-MZ-9TV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1170" y="-1122"/>
         </scene>
     </scenes>
 </document>
