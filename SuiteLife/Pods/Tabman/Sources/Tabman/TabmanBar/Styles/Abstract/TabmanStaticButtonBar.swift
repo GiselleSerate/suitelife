@@ -69,11 +69,11 @@ internal class TabmanStaticButtonBar: TabmanButtonBar {
     // MARK: TabmanBar Lifecycle
     //
     
-    override public func addIndicatorToBar(indicator: TabmanIndicator) {
+    public override func add(indicator: TabmanIndicator, to contentView: UIView) {
         
-        self.contentView.addSubview(indicator)
+        contentView.addSubview(indicator)
         indicator.autoPinEdge(toSuperviewEdge: .bottom)
-        self.indicatorLeftMargin = indicator.autoPinEdge(toSuperviewEdge: .left)
+        self.indicatorLeftMargin = indicator.autoPinEdge(toSuperviewEdge: .leading)
         self.indicatorWidth = indicator.autoSetDimension(.width, toSize: 0.0)
     }
     
@@ -82,7 +82,7 @@ internal class TabmanStaticButtonBar: TabmanButtonBar {
     //
     
     func addAndLayoutBarButtons(toView view: UIView,
-                                items: [TabmanBarItem],
+                                items: [TabmanBar.Item],
                                 customize: TabmanButtonBarItemCustomize) {
         let insets = UIEdgeInsets(top: 0.0,
                                   left: self.interItemSpacing / 2,

@@ -17,7 +17,9 @@ internal extension PageboyViewController {
     ///
     /// - Parameter reloadViewControllers: Reload the view controllers data source for the PageboyViewController.
     internal func setUpPageViewController(reloadViewControllers: Bool = true) {
+        var existingZIndex: Int?
         if self.pageViewController != nil { // destroy existing page VC
+            existingZIndex = self.view.subviews.index(of: self.pageViewController!.view)
             self.pageViewController?.view.removeFromSuperview()
             self.pageViewController?.removeFromParentViewController()
             self.pageViewController = nil
@@ -31,14 +33,20 @@ internal extension PageboyViewController {
         self.pageViewController = pageViewController
         
         self.addChildViewController(pageViewController)
-        self.view.addSubview(pageViewController.view)
         pageViewController.view.pinToSuperviewEdges()
-        self.view.sendSubview(toBack: pageViewController.view)
-        pageViewController.didMove(toParentViewController: self)
+        
+        if let existingZIndex = existingZIndex {
+            self.view.insertSubview(pageViewController.view, at: existingZIndex)
+        } else {
+            self.view.addSubview(pageViewController.view)
+            self.view.sendSubview(toBack: pageViewController.view)
+        }
         
         pageViewController.scrollView?.delegate = self
-        
-        self.pageViewController.view.backgroundColor = .clear
+        pageViewController.view.backgroundColor = .clear
+        pageViewController.scrollView?.delaysContentTouches = delaysContentTouches
+        pageViewController.scrollView?.isScrollEnabled = isScrollEnabled
+        pageViewController.scrollView?.isUserInteractionEnabled = isUserInteractionEnabled
         
         self.reloadPages(reloadViewControllers: reloadViewControllers)
     }
@@ -60,10 +68,10 @@ internal extension PageboyViewController {
         }
         
         self.currentIndex = defaultIndexValue
-        self.pageViewController.setViewControllers([viewController],
-                                                   direction: .forward,
-                                                   animated: false,
-                                                   completion: nil)
+        self.pageViewController?.setViewControllers([viewController],
+                                                    direction: .forward,
+                                                    animated: false,
+                                                    completion: nil)
         
         guard let viewControllers = self.viewControllers else { return }
         self.delegate?.pageboyViewController(self,

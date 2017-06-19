@@ -15,10 +15,17 @@ public protocol TabmanBarDataSource: class {
     ///
     /// - Parameter bar: The bar.
     /// - Returns: Items to display in the tab bar.
-    func items(for bar: TabmanBar) -> [TabmanBarItem]?
+    func items(for bar: TabmanBar) -> [TabmanBar.Item]?
 }
 
-internal protocol TabmanBarDelegate: class {
+internal protocol TabmanBarResponder: class {
+    
+    /// Control if the bar should allow the given item to be selected.
+    ///
+    /// - Parameters:
+    ///   - bar: The bar.
+    ///   - index: The item index.
+    func bar(_ bar: TabmanBar, shouldSelectItemAt index: Int) -> Bool
     
     /// The bar did select an item at an index.
     ///
@@ -33,13 +40,16 @@ public protocol TabmanBarLifecycle: TabmanAppearanceUpdateable {
     
     /// Construct the contents of the tab bar for the current style and given items.
     ///
+    /// - Parameter contentView: The view to construct the bar in.
     /// - Parameter items: The items to display.
-    func constructTabBar(items: [TabmanBarItem])
+    func construct(in contentView: UIView,
+                   for items: [TabmanBar.Item])
     
     /// Add the indicator to the bar.
     ///
     /// - Parameter indicator: The indicator to add.
-    func addIndicatorToBar(indicator: TabmanIndicator)
+    /// - Parameter contentView: The view to construct the bar in.
+    func add(indicator: TabmanIndicator, to contentView: UIView)
     
     /// Update the tab bar for a positional update.
     ///
