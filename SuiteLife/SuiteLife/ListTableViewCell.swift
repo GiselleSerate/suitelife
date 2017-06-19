@@ -24,7 +24,6 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     weak var controller: ListTableViewController?
     
-
     func attachItem(_ newItem: inout Item) {
         
         item = newItem
@@ -39,6 +38,9 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         else {
             checkbox.setCheckState(.unchecked, animated: false)
         }
+        
+        // Set price label. 
+        priceLabel.text = String(describing: item!.price)
         
         nameLabel.tag = 0
         priceLabel.tag = 1
@@ -86,20 +88,22 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-//        item?.price = priceLabel.text as Float
+        item?.price = Float(priceLabel.text!) ?? 0
+        
         if textField === nameLabel { // Did you just finish editing the name label?
 
-            
-            if storedText == "" { // This cell is the last one, you want to replace the blank line.
+            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again. Don't do anything.
+                
+            }
+            else if storedText == "" { // This cell is the last one, you want to replace the blank line.
                 controller?.items.append(Item(name: "", checked: false, price: 0.00, isListItem: true))
                 controller?.tableView.reloadData()
             }
-            else {
-                if item?.name == "" { // Delete this item, because you have made its text blank.
-                    controller?.items.remove(at: (controller?.items.index(of: item!))!) // Delete item.
-                    controller?.tableView.reloadData() // Refresh the table.
-                }
+            else { // Delete this item, because you have made its text blank.
+                controller?.items.remove(at: (controller?.items.index(of: item!))!) // Delete item.
+                controller?.tableView.reloadData() // Refresh the table.
             }
+            
         }
     }
     
