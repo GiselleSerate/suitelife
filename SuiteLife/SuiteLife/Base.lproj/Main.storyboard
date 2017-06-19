@@ -197,31 +197,35 @@
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-1a-74E" userLabel="Name Stack">
-                                                    <rect key="frame" x="58" y="0.0" width="268" height="27.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-1a-74E" userLabel="Name Stack">
+                                                    <rect key="frame" x="58" y="0.0" width="233" height="27.5"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-yl-eh5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="268" height="27.5"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-yl-eh5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="233" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-46-joC" userLabel="Price Stack">
-                                                    <rect key="frame" x="334" y="0.0" width="25" height="27.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-46-joC" userLabel="Price Stack">
+                                                    <rect key="frame" x="299" y="0.0" width="60" height="27.5"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-dJ-9r2" userLabel="Price Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="27.5"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-dJ-9r2" userLabel="Price Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="6wK-TW-BNb"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4gn-1a-74E" firstAttribute="leading" secondItem="pKz-Hr-rtu" secondAttribute="leading" constant="58" id="3O3-7p-1uD"/>
+                                                <constraint firstAttribute="trailing" secondItem="nBh-46-joC" secondAttribute="trailing" id="CCj-dm-2cx"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
