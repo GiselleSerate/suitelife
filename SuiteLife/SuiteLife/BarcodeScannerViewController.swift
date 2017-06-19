@@ -50,7 +50,7 @@ extension BarcodeScannerViewController: BarcodeScannerCodeDelegate {
                     let alert = UIAlertController(title: "Barcode found!", message: "Product name: \(productName)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     // add a new item to the list
-                    self.itemList.items.append(Item(name: productName, checked: false, isListItem: true))
+                    self.itemList.items.append(Item(name: productName, checked: false, price: 0.00, isListItem: true))
                     controller.present(alert, animated: true, completion: {controller.reset(animated: true)})
                 } else {
                     let alert = UIAlertController(title: "Could not find barcode for code", message: code, preferredStyle: .alert)

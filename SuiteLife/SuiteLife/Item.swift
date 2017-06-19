@@ -14,10 +14,11 @@ class Item: NSObject, NSCoding {
     //MARK: Properties
     var name: String
     var checked: Bool
+    var price: Float
     var isListItem: Bool // if it's on the list, it's true, if it's in the pantry it's false
     
     override public var description: String {
-        return "Item Name: \(name), Checked: \(checked)"
+        return "Item Name: \(name), Checked: \(checked), Price: \(price)"
     }
     
     //MARK: Archiving Paths
@@ -31,13 +32,15 @@ class Item: NSObject, NSCoding {
     struct PropertyKey {
         static let name = "name"
         static let checked = "checked"
+        static let price = "price"
         static let isListItem = "isListItem"
     }
     
     //MARK: Initialization
-    init(name: String, checked: Bool, isListItem: Bool) {
+    init(name: String, checked: Bool, price: Float, isListItem: Bool) {
         self.name = name
         self.checked = checked
+        self.price = price
         self.isListItem = isListItem
     }
     
@@ -46,6 +49,7 @@ class Item: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(checked, forKey: PropertyKey.checked)
+        aCoder.encode(price, forKey: PropertyKey.price)
         aCoder.encode(isListItem, forKey: PropertyKey.isListItem)
     }
     
@@ -57,8 +61,9 @@ class Item: NSObject, NSCoding {
                 return nil
         }
         let checked = aDecoder.decodeBool(forKey: PropertyKey.checked)
+        let price = aDecoder.decodeFloat(forKey: PropertyKey.price)
         let isListItem = aDecoder.decodeBool(forKey: PropertyKey.isListItem)
         
-        self.init(name: name, checked: checked, isListItem: isListItem)
+        self.init(name: name, checked: checked, price: price, isListItem: isListItem)
     }
 }

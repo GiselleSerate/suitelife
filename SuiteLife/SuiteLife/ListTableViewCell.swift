@@ -16,6 +16,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var checkbox: M13Checkbox!
     @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var priceLabel: UITextField!
     
     var storedText: String = ""
     
@@ -38,6 +39,9 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         else {
             checkbox.setCheckState(.unchecked, animated: false)
         }
+        
+        nameLabel.tag = 0
+        priceLabel.tag = 1
     }
     
     
@@ -49,6 +53,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.layoutSubviews()
         
         nameLabel.delegate = self // If you don't have this line, text fields don't get handled.
+        priceLabel.delegate = self
         
         // Setting what value gets returned if the checkbox is checked or not.
         checkbox.checkedValue = true
@@ -72,25 +77,64 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        storedText = textField.text! // Keep the old text in this variable.
+        if textField.tag == 0 { // If it's a name
+            storedText = textField.text! // Keep the old text in this variable.
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-
-        
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-        
-        if storedText == "" { // This cell is the last one, you want to replace the blank line.
-            controller?.items.append(Item(name: "", checked: false, isListItem: true))
-            controller?.tableView.reloadData()
-        }
-        else {
-            if item?.name == "" { // Delete this item, because you have made its text blank.
-                controller?.items.remove(at: (controller?.items.index(of: item!))!) // Delete item.
-                controller?.tableView.reloadData() // Refresh the table.
+//        item?.price = priceLabel.text as Float
+        if textField === nameLabel { // Did you just finish editing the name label?
+
+            
+            if storedText == "" { // This cell is the last one, you want to replace the blank line.
+                controller?.items.append(Item(name: "", checked: false, price: 0.00, isListItem: true))
+                controller?.tableView.reloadData()
             }
+            else {
+                if item?.name == "" { // Delete this item, because you have made its text blank.
+                    controller?.items.remove(at: (controller?.items.index(of: item!))!) // Delete item.
+                    controller?.tableView.reloadData() // Refresh the table.
+                }
+            }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Limit the price field's allowable characters to be a decimal.
+        if textField.tag == 1 {
+            let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
+            
+            let components = string.components(separatedBy: inverseSet)
+            
+            let filtered = components.joined(separator: "")
+            
+            if filtered == string {
+                return true
+            } else {
+                if string == "." {
+                    let countdots = textField.text!.components(separatedBy:".").count - 1
+                    if countdots == 0 {
+                        return true
+                    }
+                    else {
+                        if countdots > 0 && string == "." {
+                            return false
+                        } else {
+                            return true
+                        }
+                    }
+                }
+                else {
+                    return false
+                }
+            }
+        }
+        else { // You're looking at the name label. They can edit whatever they want.
+            return true
         }
     }
 }

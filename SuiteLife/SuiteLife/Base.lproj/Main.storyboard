@@ -211,15 +211,21 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-46-joC" userLabel="Price Stack">
                                                     <rect key="frame" x="299" y="0.0" width="60" height="27.5"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqU-mo-DBj" userLabel="$">
+                                                            <rect key="frame" x="0.0" y="0.0" width="11" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-dJ-9r2" userLabel="Price Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="27.5"/>
+                                                            <rect key="frame" x="11" y="0.0" width="49" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="6wK-TW-BNb"/>
+                                                        <constraint firstAttribute="width" constant="60" id="6wK-TW-BNb" userLabel="width = 150"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -239,6 +245,7 @@
                                 <connections>
                                     <outlet property="checkbox" destination="BAW-ar-ICg" id="Pyk-y3-JCH"/>
                                     <outlet property="nameLabel" destination="Udo-yl-eh5" id="Syo-kf-5e9"/>
+                                    <outlet property="priceLabel" destination="mSo-dJ-9r2" id="yfr-Pv-3os"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
