@@ -118,8 +118,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryViewController") as! PantryTableViewController // This line throws an error.
         for thing in items {
             if thing.checked {
-                items = items.filter() {$0 != thing} // Possibility that it fricks up the for iteration. 
+                print(thing)
+                items = items.filter() {$0 != thing}
                 dstController.items.append(thing)
+                print(dstController.items)
             }
         }
         dstController.refreshPage()
