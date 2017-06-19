@@ -9,6 +9,19 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
+    
+    //MARK: Properties
+    
+    // TODO: hardcode to correspond to the actual number of sections we end up with
+    static let rowsPerSection = [1,1]
+    
+    @IBAction func signOutButtonPressed(_ sender: Any) {
+        // Sign out from Google
+        GIDSignIn.sharedInstance().signOut()
+        let signInController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController")
+        // Transition to the sign in view controller
+        UIApplication.shared.keyWindow?.rootViewController = signInController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +42,11 @@ class SettingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return SettingsTableViewController.rowsPerSection.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return SettingsTableViewController.rowsPerSection[section]
     }
 
     /*
