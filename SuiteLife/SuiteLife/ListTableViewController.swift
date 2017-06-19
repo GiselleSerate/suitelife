@@ -86,7 +86,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         if to.row == items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
             items = items.filter{$0.name != ""}
-            items.append(Item(name: "", checked: false, price: 0, isListItem: true))
+            items.append(Item(name: "", checked: false, price: 0))
             self.tableView.reloadData()
         }
     }
@@ -96,7 +96,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     private func loadItems() -> [Item]? { // Attempts to load saved list items, but only those that are not blank.
         var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
-        fullList?.append(Item(name: "", checked: false, price: 0, isListItem: true))
+        fullList?.append(Item(name: "", checked: false, price: 0))
         return fullList
     }
     

@@ -96,7 +96,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
                 
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
-                controller?.items.append(Item(name: "", checked: false, price: 0.00, isListItem: true))
+                controller?.items.append(Item(name: "", checked: false, price: 0))
                 controller?.tableView.reloadData()
             }
             else { // Delete this item, because you have made its text blank.

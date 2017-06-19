@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2ED8F6C9A37FD660C0FE5799 /* Pods_SuiteLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */; };
+		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
 		CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */; };
 		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
@@ -28,6 +29,7 @@
 		458A92D14D03CA1FBF9E629C /* Pods-SuiteLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.debug.xcconfig"; sourceTree = "<group>"; };
 		817DFD56C089B6817A8880F0 /* Pods-SuiteLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.release.xcconfig"; sourceTree = "<group>"; };
 		8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuiteLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */,
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
 				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
+				CB3B42D61EF84ABD0006B9F4 /* Money.swift */,
 			);
 			path = SuiteLife;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
+				CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */,
 				CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */,
 				CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */,
 				CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */,
