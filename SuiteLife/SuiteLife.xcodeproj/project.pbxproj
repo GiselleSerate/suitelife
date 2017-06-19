@@ -11,6 +11,8 @@
 		CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */; };
 		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
+		CB499B381EF8458100B60AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */; };
+		CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
 		CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE31EEF4AA700903EE9 /* Assets.xcassets */; };
@@ -32,6 +34,9 @@
 		CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
+		CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuiteLife-Bridging-Header.h"; sourceTree = "<group>"; };
+		CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB577BE11EEF4AA700903EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */,
+				CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */,
 				CB577BE01EEF4AA700903EE9 /* Main.storyboard */,
 				CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */,
 				CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */,
@@ -112,8 +118,10 @@
 				CB577BE31EEF4AA700903EE9 /* Assets.xcassets */,
 				CB577BE51EEF4AA700903EE9 /* LaunchScreen.storyboard */,
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
+				CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */,
 				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
 				CB8624761EF330A00027C96C /* TallerNavBar.swift */,
+				CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */,
 			);
 			path = SuiteLife;
 			sourceTree = "<group>";
@@ -181,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */,
+				CB499B381EF8458100B60AC3 /* GoogleService-Info.plist in Resources */,
 				CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */,
 				CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */,
 			);
@@ -246,6 +255,7 @@
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */,
+				CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
 				CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */,
@@ -386,6 +396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SuiteLife/SuiteLife-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -403,6 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SuiteLife/SuiteLife-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
