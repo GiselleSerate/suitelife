@@ -91,6 +91,9 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BarcodeScanner/BarcodeScanner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/M13Checkbox/M13Checkbox.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pageboy/Pageboy.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
@@ -101,6 +104,9 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BarcodeScanner/BarcodeScanner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/M13Checkbox/M13Checkbox.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pageboy/Pageboy.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
