@@ -29,7 +29,6 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("The view is going to disappear.")
         saveItems()
         super.viewWillDisappear(true)
     }
@@ -95,6 +94,7 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     //MARK: NSCoding
     
     private func loadItems() -> [Item]? { // Attempts to load saved pantry items, but only those that are not blank.
+        print("Loading pantry items.")
         var fullPantry = NSKeyedUnarchiver.unarchiveObject(withFile: Item.PantryArchiveURL.path) as? [Item]
         fullPantry?.append(Item(name: "", checked: false, price: 0))
         return fullPantry

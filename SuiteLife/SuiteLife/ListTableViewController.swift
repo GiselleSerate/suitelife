@@ -10,11 +10,12 @@ import UIKit
 import os.log
 
 class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
-    
 
     override func viewDidLoad() {
         
         navigationItem.leftBarButtonItem = editButtonItem
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
 
         super.viewDidLoad()
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
@@ -29,7 +30,6 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("The view is going to disappear.")
         saveItems()
         super.viewWillDisappear(true)
     }
@@ -95,6 +95,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     //MARK: NSCoding
     
     private func loadItems() -> [Item]? { // Attempts to load saved list items, but only those that are not blank.
+        print("Loading list items.")
         var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
         fullList?.append(Item(name: "", checked: false, price: 0))
         return fullList
@@ -111,6 +112,20 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         else {
             os_log("Failed to save list.", log: OSLog.default, type: .error)
         }
+    }
+    
+    
+    //MARK: Transfer Items For Checkout
+    
+    func transferSelected(sender: UIBarButtonItem) { // I apparently need a parameter. I don't even know man? selectors are a weird time.
+//        let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryTableViewController") as! PantryTableViewController
+        for thing in items {
+            if thing.checked {
+                items = items.filter() {$0 != thing} // Possibility that it fricks up the for iteration. 
+//                dstController.items.append(thing)
+            }
+        }
+        tableView.reloadData()
     }
     
 
