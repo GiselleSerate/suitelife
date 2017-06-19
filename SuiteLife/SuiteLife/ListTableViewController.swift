@@ -85,9 +85,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         items.insert(itemToMove, at: to.row)
         if to.row == items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
-            items = items.filter{$0.name != ""}
-            items.append(Item(name: "", checked: false, price: 0))
-            self.tableView.reloadData()
+            refreshPage()
         }
     }
     
@@ -105,7 +103,6 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         // Only the items that aren't blank get saved to file.
         items = items.filter{$0.name != ""}
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
-        print(items)
         if isSuccessfulSave {
             os_log("Entire list successfully saved.", log: OSLog.default, type: .debug)
         }
@@ -118,13 +115,24 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     //MARK: Transfer Items For Checkout
     
     func transferSelected(sender: UIBarButtonItem) { // I apparently need a parameter. I don't even know man? selectors are a weird time.
-//        let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryTableViewController") as! PantryTableViewController
+        let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryViewController") as! PantryTableViewController // This line throws an error.
         for thing in items {
             if thing.checked {
                 items = items.filter() {$0 != thing} // Possibility that it fricks up the for iteration. 
-//                dstController.items.append(thing)
+                dstController.items.append(thing)
             }
         }
+        dstController.refreshPage()
+        refreshPage()
+    }
+    
+    
+    //MARK: Refresh Page
+    
+    func refreshPage() {
+        print("REFRESH LIST")
+        items = items.filter{$0.name != ""}
+        items.append(Item(name: "", checked: false, price: 0))
         tableView.reloadData()
     }
     

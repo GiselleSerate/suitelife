@@ -114,6 +114,16 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     
+    //MARK: Refresh Page
+    
+    func refreshPage() {
+        print("REFRESH PANTRY")
+        items = items.filter{$0.name != ""}
+        items.append(Item(name: "", checked: false, price: 0))
+        tableView.reloadData()
+    }
+    
+    
     /*
      // MARK: - Navigation
      
