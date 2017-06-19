@@ -22,6 +22,8 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
         
         // UI Button configuration
+        
+        signInButton.style = .wide
     }
     
 
