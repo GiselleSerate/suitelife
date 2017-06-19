@@ -30,12 +30,12 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         let viewCon1 = self.newViewController(name: "Pantry")
         let viewCon2 = self.newViewController(name: "List")
         let viewControllers = [viewCon1, viewCon2]
-        self.bar.items = [TabmanBarItem(title: "Pantry"), TabmanBarItem(title: "List")]
+        self.bar.items = [TabmanBar.Item(title: "Pantry"), TabmanBar.Item(title: "List")]
         return viewControllers
     }
     
     private func newViewController(name: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)NavTableViewController") // TODO: currently this line is why I dont have navbars lol
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)NavTableViewController")
     }
     
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex? {

@@ -21,7 +21,6 @@
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
 		CB8624771EF330A00027C96C /* TallerNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8624761EF330A00027C96C /* TallerNavBar.swift */; };
-		CB8624791EF334340027C96C /* CustomTabmanBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8624781EF334340027C96C /* CustomTabmanBar.swift */; };
 		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
 		CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +44,6 @@
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
 		CB8624761EF330A00027C96C /* TallerNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallerNavBar.swift; sourceTree = "<group>"; };
-		CB8624781EF334340027C96C /* CustomTabmanBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabmanBar.swift; sourceTree = "<group>"; };
 		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 		CBC25F491EF49AFD00BAF68C /* ScannedItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedItemList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,7 +114,6 @@
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
 				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
 				CB8624761EF330A00027C96C /* TallerNavBar.swift */,
-				CB8624781EF334340027C96C /* CustomTabmanBar.swift */,
 			);
 			path = SuiteLife;
 			sourceTree = "<group>";
@@ -256,7 +253,6 @@
 				CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
 				CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */,
-				CB8624791EF334340027C96C /* CustomTabmanBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
