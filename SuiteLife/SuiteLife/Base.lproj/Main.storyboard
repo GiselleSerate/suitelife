@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Lists-->
         <scene sceneID="unN-6t-Yde">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="2XA-sf-tKE" customClass="ListPantryTabViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fLr-QY-tRd"/>
+                    <tabBarItem key="tabBarItem" title="Lists" image="listIconSet" id="fLr-QY-tRd"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb4-NS-4vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -418,7 +418,7 @@
                             <constraint firstAttribute="trailing" secondItem="FXL-In-E0G" secondAttribute="trailing" id="VA2-wG-KgJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scan" id="KnM-Uj-ZjH"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="barcodeIconSet" id="KnM-Uj-ZjH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oZ-M4-85H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -570,4 +570,8 @@
             <point key="canvasLocation" x="-1170" y="-1122"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="barcodeIconSet" width="30" height="30"/>
+        <image name="listIconSet" width="29" height="25"/>
+    </resources>
 </document>
