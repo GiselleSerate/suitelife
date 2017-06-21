@@ -15,6 +15,8 @@
 		CB499B381EF8458100B60AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */; };
 		CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */; };
 		CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */; };
+		CB573A401EF99DB600ECCFDA /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */; };
+		CB573A421EF9E8F800ECCFDA /* PantryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
 		CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE31EEF4AA700903EE9 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuiteLife-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDataModel.swift; sourceTree = "<group>"; };
+		CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryDataModel.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB577BE11EEF4AA700903EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,8 +128,9 @@
 				CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */,
 				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
 				CB3B42D61EF84ABD0006B9F4 /* Money.swift */,
-				CB8624761EF330A00027C96C /* TallerNavBar.swift */,
 				CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */,
+				CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */,
+				CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */,
 			);
 			path = SuiteLife;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB728E5E1EF0610400F76321 /* ItemTableViewController.swift in Sources */,
+				CB573A401EF99DB600ECCFDA /* ListDataModel.swift in Sources */,
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CBC25F4A1EF49AFD00BAF68C /* ScannedItemList.swift in Sources */,
@@ -262,6 +268,7 @@
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
+				CB573A421EF9E8F800ECCFDA /* PantryDataModel.swift in Sources */,
 				CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */,
 				CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */,
 				CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */,

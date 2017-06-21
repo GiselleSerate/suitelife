@@ -10,23 +10,28 @@ import UIKit
 import os.log
 
 class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
+    
+    let itemListInstance = ListDataModel.sharedInstance
+    let itemPantryInstance = PantryDataModel.sharedInstance
 
     override func viewDidLoad() {
         
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
-
+        // Superclass does . . .
         super.viewDidLoad()
+        
+        // Set up navbar items.
+        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
+        
+        // Load items into list.
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
-            items += savedItems
+            itemListInstance.items += savedItems
         }
         else {
             loadDefaults()
         }
         
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,6 +47,12 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
    
     //MARK: Display
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return itemListInstance.items.count
+    }
+
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListTableViewCell
@@ -50,7 +61,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         }
         
         // Configure the cell...
-        var item = items[indexPath.row]
+        var item = itemListInstance.items[indexPath.row]
         cell.attachItem(&item)
         cell.controller = self
         return cell
@@ -60,7 +71,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            items.remove(at: indexPath.row)
+            itemListInstance.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert { // Possibly I could have implemented this instead of writing my own thing.
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -70,7 +81,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if indexPath.row == items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+        if indexPath.row == itemListInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
         }
         else {
@@ -80,10 +91,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let itemToMove = items[fromIndexPath.row]
-        items.remove(at: fromIndexPath.row)
-        items.insert(itemToMove, at: to.row)
-        if to.row == items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
+        let itemToMove = itemListInstance.items[fromIndexPath.row]
+        itemListInstance.items.remove(at: fromIndexPath.row)
+        itemListInstance.items.insert(itemToMove, at: to.row)
+        if to.row == itemListInstance.items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
             refreshPage()
         }
@@ -99,10 +110,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         return fullList
     }
     
-    private func saveItems() {
+    func saveItems() {
         // Only the items that aren't blank get saved to file.
-        items = items.filter{$0.name != ""}
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: Item.ListArchiveURL.path)
+        itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemListInstance.items, toFile: Item.ListArchiveURL.path)
         if isSuccessfulSave {
             os_log("Entire list successfully saved.", log: OSLog.default, type: .debug)
         }
@@ -115,15 +126,18 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     //MARK: Transfer Items For Checkout
     
     func transferSelected(sender: UIBarButtonItem) { // I apparently need a parameter. I don't even know man? selectors are a weird time.
+//        NSMutableArray
         let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryViewController") as! PantryTableViewController
-        for thing in items {
+        for thing in itemListInstance.items {
             if thing.checked {
                 print(thing)
-                items = items.filter() {$0 != thing}
-                dstController.items.append(thing)
-                print(dstController.items)
+                itemListInstance.items = itemListInstance.items.filter() {$0 != thing}
+                itemPantryInstance.items.append(thing)
+                print(itemPantryInstance.items)
             }
         }
+        dstController.saveItems()
+        saveItems()
         dstController.refreshPage()
         refreshPage()
     }
@@ -133,8 +147,8 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     func refreshPage() {
         print("REFRESH LIST")
-        items = items.filter{$0.name != ""}
-        items.append(Item(name: "", checked: false, price: 0))
+        itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
+        itemListInstance.items.append(Item(name: "", checked: false, price: 0))
         tableView.reloadData()
     }
     
@@ -148,5 +162,14 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func loadDefaults() {
+        print("No list items saved, loading defaults.")
+        let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
+        let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
+        let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
+        itemListInstance.items += [instruction1, instruction2, instruction3]
+    }
+    
 
 }

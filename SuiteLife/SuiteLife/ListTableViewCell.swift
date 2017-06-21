@@ -11,6 +11,8 @@ import os.log
 import M13Checkbox
 
 class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
+
+    let itemListInstance = ListDataModel.sharedInstance
     
     //MARK: Properties
 
@@ -96,12 +98,11 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
                 
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
-                controller?.items.append(Item(name: "", checked: false, price: 0))
-                controller?.tableView.reloadData()
+                controller?.refreshPage()
             }
             else { // Delete this item, because you have made its text blank.
-                controller?.items.remove(at: (controller?.items.index(of: item!))!) // Delete item.
-                controller?.tableView.reloadData() // Refresh the table.
+                itemListInstance.items.remove(at: (itemListInstance.items.index(of: item!))!) // Delete item.
+                controller?.refreshPage() // Refresh the table.
             }
             
         }

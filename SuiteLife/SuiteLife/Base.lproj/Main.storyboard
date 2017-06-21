@@ -192,7 +192,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xv-zR-nVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="-1122"/>
+            <point key="canvasLocation" x="329" y="-1122"/>
         </scene>
         <!--My List-->
         <scene sceneID="uTH-j3-Yby">
@@ -374,7 +374,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Gzg-3I-b9k">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="M0L-yD-rT8" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M0L-yD-rT8" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6wM-by-ybA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -563,7 +563,7 @@
                             <outlet property="delegate" destination="VgH-qa-LDT" id="3nj-RZ-Cba"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My List" id="Vmv-lL-th3"/>
+                    <navigationItem key="navigationItem" title="My Pantry" id="Vmv-lL-th3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Amt-MZ-9TV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

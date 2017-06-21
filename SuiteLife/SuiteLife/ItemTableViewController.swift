@@ -11,7 +11,6 @@ import UIKit
 class ItemTableViewController: UITableViewController {
     
     //MARK: Properties
-    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +41,10 @@ class ItemTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return items.count
+//    }
     
 
     
@@ -94,15 +93,4 @@ class ItemTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    //MARK: Private Methods
-    // TODO: Well, this was private. Maybe it should still be private.
-    func loadDefaults() {
-        print("No items saved, loading defaults.")
-        let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
-        let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
-        let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
-        items += [instruction1, instruction2, instruction3]
-    }
-
 }
