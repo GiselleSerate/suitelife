@@ -19,19 +19,20 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         
         super.viewDidLoad()
-//        if let savedItems = loadItems() { // If we actually do have some file of items to load.
-//            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
-//        }
-//        else {
+        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
+        }
+        else {
             loadDefaults()
-//        }
-        
+        }
+    
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.refreshPage()
+        super.viewWillAppear(true)
+        self.refreshPage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,9 +140,8 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     func loadDefaults() {
         print("No pantry items saved, loading defaults.")
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
-        let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
-        let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
-        itemPantryInstance.items += [instruction1, instruction2, instruction3]
+        let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
+        itemPantryInstance.items = [instruction1, instruction2]
         refreshPage() // Add extra row.
     }
     

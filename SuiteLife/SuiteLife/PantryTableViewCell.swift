@@ -101,6 +101,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
                 print("Wow you want to make new item")
                 itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
+                print("You have tried to make a new item.\(itemPantryInstance.items)")
                 controller?.refreshPage()
             }
             else { // Delete this item, because you have made its text blank.
@@ -109,7 +110,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
         }
-        print(itemPantryInstance.items)
+        print("You have ended editing.\(itemPantryInstance.items)")
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
