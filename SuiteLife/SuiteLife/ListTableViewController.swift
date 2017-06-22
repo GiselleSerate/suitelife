@@ -154,7 +154,6 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         print("REFRESH LIST")
         itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
         for _ in 0..<2 { // Do twice. Second one will be hidden.
-            print("Add blank line.")
             itemListInstance.items.append(Item(name: "", checked: false, price: 0))
         }
         tableView.reloadData()
@@ -177,7 +176,6 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
         itemListInstance.items = [instruction1, instruction2]
         refreshPage() // Add extra row.
-        print(itemListInstance.items)
     }
     
 
