@@ -25,7 +25,6 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         else {
             loadDefaults()
         }
-    
         
         // Do any additional setup after loading the view.
     }
@@ -82,12 +81,12 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if indexPath.row == itemPantryInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
-            return false
-        }
-        else {
+//        if indexPath.row == itemPantryInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+//            return false
+//        }
+//        else {
             return true
-        }
+//        }
     }
     
     // Override to support rearranging the table view.
