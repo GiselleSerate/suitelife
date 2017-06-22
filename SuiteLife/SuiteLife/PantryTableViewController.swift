@@ -10,7 +10,7 @@ import UIKit
 import os.log
 import Tabman
 
-class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
+class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     let itemListInstance = ListDataModel.sharedInstance
     let itemPantryInstance = PantryDataModel.sharedInstance

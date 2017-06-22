@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
+class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     let itemListInstance = ListDataModel.sharedInstance
     let itemPantryInstance = PantryDataModel.sharedInstance
