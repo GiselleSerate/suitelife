@@ -38,7 +38,7 @@ class ListPantryViewController: UIPageViewController {
     */
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return[               self.newViewController(name: "Pantry"), self.newViewController(name: "List") //TODO: switch the order back, this is for swiping testing.
+        return[self.newViewController(name: "Pantry"), self.newViewController(name: "List") //TODO: switch the order back, this is for swiping testing.
 ]
     }()
     
