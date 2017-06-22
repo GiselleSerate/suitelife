@@ -14,7 +14,7 @@ class Item: NSObject, NSCoding {
     //MARK: Properties
     var name: String
     var checked: Bool
-    var price: Float
+    var price: Int
     
     override public var description: String {
         return "Item Name: \(name), Checked: \(checked), Price: \(price)"
@@ -33,7 +33,7 @@ class Item: NSObject, NSCoding {
     }
     
     //MARK: Initialization
-    init(name: String, checked: Bool, price: Float) {
+    init(name: String, checked: Bool, price: Int) {
         self.name = name
         self.checked = checked
         self.price = price
@@ -55,8 +55,8 @@ class Item: NSObject, NSCoding {
                 return nil
         }
         let checked = aDecoder.decodeBool(forKey: PropertyKey.checked)
-        let price = aDecoder.decodeFloat(forKey: PropertyKey.price)
+        let price = aDecoder.decodeInt32(forKey: PropertyKey.price) // TODO: Figure out whether I should worry about Int32 vs Int64 or just whatever. I'm casting anyway.
         
-        self.init(name: name, checked: checked, price: price)
+        self.init(name: name, checked: checked, price: Int(price))
     }
 }

@@ -96,7 +96,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-        item?.price = Float(priceLabel.text!) ?? 0
+        item?.price = Int(String(priceLabel.text!.characters.remove(at: priceLabel.text!.characters.index(of: ".")!))) ?? 0
         
         if textField === nameLabel { // Did you just finish editing the name label?
 
