@@ -14,27 +14,17 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up Google Single Sign-In
 
         GIDSignIn.sharedInstance().uiDelegate = self
         
         // Automatically sign in the user
         GIDSignIn.sharedInstance().signInSilently()
         
-        
         // UI Button configuration
         
         signInButton.style = .wide
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

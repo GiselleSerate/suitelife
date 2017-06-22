@@ -9,14 +9,15 @@
 import UIKit
 import os.log
 
-class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
+class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     let itemListInstance = ListDataModel.sharedInstance
     let itemPantryInstance = PantryDataModel.sharedInstance
+    
+    //MARK: View Transitions
 
     override func viewDidLoad() {
         
-        // Superclass does . . .
         super.viewDidLoad()
         
         // Set up navbar items.
@@ -24,10 +25,13 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
         
         // Load items into list.
-        if let savedItems = loadItems() { // If we actually do have some file of items to load.
-            itemListInstance.items = savedItems
+        print("Attempting to load List items from memory...")
+        if let loadedItems = loadItems() { // If we actually do have some file of items to load.
+            itemListInstance.items = loadedItems
+            print("Loaded List items.")
         }
         else {
+            print("No saved List items, loading defaults...")
             loadDefaults()
         }
     
@@ -40,8 +44,8 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveItems()
         super.viewWillDisappear(true)
+        saveItems()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,20 +54,21 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
    
-    //MARK: Display
+    //MARK: TableViewController methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // There's only one section.
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // The number of rows is equal to the number of items.
         return itemListInstance.items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue the cell...
         let cellIdentifier = "ListTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListTableViewCell
             else {
@@ -77,21 +82,23 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         return cell
     }
     
-    // Override to support editing the table view.
+    // Support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             itemListInstance.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert { // Possibly I could have implemented this instead of writing my own thing.
+        } else if editingStyle == .insert {
+            // Implement if we want an add item button
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
-    // Override to support conditional editing of the table view.
+    // Support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if indexPath.row == itemListInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+        if indexPath.row == itemListInstance.items.index(where: {$0.name == ""}) {
+            // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
         }
         else {
@@ -99,7 +106,7 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         }
     }
     
-    // Override to support rearranging the table view.
+    // Support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let itemToMove = itemListInstance.items[fromIndexPath.row]
         itemListInstance.items.remove(at: fromIndexPath.row)
@@ -133,7 +140,14 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: Transfer Items For Checkout
+    //MARK: Other methods
+    
+    func loadDefaults() {
+        let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
+        let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
+        itemListInstance.items = [instruction1, instruction2]
+        refreshPage() // Add extra row.
+    }
     
     func transferSelected(sender: UIBarButtonItem) {
         for thing in itemListInstance.items {
@@ -146,13 +160,12 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         saveItems() // Save to file.
         refreshPage()
     }
-    
-    
-    //MARK: Refresh Page
+
     
     func refreshPage() {
         print("REFRESH LIST")
         itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
+        // Bandaid -- second blank line is hidden by Tabman for some reason...
         for _ in 0..<2 { // Do twice. Second one will be hidden.
             print("Add blank line.")
             itemListInstance.items.append(Item(name: "", checked: false, price: 0))
@@ -160,25 +173,6 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         tableView.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func loadDefaults() {
-        print("No list items saved, loading defaults.")
-        let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
-        let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
-        itemListInstance.items = [instruction1, instruction2]
-        refreshPage() // Add extra row.
-        print(itemListInstance.items)
-    }
     
 
 }

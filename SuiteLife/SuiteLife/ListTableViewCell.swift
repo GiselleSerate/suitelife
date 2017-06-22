@@ -10,6 +10,11 @@ import UIKit
 import os.log
 import M13Checkbox
 
+struct TextFieldType {
+    static let name = 0
+    static let price = 1
+}
+
 class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     let itemListInstance = ListDataModel.sharedInstance
@@ -49,8 +54,9 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             // Set price label.
             priceLabel.text = String(describing: item!.price)
             
-            nameLabel.tag = 0
-            priceLabel.tag = 1
+            // Label the labels.
+            nameLabel.tag = TextFieldType.name
+            priceLabel.tag = TextFieldType.price
         }
     }
     
@@ -87,7 +93,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.tag == 0 { // If it's a name
+        if textField.tag == TextFieldType.name { // If it's a name
             storedText = textField.text! // Keep the old text in this variable.
         }
     }
@@ -98,9 +104,10 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         item?.checked = checkbox.value! as! Bool
         item?.price = Float(priceLabel.text!) ?? 0
         
-        if textField === nameLabel { // Did you just finish editing the name label?
+        if textField.tag == TextFieldType.name { // Did you just finish editing the name label?
 
-            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again. Don't do anything.
+            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again.
+                //Do nothing.
                 
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
@@ -112,12 +119,11 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
         }
-        print(itemListInstance.items)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Limit the price field's allowable characters to be a decimal.
-        if textField.tag == 1 {
+        if textField.tag == TextFieldType.name {
             let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
             
             let components = string.components(separatedBy: inverseSet)

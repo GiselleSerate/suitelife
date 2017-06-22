@@ -10,9 +10,13 @@ import UIKit
 import os.log
 import M13Checkbox
 
+// TextFieldType struct defined in ListTableViewController.swift
+
 class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    
     let itemPantryInstance = PantryDataModel.sharedInstance
+    
     
     //MARK: Properties
     
@@ -31,7 +35,6 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
         item = newItem
         if item == itemPantryInstance.items.last { // Hide last item.
             self.isHidden = true
-            nameLabel.text = "Should Be Hidden" // TODO: Remove this line once you're convinced this is working.
         }
         else { // Set and don't hide other items.
             
@@ -50,8 +53,9 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             // Set price label.
             priceLabel.text = String(describing: item!.price)
             
-            nameLabel.tag = 0
-            priceLabel.tag = 1
+            // Label the labels.
+            nameLabel.tag = TextFieldType.name
+            priceLabel.tag = TextFieldType.price
         }
     }
     
@@ -88,7 +92,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.tag == 0 { // If it's a name
+        if textField.tag == TextFieldType.name { // If it's a name
             storedText = textField.text! // Keep the old text in this variable.
         }
     }
@@ -99,10 +103,10 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
         item?.checked = checkbox.value! as! Bool
         item?.price = Float(priceLabel.text!) ?? 0
         
-        if textField === nameLabel { // Did you just finish editing the name label?
+        if textField.tag == TextFieldType.name { // Did you just finish editing a name label?
             
-            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again. Don't do anything.
-                
+            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again.
+                // Do nothing.
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
                 itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
@@ -118,7 +122,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Limit the price field's allowable characters to be a decimal.
-        if textField.tag == 1 {
+        if textField.tag == TextFieldType.price {
             let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
             
             let components = string.components(separatedBy: inverseSet)
