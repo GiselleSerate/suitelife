@@ -23,13 +23,13 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
         
-        // Load items into list.
-        if let savedItems = loadItems() { // If we actually do have some file of items to load.
-            itemListInstance.items += savedItems
-        }
-        else {
+//        // Load items into list.
+//        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+//            itemListInstance.items += savedItems
+//        }
+//        else {
             loadDefaults()
-        }
+//        }
         
 
     }
@@ -169,6 +169,8 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
         let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
         let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
         itemListInstance.items += [instruction1, instruction2, instruction3]
+        refreshPage() // Add extra row.
+        print(itemListInstance.items)
     }
     
 

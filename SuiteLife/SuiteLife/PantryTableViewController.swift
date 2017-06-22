@@ -19,12 +19,12 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         
         super.viewDidLoad()
-        if let savedItems = loadItems() { // If we actually do have some file of items to load.
-            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
-        }
-        else {
+//        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+//            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
+//        }
+//        else {
             loadDefaults()
-        }
+//        }
         
         
         // Do any additional setup after loading the view.
@@ -70,7 +70,7 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            print("indexPath.row and .map\(indexPath.row)")
+            print("indexPath.row is \(indexPath.row)")
             itemPantryInstance.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert { // Possibly I could have implemented this instead of writing my own thing.
@@ -142,6 +142,7 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
         let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
         itemPantryInstance.items += [instruction1, instruction2, instruction3]
+        refreshPage() // Add extra row.
     }
     
     /*

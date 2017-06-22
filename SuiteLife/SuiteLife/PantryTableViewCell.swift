@@ -81,6 +81,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("You clicked into a field.")
         if textField.tag == 0 { // If it's a name
             storedText = textField.text! // Keep the old text in this variable.
         }
@@ -98,6 +99,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
+                print("Wow you want to make new item")
                 itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
                 controller?.refreshPage()
             }
@@ -107,6 +109,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
         }
+        print(itemPantryInstance.items)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
