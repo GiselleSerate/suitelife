@@ -29,8 +29,27 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
+        print("PantryView is appearing, checking to make sure the number of rows is consistent...")
+        print("Contents of items \(self.itemPantryInstance.items.map{item in item.name})")
+        
+        let numRows = tableView.numberOfRows(inSection: 0)
+        let numNewRows = self.itemPantryInstance.items.count - numRows
+        if numNewRows > 0 {
+            let newIndeces = numRows ..< numRows + numNewRows
+            print("New indeces to be added: \(newIndeces)")
+            let newIndexPaths = newIndeces.map { index in
+                IndexPath(row: index, section: 0)}
+            // Add the rows
+            tableView.insertRows(at: newIndexPaths, with: .automatic)
+        }
+        tableView.reloadData()
         self.refreshPage()
     }
     
