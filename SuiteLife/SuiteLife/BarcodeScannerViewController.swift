@@ -10,6 +10,7 @@ import UIKit
 import BarcodeScanner
 import Alamofire
 import SwiftyJSON
+import os.log
 
 class BarcodeScannerViewController: BarcodeScannerController {
     
@@ -18,6 +19,7 @@ class BarcodeScannerViewController: BarcodeScannerController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // BarcodeScannerController required delegates
         self.codeDelegate = self
         self.errorDelegate = self
         self.dismissalDelegate = self
@@ -25,9 +27,8 @@ class BarcodeScannerViewController: BarcodeScannerController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // We won't check to see the sender since we want to make sure the items are transferred regardless of transition
-        // Perhaps check in the future if a cancel button is implemented
         
+        // Debug messages
         print("Contents of items from barcode scanning: \(self.items.map {item in item.name})")
         print("Transferring to PantryTableViewController...")
         // Remove the blank row
@@ -47,26 +48,45 @@ class BarcodeScannerViewController: BarcodeScannerController {
 extension BarcodeScannerViewController: BarcodeScannerCodeDelegate {
     
     func barcodeScanner(_ controller: BarcodeScannerController, didCaptureCode code: String, type: String) {
+        // When a barcode is found...
+        
         print("Barcode identified with code: \(code) and type: \(type).")
         
+        // Make a query to opendatasoft's product database
         let queryURL = "https://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_gtin&q=\(code)&rows=1"
         Alamofire.request(queryURL, method: .get)
             .responseJSON { response in
+                // When the response is returned...
                 
+                // Get the JSON and then product name
                 var json = JSON(response.result.value!)
                 let records = json["records"]
                 let productName = "\(records[0]["fields"]["gtin_nm"])"
-                print("Product name identified: \(productName), adding to list...")
+                
                 if productName != "null" {
+                    // If the product exists in the database...
+                    
+                    // Create an alert to let the user know it succeeded
                     let alert = UIAlertController(title: "Barcode found!", message: "Product name: \(productName)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    // add a new item to the list
+                    
+                    // Add a new item for the product to the list
+                    print("Adding \(productName) to the scanned items list...")
                     self.items.append(Item(name: productName, checked: false, price: 0))
+                    
+                    // Show the alert and then reset the barcode scanner
                     controller.present(alert, animated: true, completion: {controller.reset(animated: true)})
                 } else {
+                    // If the product does not exist in the database...
+                    
+                    // Create an alert to let the user know it failed
                     let alert = UIAlertController(title: "Could not find barcode for code", message: code, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    
+                    // Reset with an error
                     controller.resetWithError()
+                    
+                    // And present the alert
                     controller.present(alert, animated: true, completion: nil)
                 }
         }

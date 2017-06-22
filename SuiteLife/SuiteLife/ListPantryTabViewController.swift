@@ -16,7 +16,8 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Tabman setup
+        
         self.dataSource = self
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
             appearance.layout.edgeInset = 90 //TODO: figure out what values based on screen size will center this.
@@ -27,31 +28,26 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
     
     }
 
+    //MARK: Tabman
     func viewControllers(forPageboyViewController pageboyViewController: PageboyViewController) -> [UIViewController]? {
+        // Create the view controllers for the Pantry and List tables and order them
         let viewCon1 = self.newViewController(name: "List")
         let viewCon2 = self.newViewController(name: "Pantry")
         let viewControllers = [viewCon1, viewCon2]
         self.bar.items = [TabmanBar.Item(title: "List"), TabmanBar.Item(title: "Pantry")]
         return viewControllers
     }
-    
-    private func newViewController(name: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)NavTableViewController")
-    }
+
     
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex? {
         return nil
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: Helper methods
+    
+    private func newViewController(name: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(name)NavTableViewController")
     }
-    */
+    
 
 }

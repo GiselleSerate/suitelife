@@ -165,8 +165,8 @@
 			children = (
 				CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */,
 				CB728E691EF0B12000F76321 /* PantryTableViewController.swift */,
-				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
 				CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */,
+				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
 				CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */,
 			);
 			name = "List/Pantry Tab";
