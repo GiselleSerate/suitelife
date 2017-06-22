@@ -19,19 +19,24 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         
         super.viewDidLoad()
-//        if let savedItems = loadItems() { // If we actually do have some file of items to load.
-//            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
-//        }
-//        else {
+        if let savedItems = loadItems() { // If we actually do have some file of items to load.
+            itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
+        }
+        else {
             loadDefaults()
-//        }
-        
+        }
+    
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         print("PantryView is appearing, checking to make sure the number of rows is consistent...")
         print("Contents of items \(self.itemPantryInstance.items.map{item in item.name})")
         
@@ -46,7 +51,7 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
             tableView.insertRows(at: newIndexPaths, with: .automatic)
         }
         tableView.reloadData()
-        
+        self.refreshPage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -154,9 +159,8 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     func loadDefaults() {
         print("No pantry items saved, loading defaults.")
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
-        let instruction2 = Item(name: "Add things here!", checked: true, price: 0)
-        let instruction3 = Item(name: "I need more instructions", checked: true, price: 0)
-        itemPantryInstance.items += [instruction1, instruction2, instruction3]
+        let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
+        itemPantryInstance.items = [instruction1, instruction2]
         refreshPage() // Add extra row.
     }
     
