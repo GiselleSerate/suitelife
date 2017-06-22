@@ -96,7 +96,6 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            print("indexPath.row is \(indexPath.row)")
             itemPantryInstance.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -143,7 +142,6 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         // Only the items that aren't blank get saved to file.
         itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemPantryInstance.items, toFile: Item.PantryArchiveURL.path)
-        print(itemPantryInstance.items)
         if isSuccessfulSave {
             os_log("Entire pantry successfully saved.", log: OSLog.default, type: .debug)
         }

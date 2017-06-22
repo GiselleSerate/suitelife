@@ -167,12 +167,10 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
         // Bandaid -- second blank line is hidden by Tabman for some reason...
         for _ in 0..<2 { // Do twice. Second one will be hidden.
-            print("Add blank line.")
             itemListInstance.items.append(Item(name: "", checked: false, price: 0))
         }
         tableView.reloadData()
     }
-    
     
 
 }

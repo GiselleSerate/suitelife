@@ -31,10 +31,10 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
     //MARK: Tabman
     func viewControllers(forPageboyViewController pageboyViewController: PageboyViewController) -> [UIViewController]? {
         // Create the view controllers for the Pantry and List tables and order them
-        let viewCon1 = self.newViewController(name: "Pantry")
-        let viewCon2 = self.newViewController(name: "List")
+        let viewCon1 = self.newViewController(name: "List")
+        let viewCon2 = self.newViewController(name: "Pantry")
         let viewControllers = [viewCon1, viewCon2]
-        self.bar.items = [TabmanBar.Item(title: "Pantry"), TabmanBar.Item(title: "List")]
+        self.bar.items = [TabmanBar.Item(title: "List"), TabmanBar.Item(title: "Pantry")]
         return viewControllers
     }
 
