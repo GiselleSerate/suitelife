@@ -18,7 +18,8 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         navigationItem.leftBarButtonItem = editButtonItem
-               
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "We're Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
+        
         super.viewDidLoad()
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
             itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
@@ -143,6 +144,21 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
         else {
             os_log("Failed to save pantry.", log: OSLog.default, type: .error)
         }
+    }
+    
+    
+    //MARK: Transfer Items For Checkout
+    
+    func transferSelected(sender: UIBarButtonItem) {
+        for thing in itemPantryInstance.items {
+            if thing.checked {
+                thing.checked = false // Reset checkedness.
+                itemPantryInstance.items = itemPantryInstance.items.filter() {$0 != thing} // Take the item out of the pantry.
+                itemListInstance.items.append(thing) // Put the item into the list.
+            }
+        }
+        saveItems() // Save to file.
+        refreshPage()
     }
     
     

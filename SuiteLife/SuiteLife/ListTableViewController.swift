@@ -130,20 +130,15 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     //MARK: Transfer Items For Checkout
     
-    func transferSelected(sender: UIBarButtonItem) { // I apparently need a parameter. I don't even know man? selectors are a weird time.
-//        NSMutableArray
-        let dstController = storyboard?.instantiateViewController(withIdentifier: "PantryViewController") as! PantryTableViewController
+    func transferSelected(sender: UIBarButtonItem) {
         for thing in itemListInstance.items {
             if thing.checked {
-                print(thing)
-                itemListInstance.items = itemListInstance.items.filter() {$0 != thing}
-                itemPantryInstance.items.append(thing)
-                print(itemPantryInstance.items)
+                thing.checked = false // Reset checkedness.
+                itemListInstance.items = itemListInstance.items.filter() {$0 != thing} // Take the item out of the list.
+                itemPantryInstance.items.append(thing) // Put the item into the pantry.
             }
         }
-        dstController.saveItems()
-        saveItems()
-        dstController.refreshPage()
+        saveItems() // Save to file.
         refreshPage()
     }
     
