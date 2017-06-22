@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class BarcodeScannerViewController: BarcodeScannerController {
     
-    var itemList = ScannedItemList.sharedInstance
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,18 @@ class BarcodeScannerViewController: BarcodeScannerController {
         // We won't check to see the sender since we want to make sure the items are transferred regardless of transition
         // Perhaps check in the future if a cancel button is implemented
         
-        print("Contents of items from barcode scanning: \(self.itemList.items.map {item in item.name})")
+        print("Contents of items from barcode scanning: \(self.items.map {item in item.name})")
+        print("Transferring to PantryTableViewController...")
+        // Remove the blank row
+        if PantryDataModel.sharedInstance.items.last?.name == "" {
+            PantryDataModel.sharedInstance.items.removeLast()
+        }
+        // Append scanned items
+        PantryDataModel.sharedInstance.items += self.items
+        // Add back the blank row
+        PantryDataModel.sharedInstance.items.append(Item(name: "", checked: false, price: 0.00))
+        // Make a new blank scanned items list
+        self.items = [Item]()
     }
     
 }
@@ -50,7 +61,7 @@ extension BarcodeScannerViewController: BarcodeScannerCodeDelegate {
                     let alert = UIAlertController(title: "Barcode found!", message: "Product name: \(productName)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     // add a new item to the list
-                    self.itemList.items.append(Item(name: productName, checked: false, price: 0))
+                    self.items.append(Item(name: productName, checked: false, price: 0))
                     controller.present(alert, animated: true, completion: {controller.reset(animated: true)})
                 } else {
                     let alert = UIAlertController(title: "Could not find barcode for code", message: code, preferredStyle: .alert)
