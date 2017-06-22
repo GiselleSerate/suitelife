@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import Tabman
 
 class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     
@@ -17,7 +18,7 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         navigationItem.leftBarButtonItem = editButtonItem
-        
+               
         super.viewDidLoad()
         if let savedItems = loadItems() { // If we actually do have some file of items to load.
             itemPantryInstance.items = savedItems // Loads from file every time you switch tabs.
@@ -99,13 +100,13 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-//        if indexPath.row == itemPantryInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
-//            return false
-//        }
-//        else {
+//         Return false if you do not want the specified item to be editable.
+        if indexPath.row == itemPantryInstance.items.index(where: {$0.name == ""}) { // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+            return false
+        }
+        else {
             return true
-//        }
+        }
     }
     
     // Override to support rearranging the table view.
@@ -150,7 +151,10 @@ class PantryTableViewController: ItemTableViewController, UITextFieldDelegate {
     func refreshPage() {
         print("REFRESH PANTRY")
         itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
-        itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
+        for _ in 0..<2 { // Do twice. Second one will be hidden.
+            print("Add blank line.")
+            itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
+        }
         tableView.reloadData()
     }
     

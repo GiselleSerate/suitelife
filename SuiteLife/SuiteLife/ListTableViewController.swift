@@ -153,7 +153,10 @@ class ListTableViewController: ItemTableViewController, UITextFieldDelegate {
     func refreshPage() {
         print("REFRESH LIST")
         itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
-        itemListInstance.items.append(Item(name: "", checked: false, price: 0))
+        for _ in 0..<2 { // Do twice. Second one will be hidden.
+            print("Add blank line.")
+            itemListInstance.items.append(Item(name: "", checked: false, price: 0))
+        }
         tableView.reloadData()
     }
     

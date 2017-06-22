@@ -29,23 +29,30 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     func attachItem(_ newItem: inout Item) {
         
         item = newItem
-        
-        // Set name label.
-        nameLabel.text = item?.name
-        
-        // Set checked state.
-        if (item?.checked)! {
-            checkbox.setCheckState(.checked, animated: false)
+        if item == itemPantryInstance.items.last { // Hide last item.
+            self.isHidden = true
+            nameLabel.text = "Should Be Hidden" // TODO: Remove this line once you're convinced this is working.
         }
-        else {
-            checkbox.setCheckState(.unchecked, animated: false)
+        else { // Set and don't hide other items.
+            
+            
+            // Set name label.
+            nameLabel.text = item?.name
+            
+            // Set checked state.
+            if (item?.checked)! {
+                checkbox.setCheckState(.checked, animated: false)
+            }
+            else {
+                checkbox.setCheckState(.unchecked, animated: false)
+            }
+            
+            // Set price label.
+            priceLabel.text = String(describing: item!.price)
+            
+            nameLabel.tag = 0
+            priceLabel.tag = 1
         }
-        
-        // Set price label.
-        priceLabel.text = String(describing: item!.price)
-        
-        nameLabel.tag = 0
-        priceLabel.tag = 1
     }
     
     

@@ -20,6 +20,7 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         self.dataSource = self
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
             appearance.layout.edgeInset = 90 //TODO: figure out what values based on screen size will center this.
+//            appearance.style.background = .clear
         })
         
         self.bar.location = .bottom
