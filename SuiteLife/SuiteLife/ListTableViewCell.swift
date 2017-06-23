@@ -52,7 +52,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
             // Set price label.
-            priceLabel.text = String(format: "%d.%02d", item!.price/10, item!.price%10)
+            priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
             
             // Label the labels.
             nameLabel.tag = TextFieldType.name
@@ -103,7 +103,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
         item?.price = cleanPrice(price: textField.text)
-        priceLabel.text = String(format: "%d.%02d", item!.price/10, item!.price%10)
+        priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
         
         if textField.tag == TextFieldType.name { // Did you just finish editing the name label?
             
@@ -135,9 +135,14 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             // String validation written assuming no pasting. Because pasting will break it. This is why I have extra validation in DidEndEditing.
             
             if filtered == string { // Typed/pasted string has only numbers or periods.
-                return validatePrice(price: textField.text)
+                if string.contains(".") && (textField.text?.contains("."))! { // Too many periods.
+                    return false
+                }
+                else { // The add string has a period, or nothing has a period. We are assuming only one period in the add string, if any.
+                    return true
+                }
             }
-            else { // string contains something you should not be able to add to a price, such as ?!*^.
+            else { // The add string contains something you should not be able to add to a price, such as ?!*^.
                 return false
             }
         }
@@ -147,11 +152,12 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func cleanPrice(price: String?) -> Int { // Returns an int of cents. Format as you wish.
+        print("Cleaning price: \(price!)")
         var dollars = 0
         var cents = 0
-        var centsAdjust = 1 // Variable factor to make sure there are enough cents.
         
         if price == nil {
+            print("Nil price.")
             return 0
         }
         else if !price!.characters.contains(".") { // No periods. Only dollars.
@@ -162,41 +168,26 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             dollars = Int(splitArray[0])!
             cents = Int(splitArray[1])!
             let centsPlaces = splitArray[1].characters.count // How many places of cents did they give us?
-            if centsPlaces == 0 { // Not enough cents places (0).
-                centsAdjust = 0
+            if centsPlaces == 0 || centsPlaces == 2 {   // Not enough cents places (0). Cents should be zero anyway.
+                                                        // OR enough cents places (2). In either case, don't do anything.
             }
-            else if centsPlaces == 0 { // Not enough cents places (1).
-                centsAdjust = 10
-            }
-            else if centsPlaces == 2 { // Wow, the user actually did it right. Do nothing.
+            else if centsPlaces == 1 { // Not enough cents places (1).
+                cents = cents * 10
             }
             else if centsPlaces > 2 { // Too many cents places.
-                centsAdjust = 1/(10*(centsPlaces-2))
+                for i in 2..<centsPlaces {
+                    print("going for time \(i)")
+                    cents = cents/10
+                }
             }
             else {
                 fatalError("You have managed to input negative cents. Please stop.")
             }
         }
         
-        return dollars*10 + cents*centsAdjust
+        print("dollars: \(dollars)\ncents: \(cents)")
+        print("Here we go: \(dollars*100 + cents)")
+        return dollars*100 + cents
     }
     
-    func validatePrice(price: String?) -> Bool { // Returns a bool telling you if the price is a good price or not.
-        
-        if price == nil { // I'm returning true on a nil price, which may not be correct.
-            return true
-        }
-        else if !price!.characters.contains(".") { // No periods. Only dollars.
-            return true
-        }
-        else { // Extract dollars and cents from text field.
-            let splitArray = price!.components(separatedBy: ".")
-            if splitArray.count == 2 && splitArray[1].characters.count <= 2 { // Only dollars section and cents section, AND only <= 2 cents places.
-                return true
-            }
-            else {
-                return false
-            }
-        }
-    }
 }
