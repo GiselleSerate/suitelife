@@ -65,7 +65,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         saveItems()
     }
     
-    //MARK: TableViewController methods
+    //MARK: TableViewController Methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // There's only one section
@@ -151,7 +151,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: Other methods
+    //MARK: Other Methods
     
     func loadDefaults() {
         let item1 = Item(name: "You don't have any items yet", checked: false, price: 0)
@@ -178,7 +178,6 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
         // Bandaid -- second blank line is hidden by Tabman for some reason...
         for _ in 0..<2 { // Do twice. Second one will be hidden.
-            print("Add blank line at the bottom.")
             itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
         }
         tableView.reloadData()

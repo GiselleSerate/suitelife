@@ -54,7 +54,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
    
-    //MARK: TableViewController methods
+    //MARK: TableViewController Methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // There's only one section.
@@ -140,7 +140,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: Other methods
+    //MARK: Other Methods
     
     func loadDefaults() {
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)

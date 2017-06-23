@@ -12,9 +12,7 @@ import Pastel
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
-    var ptr: UnsafeMutablePointer<PastelView>?
-    
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +29,6 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
         // Pastel Background
         let pastelView = PastelView(frame: view.bounds)
-        ptr?.pointee = pastelView
         
         // Custom Direction
         pastelView.startPastelPoint = .bottomLeft
@@ -54,17 +51,18 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
     }
     
+    // Runs when the device rotates.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in
             
-            // FORCE STOP ANIMATION
+            // Remove the bottom subview, which is at this point pastelView.
             for view in self.view.subviews {
-                print("remove only one")
                 view.removeFromSuperview()
                 break
             }
             
+            // Run viewDidLoad to add a new pastelView with the new screen dimensions.
             self.viewDidLoad()
         }
     }
