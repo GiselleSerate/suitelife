@@ -38,7 +38,7 @@ class BarcodeScannerViewController: BarcodeScannerController {
         // Append scanned items
         PantryDataModel.sharedInstance.items += self.items
         // Add back the blank row
-        PantryDataModel.sharedInstance.items.append(Item(name: "", checked: false, price: 0.00))
+        PantryDataModel.sharedInstance.items.append(Item(name: "", checked: false, price: 0))
         // Make a new blank scanned items list
         self.items = [Item]()
     }

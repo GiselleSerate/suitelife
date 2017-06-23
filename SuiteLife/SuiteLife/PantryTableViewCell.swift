@@ -51,7 +51,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
             // Set price label.
-            priceLabel.text = String(describing: item!.price)
+            priceLabel.text = String(format: "%d.%02d", item!.price/10, item!.price%10)
             
             // Label the labels.
             nameLabel.tag = TextFieldType.name
