@@ -101,7 +101,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-        item?.price = PriceHelper.cleanPrice(price: textField.text)
+        item?.price = PriceHelper.cleanPrice(price: priceLabel.text)
         priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
         
         if textField.tag == TextFieldType.name { // Did you just finish editing a name label?
