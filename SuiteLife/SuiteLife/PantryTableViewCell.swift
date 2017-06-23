@@ -51,7 +51,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             
             // Set price label.
-            priceLabel.text = String(format: "%d.%02d", item!.price/10, item!.price%10)
+            priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
             
             // Label the labels.
             nameLabel.tag = TextFieldType.name
@@ -101,7 +101,8 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-        item?.price = Int(String(priceLabel.text!.characters.remove(at: priceLabel.text!.characters.index(of: ".")!))) ?? 0
+        item?.price = PriceHelper.cleanPrice(price: textField.text)
+        priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
         
         if textField.tag == TextFieldType.name { // Did you just finish editing a name label?
             
@@ -122,32 +123,26 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Limit the price field's allowable characters to be a decimal.
-        if textField.tag == TextFieldType.price {
-            let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        if textField.tag == TextFieldType.price && string != ""{
             
-            let components = string.components(separatedBy: inverseSet)
+            let inverseSetDot = NSCharacterSet(charactersIn:"0123456789.").inverted
+            
+            let components = string.components(separatedBy: inverseSetDot)
             
             let filtered = components.joined(separator: "")
             
-            if filtered == string {
-                return true
-            } else {
-                if string == "." {
-                    let countdots = textField.text!.components(separatedBy:".").count - 1
-                    if countdots == 0 {
-                        return true
-                    }
-                    else {
-                        if countdots > 0 && string == "." {
-                            return false
-                        } else {
-                            return true
-                        }
-                    }
-                }
-                else {
+            // String validation written assuming no pasting. Because pasting will break it. This is why I have extra validation in DidEndEditing.
+            
+            if filtered == string { // Typed/pasted string has only numbers or periods.
+                if string.contains(".") && (textField.text?.contains("."))! { // Too many periods.
                     return false
                 }
+                else { // The add string has a period, or nothing has a period. We are assuming only one period in the add string, if any.
+                    return true
+                }
+            }
+            else { // The add string contains something you should not be able to add to a price, such as ?!*^.
+                return false
             }
         }
         else { // You're looking at the name label. They can edit whatever they want.

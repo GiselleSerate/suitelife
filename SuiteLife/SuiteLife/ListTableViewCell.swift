@@ -37,7 +37,6 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         if item == itemListInstance.items.last { // Hide last item.
             self.isHidden = true
-            nameLabel.text = "Should Be Hidden" // TODO: Remove this line once you're convinced this is working.
         }
         else { // Set and don't hide other items.
             // Set name label.
@@ -102,7 +101,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
-        item?.price = cleanPrice(price: textField.text)
+        item?.price = PriceHelper.cleanPrice(price: textField.text)
         priceLabel.text = String(format: "%d.%02d", item!.price/100, item!.price%100)
         
         if textField.tag == TextFieldType.name { // Did you just finish editing the name label?
@@ -149,45 +148,6 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         else { // You're looking at the name label. They can edit whatever they want.
             return true
         }
-    }
-    
-    func cleanPrice(price: String?) -> Int { // Returns an int of cents. Format as you wish.
-        print("Cleaning price: \(price!)")
-        var dollars = 0
-        var cents = 0
-        
-        if price == nil {
-            print("Nil price.")
-            return 0
-        }
-        else if !price!.characters.contains(".") { // No periods. Only dollars.
-            dollars = Int(price!)!
-        }
-        else { // Extract dollars and cents from text field.
-            let splitArray = price!.components(separatedBy: ".")
-            dollars = Int(splitArray[0])!
-            cents = Int(splitArray[1])!
-            let centsPlaces = splitArray[1].characters.count // How many places of cents did they give us?
-            if centsPlaces == 0 || centsPlaces == 2 {   // Not enough cents places (0). Cents should be zero anyway.
-                                                        // OR enough cents places (2). In either case, don't do anything.
-            }
-            else if centsPlaces == 1 { // Not enough cents places (1).
-                cents = cents * 10
-            }
-            else if centsPlaces > 2 { // Too many cents places.
-                for i in 2..<centsPlaces {
-                    print("going for time \(i)")
-                    cents = cents/10
-                }
-            }
-            else {
-                fatalError("You have managed to input negative cents. Please stop.")
-            }
-        }
-        
-        print("dollars: \(dollars)\ncents: \(cents)")
-        print("Here we go: \(dollars*100 + cents)")
-        return dollars*100 + cents
     }
     
 }
