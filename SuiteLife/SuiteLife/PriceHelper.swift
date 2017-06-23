@@ -25,11 +25,13 @@ class PriceHelper {
         }
         else { // Extract dollars and cents from text field.
             let splitArray = price!.components(separatedBy: ".")
-            if splitArray[1] == "" {
-                print("Ending on a period.")
-            }
-            else { // Not ending on a period. 
+            if splitArray[1] == "" { // If cents is empty.
                 dollars = Int(splitArray[0])!
+            }
+            else { // Not ending on a period.
+                if splitArray[0] != "" { // If dollars is not empty.
+                    dollars = Int(splitArray[0])!
+                }
                 cents = Int(splitArray[1])!
                 let centsPlaces = splitArray[1].characters.count // How many places of cents did they give us?
                 
