@@ -9,6 +9,9 @@
 import UIKit
 
 class IOUViewController: UITableViewController {
+    
+    // Test users for display purposes.
+    var testUserDB = [User(name: "Giselle", handle: "@gserate", balance: 1200), User(name: "Cole", handle: "@ckurashige", balance: 362), User(name: "Jeni", handle: "@jzhu", balance: 869)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,34 @@ class IOUViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: TableViewController Methods
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // There's only one section.
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // The number of rows is equal to the number of items.
+        return testUserDB.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue the cell...
+        let cellIdentifier = "IOUTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? IOUTableViewCell
+            else {
+                fatalError("The dequeued cell is not an instance of IOUTableViewCell.")
+        }
+        
+        // Configure the cell...
+        var item = testUserDB[indexPath.row]
+        cell.attachUser(&item)
+        cell.controller = self
+        return cell
+    }
 
     /*
     // MARK: - Navigation

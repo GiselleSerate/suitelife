@@ -213,13 +213,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ccz-MC-GJa">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="IOUTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="IOUTableViewCell" id="Ccz-MC-GJa" customClass="IOUTableViewCell" customModule="SuiteLife" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ccz-MC-GJa" id="OEr-XB-LgN">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="Ccz-MC-GJa" id="OEr-XB-LgN">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="left" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44X-Zb-mPE">
+                                            <rect key="frame" x="133" y="11" width="108" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpE-82-xDB" userLabel="Person">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YX7-dU-2RI" userLabel="Handle">
+                                                    <rect key="frame" x="53.5" y="0.0" width="54.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="right" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-F4-bwz">
+                                            <rect key="frame" x="157" y="11" width="61" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0C-t8-fsZ" userLabel="Balance">
+                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="balanceLabel" destination="o0C-t8-fsZ" id="8g6-4v-iEo"/>
+                                    <outlet property="handleLabel" destination="YX7-dU-2RI" id="LaR-NK-3bi"/>
+                                    <outlet property="personLabel" destination="cpE-82-xDB" id="y5z-Hd-srG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -231,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67V-pH-Bx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1297" y="-1122"/>
+            <point key="canvasLocation" x="-1298.4000000000001" y="-1122.1889055472266"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="T4b-OS-5Jf">
