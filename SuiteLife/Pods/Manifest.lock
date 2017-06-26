@@ -7,6 +7,9 @@ PODS:
   - Firebase/Core (4.0.2):
     - FirebaseAnalytics (= 4.0.1)
     - FirebaseCore (= 4.0.2)
+  - Firebase/Database (4.0.2):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.0)
   - FirebaseAnalytics (4.0.1):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -17,6 +20,8 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.2):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
   - GoogleSignIn (4.0.2):
@@ -55,6 +60,7 @@ DEPENDENCIES:
   - BarcodeScanner
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - GoogleSignIn
   - M13Checkbox
   - Pastel
@@ -77,6 +83,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
   FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -89,6 +96,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
   Tabman: c176297899fd28e087a6506f9b56b8ca05195aa5
 
-PODFILE CHECKSUM: 2ce7ad0c385dd391f4c946addd3047daac6928f1
+PODFILE CHECKSUM: 15d264c9b8639664d58067b3c591331a5c5ac75a
 
 COCOAPODS: 1.2.1

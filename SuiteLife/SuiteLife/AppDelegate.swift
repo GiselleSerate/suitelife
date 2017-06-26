@@ -11,9 +11,12 @@ import GoogleSignIn
 import Firebase
 import FirebaseAuth
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
+    var ref: DatabaseReference!
+    
     var window: UIWindow?
     
     //MARK: Default Methods
@@ -22,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
+        ref = Database.database().reference()
         
         return true
         
@@ -79,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Do something when the user disconnects from the app here
     }
 
+    
 
 }
 
