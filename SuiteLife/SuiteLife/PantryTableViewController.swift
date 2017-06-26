@@ -176,10 +176,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     func refreshPage() {
         print("REFRESH PANTRY")
         itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
-        // Bandaid -- second blank line is hidden by Tabman for some reason...
-        for _ in 0..<2 { // Do twice. Second one will be hidden.
-            itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
-        }
+        itemPantryInstance.items.append(Item(name: "", checked: false, price: 0)) // Do only once.
         tableView.reloadData()
     }
     
