@@ -8,6 +8,7 @@
 
 import UIKit
 import Pastel
+import GoogleSignIn
 
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
 

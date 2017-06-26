@@ -12,5 +12,7 @@ target 'SuiteLife' do
   pod 'Alamofire'
   pod 'BarcodeScanner'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-  pod 'Google/SignIn'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 end

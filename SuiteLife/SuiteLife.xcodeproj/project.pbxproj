@@ -16,7 +16,6 @@
 		CB44B9D91EF19C1F0063D9EE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */; };
 		CB44B9DB1EF19EE10063D9EE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */; };
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
-		CB499B381EF8458100B60AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */; };
 		CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */; };
 		CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */; };
 		CB573A401EF99DB600ECCFDA /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */; };
@@ -29,6 +28,7 @@
 		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
+		CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA239E81F01796400006155 /* GoogleService-Info.plist */; };
 		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,6 @@
 		CB44B9D81EF19C1F0063D9EE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		CB44B9DA1EF19EE10063D9EE /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
-		CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuiteLife-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
+		CBA239E81F01796400006155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				CB577BE81EEF4AA700903EE9 /* Info.plist */,
-				CB499B371EF8458100B60AC3 /* GoogleService-Info.plist */,
+				CBA239E81F01796400006155 /* GoogleService-Info.plist */,
 			);
 			name = plist;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */,
-				CB499B381EF8458100B60AC3 /* GoogleService-Info.plist in Resources */,
+				CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */,
 				CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */,
 				CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */,
 			);

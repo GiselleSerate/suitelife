@@ -1,19 +1,24 @@
 PODS:
   - Alamofire (4.5.0)
   - BarcodeScanner (2.0.0)
-  - FirebaseAnalytics (3.9.0):
-    - FirebaseCore (~> 3.6)
-    - FirebaseInstanceID (~> 1.0)
+  - Firebase/Auth (4.0.2):
+    - Firebase/Core
+    - FirebaseAuth (= 4.0.0)
+  - Firebase/Core (4.0.2):
+    - FirebaseAnalytics (= 4.0.1)
+    - FirebaseCore (= 4.0.2)
+  - FirebaseAnalytics (4.0.1):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.6.0):
+  - FirebaseAuth (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.2):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (1.0.10):
-    - FirebaseCore (~> 3.6)
-  - Google/Core (3.1.0):
-    - FirebaseAnalytics (~> 3.2)
-  - Google/SignIn (3.1.0):
-    - Google/Core
-    - GoogleSignIn (~> 4.0)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -37,18 +42,20 @@ PODS:
   - GTMSessionFetcher/Full (1.1.10):
     - GTMSessionFetcher/Core (= 1.1.10)
   - M13Checkbox (3.1.3)
-  - Pageboy (1.2.1)
+  - Pageboy (1.3.2)
   - Pastel (0.3.0)
   - PureLayout (3.0.2)
   - SwiftyJSON (3.1.4)
-  - Tabman (0.6.2):
-    - Pageboy (~> 1.2.0)
+  - Tabman (0.7.0):
+    - Pageboy (~> 1.3.0)
     - PureLayout (~> 3.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - BarcodeScanner
-  - Google/SignIn
+  - Firebase/Auth
+  - Firebase/Core
+  - GoogleSignIn
   - M13Checkbox
   - Pastel
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -60,27 +67,28 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftyJSON:
-    :commit: d932f6498b9acdd286e65ff6691c3dd3518b086e
+    :commit: ebc305b69ecca005b636f20e0db4d07d19d333fa
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BarcodeScanner: 266ab4b479d407b74bc4b473fa5020b4523ad9e3
-  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
-  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
-  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
-  Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
+  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
+  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
+  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
+  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
-  Pageboy: b5112693f620c3812ff80ed6ff7f8b1ffdea4363
+  Pageboy: 7696688cbc118c5666176475fd1937926c2d0745
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
-  Tabman: dfde9b78fab9abf7696338e8f9f59aa275fb795c
+  Tabman: c176297899fd28e087a6506f9b56b8ca05195aa5
 
-PODFILE CHECKSUM: c7ebe7da8e151619cfafa7b9c11246c79e6f5a4a
+PODFILE CHECKSUM: 2ce7ad0c385dd391f4c946addd3047daac6928f1
 
 COCOAPODS: 1.2.1
