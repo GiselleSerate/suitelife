@@ -14,7 +14,7 @@ class SettingsTableViewController: UITableViewController {
     //MARK: Properties
     
     //TODO: hardcode to correspond to the actual number of sections we end up with
-    static let rowsPerSection = [1,1]
+    static let rowsPerSection = [2,1]
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         // Sign out from Google

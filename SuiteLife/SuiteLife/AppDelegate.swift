@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         ref = Database.database().reference()
         
+
         return true
         
     }
@@ -74,6 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     UIApplication.shared.keyWindow?.rootViewController = tabController
                 }
             }
+            // TODO: for testing purposes of firebase
+            let userID = GIDSignIn.sharedInstance().currentUser.userID!
+            ref.child("users/\(userID)/displayName").setValue("hello")
         } else {
             print("\(error.localizedDescription)")
         }
