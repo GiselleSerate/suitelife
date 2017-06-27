@@ -54,5 +54,9 @@ class PriceHelper {
         
         return dollars*100 + cents
     }
+    
+    static func formatPrice(price: Int) -> String {
+        return String(format: "%d.%02d", price/100, price%100)
+    }
 
 }
