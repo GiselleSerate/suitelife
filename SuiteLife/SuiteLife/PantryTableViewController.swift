@@ -8,12 +8,14 @@
 
 import UIKit
 import os.log
-import Tabman
+import Firebase
 
 class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     let itemListInstance = ListDataModel.sharedInstance
     let itemPantryInstance = PantryDataModel.sharedInstance
+    
+    let userID = Auth.auth().currentUser!.uid
     
     //MARK: View Transitions
     
@@ -24,15 +26,9 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "We're Out", style: .plain, target: self, action: #selector(transferSelected(sender:)))
         
+        // Load items into pantry. 
         print("Attempting to load Pantry items from memory...")
-        if let loadedItems = loadItems() { // If we actually do have some file of items to load.
-            itemPantryInstance.items = loadedItems // Loads from file every time you switch tabs.
-            print("Loaded Pantry items.")
-        }
-        else {
-            print("No saved Pantry items, loading defaults...")
-            loadDefaults()
-        }
+        loadItems()
         
     }
     
@@ -130,24 +126,33 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: NSCoding
+    //MARK: Firebase
     
-    private func loadItems() -> [Item]? { // Attempt to load saved pantry items, but only those that are not blank.
-        var loadedPantry = NSKeyedUnarchiver.unarchiveObject(withFile: Item.PantryArchiveURL.path) as? [Item]
-        loadedPantry?.append(Item(name: "", checked: false, price: 0))
-        return loadedPantry
+    private func loadItems() { // Attempt to load saved pantry items.
+        
+        Database.database().reference().child("users/\(userID)/pantry").observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
+                self.itemPantryInstance.items = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                print("Loaded Pantry items.")
+            }
+            else {
+                print("No saved Pantry items, loading defaults...")
+                self.loadDefaults()
+            }
+            self.refreshPage()
+        }) {(error) in
+            print(error.localizedDescription)
+        }
     }
     
     func saveItems() {
         // Only the items that aren't blank get saved to file.
         itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemPantryInstance.items, toFile: Item.PantryArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("Entire pantry successfully saved.", log: OSLog.default, type: .debug)
-        }
-        else {
-            os_log("Failed to save pantry.", log: OSLog.default, type: .error)
-        }
+        
+        let items = itemPantryInstance.items.map{(item) -> NSDictionary in return item.toDict()}
+        
+        Database.database().reference().child("users/\(userID)/pantry").setValue(items)
     }
     
     

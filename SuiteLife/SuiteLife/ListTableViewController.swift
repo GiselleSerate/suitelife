@@ -131,9 +131,9 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: NSCoding
+    //MARK: Firebase
     
-    private func loadItems() { // Attempts to load saved list items, but only those that are not blank.
+    private func loadItems() { // Attempts to load saved list items.
         
         Database.database().reference().child("users/\(userID)/list").observeSingleEvent(of: .value, with: {(snapshot) in
             
@@ -158,8 +158,6 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         let items = itemListInstance.items.map{(item) -> NSDictionary in return item.toDict()}
         
         Database.database().reference().child("users/\(userID)/list").setValue(items)
-        
-        refreshPage()
     }
     
     
