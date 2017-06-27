@@ -29,7 +29,7 @@
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
 		CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA239E81F01796400006155 /* GoogleService-Info.plist */; };
-		CBA239ED1F01C1E000006155 /* EditCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239EC1F01C1E000006155 /* EditCellTableViewController.swift */; };
+		CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */; };
 		CBA239F11F01C7B300006155 /* HardCodedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239F01F01C7B300006155 /* HardCodedTableViewController.swift */; };
 		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
 		CBA239E81F01796400006155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		CBA239EC1F01C1E000006155 /* EditCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCellTableViewController.swift; sourceTree = "<group>"; };
+		CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSinglePropertyTableViewController.swift; sourceTree = "<group>"; };
 		CBA239F01F01C7B300006155 /* HardCodedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardCodedTableViewController.swift; sourceTree = "<group>"; };
 		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +168,7 @@
 				CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */,
 				CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */,
 				CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */,
-				CBA239EC1F01C1E000006155 /* EditCellTableViewController.swift */,
+				CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */,
 				CBA239F01F01C7B300006155 /* HardCodedTableViewController.swift */,
 			);
 			name = Controllers;
@@ -324,7 +324,7 @@
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */,
-				CBA239ED1F01C1E000006155 /* EditCellTableViewController.swift in Sources */,
+				CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */,
 				CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */,
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
@@ -468,7 +468,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,7 +486,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
