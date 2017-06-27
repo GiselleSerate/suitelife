@@ -21,6 +21,8 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textField.delegate = self
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelEditing(sender:)))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveChanges(sender:)))
@@ -35,11 +37,14 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func loadDisplayName() {
-        Database.database().reference().child("users/\(userID)").observeSingleEvent(of: .value, with: {snapshot in
+        Database.database().reference().child("users/\(userID)/displayName").observeSingleEvent(of: .value, with: {(snapshot) in
             let displayName = snapshot.value as? String
             print(displayName)
             self.textField.text = displayName ?? "Enter Display Name"
-        })
+        }) {(error) in
+            print(error.localizedDescription)
+            
+        }
     }
     
    
@@ -52,12 +57,12 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
     
     /*
@@ -116,12 +121,13 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
      */
     
     @IBAction func cancelEditing(sender: UIStoryboardSegue) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveChanges(sender: UIStoryboardSegue) {
         Database.database().reference().child("users/\(userID)/displayName").setValue(textField.text)
         print("Saved display name \(textField.text)")
+        dismiss(animated: true, completion: nil)
     }
     
 }
