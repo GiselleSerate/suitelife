@@ -39,6 +39,22 @@ class Item: NSObject, NSCoding {
         self.price = price
     }
     
+    init(fromDictionary dict: NSDictionary) {
+        guard let dictionary = dict as? [String: Any]
+            else {
+                fatalError("Failed to cast dict to Dictionary.")
+        }
+        self.name = dictionary[PropertyKey.name] as! String
+        self.checked = dictionary[PropertyKey.checked] as! Bool
+        self.price = dictionary[PropertyKey.price] as! Int
+    }
+    
+    //MARK: Firebase
+    func toDict() -> NSDictionary {
+        let dict = [PropertyKey.name: self.name as NSString, PropertyKey.checked: self.checked as NSNumber, PropertyKey.price: self.price as NSNumber]
+        return dict as NSDictionary
+    }
+    
     
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {

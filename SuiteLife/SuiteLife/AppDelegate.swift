@@ -73,11 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     let tabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
                     // Transition to the tab controller from the sign-in
                     UIApplication.shared.keyWindow?.rootViewController = tabController
+                    print("Here is the Auth id \(Auth.auth().currentUser?.uid)")
+                    print("Here is the GID id \(GIDSignIn.sharedInstance().currentUser.userID)")
                 }
             }
-            // TODO: for testing purposes of firebase
-            let userID = GIDSignIn.sharedInstance().currentUser.userID!
-            ref.child("users/\(userID)/displayName").setValue("hello")
         } else {
             print("\(error.localizedDescription)")
         }

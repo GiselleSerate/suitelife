@@ -8,11 +8,14 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     let itemListInstance = ListDataModel.sharedInstance
     let itemPantryInstance = PantryDataModel.sharedInstance
+    
+    let userID = Auth.auth().currentUser!.uid
     
     //MARK: View Transitions
 
@@ -26,16 +29,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Load items into list.
         print("Attempting to load List items from memory...")
-        if let loadedItems = loadItems() { // If we actually do have some file of items to load.
-            itemListInstance.items = loadedItems
-            print("Loaded List items.")
-        }
-        else {
-            print("No saved List items, loading defaults...")
-            loadDefaults()
-        }
-    
-
+        loadItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,23 +114,33 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK: NSCoding
     
-    private func loadItems() -> [Item]? { // Attempts to load saved list items, but only those that are not blank.
-        print("Loading list items.")
-        var fullList = NSKeyedUnarchiver.unarchiveObject(withFile: Item.ListArchiveURL.path) as? [Item]
-        fullList?.append(Item(name: "", checked: false, price: 0))
-        return fullList
+    private func loadItems() { // Attempts to load saved list items, but only those that are not blank.
+        
+        Database.database().reference().child("users/\(userID)/list").observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
+                self.itemListInstance.items = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                print("Loaded List items.")
+            }
+            else {
+                print("No saved List items, loading defaults...")
+                self.loadDefaults()
+            }
+            self.refreshPage()
+        }) {(error) in
+            print(error.localizedDescription)
+        }
     }
     
     func saveItems() {
         // Only the items that aren't blank get saved to file.
         itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemListInstance.items, toFile: Item.ListArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("Entire list successfully saved.", log: OSLog.default, type: .debug)
-        }
-        else {
-            os_log("Failed to save list.", log: OSLog.default, type: .error)
-        }
+        
+        let items = itemListInstance.items.map{(item) -> NSDictionary in return item.toDict()}
+        
+        Database.database().reference().child("users/\(userID)/list").setValue(items)
+        
+        refreshPage()
     }
     
     
@@ -146,7 +150,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
         let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
         itemListInstance.items = [instruction1, instruction2]
-        refreshPage() // Add extra row.
+        refreshPage()
     }
     
     func transferSelected(sender: UIBarButtonItem) {

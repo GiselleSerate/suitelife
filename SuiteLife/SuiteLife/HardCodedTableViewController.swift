@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
 
 class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -16,7 +15,7 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
    
     static let name = "hello"
     
-    let userID = GIDSignIn.sharedInstance().currentUser.userID!
+    let userID = Auth.auth().currentUser!.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
