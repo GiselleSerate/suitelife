@@ -108,9 +108,12 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
                 controller?.refreshPage()
             }
-            else { // Delete this item, because you have made its text blank.
+            else if item?.name == "" { // Delete this item, because you have made its text blank.
                 itemPantryInstance.items.remove(at: (itemPantryInstance.items.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
+            }
+            else {
+                print("Just Editing, Don't Mind Me . . .")
             }
             
         }
