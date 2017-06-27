@@ -43,7 +43,8 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
             // If the view controllers already exist, return them
             print("returning view cons")
             return viewCons
-        } else {
+        } else { // TODO: investigate if the else case is what's making this buggy
+            print("returning NEW view cons")
             // Create the view controllers and add them to an array
             let viewCon1 = self.newViewController(name: "List")
             let viewCon2 = self.newViewController(name: "Pantry")
@@ -51,6 +52,20 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
             self.tabViewControllers = [viewCon1, viewCon2]
             return self.tabViewControllers
         }
+        
+        
+//        if let viewCons = self.tabViewControllers {
+//            // If the view controllers already exist, return them
+//            print("returning view cons")
+//            return viewCons
+//        } else { // TODO: investigate if the else case is what's making this buggy
+//            // Create the view controllers and add them to an array
+//            let viewCon1 = self.newViewController(name: "List")
+//            let viewCon2 = self.newViewController(name: "Pantry")
+//            self.bar.items = [TabmanBar.Item(title: "List"), TabmanBar.Item(title: "Pantry")]
+//            self.tabViewControllers = [viewCon1, viewCon2]
+//            return self.tabViewControllers
+//        }
     }
 
     
@@ -76,8 +91,8 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         print("The width of the view is \(view.bounds.maxX)")
         
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
-            appearance.layout.edgeInset = offset //TODO: figure out what values based on screen size will center this.
-        }) // TODO: reset this when the screen rotates???? I don't even know if I need to do this.
+            appearance.layout.edgeInset = offset
+        })
     }
     
 
