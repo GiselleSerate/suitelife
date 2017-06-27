@@ -14,7 +14,7 @@ class SettingsTableViewController: UITableViewController {
     //MARK: Properties
     
     //TODO: hardcode to correspond to the actual number of sections we end up with
-    static let rowsPerSection = [2,1]
+    static let rowsPerSection = [3,1]
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         // Sign out from Google
@@ -23,7 +23,31 @@ class SettingsTableViewController: UITableViewController {
         // Transition to the sign in view controller
         UIApplication.shared.keyWindow?.rootViewController = signInController
     }
+    
+    //MARK: Edit Single Properties
 
+    @IBAction func editLocation(_ sender: Any) {
+        print("Location pressed")
+        let locationEditor = getSinglePropertyEditor()
+        locationEditor.setProperty(propertyKey: "location", propertyName: "Location")
+        let navController = UINavigationController(rootViewController: locationEditor)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    @IBAction func editDisplayName(_ sender: Any) {
+        print("Display name pressed")
+        let displayNameEditor = getSinglePropertyEditor()
+        displayNameEditor.setProperty(propertyKey: "displayName", propertyName: "Display Name")
+        let navController = UINavigationController(rootViewController: displayNameEditor)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    //MARK: Private Methods
+    
+    private func getSinglePropertyEditor() -> EditSinglePropertyTableViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyTableViewController") as! EditSinglePropertyTableViewController
+    }
+    
     // MARK: - Table view data source
     
     // This is a STATIC table, so we only need to implement the number of sections and rows in them

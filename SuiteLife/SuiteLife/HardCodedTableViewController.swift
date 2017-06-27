@@ -12,8 +12,6 @@ import Firebase
 class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
-   
-    static let name = "hello"
     
     let userID = Auth.auth().currentUser!.uid
     
@@ -38,7 +36,7 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     func loadDisplayName() {
         Database.database().reference().child("users/\(userID)/displayName").observeSingleEvent(of: .value, with: {(snapshot) in
             let displayName = snapshot.value as? String
-            print(displayName)
+            print(displayName ?? "")
             self.textField.text = displayName ?? "Enter Display Name"
         }) {(error) in
             print(error.localizedDescription)
@@ -125,7 +123,7 @@ class HardCodedTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func saveChanges(sender: UIStoryboardSegue) {
         Database.database().reference().child("users/\(userID)/displayName").setValue(textField.text)
-        print("Saved display name \(textField.text)")
+        print("Saved display name \(textField.text ?? "")")
         dismiss(animated: true, completion: nil)
     }
     
