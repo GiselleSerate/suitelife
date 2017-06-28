@@ -1,5 +1,5 @@
 //
-//  ListTableViewCell.swift
+//  InventoryTableViewCell.swift
 //  SuiteLife
 //
 //  Created by cssummer17 on 6/13/17.
@@ -15,7 +15,7 @@ struct TextFieldType {
     static let price = 1
 }
 
-class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
+class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
@@ -29,7 +29,9 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var item: Item?
     
-    weak var controller: ListTableViewController?
+    weak var controller: InventoryTableViewController?
+    
+    var type: InventoryType = .list     // By default, the cell is of type list.
     
     func attachItem(_ newItem: inout Item) {
         
@@ -109,7 +111,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
                 controller?.refreshPage()
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
-                itemListPantryInstance.list.remove(at: (itemListPantryInstance.list.index(of: item!))!) // Delete item.
+                itemListPantryInstance.dict[type]!.remove(at: (itemListPantryInstance.dict[type]!.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
             else { // Allow an edit. Do nothing. 

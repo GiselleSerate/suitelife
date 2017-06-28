@@ -9,13 +9,16 @@
 
 import Foundation
 
+enum InventoryType {
+    case list, pantry
+}
+
 class ListPantryDataModel {
 
     static var sharedInstance = ListPantryDataModel()
     
     private init() { }
     
-    var list = [Item]()
-    var pantry = [Item]()
+    var dict = [.list: [Item](), .pantry: [Item]()] as [InventoryType: [Item]]
     
 }
