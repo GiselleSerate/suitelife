@@ -16,7 +16,6 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
     var tabViewControllers: [UIViewController]?
     
     override func viewDidLoad() {
-        print("CALLED VIEWDIDLOAD")
         super.viewDidLoad()
         
         // Tabman setup
@@ -30,7 +29,6 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
     
     // Runs when the device rotates.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("DEVICE ROTATED")
         coordinator.animate(alongsideTransition: nil) { _ in
             // Run viewDidLoad to recalibrate the screensize.
             self.viewDidLoad()
@@ -77,7 +75,6 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         
         // Set offset using font sizing.
         let offset = (view.bounds.maxX-tabmanWidth.width-40)/2
-        print("The width of the view is \(view.bounds.maxX)")
         
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
             appearance.layout.edgeInset = offset

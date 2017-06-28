@@ -24,7 +24,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             self.type = .pantry
             self.notType = .list
         }
-        print("Set type to \(self.type).")
     }
     
     //MARK: View Transitions
@@ -138,10 +137,10 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             
             if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
                 self.itemListPantryInstance.dict[self.type] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
-                print("Loaded List items.")
+                print("Loaded \(self.type) items.")
             }
             else {
-                print("No saved List items, loading defaults...")
+                print("No saved \(self.type) items, loading defaults...")
                 self.loadDefaults()
             }
             self.refreshPage()
@@ -171,9 +170,10 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     func transferSelected(sender: UIBarButtonItem) {
         for thing in itemListPantryInstance.dict[type]! {
             if thing.checked {
+                print(thing)
                 thing.checked = false // Reset checkedness.
-                itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter() {$0 != thing} // Take the item out of the list.
-                itemListPantryInstance.dict[notType]!.append(thing) // Put the item into the pantry.
+                itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter() {$0 != thing} // Take the item out of this inventory.
+                itemListPantryInstance.dict[notType]!.append(thing) // Put the item into the opposing inventory.
             }
         }
         saveItems() // Save to file.
@@ -182,7 +182,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
 
     
     func refreshPage() {
-        print("REFRESH LIST")
+        print("Refreshing \(type).")
         itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
         itemListPantryInstance.dict[type]!.append(Item(name: "", checked: false, price: 0)) // Do only once.
         tableView.reloadData()
