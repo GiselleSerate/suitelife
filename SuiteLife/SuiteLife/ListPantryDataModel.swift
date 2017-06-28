@@ -1,5 +1,5 @@
 //
-//  ItemsDataModel.swift
+//  ListPantryDataModel.swift
 //  SuiteLife
 //
 //  Created by cssummer17 on 6/20/17.
@@ -9,12 +9,13 @@
 
 import Foundation
 
-class ListDataModel {
+class ListPantryDataModel {
 
-    static var sharedInstance = ListDataModel()
+    static var sharedInstance = ListPantryDataModel()
     
     private init() { }
     
-    var items = [Item]()
+    var list = [Item]()
+    var pantry = [Item]()
     
 }

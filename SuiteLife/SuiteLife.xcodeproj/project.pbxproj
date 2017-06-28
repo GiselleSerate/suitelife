@@ -18,7 +18,7 @@
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
 		CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */; };
 		CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */; };
-		CB573A401EF99DB600ECCFDA /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */; };
+		CB573A401EF99DB600ECCFDA /* ListPantryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A3F1EF99DB600ECCFDA /* ListPantryDataModel.swift */; };
 		CB573A421EF9E8F800ECCFDA /* PantryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */; };
 		CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */; };
 		CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB577BE01EEF4AA700903EE9 /* Main.storyboard */; };
@@ -49,7 +49,7 @@
 		CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuiteLife-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDataModel.swift; sourceTree = "<group>"; };
+		CB573A3F1EF99DB600ECCFDA /* ListPantryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryDataModel.swift; sourceTree = "<group>"; };
 		CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryDataModel.swift; sourceTree = "<group>"; };
 		CB577BD91EEF4AA700903EE9 /* SuiteLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuiteLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 			children = (
 				CB3B42D61EF84ABD0006B9F4 /* Money.swift */,
 				CB728E591EF05D5300F76321 /* Item.swift */,
-				CB573A3F1EF99DB600ECCFDA /* ListDataModel.swift */,
+				CB573A3F1EF99DB600ECCFDA /* ListPantryDataModel.swift */,
 				CB573A411EF9E8F800ECCFDA /* PantryDataModel.swift */,
 				CB1633121EFDC89E00533D59 /* User.swift */,
 			);
@@ -320,7 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB573A401EF99DB600ECCFDA /* ListDataModel.swift in Sources */,
+				CB573A401EF99DB600ECCFDA /* ListPantryDataModel.swift in Sources */,
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
 				CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */,

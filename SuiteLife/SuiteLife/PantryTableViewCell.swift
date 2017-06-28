@@ -15,7 +15,7 @@ import M13Checkbox
 class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     
-    let itemPantryInstance = PantryDataModel.sharedInstance
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     
     //MARK: Properties
@@ -105,11 +105,11 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 // Do nothing.
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
-                itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
+                itemListPantryInstance.pantry.append(Item(name: "", checked: false, price: 0))
                 controller?.refreshPage()
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
-                itemPantryInstance.items.remove(at: (itemPantryInstance.items.index(of: item!))!) // Delete item.
+                itemListPantryInstance.pantry.remove(at: (itemListPantryInstance.pantry.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
             else {

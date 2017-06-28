@@ -17,7 +17,7 @@ struct TextFieldType {
 
 class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    let itemListInstance = ListDataModel.sharedInstance
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     //MARK: Properties
 
@@ -115,14 +115,14 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
                 print("Fell into Case 2")
-                itemListInstance.items.remove(at: (itemListInstance.items.index(of: item!))!) // Delete item.
+                itemListPantryInstance.list.remove(at: (itemListPantryInstance.list.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
             else { // Allow an edit. Do nothing. 
                 print("Fell into Case 3")
             }
             
-            print(itemListInstance.items)
+            print(itemListPantryInstance.list)
         }
     }
     

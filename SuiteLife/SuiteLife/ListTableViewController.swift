@@ -12,8 +12,7 @@ import Firebase
 
 class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
-    let itemListInstance = ListDataModel.sharedInstance
-    let itemPantryInstance = PantryDataModel.sharedInstance
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     let userID = Auth.auth().currentUser!.uid
     
@@ -40,7 +39,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Calculate the number of new rows required
         let numRows = tableView.numberOfRows(inSection: 0)
-        let numNewRows = self.itemListInstance.items.count - numRows
+        let numNewRows = self.itemListPantryInstance.list.count - numRows
         
         if numNewRows > 0 {
             print("The number of rows is not consistent, adding in new rows...")
@@ -76,7 +75,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // The number of rows is equal to the number of items.
-        return itemListInstance.items.count
+        return itemListPantryInstance.list.count
     }
 
     
@@ -89,7 +88,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         // Configure the cell...
-        var item = itemListInstance.items[indexPath.row]
+        var item = itemListPantryInstance.list[indexPath.row]
         cell.attachItem(&item)
         cell.controller = self
         return cell
@@ -99,7 +98,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            itemListInstance.items.remove(at: indexPath.row)
+            itemListPantryInstance.list.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Implement if we want an add item button
@@ -110,7 +109,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     // Support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if indexPath.row == itemListInstance.items.index(where: {$0.name == ""}) {
+        if indexPath.row == itemListPantryInstance.list.index(where: {$0.name == ""}) {
             // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
         }
@@ -121,10 +120,10 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     // Support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let itemToMove = itemListInstance.items[fromIndexPath.row]
-        itemListInstance.items.remove(at: fromIndexPath.row)
-        itemListInstance.items.insert(itemToMove, at: to.row)
-        if to.row == itemListInstance.items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
+        let itemToMove = itemListPantryInstance.list[fromIndexPath.row]
+        itemListPantryInstance.list.remove(at: fromIndexPath.row)
+        itemListPantryInstance.list.insert(itemToMove, at: to.row)
+        if to.row == itemListPantryInstance.list.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
             refreshPage()
         }
@@ -138,7 +137,7 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
         Database.database().reference().child("users/\(userID)/list").observeSingleEvent(of: .value, with: {(snapshot) in
             
             if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
-                self.itemListInstance.items = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                self.itemListPantryInstance.list = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
                 print("Loaded List items.")
             }
             else {
@@ -153,9 +152,9 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     func saveItems() {
         // Only the items that aren't blank get saved to file.
-        itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
+        itemListPantryInstance.list = itemListPantryInstance.list.filter{$0.name != ""}
         
-        let items = itemListInstance.items.map{(item) -> NSDictionary in return item.toDict()}
+        let items = itemListPantryInstance.list.map{(item) -> NSDictionary in return item.toDict()}
         
         Database.database().reference().child("users/\(userID)/list").setValue(items)
     }
@@ -166,16 +165,16 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     func loadDefaults() {
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
         let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
-        itemListInstance.items = [instruction1, instruction2]
+        itemListPantryInstance.list = [instruction1, instruction2]
         refreshPage()
     }
     
     func transferSelected(sender: UIBarButtonItem) {
-        for thing in itemListInstance.items {
+        for thing in itemListPantryInstance.list {
             if thing.checked {
                 thing.checked = false // Reset checkedness.
-                itemListInstance.items = itemListInstance.items.filter() {$0 != thing} // Take the item out of the list.
-                itemPantryInstance.items.append(thing) // Put the item into the pantry.
+                itemListPantryInstance.list = itemListPantryInstance.list.filter() {$0 != thing} // Take the item out of the list.
+                itemListPantryInstance.pantry.append(thing) // Put the item into the pantry.
             }
         }
         saveItems() // Save to file.
@@ -185,8 +184,8 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     
     func refreshPage() {
         print("REFRESH LIST")
-        itemListInstance.items = itemListInstance.items.filter{$0.name != ""}
-        itemListInstance.items.append(Item(name: "", checked: false, price: 0)) // Do only once.
+        itemListPantryInstance.list = itemListPantryInstance.list.filter{$0.name != ""}
+        itemListPantryInstance.list.append(Item(name: "", checked: false, price: 0)) // Do only once.
         tableView.reloadData()
     }
     

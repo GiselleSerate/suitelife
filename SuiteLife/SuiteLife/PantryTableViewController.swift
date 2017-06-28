@@ -12,8 +12,7 @@ import Firebase
 
 class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
-    let itemListInstance = ListDataModel.sharedInstance
-    let itemPantryInstance = PantryDataModel.sharedInstance
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     let userID = Auth.auth().currentUser!.uid
     
@@ -39,7 +38,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Calculate the number of new rows required
         let numRows = tableView.numberOfRows(inSection: 0)
-        let numNewRows = self.itemPantryInstance.items.count - numRows
+        let numNewRows = self.itemListPantryInstance.pantry.count - numRows
         
         if numNewRows > 0 {
             print("The number of rows is not consistent, adding in new rows...")
@@ -52,7 +51,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         tableView.reloadData()
         
-        print("Contents of PantryView's items \(self.itemPantryInstance.items.map{item in item.name})")
+        print("Contents of PantryView's items \(self.itemListPantryInstance.pantry.map{item in item.name})")
         self.refreshPage()
     }
     
@@ -70,7 +69,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // The number of rows is equal to the number of items in the data model
-        return itemPantryInstance.items.count
+        return itemListPantryInstance.pantry.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +80,8 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
                 fatalError("The dequeued cell is not an instance of PantryTableViewCell.")
         }
         
-        // Configure the cell with the item at its index in itemPantryInstance.items
-        var item = itemPantryInstance.items[indexPath.row]
+        // Configure the cell with the item at its index in itemListPantryInstance.pantry
+        var item = itemListPantryInstance.pantry[indexPath.row]
         cell.attachItem(&item)
         cell.controller = self
         return cell
@@ -92,7 +91,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            itemPantryInstance.items.remove(at: indexPath.row)
+            itemListPantryInstance.pantry.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Implement if we want an add item button
@@ -103,7 +102,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     // Support conditional editing of the table view.
     // Return true if item should be editable, false otherwise
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == itemPantryInstance.items.index(where: {$0.name == ""}) {
+        if indexPath.row == itemListPantryInstance.pantry.index(where: {$0.name == ""}) {
             // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
         }
@@ -114,13 +113,13 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     // Support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let itemToMove = itemPantryInstance.items[fromIndexPath.row]
-        itemPantryInstance.items.remove(at: fromIndexPath.row)
-        itemPantryInstance.items.insert(itemToMove, at: to.row)
-        if to.row == itemPantryInstance.items.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
+        let itemToMove = itemListPantryInstance.pantry[fromIndexPath.row]
+        itemListPantryInstance.pantry.remove(at: fromIndexPath.row)
+        itemListPantryInstance.pantry.insert(itemToMove, at: to.row)
+        if to.row == itemListPantryInstance.pantry.count - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             // Possibly a little excessive; I could likely hard code deleting "second to last" instead of "all blanks"
-            itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
-            itemPantryInstance.items.append(Item(name: "", checked: false, price: 0))
+            itemListPantryInstance.pantry = itemListPantryInstance.pantry.filter{$0.name != ""}
+            itemListPantryInstance.pantry.append(Item(name: "", checked: false, price: 0))
             self.tableView.reloadData()
         }
     }
@@ -133,7 +132,7 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
         Database.database().reference().child("users/\(userID)/pantry").observeSingleEvent(of: .value, with: {(snapshot) in
             
             if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
-                self.itemPantryInstance.items = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                self.itemListPantryInstance.pantry = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
                 print("Loaded Pantry items.")
             }
             else {
@@ -148,9 +147,9 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func saveItems() {
         // Only the items that aren't blank get saved to file.
-        itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
+        itemListPantryInstance.pantry = itemListPantryInstance.pantry.filter{$0.name != ""}
         
-        let items = itemPantryInstance.items.map{(item) -> NSDictionary in return item.toDict()}
+        let items = itemListPantryInstance.pantry.map{(item) -> NSDictionary in return item.toDict()}
         
         Database.database().reference().child("users/\(userID)/pantry").setValue(items)
     }
@@ -161,16 +160,16 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     func loadDefaults() {
         let item1 = Item(name: "You don't have any items yet", checked: false, price: 0)
         let item2 = Item(name: "Add things here!", checked: false, price: 0)
-        itemPantryInstance.items = [item1, item2]
+        itemListPantryInstance.pantry = [item1, item2]
         refreshPage() // Add extra row.
     }
     
     func transferSelected(sender: UIBarButtonItem) {
-        for item in itemPantryInstance.items {
+        for item in itemListPantryInstance.pantry {
             if item.checked {
                 item.checked = false // Reset checkedness.
-                itemPantryInstance.items = itemPantryInstance.items.filter() {$0 != item} // Take the item out of the pantry.
-                itemListInstance.items.append(item) // Put the item into the list.
+                itemListPantryInstance.pantry = itemListPantryInstance.pantry.filter() {$0 != item} // Take the item out of the pantry.
+                itemListPantryInstance.list.append(item) // Put the item into the list.
             }
         }
         saveItems() // Save to file.
@@ -180,8 +179,8 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func refreshPage() {
         print("REFRESH PANTRY")
-        itemPantryInstance.items = itemPantryInstance.items.filter{$0.name != ""}
-        itemPantryInstance.items.append(Item(name: "", checked: false, price: 0)) // Do only once.
+        itemListPantryInstance.pantry = itemListPantryInstance.pantry.filter{$0.name != ""}
+        itemListPantryInstance.pantry.append(Item(name: "", checked: false, price: 0)) // Do only once.
         tableView.reloadData()
     }
     
