@@ -154,9 +154,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Only the items that aren't blank get saved to file.
         itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
 // TODO: Come back and fix this method.
-//        let items = itemListPantryInstance.dict[type].map{(item) -> NSDictionary in return item.toDict()}
-//        
-//        Database.database().reference().child("users/\(userID)/list").setValue(items)
+        let items = itemListPantryInstance.dict[type]?.map {$0.toDict()}
+        Database.database().reference().child("users/\(userID)/\(type)").setValue(items)
     }
     
     
