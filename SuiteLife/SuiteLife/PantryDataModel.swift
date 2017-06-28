@@ -6,6 +6,7 @@
 //  Copyright © 2017 cssummer17. All rights reserved.
 //
 //  List has stuff in it, here we create a singleton to handle all of these stuffs.
+//  This functionality has been incorporated into ListDataModel, which was renamed to ListPantryDataModel.
 
 import Foundation
 

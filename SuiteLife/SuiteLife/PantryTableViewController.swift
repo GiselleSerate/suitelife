@@ -34,24 +34,6 @@ class PantryTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("PantryView is appearing, checking to make sure the number of rows is consistent...")
-        
-        // Calculate the number of new rows required
-        let numRows = tableView.numberOfRows(inSection: 0)
-        let numNewRows = self.itemListPantryInstance.pantry.count - numRows
-        
-        if numNewRows > 0 {
-            print("The number of rows is not consistent, adding in new rows...")
-            let newIndeces = numRows ..< numRows + numNewRows
-            print("New indeces to be added: \(newIndeces)")
-            let newIndexPaths = newIndeces.map { index in
-                IndexPath(row: index, section: 0)}
-            // Add the rows
-            tableView.insertRows(at: newIndexPaths, with: .automatic)
-        }
-        tableView.reloadData()
-        
-        print("Contents of PantryView's items \(self.itemListPantryInstance.pantry.map{item in item.name})")
         self.refreshPage()
     }
     

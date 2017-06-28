@@ -112,8 +112,7 @@ class PantryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 itemListPantryInstance.pantry.remove(at: (itemListPantryInstance.pantry.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
-            else {
-                print("Just Editing, Don't Mind Me . . .")
+            else { // Allow an edit. Do nothing.
             }
             
         }

@@ -90,12 +90,10 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == TextFieldType.name { // If it's a name
             storedText = textField.text! // Keep the old text in this variable.
-            print("I stored \(textField.text!)")
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("I finished editing.")
         // Edit the attributes in the array.
         item?.name = nameLabel.text ?? ""
         item?.checked = checkbox.value! as! Bool
@@ -106,23 +104,16 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             
             if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again.
                 //Do nothing.
-                print("Fell into Case 0")
-                
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
-                print("Fell into Case 1")
                 controller?.refreshPage()
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
-                print("Fell into Case 2")
                 itemListPantryInstance.list.remove(at: (itemListPantryInstance.list.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
             else { // Allow an edit. Do nothing. 
-                print("Fell into Case 3")
             }
-            
-            print(itemListPantryInstance.list)
         }
     }
     

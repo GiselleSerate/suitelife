@@ -34,24 +34,6 @@ class ListTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Maybe this will help i do't know
-        print("PantryView is appearing, checking to make sure the number of rows is consistent...")
-        
-        // Calculate the number of new rows required
-        let numRows = tableView.numberOfRows(inSection: 0)
-        let numNewRows = self.itemListPantryInstance.list.count - numRows
-        
-        if numNewRows > 0 {
-            print("The number of rows is not consistent, adding in new rows...")
-            let newIndeces = numRows ..< numRows + numNewRows
-            print("New indeces to be added: \(newIndeces)")
-            let newIndexPaths = newIndeces.map { index in
-                IndexPath(row: index, section: 0)}
-            // Add the rows
-            tableView.insertRows(at: newIndexPaths, with: .automatic)
-        }
-        // end helpage
-        
         self.refreshPage()
     }
     
