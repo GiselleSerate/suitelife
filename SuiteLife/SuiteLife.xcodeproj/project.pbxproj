@@ -168,7 +168,6 @@
 				CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */,
 				CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */,
 				CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */,
-				CBA239F01F01C7B300006155 /* HardCodedTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +190,7 @@
 				CB4B7A891F040F5000C41DB2 /* PantryDataModel.swift */,
 				CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */,
 				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
+				CBA239F01F01C7B300006155 /* HardCodedTableViewController.swift */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
