@@ -36,13 +36,13 @@ class PriceHelper {
                 let centsPlaces = splitArray[1].characters.count // How many places of cents did they give us?
                 
                 if centsPlaces == 0 || centsPlaces == 2 {   // Not enough cents places (0). Cents should be zero anyway.
-                    // OR enough cents places (2). In either case, don't do anything.
+                                                            // OR enough cents places (2). In either case, don't do anything.
                 }
                 else if centsPlaces == 1 { // Not enough cents places (1).
                     cents = cents * 10
                 }
                 else if centsPlaces > 2 { // Too many cents places.
-                    for _ in 2..<centsPlaces { // I'm truncating the cents here because slicing isn't particularly Pythonic.
+                    for _ in 2..<centsPlaces { // I'm truncating the cents here because slicing in Swift isn't particularly Pythonic.
                         cents = cents/10
                     }
                 }
