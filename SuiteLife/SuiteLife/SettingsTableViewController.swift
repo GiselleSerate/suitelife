@@ -31,7 +31,7 @@ class SettingsTableViewController: UITableViewController {
         let locationEditor = getSinglePropertyEditor()
         locationEditor.setProperty(propertyKey: "location", propertyName: "Location")
         let navController = UINavigationController(rootViewController: locationEditor)
-        self.present(navController, animated: true, completion: nil)
+        self.presentViewController(navController)
     }
     
     @IBAction func editDisplayName(_ sender: Any) {
@@ -39,7 +39,7 @@ class SettingsTableViewController: UITableViewController {
         let displayNameEditor = getSinglePropertyEditor()
         displayNameEditor.setProperty(propertyKey: "displayName", propertyName: "Display Name")
         let navController = UINavigationController(rootViewController: displayNameEditor)
-        self.present(navController, animated: true, completion: nil)
+        self.presentViewController(navController)
     }
     
     @IBAction func editDietaryRestrictions(_ sender: Any) {
@@ -47,7 +47,7 @@ class SettingsTableViewController: UITableViewController {
         let dietaryRestrictionsEditor = getArrayOfPropertiesEditor()
         dietaryRestrictionsEditor.setProperty(propertyKey: "dietaryRestrictions", propertyName: "Dietary Restrictions")
         let navController = UINavigationController(rootViewController: dietaryRestrictionsEditor)
-        self.present(navController, animated: true, completion: nil)
+        self.presentViewController(navController)
     }
     
     //MARK: Private Methods
@@ -57,6 +57,15 @@ class SettingsTableViewController: UITableViewController {
     }
     private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesTableViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesTableViewController") as! EditArrayOfPropertiesTableViewController
+    }
+    
+    private func presentViewController(_ viewController: UIViewController) {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(viewController, animated: false, completion: nil)
     }
     
     // MARK: - Table view data source

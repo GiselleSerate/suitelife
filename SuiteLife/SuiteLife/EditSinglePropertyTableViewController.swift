@@ -56,7 +56,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
 
     @IBAction func cancelEditing(sender: UIBarButtonItem) {
         print("Cancel button pressed")
-        self.dismiss(animated: true, completion: nil)
+        self.exitView()
     }
     
     @IBAction func saveChanges(sender: UIBarButtonItem) {
@@ -64,7 +64,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         // Set the value corresponding to the user's ID and the cell's name
         self.databaseRef.child("users/\(userID)/\(propertyKey!)").setValue(textField.text)
         print("Saved property \(propertyKey!) with value \(textField.text ?? "")")
-        self.dismiss(animated: true, completion: nil)
+        self.exitView()
     }
     
     // MARK: TextFieldDelegate
@@ -103,5 +103,14 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         } else {
             self.saveButton?.isEnabled = true
         }
+    }
+    
+    private func exitView() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.dismiss(animated: false, completion: nil)
     }
 }

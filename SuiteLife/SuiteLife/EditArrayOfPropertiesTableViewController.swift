@@ -169,10 +169,11 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
-            if let arr = self.propertyArray {
-                // the array already exists, so just add a new row and append text to it
-                self.propertyArray!.append(text)
-                self.tableView.insertRows(at: [IndexPath(row: arr.count, section: 1)], with: .automatic)
+            if self.propertyArray != nil {
+                // the array already exists, so just add a new to the top and add text to it
+                self.propertyArray!.insert(text, at: 0)
+                // subtract 1 from the array count to make sure we add the right number of rows
+                self.tableView.insertRows(at: [IndexPath(row: propertyArray!.count - 1, section: 1)], with: .automatic)
                 self.tableView.reloadData()
             }
             else {
@@ -182,6 +183,8 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
                 //self.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
                 self.tableView.reloadData()
             }
+            // Clear the text field
+            textField.text = ""
         }
         // Hide the keyboard.
         textField.resignFirstResponder()
@@ -191,13 +194,24 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
     // MARK: Saving
     
     @IBAction func saveChanges(withSender sender: UIBarButtonItem){
-        print("Done button pressed")
+        print("Save button pressed")
         // Set the value corresponding to the user's ID and the value of propertyArray
         if let arr = self.propertyArray {
         self.databaseRef.child("users/\(userID)/\(propertyKey!)").setValue(arr as NSArray)
             print("Saved property \(propertyKey!)")
         }
-        self.dismiss(animated: true, completion: nil)
+        self.exitView()
+    }
+    
+    // MARK: Private Methods
+    
+    private func exitView() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.dismiss(animated: false, completion: nil)
     }
 
 }
