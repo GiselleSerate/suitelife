@@ -11,7 +11,7 @@ import UIKit
 class IOUViewController: UITableViewController {
     
     // Test users for display purposes.
-    var testUserDB = [User(name: "Giselle", handle: "@gserate", balance: 1200), User(name: "Cole", handle: "@ckurashige", balance: 362), User(name: "Jeni", handle: "@jzhu", balance: -869)]
+    var testUserDB = [UserWithCash(name: "Giselle", handle: "@gserate", balance: 1200), UserWithCash(name: "Cole", handle: "@ckurashige", balance: 362), UserWithCash(name: "Jeni", handle: "@jzhu", balance: -869)]
 
     override func viewDidLoad() {
         super.viewDidLoad()

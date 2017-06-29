@@ -16,7 +16,7 @@ class IOUTableViewCell: UITableViewCell {
     
     weak var controller: IOUViewController?
     
-    var user: User?
+    var user: UserWithCash?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class IOUTableViewCell: UITableViewCell {
     
     //MARK: User Initialization
     
-    func attachUser(_ newUser: inout User) {
+    func attachUser(_ newUser: inout UserWithCash) {
         
         user = newUser
         
