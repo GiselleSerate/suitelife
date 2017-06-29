@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+// TODO: Add
+
 class EditSinglePropertyTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
@@ -16,6 +18,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     
     private var propertyName: String?
     private var propertyKey: String?
+    private var uniqueRequired: Bool?
     private let databaseRef = Database.database().reference()
     
     let userID = Auth.auth().currentUser!.uid
@@ -35,9 +38,10 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     // bandaid function used in place of an initializer since setting up one was hard
-    func setProperty(propertyKey: String, propertyName: String) {
+    func setProperty(propertyKey: String, propertyName: String, unique isUnique: Bool) {
         self.propertyKey = propertyKey
         self.propertyName = propertyName
+        self.uniqueRequired = isUnique
     }
 
     // MARK: - Table view data source
@@ -79,6 +83,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
+        determineSaveButtonState()
         textField.resignFirstResponder()
         return true
     }
@@ -97,11 +102,23 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     private func determineSaveButtonState() {
-        if textField.text == "" {
-            // Don't allow saving unless the text field is nonempty
+        if (uniqueRequired!) && (textField.text != nil){
+            let usersRef = self.databaseRef.child("users")
+            // Don't allow saving until the callback returns
             self.saveButton?.isEnabled = false
-        } else {
+            usersRef.queryOrdered(byChild: propertyKey!).queryEqual(toValue: self.textField.text).observeSingleEvent(of: .value, with: {(snapshot) in
+                // If the property exists, disable the saveButton, unless it's the user's own property
+                self.saveButton.isEnabled = !snapshot.exists() // snapshot.key == self.userID
+                for child in snapshot.children {
+                    // TODO:
+                    // correctly gets the child; must figure out how to obtain id from it...
+                    print(child)
+                }
+            })
+        } else if textField.text != nil {
             self.saveButton?.isEnabled = true
+        } else {
+            self.saveButton?.isEnabled = false
         }
     }
     
