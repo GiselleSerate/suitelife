@@ -11,8 +11,11 @@ import os.log
 import Firebase
 
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
+
     
-    var type: InventoryType = .list // By default, list. Because it's forcing a default.
+    //MARK: Properties
+    
+    var type: InventoryType = .list // By default, the view controller's type will be list.
     var notType: InventoryType = .pantry
     
     let itemListPantryInstance = ListPantryDataModel.sharedInstance
@@ -20,11 +23,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     let userID = Auth.auth().currentUser!.uid
     
     func setType(type: InventoryType) {
-        if type == .pantry { // Switch everything. Else, leave it as default.
+        if type == .pantry { // Switch the controller's type to pantry. Else, leave it as default, which is list.
             self.type = .pantry
             self.notType = .list
         }
     }
+    
     
     //MARK: View Transitions
 
@@ -152,7 +156,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     func saveItems() {
         // Only the items that aren't blank get saved to file.
         itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
-// TODO: Come back and fix this method.
         let items = itemListPantryInstance.dict[type]?.map {$0.toDict()}
         Database.database().reference().child("users/\(userID)/\(type)").setValue(items)
     }
@@ -167,7 +170,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         refreshPage()
     }
     
-    func transferSelected(sender: UIBarButtonItem) {
+    func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory
+                                                        // to the opposing inventory (list -> pantry or vice versa)
         for thing in itemListPantryInstance.dict[type]! {
             if thing.checked {
                 print(thing)
@@ -179,9 +183,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         saveItems() // Save to file.
         refreshPage()
     }
-
     
-    func refreshPage() {
+    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
         print("Refreshing \(type).")
         itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
         itemListPantryInstance.dict[type]!.append(Item(name: "", checked: false, price: 0)) // Do only once.

@@ -17,13 +17,14 @@ struct TextFieldType {
 
 class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     //MARK: Properties
 
     @IBOutlet weak var checkbox: M13Checkbox!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var priceLabel: UITextField!
+    
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
     var storedText: String = ""
     
@@ -33,7 +34,10 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var type: InventoryType = .list     // By default, the cell is of type list.
     
-    func attachItem(_ newItem: inout Item) {
+    
+    //MARK: Item Initializer
+    
+    func attachItem(_ newItem: inout Item) { // Attaches inout to all of this cell's fields.
         
         item = newItem
         
@@ -60,7 +64,8 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: Run First
     
-    //The internet tells me this function is called reasonably first and often as you scroll around. They lied about "often."
+    // The internet tells me this function is called reasonably first and often as you scroll around. They lied about "often."
+    // Treating as viewDidLoad.
     override func layoutSubviews() {
 
         super.layoutSubviews()
@@ -90,7 +95,7 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.tag == TextFieldType.name { // If it's a name
+        if textField.tag == TextFieldType.name { // If the text field you're editing is a name field.
             storedText = textField.text! // Keep the old text in this variable.
         }
     }
@@ -120,7 +125,7 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Limit the price field's allowable characters to be a decimal.
+        // Limit the price field's allowable characters to be a decimal with numbers and a single period.
         if textField.tag == TextFieldType.price && string != ""{
             
             let inverseSetDot = NSCharacterSet(charactersIn:"0123456789.").inverted

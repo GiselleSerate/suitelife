@@ -35,7 +35,9 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         }
     }
 
+    
     //MARK: Tabman
+    
     func viewControllers(forPageboyViewController pageboyViewController: PageboyViewController) -> [UIViewController]? {
         if let viewCons = self.tabViewControllers { // If the view controllers already exist, return them
 
@@ -54,10 +56,10 @@ class ListPantryTabViewController: TabmanViewController, PageboyViewControllerDa
         }
     }
 
-    
     func defaultPageIndex(forPageboyViewController pageboyViewController: PageboyViewController) -> PageboyViewController.PageIndex? {
         return .first
     }
+    
     
     //MARK: Helper methods
     
