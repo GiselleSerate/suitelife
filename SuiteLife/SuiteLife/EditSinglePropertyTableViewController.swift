@@ -44,7 +44,8 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         self.uniqueRequired = isUnique
     }
 
-    // MARK: - Table view data source
+    
+    // MARK: Table View Data Source
     // This table view will only ever have 1 section and 1 row since it's meant for editing one property
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,8 +56,8 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         return 1
     }
     
+    
     // MARK: Editing and Saving
-
 
     @IBAction func cancelEditing(sender: UIBarButtonItem) {
         print("Cancel button pressed")
@@ -71,6 +72,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         self.exitView()
     }
     
+    
     // MARK: TextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -83,10 +85,10 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
-        determineSaveButtonState()
         textField.resignFirstResponder()
         return true
     }
+    
     
     // MARK: Private Methods
     
@@ -102,7 +104,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     private func determineSaveButtonState() {
-        if (uniqueRequired!) && (textField.text != nil){
+        if (uniqueRequired!) && (textField.text != nil){ // If this property needs to be unique to the user (e.g. handle).
             let usersRef = self.databaseRef.child("users")
             // Don't allow saving until the callback returns
             self.saveButton?.isEnabled = false
@@ -110,9 +112,10 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
                 // If the property exists, disable the saveButton, unless it's the user's own property
                 self.saveButton.isEnabled = !snapshot.exists() // snapshot.key == self.userID
                 for child in snapshot.children {
-                    // TODO:
-                    // correctly gets the child; must figure out how to obtain id from it...
-                    print(child)
+                    if let childRef = child as? DataSnapshot {
+                        self.saveButton?.isEnabled = self.userID == childRef.key
+                        // If there are somehow multiple people with the same ID, this would return false which is bad but multiple people should not have the same ID.
+                    }
                 }
             })
         } else if textField.text != nil {

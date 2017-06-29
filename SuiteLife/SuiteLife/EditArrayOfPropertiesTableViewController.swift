@@ -47,7 +47,8 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
         self.propertyName = propertyName
     }
     
-    // MARK: - Table view data source
+    
+    // MARK: Table View Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Section 1 is the text input, Section 2 is dynamic
@@ -150,6 +151,7 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
         return false
     }
     
+    
     //MARK: Private Methods
     
     private func loadPropertyArray() {
@@ -164,6 +166,7 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
             print(error.localizedDescription)
         }
     }
+    
     
     // MARK: TextFieldDelegate
     
@@ -191,6 +194,7 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
         return true
     }
     
+    
     // MARK: Saving
     
     @IBAction func saveChanges(withSender sender: UIBarButtonItem){
@@ -202,6 +206,7 @@ class EditArrayOfPropertiesTableViewController: UITableViewController, UITextFie
         }
         self.exitView()
     }
+    
     
     // MARK: Private Methods
     
