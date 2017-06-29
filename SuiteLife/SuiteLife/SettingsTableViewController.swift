@@ -14,7 +14,7 @@ class SettingsTableViewController: UITableViewController {
     //MARK: Properties
     
     //TODO: hardcode to correspond to the actual number of sections we end up with
-    static let rowsPerSection = [3,1]
+    static let rowsPerSection = [4,1]
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         // Sign out from Google
@@ -42,10 +42,21 @@ class SettingsTableViewController: UITableViewController {
         self.present(navController, animated: true, completion: nil)
     }
     
+    @IBAction func editDietaryRestrictions(_ sender: Any) {
+        print("Dietary Restrictions pressed")
+        let dietaryRestrictionsEditor = getArrayOfPropertiesEditor()
+        dietaryRestrictionsEditor.setProperty(propertyKey: "dietaryRestrictions", propertyName: "Dietary Restrictions")
+        let navController = UINavigationController(rootViewController: dietaryRestrictionsEditor)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
     //MARK: Private Methods
     
     private func getSinglePropertyEditor() -> EditSinglePropertyTableViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyTableViewController") as! EditSinglePropertyTableViewController
+    }
+    private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesTableViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesTableViewController") as! EditArrayOfPropertiesTableViewController
     }
     
     // MARK: - Table view data source
