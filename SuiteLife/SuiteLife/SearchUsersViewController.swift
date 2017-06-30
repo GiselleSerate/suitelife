@@ -27,6 +27,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.delegate = self
         
         searchBar.autocapitalizationType = .none
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,8 +47,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "FetchUserResultsTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FetchUserResultsTableViewCell
+        let cellIdentifier = "SearchUsersResultTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchUsersResultTableViewCell
         cell.nameLabel.text = searchResults[indexPath.row]["name"]
         cell.handleLabel.text = "@\(searchResults[indexPath.row]["handle"]!)"
         return cell
@@ -55,6 +57,14 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // assert nav controller exists
+        let viewControllers = self.navigationController!.viewControllers
+        let prevViewController = viewControllers[viewControllers.count - 2]
+        prevViewController.navigationItem.title = searchResults[indexPath.row]["name"]
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -104,14 +114,11 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func cancelButtonPressed() {
+        print("Cancel button was pressed.")
+        navigationController?.popViewController(animated: true)
     }
-    */
+ 
 
 }

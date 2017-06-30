@@ -16,7 +16,7 @@
 		CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */; };
 		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
 		CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */; };
-		CB43B6FF1F05A3A900C0A46F /* FetchUserResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* FetchUserResultsTableViewCell.swift */; };
+		CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */; };
 		CB43B7011F05A5E300C0A46F /* UserWithCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B7001F05A5E300C0A46F /* UserWithCash.swift */; };
 		CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */; };
 		CB44B9D91EF19C1F0063D9EE /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* InventoryTableViewController.swift */; };
@@ -53,7 +53,7 @@
 		CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUViewController.swift; sourceTree = "<group>"; };
 		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserTableViewController.swift; sourceTree = "<group>"; };
-		CB43B6FE1F05A3A900C0A46F /* FetchUserResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserResultsTableViewCell.swift; sourceTree = "<group>"; };
+		CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsersResultTableViewCell.swift; sourceTree = "<group>"; };
 		CB43B7001F05A5E300C0A46F /* UserWithCash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWithCash.swift; sourceTree = "<group>"; };
 		CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserInputTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9D81EF19C1F0063D9EE /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
@@ -186,9 +186,7 @@
 				CB11F81C1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift */,
 				CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */,
 				CB11F81E1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift */,
-				CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */,
-				CB43B6FE1F05A3A900C0A46F /* FetchUserResultsTableViewCell.swift */,
-				CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */,
+				CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */,
 				CB6E04831F06B3A30056C0A7 /* SearchUsersViewController.swift */,
 			);
 			name = Controllers;
@@ -208,6 +206,8 @@
 		CB9BFC491EFC6CBB009F21FA /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */,
+				CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */,
 				CB728E691EF0B12000F76321 /* PantryTableViewController.swift */,
 				CB4B7A891F040F5000C41DB2 /* PantryDataModel.swift */,
 				CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */,
@@ -352,7 +352,7 @@
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */,
-				CB43B6FF1F05A3A900C0A46F /* FetchUserResultsTableViewCell.swift in Sources */,
+				CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */,
 				CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */,
 				CB1633131EFDC89E00533D59 /* User.swift in Sources */,
 				CB813A331F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift in Sources */,

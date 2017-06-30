@@ -1,5 +1,5 @@
 //
-//  FetchUserResultsTableViewCell.swift
+//  SearchUsersResultTableViewCell.swift
 //  SuiteLife
 //
 //  Created by cssummer17 on 6/29/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FetchUserResultsTableViewCell: UITableViewCell {
+class SearchUsersResultTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
