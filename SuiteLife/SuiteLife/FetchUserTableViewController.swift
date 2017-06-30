@@ -153,11 +153,11 @@ class FetchUserTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Private Methods
     
     private func updateResults(_ query: String) { // TODO: Overhaul way we store data to be able to search case insensitively.
-        if query.characters.count < 4 {
+        if query.characters.count < 4 { // Don't search if the query is too short.
             return
         }
         print("Updating results.")
-        self.databaseRef.child("users").queryOrdered(byChild: "name").queryStarting(atValue: query).queryEnding(atValue: query+"\u{f8ff}").observeSingleEvent(of: .value, with: {(snapshot) in
+        self.databaseRef.child("users").queryOrdered(byChild: "name").queryStarting(atValue: query).queryEnding(atValue: query+"\u{f8ff}").queryLimited(toFirst:1).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
                     var dict: [String: String] = [:]
@@ -167,18 +167,12 @@ class FetchUserTableViewController: UITableViewController, UITextFieldDelegate {
                     self.resultsArray.append(dict)
                     print(dict)
                 }
-                print("Looping once again through snapshot.")
             }
-            // We're assuming for now that all of these properties are strings
-//            self.propertyArray = snapshot.value as? Array
-            self.tableView.reloadData()
-//            if self.propertyArray != nil {
-//                print("Loaded property array with key: \(self.propertyKey!).")
-//            }
+            self.tableView.reloadData() // REFRESH PAGE.
+
         }) {(error) in
             print(error.localizedDescription)
         }
-        print("Reached end of updateResults.")
     }
 
 }
