@@ -27,8 +27,9 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
+        tableView.separatorStyle = .none
         
+        searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
