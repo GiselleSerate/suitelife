@@ -48,20 +48,13 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         let cellIdentifier = "FetchUserResultsTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FetchUserResultsTableViewCell
         cell.nameLabel.text = searchResults[indexPath.row]["name"]
-        cell.handleLabel.text = searchResults[indexPath.row]["handle"]
+        cell.handleLabel.text = "@\(searchResults[indexPath.row]["handle"]!)"
         return cell
     }
     
     // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 44
-        case 1:
-            return 60
-        default:
-            fatalError("Invalid section number \(indexPath.section)")
-        }
+        return 60
     }
     
     
@@ -70,6 +63,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { // TODO: Implement for handle.
         self.searchResults = [] // Clear search results.
         if searchText.characters.count < 4 { // Don't search if the query is too short.
+            self.tableView.reloadData()
             return
         }
         print("Updating results.")
@@ -82,6 +76,25 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
                     dict["handle"] = childRef.childSnapshot(forPath: "handle").value as? String
                     self.searchResults.append(dict)
                     print(dict)
+                }
+            }
+            self.tableView.reloadData() // REFRESH PAGE.
+            
+        }) {(error) in
+            print(error.localizedDescription)
+        }
+        self.databaseRef.child("users").queryOrdered(byChild: "handle").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
+            for child in snapshot.children {
+                if let childRef = child as? DataSnapshot {
+                    let handle = childRef.childSnapshot(forPath: "handle").value as? String
+                    if !(self.searchResults.contains{$0["handle"] == handle}) {
+                        var dict: [String: String] = [:]
+                        dict["userID"] = childRef.key
+                        dict["name"] = childRef.childSnapshot(forPath: "name").value as? String
+                        dict["handle"] = childRef.childSnapshot(forPath: "handle").value as? String
+                        self.searchResults.append(dict)
+                        print(dict)
+                    }
                 }
             }
             self.tableView.reloadData() // REFRESH PAGE.
