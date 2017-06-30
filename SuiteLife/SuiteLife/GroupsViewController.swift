@@ -21,7 +21,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -33,13 +33,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func addMember(member: User) {
         if !memberArray.contains{$0==member} {
             print("Added member with name \(member.name).")
-//            tableView.insertRows(at: [IndexPath(row: memberArray.count, section: 0)], with: .automatic)
-//            memberArray.append(member)
-//            tableView.reloadData()
             self.memberArray.insert(member, at: 0)
-//            // subtract 1 from the array count to make sure we add the right number of rows
-//            print(memberArray.count)
-//            self.tableView.insertRows(at: [IndexPath(row: memberArray.count, section: 0)], with: .automatic)
             self.tableView.reloadData()
         }
     }
@@ -60,7 +54,16 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Remove \(memberArray[indexPath.row].name)?", message: nil, preferredStyle: .alert)
+        alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(.init(title: "OK", style: .default, handler: {(element) in
+            self.memberArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     /*
     // MARK: - Navigation
 
