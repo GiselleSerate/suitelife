@@ -19,6 +19,8 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     private var propertyName: String?
     private var propertyKey: String?
     private var uniqueRequired: Bool?
+    private var searchable: Bool?
+    private var lenRequired: Bool?
     private let databaseRef = Database.database().reference()
     
     let userID = Auth.auth().currentUser!.uid
@@ -38,10 +40,12 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     // bandaid function used in place of an initializer since setting up one was hard
-    func setProperty(propertyKey: String, propertyName: String, unique isUnique: Bool) {
+    func setProperty(propertyKey: String, propertyName: String, unique isUnique: Bool, searchable: Bool) { // , lenLimit: Bool
         self.propertyKey = propertyKey
         self.propertyName = propertyName
         self.uniqueRequired = isUnique
+        self.searchable = searchable
+//        self.lenRequired = lenLimit
     }
 
     
@@ -69,6 +73,11 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         // Set the value corresponding to the user's ID and the cell's name
         self.databaseRef.child("users/\(userID)/\(propertyKey!)").setValue(textField.text)
         print("Saved property \(propertyKey!) with value \(textField.text ?? "")")
+        
+        if self.searchable! {
+            let childRef = self.databaseRef.child("users/\(userID)/searchFields/\(propertyKey!)")
+            childRef.setValue(textField.text?.lowercased())
+        }
         self.exitView()
     }
     
@@ -104,11 +113,11 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     private func determineSaveButtonState() {
-//        if () && () { // If this property needs to be longer than three characters and it is /not/.
+//        if (lenRequired)! && (textField.text?.characters.count < 4) { // If this property needs to be longer than three characters and it is /not/.
 //            return false
 //        }
 //        else
-        if (uniqueRequired!) && (textField.text != nil) { // If this property needs to be unique to the user (e.g. handle).
+            if (uniqueRequired!) && (textField.text != nil) { // If this property needs to be unique to the user (e.g. handle).
             let usersRef = self.databaseRef.child("users")
             // Don't allow saving until the callback returns
             self.saveButton?.isEnabled = false

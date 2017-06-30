@@ -83,7 +83,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         print("Updating results.")
         
         // Search user database by name.
-        self.databaseRef.child("users").queryOrdered(byChild: "name").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
+        self.databaseRef.child("users").queryOrdered(byChild: "searchFields/name").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
                     var dict: [String: String] = [:]
@@ -101,7 +101,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         // Search user database by handle, check if in searchResults yet.
-        self.databaseRef.child("users").queryOrdered(byChild: "handle").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
+        self.databaseRef.child("users").queryOrdered(byChild: "searchFields/handle").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
                     let handle = childRef.childSnapshot(forPath: "handle").value as? String

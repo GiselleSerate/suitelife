@@ -29,7 +29,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func editLocation(_ sender: Any) {
         print("Location pressed")
         let locationEditor = getSinglePropertyEditor()
-        locationEditor.setProperty(propertyKey: "location", propertyName: "Location", unique: false)
+        locationEditor.setProperty(propertyKey: "location", propertyName: "Location", unique: false, searchable: false)
         let navController = UINavigationController(rootViewController: locationEditor)
         self.presentViewController(navController)
     }
@@ -37,7 +37,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func editName(_ sender: Any) {
         print("Name pressed")
         let nameEditor = getSinglePropertyEditor()
-        nameEditor.setProperty(propertyKey: "name", propertyName: "Name", unique: false)
+        nameEditor.setProperty(propertyKey: "name", propertyName: "Name", unique: false, searchable: true)
         let navController = UINavigationController(rootViewController: nameEditor)
         self.presentViewController(navController)
     }
@@ -45,7 +45,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func editHandle(_ sender: Any) {
         print("Handle pressed")
         let handleEditor = getSinglePropertyEditor()
-        handleEditor.setProperty(propertyKey: "handle", propertyName: "Handle", unique: true)
+        handleEditor.setProperty(propertyKey: "handle", propertyName: "Handle", unique: true, searchable: true)
         let navController = UINavigationController(rootViewController: handleEditor)
         self.presentViewController(navController)
     }
