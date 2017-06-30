@@ -65,10 +65,10 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.popViewController(animated: true)
     }
     
-    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+//    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 60
+//    }
     
     
     //MARK: Search Bar
