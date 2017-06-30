@@ -64,6 +64,17 @@ class FetchUserTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
+    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 44
+        case 1:
+            return 60
+        default:
+            fatalError("Invalid section number \(indexPath.section)")
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
