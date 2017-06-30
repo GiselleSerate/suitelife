@@ -104,7 +104,11 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     }
     
     private func determineSaveButtonState() {
-        if (uniqueRequired!) && (textField.text != nil){ // If this property needs to be unique to the user (e.g. handle).
+//        if () && () { // If this property needs to be longer than three characters and it is /not/.
+//            return false
+//        }
+//        else
+        if (uniqueRequired!) && (textField.text != nil) { // If this property needs to be unique to the user (e.g. handle).
             let usersRef = self.databaseRef.child("users")
             // Don't allow saving until the callback returns
             self.saveButton?.isEnabled = false

@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 
 class SearchUsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
+
+    // MARK: Properties
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -17,7 +20,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     let databaseRef = Database.database().reference()
 
     var searchResults: [[String:String]] = []
-    // [USERID: value, HANDLE: value, NAME: value]
+    // This array contains a dictionary for each search result containing: [USERID: value, HANDLE: value, NAME: value]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +56,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         cell.handleLabel.text = "@\(searchResults[indexPath.row]["handle"]!)"
         return cell
     }
-    
-    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // assert nav controller exists
         let viewControllers = self.navigationController!.viewControllers
@@ -67,16 +65,23 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.popViewController(animated: true)
     }
     
+    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     
     //MARK: Search Bar
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { // TODO: Implement for handle.
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchResults = [] // Clear search results.
         if searchText.characters.count < 4 { // Don't search if the query is too short.
             self.tableView.reloadData()
             return
         }
         print("Updating results.")
+        
+        // Search user database by name.
         self.databaseRef.child("users").queryOrdered(byChild: "name").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
@@ -93,6 +98,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         }) {(error) in
             print(error.localizedDescription)
         }
+        
+        // Search user database by handle, check if in searchResults yet.
         self.databaseRef.child("users").queryOrdered(byChild: "handle").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
@@ -114,6 +121,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
 
+    
+    // MARK: Navigation Bar
     
     func cancelButtonPressed() {
         print("Cancel button was pressed.")
