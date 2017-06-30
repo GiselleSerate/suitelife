@@ -14,6 +14,6 @@ class UserWithCash: User {
     
     init(name: String, handle: String, balance: Int) {
         self.balance = balance
-        super.init(name: name, handle: handle)
+        super.init(name: name, handle: handle, userID: "temp debug id")
     }
 }

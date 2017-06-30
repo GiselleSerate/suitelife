@@ -8,13 +8,26 @@
 
 import Foundation
 
-class User {
+class User: NSObject {
+    
     //MARK: Properties
     var name: String
     var handle: String // Venmo handle? Twitter handle? I don't care.
+    var userID: String
     
-    init(name: String, handle: String) {
+    init(name: String, handle: String, userID: String) {
         self.name = name
         self.handle = handle
+        self.userID = userID
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let object = object as? User {
+            return self.userID == object.userID
+        }
+        else {
+            return false
+        }
+    }
+    
 }

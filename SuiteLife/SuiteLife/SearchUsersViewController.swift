@@ -19,7 +19,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     
     let databaseRef = Database.database().reference()
 
-    var searchResults: [[String:String]] = []
+    var searchResults: [User] = []
     // This array contains a dictionary for each search result containing: [USERID: value, HANDLE: value, NAME: value]
     
     override func viewDidLoad() {
@@ -53,16 +53,16 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchUsersResultTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchUsersResultTableViewCell
-        cell.nameLabel.text = searchResults[indexPath.row]["name"]
-        cell.handleLabel.text = "@\(searchResults[indexPath.row]["handle"]!)"
+        cell.nameLabel.text = searchResults[indexPath.row].name
+        cell.handleLabel.text = "@\(searchResults[indexPath.row].handle)"
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // assert nav controller exists
         let viewControllers = self.navigationController!.viewControllers
-        let prevViewController = viewControllers[viewControllers.count - 2]
-        prevViewController.navigationItem.title = searchResults[indexPath.row]["name"]
+        let prevViewController = viewControllers[viewControllers.count - 2] as! GroupsViewController
+        prevViewController.addMember(member: searchResults[indexPath.row])
         navigationController?.popViewController(animated: true)
     }
     
@@ -86,12 +86,10 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         self.databaseRef.child("users").queryOrdered(byChild: "searchFields/name").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
-                    var dict: [String: String] = [:]
-                    dict["userID"] = childRef.key
-                    dict["name"] = childRef.childSnapshot(forPath: "name").value as? String
-                    dict["handle"] = childRef.childSnapshot(forPath: "handle").value as? String
-                    self.searchResults.append(dict)
-                    print(dict)
+                    let userID = childRef.key
+                    let name = childRef.childSnapshot(forPath: "name").value as! String
+                    let handle = childRef.childSnapshot(forPath: "handle").value as! String
+                    self.searchResults.append(User(name: name, handle: handle, userID: userID))
                 }
             }
             self.tableView.reloadData() // REFRESH PAGE.
@@ -104,14 +102,11 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         self.databaseRef.child("users").queryOrdered(byChild: "searchFields/handle").queryStarting(atValue: searchText).queryEnding(atValue: searchText+"\u{f8ff}").queryLimited(toFirst:10).observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
-                    let handle = childRef.childSnapshot(forPath: "handle").value as? String
-                    if !(self.searchResults.contains{$0["handle"] == handle}) {
-                        var dict: [String: String] = [:]
-                        dict["userID"] = childRef.key
-                        dict["name"] = childRef.childSnapshot(forPath: "name").value as? String
-                        dict["handle"] = childRef.childSnapshot(forPath: "handle").value as? String
-                        self.searchResults.append(dict)
-                        print(dict)
+                    let handle = childRef.childSnapshot(forPath: "handle").value as! String
+                    if !(self.searchResults.contains{$0.handle == handle}) {
+                        let userID = childRef.key
+                        let name = childRef.childSnapshot(forPath: "name").value as! String
+                        self.searchResults.append(User(name: name, handle: handle, userID: userID))
                     }
                 }
             }
