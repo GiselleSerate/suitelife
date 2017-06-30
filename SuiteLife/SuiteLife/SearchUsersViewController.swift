@@ -26,7 +26,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dataSource = self
         searchBar.delegate = self
         
-        // Do any additional setup after loading the view.
+        searchBar.autocapitalizationType = .none
     }
 
     override func didReceiveMemoryWarning() {
