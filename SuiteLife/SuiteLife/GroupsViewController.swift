@@ -12,6 +12,10 @@ import Firebase
 class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var memberArray: [User] = []
+    var groupID: String?
+    let databaseRef = Database.database().reference()
+    
+    @IBOutlet weak var nameField: UITextField!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -38,6 +42,9 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    
+    // MARK: Table View
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -62,6 +69,39 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.deleteRows(at: [indexPath], with: .fade)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: Firebase
+    
+    func loadGroup(groupID: String) {
+        databaseRef.child("groups/\(groupID)").observe(.value, with: { snapshot in
+            self.nameField.text = snapshot.childSnapshot(forPath: "name").value as? String
+            let memberIDArray = snapshot.childSnapshot(forPath: "members").value as! [String]
+            self.createUsersByID(userIDs: memberIDArray)
+        })
+    }
+    
+    func saveGroup() {
+        var group: DatabaseReference
+        if groupID == nil {
+            group = databaseRef.child("groups").childByAutoId()
+        }
+        else {
+            group = databaseRef.child("groups/\(groupID!)")
+        }
+        group.child("name").setValue(nameField.text)
+        group.child("members").setValue(memberArray.map{$0.userID})
+    }
+    
+    private func createUsersByID(userIDs: [String]) {
+        for userID in userIDs {
+            databaseRef.child("users/\(userID)").observe(.value, with: { snapshot in
+                let name = snapshot.childSnapshot(forPath: "name").value as! String
+                let handle = snapshot.childSnapshot(forPath: "handle").value as! String
+                self.memberArray.append(User(name: name, handle: handle, userID: userID))
+            })
+        }
     }
 
     /*
