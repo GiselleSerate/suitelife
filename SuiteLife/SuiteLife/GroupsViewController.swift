@@ -26,7 +26,10 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        // Do any additional setup after loading the view.
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed))
+        
+        createUsersByID(userIDs: [(Auth.auth().currentUser?.uid)!])
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,12 +65,19 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Remove \(memberArray[indexPath.row].name)?", message: nil, preferredStyle: .alert)
-        alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(.init(title: "OK", style: .default, handler: {(element) in
-            self.memberArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }))
+        var alert: UIAlertController
+        if Auth.auth().currentUser?.uid != memberArray[indexPath.row].userID {
+            alert = UIAlertController(title: "Remove \(memberArray[indexPath.row].name)?", message: nil, preferredStyle: .alert)
+            alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(.init(title: "OK", style: .default, handler: {(element) in
+                self.memberArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }))
+        }
+        else {
+            alert = UIAlertController(title: "You cannot remove yourself from a group.", message: nil, preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+        }
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -75,9 +85,14 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: Firebase
     
     func loadGroup(groupID: String) {
-        databaseRef.child("groups/\(groupID)").observe(.value, with: { snapshot in
+        self.groupID = groupID
+        self.databaseRef.child("groups/\(groupID)").observe(.value, with: { snapshot in
             self.nameField.text = snapshot.childSnapshot(forPath: "name").value as? String
-            let memberIDArray = snapshot.childSnapshot(forPath: "members").value as! [String]
+            let children = snapshot.childSnapshot(forPath: "members").children
+            var memberIDArray: [String] = []
+            for child in children {
+                memberIDArray.append((child as! DataSnapshot).key)
+            }
             self.createUsersByID(userIDs: memberIDArray)
         })
     }
@@ -91,19 +106,45 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             group = databaseRef.child("groups/\(groupID!)")
         }
         group.child("name").setValue(nameField.text)
-        group.child("members").setValue(memberArray.map{$0.userID})
+        // first save the user into the group so that it can be edited
+        group.child("members/\(Auth.auth().currentUser!.uid)").setValue(true)
+        // then set the remaining user values
+        for member in memberArray {
+            if member.userID != Auth.auth().currentUser!.uid {
+                let child = group.child("members/\(member.userID)")
+                child.setValue(true)
+            }
+        }
+//        group.child("members").setValue(memberArray.map{$0.userID})
     }
     
     private func createUsersByID(userIDs: [String]) {
         for userID in userIDs {
-            databaseRef.child("users/\(userID)").observe(.value, with: { snapshot in
-                let name = snapshot.childSnapshot(forPath: "name").value as! String
-                let handle = snapshot.childSnapshot(forPath: "handle").value as! String
-                self.memberArray.append(User(name: name, handle: handle, userID: userID))
-            })
+            if !memberArray.contains{$0.userID == userID}{
+                databaseRef.child("users/\(userID)").observe(.value, with: { snapshot in
+                    let name = snapshot.childSnapshot(forPath: "name").value as! String
+                    let handle = snapshot.childSnapshot(forPath: "handle").value as! String
+                    self.memberArray.append(User(name: name, handle: handle, userID: userID))
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
 
+    
+    // MARK: Cancel Button
+    
+    func cancelButtonPressed() {
+        print("Cancel button was pressed.")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func saveButtonPressed() {
+        print("Save button was pressed.")
+        saveGroup()
+        navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
