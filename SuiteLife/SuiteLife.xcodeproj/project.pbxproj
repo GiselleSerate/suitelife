@@ -13,8 +13,7 @@
 		CB1633111EFDB56E00533D59 /* PriceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633101EFDB56E00533D59 /* PriceHelper.swift */; };
 		CB1633131EFDC89E00533D59 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633121EFDC89E00533D59 /* User.swift */; };
 		CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */; };
-		CB24CEC41F06EF800044044C /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24CEC31F06EF800044044C /* GroupsViewController.swift */; };
-		CB24CEC61F07120C0044044C /* LoadGroupTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24CEC51F07120C0044044C /* LoadGroupTestViewController.swift */; };
+		CB24CEC41F06EF800044044C /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24CEC31F06EF800044044C /* EditGroupViewController.swift */; };
 		CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */; };
 		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
 		CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */; };
@@ -40,6 +39,9 @@
 		CB813A331F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */; };
 		CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA239E81F01796400006155 /* GoogleService-Info.plist */; };
 		CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */; };
+		CBA5CCFA1F0D83B2003FEFB9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */; };
+		CBA5CCFC1F0D84F8003FEFB9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCFB1F0D84F8003FEFB9 /* Group.swift */; };
+		CBA5CCFE1F0D9237003FEFB9 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */; };
 		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +54,7 @@
 		CB1633101EFDB56E00533D59 /* PriceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceHelper.swift; sourceTree = "<group>"; };
 		CB1633121EFDC89E00533D59 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUTableViewCell.swift; sourceTree = "<group>"; };
-		CB24CEC31F06EF800044044C /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
-		CB24CEC51F07120C0044044C /* LoadGroupTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadGroupTestViewController.swift; sourceTree = "<group>"; };
+		CB24CEC31F06EF800044044C /* EditGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
 		CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUViewController.swift; sourceTree = "<group>"; };
 		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserTableViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +83,9 @@
 		CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditArrayOfPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		CBA239E81F01796400006155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSinglePropertyTableViewController.swift; sourceTree = "<group>"; };
+		CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		CBA5CCFB1F0D84F8003FEFB9 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +158,7 @@
 				CB573A3F1EF99DB600ECCFDA /* ListPantryDataModel.swift */,
 				CB1633121EFDC89E00533D59 /* User.swift */,
 				CB43B7001F05A5E300C0A46F /* UserWithCash.swift */,
+				CBA5CCFB1F0D84F8003FEFB9 /* Group.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -190,10 +195,7 @@
 				CB11F81C1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift */,
 				CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */,
 				CB11F81E1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift */,
-				CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */,
-				CB6E04831F06B3A30056C0A7 /* SearchUsersViewController.swift */,
-				CB24CEC31F06EF800044044C /* GroupsViewController.swift */,
-				CB24CEC51F07120C0044044C /* LoadGroupTestViewController.swift */,
+				CBA5CCFF1F0DAD91003FEFB9 /* Groups */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -220,6 +222,18 @@
 				CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */,
 			);
 			name = Deprecated;
+			sourceTree = "<group>";
+		};
+		CBA5CCFF1F0DAD91003FEFB9 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				CB24CEC31F06EF800044044C /* EditGroupViewController.swift */,
+				CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */,
+				CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */,
+				CB6E04831F06B3A30056C0A7 /* SearchUsersViewController.swift */,
+				CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */,
+			);
+			name = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,10 +361,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB24CEC41F06EF800044044C /* GroupsViewController.swift in Sources */,
+				CB24CEC41F06EF800044044C /* EditGroupViewController.swift in Sources */,
 				CB573A401EF99DB600ECCFDA /* ListPantryDataModel.swift in Sources */,
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
+				CBA5CCFC1F0D84F8003FEFB9 /* Group.swift in Sources */,
 				CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */,
+				CBA5CCFA1F0D83B2003FEFB9 /* GroupsViewController.swift in Sources */,
 				CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */,
 				CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */,
 				CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */,
@@ -360,7 +376,6 @@
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */,
 				CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */,
-				CB24CEC61F07120C0044044C /* LoadGroupTestViewController.swift in Sources */,
 				CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */,
 				CB1633131EFDC89E00533D59 /* User.swift in Sources */,
 				CB813A331F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift in Sources */,
@@ -373,6 +388,7 @@
 				CB44B9D91EF19C1F0063D9EE /* InventoryTableViewController.swift in Sources */,
 				CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */,
 				CB4B7A8A1F040F5000C41DB2 /* PantryDataModel.swift in Sources */,
+				CBA5CCFE1F0D9237003FEFB9 /* GroupsTableViewCell.swift in Sources */,
 				CB577BDD1EEF4AA700903EE9 /* AppDelegate.swift in Sources */,
 				CB43B7011F05A5E300C0A46F /* UserWithCash.swift in Sources */,
 				CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */,
@@ -504,7 +520,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,7 +538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
