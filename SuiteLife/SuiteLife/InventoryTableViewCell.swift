@@ -34,6 +34,7 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var type: InventoryType = .list     // By default, the cell is of type list.
     
+    var groupID: String?
     
     //MARK: Item Initializer
     
@@ -58,7 +59,6 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Label the labels.
         nameLabel.tag = TextFieldType.name
         priceLabel.tag = TextFieldType.price
-        
     }
     
     
@@ -116,7 +116,7 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 controller?.refreshPage()
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
-                itemListPantryInstance.dict[type]!.remove(at: (itemListPantryInstance.dict[type]!.index(of: item!))!) // Delete item.
+                itemListPantryInstance.dict[type]![groupID!]!.remove(at: (itemListPantryInstance.dict[type]![groupID!]!.index(of: item!))!) // Delete item.
                 controller?.refreshPage() // Refresh the table.
             }
             else { // Allow an edit. Do nothing. 

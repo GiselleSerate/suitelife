@@ -19,6 +19,7 @@ class ListPantryDataModel {
     
     private init() { }
     
-    var dict = [.list: [Item](), .pantry: [Item]()] as [InventoryType: [Item]]
+    // Contains keys (of type InventoryType) and values (which are dictionaries of groupID: listOfItems).
+    var dict = [.list: ["personal": [Item]()], .pantry: ["personal": [Item]()]] as [InventoryType: [String: [Item]]]
     
 }

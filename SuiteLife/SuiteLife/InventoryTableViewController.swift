@@ -6,6 +6,9 @@
 //  Copyright © 2017 cssummer17. All rights reserved.
 //
 
+
+// TODO: Marked my ternary operators with todos because I see a lot of c/ping.
+
 import UIKit
 import os.log
 import Firebase
@@ -14,7 +17,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
 
     let databaseRef = Database.database().reference()
     
-    var groupIDs: [String] = [] // The groups the user is in.
+    // TODO: Should be in tab view controller???
+    var groupIDs: [String] = ["personal"] // The groups the user is in.
+    var groupNames: [String] = ["Personal"] // The names of this user's groups.
     
     //MARK: Properties
     
@@ -48,9 +53,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(transferSelected(sender:)))
         
-        // Load items into list.
-        print("Attempting to load \(type) items from memory...")
-        loadItems()
+        loadGroupIDs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,12 +77,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return itemListPantryInstance.dict[type]!.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // The number of rows is equal to the number of items.
-        return itemListPantryInstance.dict[type]!.count
+        return itemListPantryInstance.dict[type]![groupIDs[section]]!.count
     }
 
     
@@ -92,11 +95,14 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         // Configure the cell...
-        var item = itemListPantryInstance.dict[type]?[indexPath.row]
+        let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, or sets it to personal if you're in the first section.
+        print(groupID)
+        var item = itemListPantryInstance.dict[type]![groupID]?[indexPath.row]
         
         cell.attachItem(&item!)
         cell.controller = self
         cell.type = self.type
+        cell.groupID = groupID
         return cell
     }
     
@@ -104,7 +110,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            itemListPantryInstance.dict[type]!.remove(at: indexPath.row)
+            let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, sets it to personal if you're in the first section.
+            itemListPantryInstance.dict[type]![groupID]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Implement if we want an add item button
@@ -116,7 +123,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         
-        if indexPath.row == itemListPantryInstance.dict[type]?.index(where: {$0.name == ""}) {
+        let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, or sets it to personal if you're in the first section.
+        if indexPath.row == itemListPantryInstance.dict[type]![groupID]?.index(where: {$0.name == ""}) {
             // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
         }
@@ -127,12 +135,21 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     // Support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let itemToMove = itemListPantryInstance.dict[type]?[fromIndexPath.row]
-        itemListPantryInstance.dict[type]!.remove(at: fromIndexPath.row)
-        itemListPantryInstance.dict[type]!.insert(itemToMove!, at: to.row)
-        if to.row == (itemListPantryInstance.dict[type]?.count)! - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
+        let itemToMove = itemListPantryInstance.dict[type]![groupIDs[fromIndexPath.section]]?[fromIndexPath.row]
+        itemListPantryInstance.dict[type]![groupIDs[fromIndexPath.section]]?.remove(at: fromIndexPath.row)
+        itemListPantryInstance.dict[type]![groupIDs[to.section]]?.insert(itemToMove!, at: to.row)
+        if to.row == (itemListPantryInstance.dict[type]![groupIDs[to.section]]?.count)! - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
             refreshPage()
         }
+    }
+    
+    // Show header titles.
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { // Ugh callbacks
+        var text = "Loading . . . "
+        if groupNames.count > section { // Presume we have loaded this many things.
+            text = groupNames[section]
+        }
+        return text
     }
     
     
@@ -145,54 +162,101 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     self.groupIDs.append(childRef.key)
                 }
             }
+            print("Here are the groups you are in. \(self.groupIDs)")
+            
+            // Load items into list.
+            print("Attempting to load \(self.type) items from memory...")
+            self.loadItems() // Load items after callback has happened.
+            self.loadGroupNames() // Less important to load names, but they exist. Call afterward.
         }) {(error) in
             print(error.localizedDescription)
         }
     }
     
+    func loadGroupNames() { // Just for header names.
+        for groupID in groupIDs.filter({$0 != "personal"}) { // sssss
+            self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.groupNames.append(snapshot.value as! String)
+                print("Here are the groups you are in. \(self.groupNames)")
+            }) {(error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     private func loadItems() { // Attempts to load saved list items.
-        
+        // Loads personal items, since they save to a different place.
         Database.database().reference().child("users/\(userID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
             
             if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
-                self.itemListPantryInstance.dict[self.type] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
-                print("Loaded \(self.type) items.")
+                self.itemListPantryInstance.dict[self.type]!["personal"] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                print("Loaded personal \(self.type) items.")
             }
             else {
-                print("No saved \(self.type) items, loading defaults...")
-                self.loadDefaults()
+                print("No saved personal \(self.type) items, loading defaults...")
+                self.loadDefaults(groupID: "personal")
             }
             self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
         }
+        // Loads group items.
+        for groupID in groupIDs.filter({$0 != "personal"}) {
+            print("We have a group that is not personal: \(groupID)")
+            Database.database().reference().child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
+                
+                if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
+                    self.itemListPantryInstance.dict[self.type]![groupID] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
+                    print("Loaded \(self.type) items for group \(groupID).")
+                }
+                else {
+                    print("No saved \(self.type) items for group \(groupID), loading defaults...")
+                    self.loadDefaults(groupID: groupID)
+                }
+                print("Here's the group inventory I just loaded.")
+                print(self.itemListPantryInstance.dict[self.type]![groupID])
+                self.refreshPage()
+            }) {(error) in
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func saveItems() {
+        print("Saving \(self.type).")
         // Only the items that aren't blank get saved to file.
-        itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
-        let items = itemListPantryInstance.dict[type]?.map {$0.toDict()}
-        Database.database().reference().child("users/\(userID)/\(type)").setValue(items)
+        for groupID in groupIDs {
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
+            let items = itemListPantryInstance.dict[type]![groupID]?.map {$0.toDict()}
+            if groupID == groupIDs.first {
+                Database.database().reference().child("users/\(userID)/\(type)").setValue(items)
+            }
+            else {
+                Database.database().reference().child("groups/\(groupID)/\(type)").setValue(items)
+            }
+        }
     }
     
     
     //MARK: Other Methods
     
-    func loadDefaults() {
+    func loadDefaults(groupID: String) {
         let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
         let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
-        itemListPantryInstance.dict[type] = [instruction1, instruction2]
+        itemListPantryInstance.dict[type]![groupID] = [instruction1, instruction2]
         refreshPage()
     }
     
     func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory
                                                         // to the opposing inventory (list -> pantry or vice versa)
-        for thing in itemListPantryInstance.dict[type]! {
-            if thing.checked {
-                print(thing)
-                thing.checked = false // Reset checkedness.
-                itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter() {$0 != thing} // Take the item out of this inventory.
-                itemListPantryInstance.dict[notType]!.append(thing) // Put the item into the opposing inventory.
+        for groupID in groupIDs {
+            for thing in itemListPantryInstance.dict[type]![groupID]! {
+                if thing.checked {
+                    print(thing)
+                    thing.checked = false // Reset checkedness.
+                    itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter() {$0 != thing} // Take the item out of this inventory.
+                    itemListPantryInstance.dict[notType]![groupID]?.append(thing) // Put the item into the opposing inventory.
+                }
             }
         }
         saveItems() // Save to file.
@@ -201,8 +265,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
         print("Refreshing \(type).")
-        itemListPantryInstance.dict[type] = itemListPantryInstance.dict[type]?.filter{$0.name != ""}
-        itemListPantryInstance.dict[type]!.append(Item(name: "", checked: false, price: 0)) // Do only once.
+        
+        for groupID in groupIDs { // Refresh every group individually.
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
+            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
+        }
+        
         tableView.reloadData()
     }
     
