@@ -6,9 +6,6 @@
 //  Copyright © 2017 cssummer17. All rights reserved.
 //
 
-
-// TODO: Marked my ternary operators with todos because I see a lot of c/ping.
-
 import UIKit
 import os.log
 import Firebase
@@ -95,8 +92,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         // Configure the cell...
-        let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, or sets it to personal if you're in the first section.
-        print(groupID)
+        let groupID = groupIDs[indexPath.section]
         var item = itemListPantryInstance.dict[type]![groupID]?[indexPath.row]
         
         cell.attachItem(&item!)
@@ -110,7 +106,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, sets it to personal if you're in the first section.
+            let groupID = groupIDs[indexPath.section]
             itemListPantryInstance.dict[type]![groupID]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -123,7 +119,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         
-        let groupID = groupIDs[indexPath.section] // TODO: Sets group ID, or sets it to personal if you're in the first section.
+        let groupID = groupIDs[indexPath.section]
         if indexPath.row == itemListPantryInstance.dict[type]![groupID]?.index(where: {$0.name == ""}) {
             // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
             return false
@@ -162,12 +158,13 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     self.groupIDs.append(childRef.key)
                 }
             }
-            print("Here are the groups you are in. \(self.groupIDs)")
+            print("Here are the IDs of groups you are in. \(self.groupIDs)")
             
             // Load items into list.
             print("Attempting to load \(self.type) items from memory...")
             self.loadItems() // Load items after callback has happened.
             self.loadGroupNames() // Less important to load names, but they exist. Call afterward.
+            self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
         }
@@ -177,7 +174,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         for groupID in groupIDs.filter({$0 != "personal"}) { // sssss
             self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
                 self.groupNames.append(snapshot.value as! String)
-                print("Here are the groups you are in. \(self.groupNames)")
+                print("Here are the names of groups you are in. \(self.groupNames)")
             }) {(error) in
                 print(error.localizedDescription)
             }
@@ -202,7 +199,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         // Loads group items.
         for groupID in groupIDs.filter({$0 != "personal"}) {
-            print("We have a group that is not personal: \(groupID)")
             Database.database().reference().child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
                 
                 if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
@@ -213,8 +209,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     print("No saved \(self.type) items for group \(groupID), loading defaults...")
                     self.loadDefaults(groupID: groupID)
                 }
-                print("Here's the group inventory I just loaded.")
-                print(self.itemListPantryInstance.dict[self.type]![groupID])
                 self.refreshPage()
             }) {(error) in
                 print(error.localizedDescription)
