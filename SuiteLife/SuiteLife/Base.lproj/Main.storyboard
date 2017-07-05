@@ -1024,16 +1024,16 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-QM-2G0" userLabel="User Stack View">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="34.5"/>
+                                                                    <rect key="frame" x="8" y="8" width="327" height="38.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glb-Iy-bdu" userLabel="Name">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="15.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="17.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dt-Ck-IQ2" userLabel="Handle">
-                                                                            <rect key="frame" x="0.0" y="19.5" width="327" height="15"/>
+                                                                            <rect key="frame" x="0.0" y="21.5" width="327" height="17"/>
                                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1070,12 +1070,52 @@
                     </view>
                     <navigationItem key="navigationItem" id="j52-xk-ZYe"/>
                     <connections>
+                        <outlet property="nameField" destination="hei-qa-9qX" id="0PD-JQ-8n7"/>
                         <outlet property="tableView" destination="m8B-r9-hOW" id="bWT-zT-NIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcN-et-6iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3664.8000000000002" y="357.57121439280365"/>
+        </scene>
+        <!--Load Group Test View Controller-->
+        <scene sceneID="X5d-zB-I1j">
+            <objects>
+                <viewController id="bhy-Ld-idZ" customClass="LoadGroupTestViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BPD-aP-H4P"/>
+                        <viewControllerLayoutGuide type="bottom" id="T1m-BA-8PJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kWo-Ov-1A3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TT-mA-Fec">
+                                <rect key="frame" x="164" y="260" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="gTl-yk-R2z" kind="show" id="ShS-yL-AAz"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uij-nm-396">
+                                <rect key="frame" x="0.0" y="148" width="359" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZtK-Rh-8ZD"/>
+                    <connections>
+                        <outlet property="groupID" destination="Uij-nm-396" id="ICD-Ue-Nyw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2k-an-e3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864.8000000000002" y="357.57121439280365"/>
         </scene>
         <!--Item-->
         <scene sceneID="IDS-BG-nft">
@@ -1089,12 +1129,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="gTl-yk-R2z" kind="relationship" relationship="rootViewController" id="oD0-0l-OYl"/>
+                        <segue destination="bhy-Ld-idZ" kind="relationship" relationship="rootViewController" id="eOx-89-hCy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4N-YJ-Fyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2940" y="358"/>
+            <point key="canvasLocation" x="2178" y="358"/>
         </scene>
     </scenes>
     <resources>
