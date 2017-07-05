@@ -31,9 +31,17 @@ class LoadGroupTestViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-//        if let nextViewController = segue.destination as? GroupsViewController {
-//            nextViewController.loadGroup(groupID: groupID.text!)
+        print(sender)
+//        if let sendButton = sender as? UIBarButtonItem {
+//            print("Sent from Bar Item")
+//            return
 //        }
+        if let nextViewController = segue.destination as? UINavigationController {
+            if let groupViewController = nextViewController.viewControllers.last as?  GroupsViewController {
+                print("Preparing to call load group")
+                groupViewController.loadGroup(groupID: groupID.text!)
+            }
+        }
     }
  
 

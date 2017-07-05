@@ -26,8 +26,8 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed))
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed))
         
         createUsersByID(userIDs: [(Auth.auth().currentUser?.uid)!])
     }
@@ -85,16 +85,19 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: Firebase
     
     func loadGroup(groupID: String) {
+        print("Calling load group")
         self.groupID = groupID
-        self.databaseRef.child("groups/\(groupID)").observe(.value, with: { snapshot in
-            self.nameField.text = snapshot.childSnapshot(forPath: "name").value as? String
+        self.databaseRef.child("groups/\(groupID)").observeSingleEvent(of: .value, with: { snapshot in
+            print("LOADGROUP CALLBACK")
+            self.nameField.text = snapshot.childSnapshot(forPath: "name").value as? String // found nil while unwrapping Optional on 2nd run. Not even that I changed anything.
             let children = snapshot.childSnapshot(forPath: "members").children
             var memberIDArray: [String] = []
             for child in children {
                 memberIDArray.append((child as! DataSnapshot).key)
             }
             self.createUsersByID(userIDs: memberIDArray)
-        })
+        }) { (error) in
+        print(error.localizedDescription)}
     }
     
     func saveGroup() {
@@ -107,6 +110,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         group.child("name").setValue(nameField.text)
         // first save the user into the group so that it can be edited
+        group.child("members").setValue(nil)
         group.child("members/\(Auth.auth().currentUser!.uid)").setValue(true)
         // then set the remaining user values
         for member in memberArray {
@@ -134,25 +138,25 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: Cancel Button
     
-    func cancelButtonPressed() {
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         print("Cancel button was pressed.")
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
     }
     
-    func saveButtonPressed() {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         print("Save button was pressed.")
         saveGroup()
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//    }
+ 
 }
