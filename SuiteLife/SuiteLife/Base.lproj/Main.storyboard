@@ -347,7 +347,7 @@
         <scene sceneID="uWC-rc-EWl">
             <objects>
                 <navigationController storyboardIdentifier="ListNavTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5l-wl-NLZ" userLabel="ListNavTableViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PIx-wV-Dvv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PIx-wV-Dvv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -644,7 +644,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lxV-NU-NIX">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lxV-NU-NIX" userLabel="User Stack View">
                                                     <rect key="frame" x="8" y="8" width="359" height="33.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAR-AX-x7d" userLabel="Name">
@@ -736,7 +736,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="kBF-AG-3SE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kBF-AG-3SE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -879,7 +879,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eDc-OA-Imk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="m8H-Pf-eus"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KrE-eY-173">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KrE-eY-173">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -897,7 +897,7 @@
             <objects>
                 <navigationController storyboardIdentifier="EditSinglePropertyTableNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2zT-yS-mAd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0B8-AX-zMh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0B8-AX-zMh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -916,7 +916,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b2G-57-M6A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="IOUs" image="google.png" id="N9z-hY-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g7K-jn-8uS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g7K-jn-8uS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -959,69 +959,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UHh-pN-PJf">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UHh-pN-PJf">
+                                <rect key="frame" x="16" y="72" width="343" height="595"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-ck-v2k" userLabel="Group Name Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-ck-v2k" userLabel="Group Name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMK-4D-idg">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMK-4D-idg">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hei-qa-9qX">
-                                                <rect key="frame" x="52" y="0.0" width="291" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g SuiteLife" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hei-qa-9qX">
+                                                <rect key="frame" x="109.5" y="0.0" width="233.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nJ6-kI-BWd" userLabel="New Member Stack View">
-                                        <rect key="frame" x="0.0" y="30" width="343" height="164.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Itg-ZE-b0K">
+                                        <rect key="frame" x="0.0" y="38" width="343" height="30"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nJ6-kI-BWd" userLabel="New Member Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="30"/>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfq-jR-BDH">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="164.5"/>
-                                                <state key="normal" title="add new member"/>
+                                                <rect key="frame" x="114.5" y="0.0" width="114" height="30"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="New Member"/>
                                                 <connections>
                                                     <segue destination="BeN-jC-W2Q" kind="show" id="3e3-ud-cCN"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wq3-mU-PNa">
+                                                <rect key="frame" x="228.5" y="0.0" width="114.5" height="30"/>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="IAJ-yx-RXP"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-Hk-8xW" userLabel="Edit Members Stack View">
-                                        <rect key="frame" x="0.0" y="194.5" width="343" height="408.5"/>
+                                        <rect key="frame" x="0.0" y="76" width="343" height="519"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on a member to remove" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrL-h5-LlT">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-r9-hOW">
-                                                <rect key="frame" x="0.0" y="20.5" width="343" height="388"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-r9-hOW">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="519"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap a member to remove them." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VrL-h5-LlT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUsersResultTableViewCell" id="94a-nj-9hw" customClass="SearchUsersResultTableViewCell" customModule="SuiteLife" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                        <rect key="frame" x="0.0" y="46" width="343" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="94a-nj-9hw" id="Tmn-aw-L7z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="54.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-QM-2G0">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="27.5"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-QM-2G0" userLabel="User Stack View">
+                                                                    <rect key="frame" x="8" y="8" width="327" height="38.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glb-Iy-bdu" userLabel="Name">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="12"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="17.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dt-Ck-IQ2" userLabel="Handle">
-                                                                            <rect key="frame" x="0.0" y="16" width="327" height="11.5"/>
+                                                                            <rect key="frame" x="0.0" y="21.5" width="327" height="17"/>
                                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1050,8 +1062,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UHh-pN-PJf" firstAttribute="top" secondItem="1rW-eO-6oJ" secondAttribute="bottom" constant="8" id="9O7-nW-tnb"/>
                             <constraint firstItem="DGy-gF-QyG" firstAttribute="top" secondItem="UHh-pN-PJf" secondAttribute="bottom" id="AS7-e0-gWw"/>
-                            <constraint firstItem="UHh-pN-PJf" firstAttribute="top" secondItem="1rW-eO-6oJ" secondAttribute="bottom" id="bno-7v-FCA"/>
                             <constraint firstItem="UHh-pN-PJf" firstAttribute="leading" secondItem="AE4-Iz-RBR" secondAttribute="leadingMargin" id="l2V-RU-JR0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UHh-pN-PJf" secondAttribute="trailing" id="xS5-aR-AtD"/>
                         </constraints>
@@ -1122,7 +1134,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O4J-A2-1zG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="j3a-sk-6ly"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9xJ-pA-Qu4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9xJ-pA-Qu4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1140,7 +1152,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ODX-N5-Ti4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xpd-2G-x4c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xpd-2G-x4c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
