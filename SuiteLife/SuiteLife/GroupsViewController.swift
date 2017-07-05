@@ -25,10 +25,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed))
-        
+                
         createUsersByID(userIDs: [(Auth.auth().currentUser?.uid)!])
     }
 
@@ -38,7 +35,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func addMember(member: User) {
-        if !memberArray.contains{$0==member} {
+        if !memberArray.contains(member) {
             print("Added member with name \(member.name).")
             self.memberArray.insert(member, at: 0)
             self.tableView.reloadData()
@@ -124,11 +121,14 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func createUsersByID(userIDs: [String]) {
         for userID in userIDs {
+
             if !memberArray.contains{$0.userID == userID}{
+                print("User ID is: \(userID)")
+                print(userID==Auth.auth().currentUser!.uid)
                 databaseRef.child("users/\(userID)").observe(.value, with: { snapshot in
                     let name = snapshot.childSnapshot(forPath: "name").value as! String
                     let handle = snapshot.childSnapshot(forPath: "handle").value as! String
-                    self.memberArray.append(User(name: name, handle: handle, userID: userID))
+                    self.addMember(member: User(name: name, handle: handle, userID: userID))
                     self.tableView.reloadData()
                 })
             }
