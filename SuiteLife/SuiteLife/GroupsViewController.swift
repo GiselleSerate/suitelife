@@ -125,7 +125,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if !memberArray.contains{$0.userID == userID}{
                 print("User ID is: \(userID)")
                 print(userID==Auth.auth().currentUser!.uid)
-                databaseRef.child("users/\(userID)").observe(.value, with: { snapshot in
+                databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: { snapshot in
                     let name = snapshot.childSnapshot(forPath: "name").value as! String
                     let handle = snapshot.childSnapshot(forPath: "handle").value as! String
                     self.addMember(member: User(name: name, handle: handle, userID: userID))

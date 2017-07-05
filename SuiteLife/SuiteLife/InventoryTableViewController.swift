@@ -12,6 +12,9 @@ import Firebase
 
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
 
+    let databaseRef = Database.database().reference()
+    
+    var groupIDs: [String] = [] // The groups the user is in.
     
     //MARK: Properties
     
@@ -70,7 +73,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     //MARK: TableViewController Methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // There's only one section.
+        
         return 1
     }
     
@@ -134,6 +137,18 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     //MARK: Firebase
+    
+    func loadGroupIDs() { // Put IDs into group IDs array.
+        self.databaseRef.child("users/\(Auth.auth().currentUser!.uid)/groups").observeSingleEvent(of: .value, with: {(snapshot) in
+            for child in snapshot.children {
+                if let childRef = child as? DataSnapshot {
+                    self.groupIDs.append(childRef.key)
+                }
+            }
+        }) {(error) in
+            print(error.localizedDescription)
+        }
+    }
     
     private func loadItems() { // Attempts to load saved list items.
         
