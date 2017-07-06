@@ -13,6 +13,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     
 
     // MARK: Properties
+    
+    static let minQueryLength = 3
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -20,7 +22,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     let databaseRef = Database.database().reference()
 
     var searchResults: [User] = []
-    // This array contains a dictionary for each search result containing: [USERID: value, HANDLE: value, NAME: value]
+
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +35,10 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: Table View
+    // MARK: UITableViewDelegate and UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -51,8 +49,8 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchUsersResultTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchUsersResultTableViewCell
+        let cellIdentifier = "UserNameAndHandleTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserNameAndHandleTableViewCell
         cell.nameLabel.text = searchResults[indexPath.row].name
         cell.handleLabel.text = "@\(searchResults[indexPath.row].handle)"
         return cell
@@ -66,18 +64,12 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.popViewController(animated: true)
     }
     
-//    // TODO: Band-aid. Use this function if nothing else works to resize the result cells.
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 60
-//    }
-    
-    
     //MARK: Search Bar
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchResults = [] // Clear search results.
-        if searchText.characters.count < 4 { // Don't search if the query is too short.
-            self.tableView.reloadData()
+        if searchText.characters.count < SearchUsersViewController.minQueryLength { // Don't search if the query is too short.
+            tableView.reloadData()
             return
         }
         print("Updating results.")
@@ -124,6 +116,5 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
         print("Cancel button was pressed.")
         navigationController?.popViewController(animated: true)
     }
- 
 
 }

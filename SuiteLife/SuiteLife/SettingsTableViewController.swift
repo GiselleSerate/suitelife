@@ -24,14 +24,14 @@ class SettingsTableViewController: UITableViewController {
         UIApplication.shared.keyWindow?.rootViewController = signInController
     }
     
-    //MARK: Edit Single Properties
+    //MARK: IBActions
 
     @IBAction func editLocation(_ sender: Any) {
         print("Location pressed")
         let locationEditor = getSinglePropertyEditor()
         locationEditor.setProperty(propertyKey: "location", propertyName: "Location", unique: false, searchable: false)
         let navController = UINavigationController(rootViewController: locationEditor)
-        self.presentViewController(navController)
+        presentViewController(navController)
     }
     
     @IBAction func editName(_ sender: Any) {
@@ -39,7 +39,7 @@ class SettingsTableViewController: UITableViewController {
         let nameEditor = getSinglePropertyEditor()
         nameEditor.setProperty(propertyKey: "name", propertyName: "Name", unique: false, searchable: true)
         let navController = UINavigationController(rootViewController: nameEditor)
-        self.presentViewController(navController)
+        presentViewController(navController)
     }
     
     @IBAction func editHandle(_ sender: Any) {
@@ -47,7 +47,7 @@ class SettingsTableViewController: UITableViewController {
         let handleEditor = getSinglePropertyEditor()
         handleEditor.setProperty(propertyKey: "handle", propertyName: "Handle", unique: true, searchable: true)
         let navController = UINavigationController(rootViewController: handleEditor)
-        self.presentViewController(navController)
+        presentViewController(navController)
     }
     
     @IBAction func editDietaryRestrictions(_ sender: Any) {
@@ -55,23 +55,23 @@ class SettingsTableViewController: UITableViewController {
         let dietaryRestrictionsEditor = getArrayOfPropertiesEditor()
         dietaryRestrictionsEditor.setProperty(propertyKey: "dietaryRestrictions", propertyName: "Dietary Restrictions")
         let navController = UINavigationController(rootViewController: dietaryRestrictionsEditor)
-        self.presentViewController(navController)
+        presentViewController(navController)
     }
     
     @IBAction func editGroups(_ sender: Any) {
         print("Groups pressed")
         let groupsEditor = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GroupsViewController") as! GroupsViewController
         let navController = UINavigationController(rootViewController: groupsEditor)
-        self.presentViewController(navController)
+        presentViewController(navController)
     }
     
     //MARK: Private Methods
     
-    private func getSinglePropertyEditor() -> EditSinglePropertyTableViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyTableViewController") as! EditSinglePropertyTableViewController
+    private func getSinglePropertyEditor() -> EditSinglePropertyViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyViewController") as! EditSinglePropertyViewController
     }
-    private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesTableViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesTableViewController") as! EditArrayOfPropertiesTableViewController
+    private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesViewController") as! EditArrayOfPropertiesViewController
     }
     
     private func presentViewController(_ viewController: UIViewController) {

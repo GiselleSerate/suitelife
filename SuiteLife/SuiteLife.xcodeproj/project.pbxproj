@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2ED8F6C9A37FD660C0FE5799 /* Pods_SuiteLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */; };
-		CB11F81D1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F81C1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift */; };
-		CB11F81F1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F81E1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift */; };
+		CB11F81D1F045856006A449B /* EditArrayOfPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F81C1F045856006A449B /* EditArrayOfPropertiesViewController.swift */; };
 		CB1633111EFDB56E00533D59 /* PriceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633101EFDB56E00533D59 /* PriceHelper.swift */; };
 		CB1633131EFDC89E00533D59 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633121EFDC89E00533D59 /* User.swift */; };
 		CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */; };
@@ -18,7 +17,7 @@
 		CB309D6A1F0EEF7200C1DC72 /* DebtHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */; };
 		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
 		CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */; };
-		CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */; };
+		CB43B6FF1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift */; };
 		CB43B7011F05A5E300C0A46F /* UserWithCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B7001F05A5E300C0A46F /* UserWithCash.swift */; };
 		CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */; };
 		CB44B9D91EF19C1F0063D9EE /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9D81EF19C1F0063D9EE /* InventoryTableViewController.swift */; };
@@ -37,7 +36,6 @@
 		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
-		CB813A331F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */; };
 		CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA239E81F01796400006155 /* GoogleService-Info.plist */; };
 		CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */; };
 		CBA5CCFA1F0D83B2003FEFB9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */; };
@@ -50,8 +48,7 @@
 		458A92D14D03CA1FBF9E629C /* Pods-SuiteLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.debug.xcconfig"; sourceTree = "<group>"; };
 		817DFD56C089B6817A8880F0 /* Pods-SuiteLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuiteLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuiteLife/Pods-SuiteLife.release.xcconfig"; sourceTree = "<group>"; };
 		8D8BC47FF8C6514AAAD2E1DF /* Pods_SuiteLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuiteLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB11F81C1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditArrayOfPropertiesTableViewController.swift; sourceTree = "<group>"; };
-		CB11F81E1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditArrayOfPropertiesTextInputTableViewCell.swift; sourceTree = "<group>"; };
+		CB11F81C1F045856006A449B /* EditArrayOfPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditArrayOfPropertiesViewController.swift; sourceTree = "<group>"; };
 		CB1633101EFDB56E00533D59 /* PriceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceHelper.swift; sourceTree = "<group>"; };
 		CB1633121EFDC89E00533D59 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUTableViewCell.swift; sourceTree = "<group>"; };
@@ -60,7 +57,7 @@
 		CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtHelper.swift; sourceTree = "<group>"; };
 		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserTableViewController.swift; sourceTree = "<group>"; };
-		CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsersResultTableViewCell.swift; sourceTree = "<group>"; };
+		CB43B6FE1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameAndHandleTableViewCell.swift; sourceTree = "<group>"; };
 		CB43B7001F05A5E300C0A46F /* UserWithCash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWithCash.swift; sourceTree = "<group>"; };
 		CB43B7021F05AADC00C0A46F /* FetchUserInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserInputTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9D81EF19C1F0063D9EE /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +79,6 @@
 		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
-		CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditArrayOfPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		CBA239E81F01796400006155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSinglePropertyTableViewController.swift; sourceTree = "<group>"; };
 		CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
@@ -194,9 +190,7 @@
 				CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */,
 				CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */,
 				CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */,
-				CB11F81C1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift */,
-				CB813A321F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift */,
-				CB11F81E1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift */,
+				CB11F81C1F045856006A449B /* EditArrayOfPropertiesViewController.swift */,
 				CBA5CCFF1F0DAD91003FEFB9 /* Groups */,
 			);
 			name = Controllers;
@@ -234,7 +228,7 @@
 				CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */,
 				CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */,
 				CB6E04831F06B3A30056C0A7 /* SearchUsersViewController.swift */,
-				CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */,
+				CB43B6FE1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -373,17 +367,15 @@
 				CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */,
 				CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */,
 				CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */,
-				CB11F81D1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift in Sources */,
 				CB309D6A1F0EEF7200C1DC72 /* DebtHelper.swift in Sources */,
+				CB11F81D1F045856006A449B /* EditArrayOfPropertiesViewController.swift in Sources */,
 				CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */,
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
 				CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */,
-				CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */,
+				CB43B6FF1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift in Sources */,
 				CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */,
 				CB1633131EFDC89E00533D59 /* User.swift in Sources */,
-				CB813A331F0470A9008FE58C /* EditArrayOfPropertiesTableViewCell.swift in Sources */,
-				CB11F81F1F046675006A449B /* EditArrayOfPropertiesTextInputTableViewCell.swift in Sources */,
 				CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */,
 				CB6E04841F06B3A30056C0A7 /* SearchUsersViewController.swift in Sources */,
 				CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */,
@@ -524,7 +516,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,7 +534,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
