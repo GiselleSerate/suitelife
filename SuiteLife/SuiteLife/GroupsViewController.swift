@@ -2,31 +2,32 @@
 //  GroupsViewController.swift
 //  SuiteLife
 //
-//  Created by cssummer17 on 6/30/17.
+//  Created by cssummer17 on 7/5/17.
 //  Copyright © 2017 cssummer17. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroupsViewController: UITableViewController {
     
-    var memberArray: [User] = []
-    var groupID: String?
+    var groups: [Group] = []
+    
     let databaseRef = Database.database().reference()
-    
-    @IBOutlet weak var nameField: UITextField!
+    let userID = Auth.auth().currentUser!.uid
 
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-                
-        createUsersByID(userIDs: [(Auth.auth().currentUser?.uid)!])
+
+        // No edit button for now -- swipe left to delete
+        // self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.title = "Groups"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Attempting to load groups...")
+        loadGroups()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,129 +35,130 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func addMember(member: User) {
-        if !memberArray.contains(member) {
-            print("Added member with name \(member.name).")
-            self.memberArray.insert(member, at: 0)
-            self.tableView.reloadData()
-        }
-    }
+    //MARK: TableViewDelegate
     
-    
-    // MARK: Table View
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // Only one section, so return 1
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memberArray.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Only one section, so don't bother looking to the section number
+        return self.groups.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchUsersResultTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchUsersResultTableViewCell
-        cell.nameLabel.text = memberArray[indexPath.row].name
-        cell.handleLabel.text = "@\(memberArray[indexPath.row].handle)"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "GroupsTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupsTableViewCell else {
+            fatalError("Cell with identifier \(cellIdentifier) not of type GroupsTableViewCell")
+        }
+        cell.textLabel?.text = groups[indexPath.row].name
+        cell.groupID = groups[indexPath.row].groupID
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var alert: UIAlertController
-        if Auth.auth().currentUser?.uid != memberArray[indexPath.row].userID {
-            alert = UIAlertController(title: "Remove \(memberArray[indexPath.row].name)?", message: nil, preferredStyle: .alert)
-            alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(.init(title: "OK", style: .default, handler: {(element) in
-                self.memberArray.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let group = self.groups[indexPath.row]
+            let alert = UIAlertController(title: "Leave \(group.name)?", message: "If you wish to rejoin, a current member must add you.", preferredStyle: .alert)
+            alert.addAction(.init(title: "No", style: .default, handler: nil))
+            alert.addAction(.init(title: "Yes", style: .default, handler: {(element) in
+                // Remove the current user from the group
+                self.databaseRef.child("groups/\(group.groupID)/members/\(self.userID)").setValue(nil)
+                // Remove the group from the user's list
+                self.databaseRef.child("users/\(self.userID)/groups/\(group.groupID)").setValue(nil)
+                // Delete the row from the data source
+                self.groups.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }))
+            self.present(alert, animated: true,completion: nil)
         }
-        else {
-            alert = UIAlertController(title: "You cannot remove yourself from a group.", message: nil, preferredStyle: .alert)
-            alert.addAction(.init(title: "OK", style: .default, handler: nil))
-        }
-        self.present(alert, animated: true, completion: nil)
+        // Do nothing if the editing style is somehow .insert
     }
     
+    // Implemented to allow editing of the cells (i.e. removal)
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
-    // MARK: Firebase
+    // Implemented to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {}
     
-    func loadGroup(groupID: String) {
-        print("Calling load group")
-        self.groupID = groupID
-        self.databaseRef.child("groups/\(groupID)").observeSingleEvent(of: .value, with: { snapshot in
-            print("LOADGROUP CALLBACK")
-            self.nameField.text = snapshot.childSnapshot(forPath: "name").value as? String // found nil while unwrapping Optional on 2nd run. Not even that I changed anything.
-            let children = snapshot.childSnapshot(forPath: "members").children
-            var memberIDArray: [String] = []
+    // Implemented to support conditional rearrangement
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    //MARK: Private Methods
+    
+    private func loadGroups() {
+        // Clear groups
+        groups = []
+        self.databaseRef.child("users/\(userID)/groups").observeSingleEvent(of: .value, with: { (snapshot) in
+            let children = snapshot.children
+            var groupIDs: [String] = []
             for child in children {
-                memberIDArray.append((child as! DataSnapshot).key)
+                groupIDs.append((child as! DataSnapshot).key)
             }
-            self.createUsersByID(userIDs: memberIDArray)
+            self.createGroups(from: groupIDs)
         }) { (error) in
-        print(error.localizedDescription)}
+            print(error.localizedDescription)}
     }
-    
-    func saveGroup() {
-        var group: DatabaseReference
-        if groupID == nil {
-            group = databaseRef.child("groups").childByAutoId()
-        }
-        else {
-            group = databaseRef.child("groups/\(groupID!)")
-        }
-        group.child("name").setValue(nameField.text)
-        // first save the user into the group so that it can be edited
-        group.child("members").setValue(nil)
-        group.child("members/\(Auth.auth().currentUser!.uid)").setValue(true)
-        // then set the remaining user values
-        for member in memberArray {
-            if member.userID != Auth.auth().currentUser!.uid {
-                let child = group.child("members/\(member.userID)")
-                child.setValue(true)
-            }
-        }
-//        group.child("members").setValue(memberArray.map{$0.userID})
-    }
-    
-    private func createUsersByID(userIDs: [String]) {
-        for userID in userIDs {
 
-            if !memberArray.contains{$0.userID == userID}{
-                print("User ID is: \(userID)")
-                print(userID==Auth.auth().currentUser!.uid)
-                databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: { snapshot in
-                    let name = snapshot.childSnapshot(forPath: "name").value as! String
-                    let handle = snapshot.childSnapshot(forPath: "handle").value as! String
-                    self.addMember(member: User(name: name, handle: handle, userID: userID))
+    
+    private func createGroups(from groupIDs: [String]) {
+        for groupID in groupIDs {
+            self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
+                let groupName = snapshot.value as! String
+                self.groups.append(Group(groupID: groupID, name: groupName))
+                if groupID == groupIDs.last {
+                    print("Loaded groups.")
                     self.tableView.reloadData()
-                })
-            }
+                }
+            })
         }
     }
+    
+    //MARK: Navigation
 
-    
-    // MARK: Cancel Button
-    
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        print("Cancel button was pressed.")
-        self.dismiss(animated: true, completion: nil)
-//        navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        print("Save button was pressed.")
-        saveGroup()
-        self.dismiss(animated: true, completion: nil)
-//        navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        switch(segue.identifier ?? "") {
+        case "CreateGroup":
+            guard let navController = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let groupViewController = navController.viewControllers.last as? EditGroupViewController else {
+                fatalError("Unexpected view controller: \(navController.viewControllers.last)")
+            }
+            groupViewController.navigationItem.title = "New Group"
+            
+        case "EditGroup":
+            guard let navController = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let groupViewController = navController.viewControllers.last as? EditGroupViewController else {
+                fatalError("Unexpected view controller: \(navController.viewControllers.last)")
+            }
+            guard let selectedGroup = sender as? GroupsTableViewCell else {
+                fatalError("Unexpected sender: \(sender ?? "")")
+            }
+            print("Preparing to call load group")
+            groupViewController.loadGroup(groupID: selectedGroup.groupID!)
+        
+        default:
+            fatalError("Unexpected Segue Identifier: \(segue.identifier ?? "")")
+        }
 
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
- 
+        }
+
+    @IBAction func exitView(_ sender: UIBarButtonItem) {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.dismiss(animated: false, completion: nil)
+    }
 }

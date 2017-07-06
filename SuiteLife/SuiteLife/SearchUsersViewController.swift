@@ -61,7 +61,7 @@ class SearchUsersViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // assert nav controller exists
         let viewControllers = self.navigationController!.viewControllers
-        let prevViewController = viewControllers[viewControllers.count - 2] as! GroupsViewController
+        let prevViewController = viewControllers[viewControllers.count - 2] as! EditGroupViewController
         prevViewController.addMember(member: searchResults[indexPath.row])
         navigationController?.popViewController(animated: true)
     }
