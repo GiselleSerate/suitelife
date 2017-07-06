@@ -62,7 +62,7 @@ class IOUViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Pay back \(self.ious[indexPath.row].name)", message: "Enter an amount.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Pay back \(self.ious[indexPath.row].name)", message: "Enter an amount that YOU have paid TO this person.", preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
@@ -73,7 +73,8 @@ class IOUViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             // TODO: VALIDATION PLEASE WE WANT PRICES
-            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue])
+            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue * -1]) // It's dying here because of casting.
+            // TODO: Reload after this. 
         }))
         
         // 4. Present the alert.
