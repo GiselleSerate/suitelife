@@ -67,11 +67,11 @@ class SettingsTableViewController: UITableViewController {
     
     //MARK: Private Methods
     
-    private func getSinglePropertyEditor() -> EditSinglePropertyTableViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyTableViewController") as! EditSinglePropertyTableViewController
+    private func getSinglePropertyEditor() -> EditSinglePropertyViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSinglePropertyViewController") as! EditSinglePropertyViewController
     }
-    private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesTableViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesTableViewController") as! EditArrayOfPropertiesTableViewController
+    private func getArrayOfPropertiesEditor() -> EditArrayOfPropertiesViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditArrayOfPropertiesViewController") as! EditArrayOfPropertiesViewController
     }
     
     private func presentViewController(_ viewController: UIViewController) {

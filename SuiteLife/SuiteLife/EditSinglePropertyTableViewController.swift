@@ -1,5 +1,5 @@
 //
-//  EditSinglePropertyTableViewController.swift
+//  EditSinglePropertyViewController.swift
 //  SuiteLife
 //
 //  Created by cssummer17 on 6/26/17.
@@ -9,9 +9,7 @@
 import UIKit
 import Firebase
 
-// TODO: Add
-
-class EditSinglePropertyTableViewController: UITableViewController, UITextFieldDelegate {
+class EditSinglePropertyViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -22,8 +20,7 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
     private var searchable: Bool?
     private var lenRequired: Bool?
     private let databaseRef = Database.database().reference()
-    
-    let userID = Auth.auth().currentUser!.uid
+    private let userID = Auth.auth().currentUser!.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +43,6 @@ class EditSinglePropertyTableViewController: UITableViewController, UITextFieldD
         self.uniqueRequired = isUnique
         self.searchable = searchable
 //        self.lenRequired = lenLimit
-    }
-
-    
-    // MARK: Table View Data Source
-    // This table view will only ever have 1 section and 1 row since it's meant for editing one property
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
     }
     
     
