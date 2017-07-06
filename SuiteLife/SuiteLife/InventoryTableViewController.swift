@@ -18,6 +18,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     var groupIDs: [String] = ["personal"] // The groups the user is in.
     var groupNames: [String] = ["Personal"] // The names of this user's groups.
     
+    // Can't be local, because callbacks. Eh.
+    var balances: [String: [String: Int]] = [:]    // GroupID, then userID, then the amounts owed by the current user (so if we're paying, these should all be negative).
+                                                    // Positive amounts are money that I should pay out.
+    // TODO: Deprecate groupIDs and store it in balances?
+    
     //MARK: Properties
     
     var type: InventoryType = .list // By default, the view controller's type will be list.
@@ -156,6 +161,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
                     self.groupIDs.append(childRef.key)
+                    self.balances[childRef.key] = [:] // Add empty dictionary line.
                 }
             }
             print("Here are the IDs of groups you are in. \(self.groupIDs)")
@@ -183,7 +189,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
 
     private func loadItems() { // Attempts to load saved list items.
         // Loads personal items, since they save to a different place.
-        Database.database().reference().child("users/\(userID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
+        databaseRef.child("users/\(userID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
             
             if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
                 self.itemListPantryInstance.dict[self.type]!["personal"] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
@@ -199,7 +205,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         // Loads group items.
         for groupID in groupIDs.filter({$0 != "personal"}) {
-            Database.database().reference().child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
+            databaseRef.child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in
                 
                 if let loadedItems = snapshot.value as? NSArray { // If we actually do have some file of items to load.
                     self.itemListPantryInstance.dict[self.type]![groupID] = loadedItems.map{Item(fromDictionary: $0 as! NSDictionary)}
@@ -243,18 +249,91 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory
                                                         // to the opposing inventory (list -> pantry or vice versa)
+
+        
         for groupID in groupIDs {
+            var balance = 0
             for thing in itemListPantryInstance.dict[type]![groupID]! {
                 if thing.checked {
                     print(thing)
                     thing.checked = false // Reset checkedness.
                     itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter() {$0 != thing} // Take the item out of this inventory.
                     itemListPantryInstance.dict[notType]![groupID]?.append(thing) // Put the item into the opposing inventory.
+                    if type == .list && groupID != "personal" { // We're checking out, and I want to record this as a debt.
+                        print("Here is an add to the overall debt to the amount: \(thing.price) (a number of cents).")
+                        balance = balance + thing.price
+                    }
                 }
             }
+            // Remember that balance is positive. Here is how much you spent.
+            if balance > 0 { // TODO: Maybe toast or alert this, to the effect of "Checking out with balance __. Are you sure?"
+                recordGroupDebt(userID: Auth.auth().currentUser!.uid, groupID: groupID, amount: balance * -1)
+            }
         }
+        
+
         saveItems() // Save to file.
         refreshPage()
+    }
+    
+    // TODO: how are we dealing with split cents? Randomly distribute extra cents; check if it doesn't add to total and add extra amount to the first person's total.
+    func recordGroupDebt(userID: String, groupID: String, amount: Int) { // Records debt owed to this user by everyone in this group.
+        
+        // Amount here is a negative number.
+        
+        // Get members of this group from Firebase; they are in an array or the like.
+        databaseRef.child("groups/\(groupID)/members").observeSingleEvent(of: .value, with: {(snapshot) in
+            for child in snapshot.children {
+                if let childRef = child as? DataSnapshot {
+                    self.balances[groupID]?[childRef.key] = 0 // Set each person's balances to 0.
+                }
+            }
+
+            let singleDebt = amount/self.balances[groupID]!.count
+            var centsError = amount - singleDebt * self.balances[groupID]!.count // Some cents error needs to be fixed.
+            
+            for (key, value) in self.balances[groupID]! { // Fill the dictionary with debts to pass to recordPersonalDebts.
+                self.balances[groupID]?[key] = singleDebt + centsError
+                centsError = 0
+            }
+            self.recordPersonalDebts(debtDict: self.balances[groupID]!) // Calling helper function IN the callback.
+            self.refreshPage()
+        }) {(error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func recordPersonalDebts(debtDict: [String: Int]) { // Takes a dictionary of userIDs and integers; the person now owes that much to the current user.
+        for (userID, debt) in debtDict {
+            if userID != Auth.auth().currentUser!.uid { // Don't bother owing yourself.
+                // Write to my user that I am owed money (negative amount).
+                recordSingleDebt(inUser: Auth.auth().currentUser!.uid, refUser: userID, amount: debt)
+                // Write to their user that they owe me money (positive amount, negated from dictionary).
+                recordSingleDebt(inUser: userID, refUser: Auth.auth().currentUser!.uid, amount: debt * -1)
+            }
+        }
+    }
+    
+    func recordSingleDebt(inUser: String, refUser: String, amount: Int) { // Uses transaction operation to make sure we don't have race conditions when incrementing data.
+        databaseRef.child("users/\(inUser)/debts/\(refUser)").runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+            print("Putting in user tree of \(inUser) wrt user \(refUser) with amt \(amount).")
+            var newAmount = 0
+            if let oldData = currentData.value as? Int { // Why this running so much?
+                newAmount = oldData + amount
+                print("The existing amount is \(oldData).")
+            }
+            else { // There is no existing balance, or we cannot find it.                 self.balances[groupID]?[childRef.key] = 0 // Set each person's balances to 0.
+                newAmount = amount
+            }
+            print("The new amount is \(newAmount).")
+            currentData.value = newAmount
+            return TransactionResult.success(withValue: currentData)
+            
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
