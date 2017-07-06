@@ -12,8 +12,12 @@ class User: NSObject {
     
     //MARK: Properties
     var name: String
-    var handle: String // Venmo handle? Twitter handle? I don't care.
+    var handle: String
     var userID: String
+    
+    override var description: String {
+        return "User \(userID) with name: \(name), handle: \(handle)"
+    }
     
     init(name: String, handle: String, userID: String) {
         self.name = name

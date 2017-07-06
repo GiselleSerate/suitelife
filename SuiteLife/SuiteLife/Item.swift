@@ -40,8 +40,7 @@ class Item: NSObject, NSCoding {
     }
     
     init(fromDictionary dict: NSDictionary) {
-        guard let dictionary = dict as? [String: Any]
-            else {
+        guard let dictionary = dict as? [String: Any] else {
                 fatalError("Failed to cast dict to Dictionary.")
         }
         self.name = dictionary[PropertyKey.name] as! String
@@ -67,7 +66,7 @@ class Item: NSObject, NSCoding {
         // The name is required. If we cannot decode a name string, the initializer should fail.
         guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String
             else {
-                os_log("Heyy, we are unable to decode the name for this Item.", log: OSLog.default, type: .debug)
+                os_log("Unable to decode the name for this Item.", log: OSLog.default, type: .debug)
                 return nil
         }
         let checked = aDecoder.decodeBool(forKey: PropertyKey.checked)
