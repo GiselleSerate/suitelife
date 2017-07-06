@@ -11,6 +11,8 @@ import Firebase
 
 class EditArrayOfPropertiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    // MARK: Properties and Outlets
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,61 +21,56 @@ class EditArrayOfPropertiesViewController: UIViewController, UITableViewDelegate
     private var propertyName: String?
     private var propertyKey: String?
     private let databaseRef = Database.database().reference()
-    let userID = Auth.auth().currentUser!.uid
+    let currentUserID = Auth.auth().currentUser!.uid
     
     private var propertyArray: [String] = []
     
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = propertyName!
+        navigationItem.title = propertyName!
         
-        self.textField.delegate = self
-        self.textField.placeholder = "Add \(propertyName!)"
-        self.textField.returnKeyType = .done
+        // Configure textField
+        textField.delegate = self
+        textField.placeholder = "Add \(propertyName!)"
+        textField.returnKeyType = .done
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.separatorStyle = .none
-        
-        // populate the first section with the static cell
-        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        // Configure tableView
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        navigationItem.leftBarButtonItem = editButtonItem
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadPropertyArray()
-    }
-    
-    // bandaid function used in place of an initializer since setting up one was hard
-    func setProperty(propertyKey: String, propertyName: String) {
-        self.propertyKey = propertyKey
-        self.propertyName = propertyName
+        // Reload the property array whenever the view will appear.
+        loadPropertyArray()
     }
     
     
-    // MARK: Table View Data Source
+    // MARK: UITableViewDataSource and UITableViewDelegate
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // Only one section
+        // Only one section.
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.propertyArray.count
+        return propertyArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        // Label the text with whatever is in the property array at that row.
         cell.textLabel?.text = propertyArray[indexPath.row]
         return cell
     }
 
-    // Support conditional editing of the table view.
+    // Allow all rows to be edited.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -81,54 +78,35 @@ class EditArrayOfPropertiesViewController: UIViewController, UITableViewDelegate
     // Support editing the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // Delete the row from the data source and Table View.
             propertyArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
     // Support rearranging the table view.
-    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {}
 
-    }
-
-    // Support conditional rearranging of the table view.
+    // Allow all rows to be rearranged.
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    // Make the edit button work.
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        self.tableView.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
     }
-    
-    
-    //MARK: Private Methods
-    
-    private func loadPropertyArray() {
-        self.databaseRef.child("users/\(userID)/\(propertyKey!)").observeSingleEvent(of: .value, with: { (snapshot:DataSnapshot) in
-            // We're assuming for now that all of these properties are strings
-            if let databaseArray = snapshot.value as? NSArray {
-                self.propertyArray = databaseArray as! Array
-                self.tableView.reloadData()
-                print("Loaded property array with key: \(self.propertyKey!).")
-            }
-
-        }) {(error) in
-            print(error.localizedDescription)
-        }
-    }
-    
     
     // MARK: TextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
-            self.propertyArray.insert(text, at: 0)
-            // subtract 1 from the array count to make sure we add the right number of rows
-            self.tableView.insertRows(at: [IndexPath(row: propertyArray.count - 1, section: 0)], with: .automatic)
-            self.tableView.reloadData()
-            // Clear the text field
+            propertyArray.insert(text, at: 0)
+            // Subtract 1 from the array count to make sure we add the right number of rows.
+            tableView.insertRows(at: [IndexPath(row: propertyArray.count - 1, section: 0)], with: .automatic)
+            tableView.reloadData()
+            // Clear the text field.
             textField.text = ""
         }
         // Hide the keyboard.
@@ -136,27 +114,49 @@ class EditArrayOfPropertiesViewController: UIViewController, UITableViewDelegate
         return true
     }
     
-    
     // MARK: Saving
     
     @IBAction func saveChanges(withSender sender: UIBarButtonItem){
         print("Save button pressed")
-        // Set the value corresponding to the user's ID and the value of propertyArray
-        self.databaseRef.child("users/\(userID)/\(propertyKey!)").setValue(self.propertyArray as NSArray)
-            print("Saved property \(propertyKey!)")
-        self.exitView()
+        // Set the value corresponding to the user's ID and the value of propertyArray.
+        databaseRef.child("users/\(currentUserID)/\(propertyKey!)").setValue(self.propertyArray as NSArray)
+        print("Saved property \(propertyKey!)")
+        exitView()
     }
     
     
     // MARK: Private Methods
     
+    private func loadPropertyArray() {
+        databaseRef.child("users/\(currentUserID)/\(propertyKey!)").observeSingleEvent(of: .value, with: { (snapshot:DataSnapshot) in
+            // Try to retrieve the property array from the database.
+            if let databaseArray = snapshot.value as? NSArray {
+                self.propertyArray = databaseArray as! Array
+                self.tableView.reloadData()
+                print("Loaded property array with key: \(self.propertyKey!).")
+            }
+            
+        }) {(error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     private func exitView() {
+        // Custom transition.
         let transition = CATransition()
         transition.duration = 0.25
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromLeft
         view.window!.layer.add(transition, forKey: kCATransition)
-        self.dismiss(animated: false, completion: nil)
+        dismiss(animated: false, completion: nil)
+    }
+    
+    // MARK: Public Methods
+    
+    // Bandaid function used in place of an initializer since setting up one was hard...
+    func setProperty(propertyKey: String, propertyName: String) {
+        self.propertyKey = propertyKey
+        self.propertyName = propertyName
     }
 
 }

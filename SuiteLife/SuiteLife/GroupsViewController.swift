@@ -14,14 +14,16 @@ class GroupsViewController: UITableViewController {
     var groups: [Group] = []
     
     let databaseRef = Database.database().reference()
-    let userID = Auth.auth().currentUser!.uid
+    let currentUserID = Auth.auth().currentUser!.uid
 
+    
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // No edit button for now -- swipe left to delete
         // self.navigationItem.leftBarButtonItem = self.editButtonItem
-        self.navigationItem.title = "Groups"
+        navigationItem.title = "Groups"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,13 +31,8 @@ class GroupsViewController: UITableViewController {
         print("Attempting to load groups...")
         loadGroups()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    //MARK: TableViewDelegate
+    //MARK: UITableViewController
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Only one section, so return 1
@@ -44,7 +41,7 @@ class GroupsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Only one section, so don't bother looking to the section number
-        return self.groups.count
+        return groups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,14 +61,14 @@ class GroupsViewController: UITableViewController {
             alert.addAction(.init(title: "No", style: .default, handler: nil))
             alert.addAction(.init(title: "Yes", style: .default, handler: {(element) in
                 // Remove the current user from the group
-                self.databaseRef.child("groups/\(group.groupID)/members/\(self.userID)").setValue(nil)
+                self.databaseRef.child("groups/\(group.groupID)/members/\(self.currentUserID)").setValue(nil)
                 // Remove the group from the user's list
-                self.databaseRef.child("users/\(self.userID)/groups/\(group.groupID)").setValue(nil)
+                self.databaseRef.child("users/\(self.currentUserID)/groups/\(group.groupID)").setValue(nil)
                 // Delete the row from the data source
                 self.groups.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }))
-            self.present(alert, animated: true,completion: nil)
+            present(alert, animated: true,completion: nil)
         }
         // Do nothing if the editing style is somehow .insert
     }
@@ -94,7 +91,7 @@ class GroupsViewController: UITableViewController {
     private func loadGroups() {
         // Clear groups
         groups = []
-        self.databaseRef.child("users/\(userID)/groups").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.databaseRef.child("users/\(currentUserID)/groups").observeSingleEvent(of: .value, with: { (snapshot) in
             let children = snapshot.children
             var groupIDs: [String] = []
             for child in children {
@@ -108,7 +105,7 @@ class GroupsViewController: UITableViewController {
     
     private func createGroups(from groupIDs: [String]) {
         for groupID in groupIDs {
-            self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
+            databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
                 let groupName = snapshot.value as! String
                 self.groups.append(Group(groupID: groupID, name: groupName))
                 if groupID == groupIDs.last {
@@ -152,6 +149,8 @@ class GroupsViewController: UITableViewController {
         }
 
         }
+    
+    // MARK: IBActions
 
     @IBAction func exitView(_ sender: UIBarButtonItem) {
         let transition = CATransition()

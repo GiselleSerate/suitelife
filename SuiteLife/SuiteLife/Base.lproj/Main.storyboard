@@ -529,7 +529,7 @@
                                     </scopeButtonTitles>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUsersResultTableViewCell" id="O7h-SS-Hbz" customClass="SearchUsersResultTableViewCell" customModule="SuiteLife" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserNameAndHandleTableViewCell" id="O7h-SS-Hbz" userLabel="UserNameAndHandleTableViewCell" customClass="UserNameAndHandleTableViewCell" customModule="SuiteLife" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="O7h-SS-Hbz" id="rdC-oB-0uK">
@@ -1015,7 +1015,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUsersResultTableViewCell" id="94a-nj-9hw" customClass="SearchUsersResultTableViewCell" customModule="SuiteLife" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserNameAndLabelTableViewCell" id="94a-nj-9hw" userLabel="UserNameAndHandleTableViewCell" customClass="UserNameAndHandleTableViewCell" customModule="SuiteLife" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="46" width="343" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="94a-nj-9hw" id="Tmn-aw-L7z">

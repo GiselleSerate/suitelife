@@ -20,27 +20,27 @@ class BarcodeScannerViewController: BarcodeScannerController {
         super.viewDidLoad()
         
         // BarcodeScannerController required delegates
-        self.codeDelegate = self
-        self.errorDelegate = self
-        self.dismissalDelegate = self
+        codeDelegate = self
+        errorDelegate = self
+        dismissalDelegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Debug messages
-        print("Contents of items from barcode scanning: \(self.items.map {item in item.name})")
+        print("Contents of items from barcode scanning: \(items.map {item in item.name})")
         print("Transferring to PantryTableViewController...")
         // Remove the blank row
         if PantryDataModel.sharedInstance.items.last?.name == "" {
             PantryDataModel.sharedInstance.items.removeLast()
         }
         // Append scanned items
-        PantryDataModel.sharedInstance.items += self.items
+        PantryDataModel.sharedInstance.items += items
         // Add back the blank row
         PantryDataModel.sharedInstance.items.append(Item(name: "", checked: false, price: 0))
         // Make a new blank scanned items list
-        self.items = [Item]()
+        items = [Item]()
     }
     
 }
