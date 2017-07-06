@@ -15,6 +15,7 @@
 		CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */; };
 		CB24CEC41F06EF800044044C /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24CEC31F06EF800044044C /* EditGroupViewController.swift */; };
 		CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */; };
+		CB309D6A1F0EEF7200C1DC72 /* DebtHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */; };
 		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
 		CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */; };
 		CB43B6FF1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */; };
@@ -56,6 +57,7 @@
 		CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUTableViewCell.swift; sourceTree = "<group>"; };
 		CB24CEC31F06EF800044044C /* EditGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
 		CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUViewController.swift; sourceTree = "<group>"; };
+		CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtHelper.swift; sourceTree = "<group>"; };
 		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserTableViewController.swift; sourceTree = "<group>"; };
 		CB43B6FE1F05A3A900C0A46F /* SearchUsersResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsersResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				CB44B9D81EF19C1F0063D9EE /* InventoryTableViewController.swift */,
 				CB44B9DA1EF19EE10063D9EE /* InventoryTableViewCell.swift */,
 				CB1633101EFDB56E00533D59 /* PriceHelper.swift */,
+				CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */,
 			);
 			name = "List/Pantry Tab";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */,
 				CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */,
 				CB11F81D1F045856006A449B /* EditArrayOfPropertiesTableViewController.swift in Sources */,
+				CB309D6A1F0EEF7200C1DC72 /* DebtHelper.swift in Sources */,
 				CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */,
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,

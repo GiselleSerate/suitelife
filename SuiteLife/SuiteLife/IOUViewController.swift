@@ -60,6 +60,27 @@ class IOUViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Pay back \(self.ious[indexPath.row].name)", message: "Enter an amount.", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "Price Here"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            // TODO: VALIDATION PLEASE WE WANT PRICES
+            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue])
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: Firebase
     
     func loadIOUs() { // Loads IOUs into the data structure in this class.
