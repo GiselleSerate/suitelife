@@ -84,7 +84,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // The number of rows is equal to the number of items.
-        return itemListPantryInstance.dict[type]![groupIDs[section]]!.count
+        if let retVal = itemListPantryInstance.dict[type]![groupIDs[section]]?.count {
+            return retVal
+        }
+        else { // We must not have loaded yet.
+            return 0
+        }
     }
 
     
