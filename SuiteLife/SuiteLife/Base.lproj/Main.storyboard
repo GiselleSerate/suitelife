@@ -1015,7 +1015,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserNameAndLabelTableViewCell" id="94a-nj-9hw" userLabel="UserNameAndHandleTableViewCell" customClass="UserNameAndHandleTableViewCell" customModule="SuiteLife" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserNameAndHandleTableViewCell" id="94a-nj-9hw" userLabel="UserNameAndHandleTableViewCell" customClass="UserNameAndHandleTableViewCell" customModule="SuiteLife" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="46" width="343" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="94a-nj-9hw" id="Tmn-aw-L7z">
@@ -1097,11 +1097,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupsTableViewCell" id="0kq-Lz-LnL" customClass="GroupsTableViewCell" customModule="SuiteLife" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupsTableViewCell" id="0kq-Lz-LnL" customClass="GroupsTableViewCell" customModule="SuiteLife" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0kq-Lz-LnL" id="Dhq-Hd-h8R">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
