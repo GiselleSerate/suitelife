@@ -255,7 +255,7 @@
         <scene sceneID="uTH-j3-Yby">
             <objects>
                 <tableViewController storyboardIdentifier="ListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="80C-CP-LjL" customClass="InventoryTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wq8-JE-A52">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wq8-JE-A52">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -350,6 +350,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My List" id="mlE-B5-2z1"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="oSn-QO-bQ4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOa-p4-QAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -666,7 +669,7 @@
         <scene sceneID="hTl-wo-7RD">
             <objects>
                 <tableViewController storyboardIdentifier="PantryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VgH-qa-LDT" userLabel="My Pantry" customClass="InventoryTableViewController" customModule="SuiteLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SXV-Yg-RXf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SXV-Yg-RXf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -760,6 +763,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Pantry" id="Vmv-lL-th3"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="I3d-z4-rQ5">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Amt-MZ-9TV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

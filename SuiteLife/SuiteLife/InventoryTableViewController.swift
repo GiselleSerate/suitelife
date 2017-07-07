@@ -88,6 +88,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: Refresh
     
+    // I hypothesize that Tabman is bad for this.
     func handleRefresh(_ refreshControl: UIRefreshControl) { // For pulling to refresh.
         print("Calling handleRefresh.")
         refreshPage()
