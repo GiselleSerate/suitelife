@@ -430,6 +430,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="IOUs" id="wQv-gT-UiB"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="PmK-AB-nya">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67V-pH-Bx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

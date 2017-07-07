@@ -12,17 +12,15 @@ import Firebase
 class IOUViewController: UITableViewController {
     
     let databaseRef = Database.database().reference()
-    
-    // Test users for display purposes.
-//    var testUserDB = [UserWithCash(name: "Giselle", handle: "@gserate", balance: 1200), UserWithCash(name: "Cole", handle: "@ckurashige", balance: 362), UserWithCash(name: "Jeni", handle: "@jzhu", balance: -869)]
 
     var ious: [UserWithCash] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadIOUs()
-        // Do any additional setup after loading the view.
+
+        // Handle pull to refresh.
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +28,15 @@ class IOUViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: Refresh
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        print("Calling handleRefresh.")
+        loadIOUs()
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
     
     //MARK: TableViewController Methods
     
@@ -70,10 +77,11 @@ class IOUViewController: UITableViewController {
         }
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             // TODO: VALIDATION PLEASE WE WANT PRICES
-            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue * -1]) // It's dying here because of casting.
+            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue * -1], onCompletion: self.tableView.reloadData) // It's dying here because of casting.
             // TODO: Reload after this. 
         }))
         
@@ -97,15 +105,20 @@ class IOUViewController: UITableViewController {
     }
     
     func setDBVals(userID: String, balance: Int) { // Get name and handle from DB and populate ious.
-        databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: {(snapshot) in
-            if let childRef = snapshot as? DataSnapshot {
-                let name = childRef.childSnapshot(forPath: "name").value as! String
-                let handle = childRef.childSnapshot(forPath: "handle").value as! String
-                self.ious.append(UserWithCash(name: name, handle: handle, userID: userID, balance: balance))
+        if let userIndex = ious.index(where: {$0.userID == userID}) { // Already contains this person.
+            ious[userIndex].balance = balance
+        }
+        else {
+            databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: {(snapshot) in
+                if let childRef = snapshot as? DataSnapshot {
+                    let name = childRef.childSnapshot(forPath: "name").value as! String
+                    let handle = childRef.childSnapshot(forPath: "handle").value as! String
+                    self.ious.append(UserWithCash(name: name, handle: handle, userID: userID, balance: balance))
+                }
+                self.tableView.reloadData()
+            }) {(error) in
+                print(error.localizedDescription)
             }
-            self.tableView.reloadData()
-        }) {(error) in
-            print(error.localizedDescription)
         }
     }
 

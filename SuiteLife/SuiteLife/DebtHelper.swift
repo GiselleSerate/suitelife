@@ -11,18 +11,18 @@ import Firebase
 
 class DebtHelper {
     
-    static func recordPersonalDebts(debtDict: [String: Int]) { // Takes a dictionary of userIDs and integers; the person now owes that much to the current user.
+    static func recordPersonalDebts(debtDict: [String: Int], onCompletion: (()->Void)?) { // Takes a dictionary of userIDs and integers; the person now owes that much to the current user.
         for (userID, debt) in debtDict {
             if userID != Auth.auth().currentUser!.uid { // Don't bother owing yourself.
                 // Write to my user that I am owed money (negative amount).
-                recordSingleDebt(inUser: Auth.auth().currentUser!.uid, refUser: userID, amount: debt)
+                recordSingleDebt(inUser: Auth.auth().currentUser!.uid, refUser: userID, amount: debt, onCompletion: nil)
                 // Write to their user that they owe me money (positive amount, negated from dictionary).
-                recordSingleDebt(inUser: userID, refUser: Auth.auth().currentUser!.uid, amount: debt * -1)
+                recordSingleDebt(inUser: userID, refUser: Auth.auth().currentUser!.uid, amount: debt * -1, onCompletion: onCompletion)
             }
         }
     }
     
-    static func recordSingleDebt(inUser: String, refUser: String, amount: Int) { // Uses transaction operation to make sure we don't have race conditions when incrementing data.
+    static func recordSingleDebt(inUser: String, refUser: String, amount: Int, onCompletion: (() -> Void)?) { // Uses transaction operation to make sure we don't have race conditions when incrementing data.
         Database.database().reference().child("users/\(inUser)/debts/\(refUser)").runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
             print("Putting in user tree of \(inUser) wrt user \(refUser) with amt \(amount).")
             var newAmount = 0
@@ -35,6 +35,9 @@ class DebtHelper {
             }
             print("The new amount is \(newAmount).")
             currentData.value = newAmount
+            if let onCompletion = onCompletion {
+                onCompletion()
+            }
             return TransactionResult.success(withValue: currentData)
             
         }) { (error, committed, snapshot) in

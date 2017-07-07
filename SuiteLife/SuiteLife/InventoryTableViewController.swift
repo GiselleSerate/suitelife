@@ -11,6 +11,8 @@ import os.log
 import Firebase
 
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
+    
+    private var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
 
     let databaseRef = Database.database().reference()
     
@@ -54,8 +56,17 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Set up navbar items.
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(transferSelected(sender:)))
+
+        // Spinner setup. 
+        activityView.center = self.view.center
+        activityView.hidesWhenStopped = true
+        self.view.addSubview(activityView)
         
         loadGroupIDs()
+        
+        // Handle pull to refresh.
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +85,25 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: Refresh
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) { // For pulling to refresh.
+        print("Calling handleRefresh.")
+        refreshPage()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
+        print("Refreshing \(type).")
+        
+        for groupID in groupIDs { // Refresh every group individually.
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
+            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
+        }
+        
+        tableView.reloadData()
+    }
    
     //MARK: TableViewController Methods
     
@@ -162,6 +192,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     //MARK: Firebase
     
     func loadGroupIDs() { // Put IDs into group IDs array.
+        startSpinner()
         self.databaseRef.child("users/\(Auth.auth().currentUser!.uid)/groups").observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
@@ -173,8 +204,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             
             // Load items into list.
             print("Attempting to load \(self.type) items from memory...")
-            self.loadItems() // Load items after callback has happened.
             self.loadGroupNames() // Less important to load names, but they exist. Call afterward.
+            self.loadItems() // Load items after callback has happened.
             self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
@@ -221,6 +252,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     self.loadDefaults(groupID: groupID)
                 }
                 self.refreshPage()
+                if groupID == self.groupIDs.last {
+                    self.stopSpinner()
+                }
             }) {(error) in
                 print(error.localizedDescription)
             }
@@ -301,23 +335,26 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 self.balances[groupID]?[key] = singleDebt + centsError
                 centsError = 0
             }
-            DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!) // Calling helper function IN the callback.
+            DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!, onCompletion: self.refreshPage) // Calling helper function IN the callback.
             self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
         }
     }
+
     
-    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
-        print("Refreshing \(type).")
-        
-        for groupID in groupIDs { // Refresh every group individually.
-            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
-            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
-        }
-        
-        tableView.reloadData()
+    // MARK: Loading
+    
+    func startSpinner() {
+        activityView.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        self.navigationController!.view.isUserInteractionEnabled = false
     }
     
+    func stopSpinner() {
+//        activityView.stopAnimating()
+//        self.view.isUserInteractionEnabled = false
+//        self.navigationController!.view.isUserInteractionEnabled = false
+    }
 
 }
