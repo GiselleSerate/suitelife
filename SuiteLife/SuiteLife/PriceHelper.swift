@@ -58,5 +58,13 @@ class PriceHelper {
     static func formatPrice(price: Int) -> String {
         return String(format: "%d.%02d", price/100, price%100)
     }
+    
+    static func formatPriceDollarSign(price: Int) -> String {
+        if price < 0 { // Negative.
+            let absPrice = abs(price)
+            return String(format: "-$%d.%02d", absPrice/100, absPrice%100)
+        }
+        return String(format: "$%d.%02d", price/100, price%100)
+    }
 
 }
