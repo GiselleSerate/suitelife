@@ -12,8 +12,8 @@ import Firebase
 
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
-    private var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-
+    var alert: UIAlertView = UIAlertView(title: "", message: nil, delegate: nil, cancelButtonTitle: nil);
+    
     let databaseRef = Database.database().reference()
     
     // TODO: Should be in tab view controller???
@@ -56,11 +56,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Set up navbar items.
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(transferSelected(sender:)))
-
-        // Spinner setup. 
-        activityView.center = self.view.center
-        activityView.hidesWhenStopped = true
-        self.view.addSubview(activityView)
         
         loadGroupIDs()
         
@@ -347,15 +342,23 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Loading
     
     func startSpinner() {
-        activityView.startAnimating()
+        
+        var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 50, y: 10, width: 37, height: 37)) as UIActivityIndicatorView
+        loadingIndicator.center = self.view.center
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating()
+        
+        alert.setValue(loadingIndicator, forKey: "accessoryView")
+        loadingIndicator.startAnimating()
+        
+        alert.show()
         self.view.isUserInteractionEnabled = false
         self.navigationController!.view.isUserInteractionEnabled = false
     }
     
     func stopSpinner() {
-//        activityView.stopAnimating()
-//        self.view.isUserInteractionEnabled = false
-//        self.navigationController!.view.isUserInteractionEnabled = false
+        alert.dismiss(withClickedButtonIndex: 0, animated: true)
     }
 
 }

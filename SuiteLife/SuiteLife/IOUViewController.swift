@@ -11,6 +11,8 @@ import Firebase
 
 class IOUViewController: UITableViewController {
     
+    var alert: UIAlertView = UIAlertView(title: "Loading Your Items", message: "Please Wait...", delegate: nil, cancelButtonTitle: nil);
+    
     let databaseRef = Database.database().reference()
 
     var ious: [UserWithCash] = []
