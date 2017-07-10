@@ -70,11 +70,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             Auth.auth().signIn(with: credential) { (user, error) in
                 if error == nil {
-                    let tabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
-                    // Transition to the tab controller from the sign-in
-                    UIApplication.shared.keyWindow?.rootViewController = tabController
-                    print("Here is the Auth id \(Auth.auth().currentUser?.uid ?? "")")
-                    print("Here is the GID id \(GIDSignIn.sharedInstance().currentUser.userID ?? "")")
+                    self.ref.child("users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value, with: {(snapshot) in
+                        if snapshot.value! is NSNull  {
+                            // Transition to a new account view controller.
+                            let acctController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewAccountViewController")
+                            let navController = UINavigationController(rootViewController: acctController)
+                            // Transition to the acct controller from the sign-in
+                            UIApplication.shared.keyWindow?.rootViewController = navController
+                        }
+                        else {                             // you exist in the database
+                            let tabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
+                            // Transition to the tab controller from the sign-in
+                            UIApplication.shared.keyWindow?.rootViewController = tabController
+                        }
+                    })
                 }
             }
         } else {

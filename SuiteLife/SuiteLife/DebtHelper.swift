@@ -44,7 +44,7 @@ class DebtHelper {
                 print(error.localizedDescription)
             }
             if committed {
-                onCompletion!()
+                onCompletion?()
             }
         }
     }

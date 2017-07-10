@@ -38,6 +38,7 @@
 		CB728E661EF0A7DE00F76321 /* ListPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */; };
 		CB728E681EF0B10400F76321 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */; };
 		CB728E6A1EF0B12000F76321 /* PantryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB728E691EF0B12000F76321 /* PantryTableViewController.swift */; };
+		CB749F1D1F14243100227E07 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB749F1C1F14243100227E07 /* NewAccountViewController.swift */; };
 		CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA239E81F01796400006155 /* GoogleService-Info.plist */; };
 		CBA239ED1F01C1E000006155 /* EditSinglePropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */; };
 		CBA5CCFA1F0D83B2003FEFB9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */; };
@@ -83,6 +84,7 @@
 		CB728E651EF0A7DE00F76321 /* ListPantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryViewController.swift; sourceTree = "<group>"; };
 		CB728E671EF0B10400F76321 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		CB728E691EF0B12000F76321 /* PantryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewController.swift; sourceTree = "<group>"; };
+		CB749F1C1F14243100227E07 /* NewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		CBA239E81F01796400006155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBA239EC1F01C1E000006155 /* EditSinglePropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSinglePropertyTableViewController.swift; sourceTree = "<group>"; };
 		CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				CB577BDC1EEF4AA700903EE9 /* AppDelegate.swift */,
 				CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */,
+				CB749F1C1F14243100227E07 /* NewAccountViewController.swift */,
 				CB9BFC481EFC6C42009F21FA /* List/Pantry Tab */,
 				CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */,
 				CB3C90351F13E50200CA8520 /* ScanViewController.swift */,
@@ -388,6 +391,7 @@
 				CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */,
 				CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */,
 				CB728E5A1EF05D5300F76321 /* Item.swift in Sources */,
+				CB749F1D1F14243100227E07 /* NewAccountViewController.swift in Sources */,
 				CB1633151EFDCA1B00533D59 /* IOUTableViewCell.swift in Sources */,
 				CB43B6FF1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift in Sources */,
 				CB43B7031F05AADC00C0A46F /* FetchUserInputTableViewCell.swift in Sources */,

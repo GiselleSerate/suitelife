@@ -232,9 +232,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 self.loadDefaults(groupID: "personal")
             }
             self.refreshPage()
+            if self.groupIDs.count == 1 { // I am not in any groups besides my personal list.
+                self.stopSpinner()
+            }
         }) {(error) in
             print(error.localizedDescription)
-        } 
+        }
         // Loads group items.
         for groupID in groupIDs.filter({$0 != "personal"}) {
             databaseRef.child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in

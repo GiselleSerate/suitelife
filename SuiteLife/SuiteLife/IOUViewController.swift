@@ -35,9 +35,13 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("Calling handleRefresh.")
+        refreshMe()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshMe() {
         loadIOUs()
         tableView.reloadData()
-        refreshControl.endRefreshing()
     }
     
     //MARK: TableViewController Methods
@@ -99,8 +103,7 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: PriceHelper.cleanPrice(price: textField?.text) * -1], onCompletion: self.tableView.reloadData)
-            self.ious[indexPath.section]?.remove(at: indexPath.row)
+            DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: PriceHelper.cleanPrice(price: textField?.text) * -1], onCompletion: self.loadIOUs)
         }))
         
         // 4. Present the alert.
@@ -122,6 +125,7 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
                     self.setDBVals(userID: childRef.key, balance: (childRef.value as? Int)!) // Set each person's balances
                 }
             }
+            self.tableView.reloadData()
         }) {(error) in
             print(error.localizedDescription)
         }

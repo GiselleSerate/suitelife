@@ -39,7 +39,7 @@ class IOUTableViewCell: UITableViewCell {
         personLabel.text = user!.name
         
         // Set handle label.
-        handleLabel.text = user!.handle
+        handleLabel.text = "@\(user!.handle)"
         
         // Set balance label. 
         balanceLabel.text = PriceHelper.formatPriceDollarSign(price: user!.balance)
