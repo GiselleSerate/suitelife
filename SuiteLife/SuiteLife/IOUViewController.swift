@@ -24,6 +24,10 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
         // Handle pull to refresh.
         self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshMe()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

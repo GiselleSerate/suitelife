@@ -66,8 +66,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        self.refreshPage()
+        loadGroupIDs()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,13 +85,13 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     // I hypothesize that Tabman is bad for this.
     func handleRefresh(_ refreshControl: UIRefreshControl) { // For pulling to refresh.
         print("Calling handleRefresh.")
+        loadGroupIDs()
         refreshPage()
         refreshControl.endRefreshing()
     }
     
     func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
         print("Refreshing \(type).")
-        
         for groupID in groupIDs { // Refresh every group individually.
             itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
             itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
