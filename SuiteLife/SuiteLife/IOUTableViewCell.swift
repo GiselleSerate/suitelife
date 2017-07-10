@@ -31,19 +31,29 @@ class IOUTableViewCell: UITableViewCell {
     
     //MARK: User Initialization
     
-    func attachUser(_ newUser: inout UserWithCash) {
+    func attachUser(_ newUser: inout UserWithCash, sign: Int) {
         
         user = newUser
         
         // Set name label.
-        personLabel.text = user?.name
+        personLabel.text = user!.name
         
         // Set handle label.
-        handleLabel.text = user?.handle
+        handleLabel.text = user!.handle
         
         // Set balance label. 
-        balanceLabel.text = String(describing: user!.balance)
+        balanceLabel.text = PriceHelper.formatPriceDollarSign(price: user!.balance)
         
+        var balColor: UIColor?
+        switch sign {
+        case 0:
+            balColor = UIColor(red: 188/255, green: 71/255, blue: 71/255, alpha: 255/255)
+        case 1:
+            balColor = UIColor(red: 71/255, green: 188/255, blue: 85/255, alpha: 255/255)
+        default:
+            balColor = UIColor.gray
+        }
+        balanceLabel.textColor = balColor
     }
     
 

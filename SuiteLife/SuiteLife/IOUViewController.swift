@@ -9,13 +9,13 @@
 import UIKit
 import Firebase
 
-class IOUViewController: UITableViewController {
+class IOUViewController: UITableViewController, UITextFieldDelegate {
     
     var alert: UIAlertView = UIAlertView(title: "Loading Your Items", message: "Please Wait...", delegate: nil, cancelButtonTitle: nil);
     
     let databaseRef = Database.database().reference()
 
-    var ious: [UserWithCash] = []
+    var ious: [Int:[UserWithCash]] = [0:[], 1:[], 2:[]] // Dictionary of index and people.
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +43,13 @@ class IOUViewController: UITableViewController {
     //MARK: TableViewController Methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // There's only one section.
-        return 1
+        // There is a section for each group of people.
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // The number of rows is equal to the number of items.
-        return ious.count
+        return ious[section]!.count
     }
     
     
@@ -61,34 +61,55 @@ class IOUViewController: UITableViewController {
             else {
                 fatalError("The dequeued cell is not an instance of IOUTableViewCell.")
         }
-         
-        // Configure the cell...
-        var item = ious[indexPath.row]
-        cell.attachUser(&item)
+        
+        var item = ious[indexPath.section]?[indexPath.row]
+        cell.attachUser(&item!, sign: indexPath.section)
         cell.controller = self
+
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: // I owe money.
+            return "People You Owe"
+        case 1: // I am owed money.
+            return "People Who Owe You"
+        default: // No money is owed and I don't care.
+            return "Settled Up"
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Pay back \(self.ious[indexPath.row].name)", message: "Enter an amount that YOU have paid TO this person.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Pay back \(self.ious[indexPath.section]![indexPath.row].name)", message: "Enter an amount that YOU have paid TO this person.", preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
-            textField.text = "Price Here"
+            
+//            textField.addTarget(self, action: #selector(didChangeValue(_:)), for: .editingChanged)
+//            
+//            let newText = textField.text?.replacingCharacters(in: range, with: string)
+            
+            textField.delegate = self
+            textField.placeholder = "Price Here"
         }
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            // TODO: VALIDATION PLEASE WE WANT PRICES
-            DebtHelper.recordPersonalDebts(debtDict: [self.ious[indexPath.row].userID: (textField?.text as! NSString).integerValue * -1], onCompletion: self.tableView.reloadData) // It's dying here because of casting.
-            // TODO: Reload after this. 
+            DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: PriceHelper.cleanPrice(price: textField?.text) * -1], onCompletion: self.tableView.reloadData)
+            self.ious[indexPath.section]?.remove(at: indexPath.row)
         }))
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // Makes sure the alert's text field is a price.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return PriceHelper.validatePrice(price: string, alreadyText: textField.text!)
     }
     
     
@@ -98,7 +119,7 @@ class IOUViewController: UITableViewController {
         databaseRef.child("users/\(Auth.auth().currentUser!.uid)/debts").observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
-                    self.setDBVals(userID: childRef.key, balance: (childRef.value as? Int)!) // Set each person's balances.
+                    self.setDBVals(userID: childRef.key, balance: (childRef.value as? Int)!) // Set each person's balances
                 }
             }
         }) {(error) in
@@ -107,15 +128,30 @@ class IOUViewController: UITableViewController {
     }
     
     func setDBVals(userID: String, balance: Int) { // Get name and handle from DB and populate ious.
-        if let userIndex = ious.index(where: {$0.userID == userID}) { // Already contains this person.
-            ious[userIndex].balance = balance
+        // TODO: IM REALLY SORRY ABOUT ALL OF THIS CODE
+        if let userIndex = ious[0]?.index(where: {$0.userID == userID}) { // Already contains this person.
+            ious[0]?[userIndex].balance = balance
+        }
+        else if let userIndex = ious[1]?.index(where: {$0.userID == userID}) { // Already contains this person.
+            ious[1]?[userIndex].balance = balance
+        }
+        else if let userIndex = ious[2]?.index(where: {$0.userID == userID}) { // Already contains this person.
+            ious[2]?[userIndex].balance = balance
         }
         else {
             databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: {(snapshot) in
                 if let childRef = snapshot as? DataSnapshot {
                     let name = childRef.childSnapshot(forPath: "name").value as! String
                     let handle = childRef.childSnapshot(forPath: "handle").value as! String
-                    self.ious.append(UserWithCash(name: name, handle: handle, userID: userID, balance: balance))
+                    var oweDir = 0 // Default, you owe them money.
+                    if balance == 0 { // Neutral.
+                        oweDir = 2
+                    }
+                    else if balance < 0 { // They owe you money.
+                        oweDir = 1
+                    }
+                    
+                    self.ious[oweDir]!.append(UserWithCash(name: name, handle: handle, userID: userID, balance: balance))
                 }
                 self.tableView.reloadData()
             }) {(error) in

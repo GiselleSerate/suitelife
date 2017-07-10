@@ -127,26 +127,8 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Limit the price field's allowable characters to be a decimal with numbers and a single period.
         if textField.tag == TextFieldType.price && string != ""{
+            return PriceHelper.validatePrice(price: string, alreadyText: textField.text!)
             
-            let inverseSetDot = NSCharacterSet(charactersIn:"0123456789.").inverted
-            
-            let components = string.components(separatedBy: inverseSetDot)
-            
-            let filtered = components.joined(separator: "")
-            
-            // String validation written assuming no pasting. Because pasting will break it. This is why I have extra validation in DidEndEditing.
-            
-            if filtered == string { // Typed/pasted string has only numbers or periods.
-                if string.contains(".") && (textField.text?.contains("."))! { // Too many periods.
-                    return false
-                }
-                else { // The add string has a period, or nothing has a period. We are assuming only one period in the add string, if any.
-                    return true
-                }
-            }
-            else { // The add string contains something you should not be able to add to a price, such as ?!*^.
-                return false
-            }
         }
         else { // You're looking at the name label. They can edit whatever they want.
             return true
