@@ -276,9 +276,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     //MARK: Other Methods
     
     func loadDefaults(groupID: String) {
-        let instruction1 = Item(name: "You don't have any items yet", checked: false, price: 0)
-        let instruction2 = Item(name: "Add things here!", checked: false, price: 0)
-        itemListPantryInstance.dict[type]![groupID] = [instruction1, instruction2]
+        let instruction1 = Item(name: "Add items to your \(type) here!", checked: false, price: 0)
+        itemListPantryInstance.dict[type]![groupID] = [instruction1]
         refreshPage()
     }
     
@@ -359,6 +358,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func stopSpinner() {
         alert.dismiss(withClickedButtonIndex: 0, animated: true)
+        self.view.isUserInteractionEnabled = true
+        self.navigationController!.view.isUserInteractionEnabled = true
     }
 
 }
