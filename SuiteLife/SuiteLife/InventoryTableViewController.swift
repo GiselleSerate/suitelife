@@ -234,7 +234,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
-        }
+        }git 
         // Loads group items.
         for groupID in groupIDs.filter({$0 != "personal"}) {
             databaseRef.child("groups/\(groupID)/\(type)").observeSingleEvent(of: .value, with: {(snapshot) in

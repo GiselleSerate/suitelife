@@ -16,6 +16,7 @@
 		CB276F7E1EFC741B00BB3120 /* IOUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */; };
 		CB309D6A1F0EEF7200C1DC72 /* DebtHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */; };
 		CB3B42D71EF84ABD0006B9F4 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B42D61EF84ABD0006B9F4 /* Money.swift */; };
+		CB3C90361F13E50200CA8520 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C90351F13E50200CA8520 /* ScanViewController.swift */; };
 		CB43B6FD1F05A34D00C0A46F /* FetchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */; };
 		CB43B6FF1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B6FE1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift */; };
 		CB43B7011F05A5E300C0A46F /* UserWithCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43B7001F05A5E300C0A46F /* UserWithCash.swift */; };
@@ -57,6 +58,7 @@
 		CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUViewController.swift; sourceTree = "<group>"; };
 		CB309D691F0EEF7200C1DC72 /* DebtHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtHelper.swift; sourceTree = "<group>"; };
 		CB3B42D61EF84ABD0006B9F4 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		CB3C90351F13E50200CA8520 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		CB43B6FC1F05A34D00C0A46F /* FetchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserTableViewController.swift; sourceTree = "<group>"; };
 		CB43B6FE1F05A3A900C0A46F /* UserNameAndHandleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameAndHandleTableViewCell.swift; sourceTree = "<group>"; };
 		CB43B7001F05A5E300C0A46F /* UserWithCash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWithCash.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */,
 				CB9BFC481EFC6C42009F21FA /* List/Pantry Tab */,
 				CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */,
+				CB3C90351F13E50200CA8520 /* ScanViewController.swift */,
 				CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */,
 				CB276F7D1EFC741B00BB3120 /* IOUViewController.swift */,
 				CB1633141EFDCA1B00533D59 /* IOUTableViewCell.swift */,
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB24CEC41F06EF800044044C /* EditGroupViewController.swift in Sources */,
+				CB3C90361F13E50200CA8520 /* ScanViewController.swift in Sources */,
 				CB573A401EF99DB600ECCFDA /* ListPantryDataModel.swift in Sources */,
 				CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */,
 				CBA5CCFC1F0D84F8003FEFB9 /* Group.swift in Sources */,
@@ -528,7 +532,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,7 +550,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 66W5UQXAS2;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";

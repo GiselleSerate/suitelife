@@ -11,10 +11,17 @@ import BarcodeScanner
 import Alamofire
 import SwiftyJSON
 import os.log
+import Firebase
 
 class BarcodeScannerViewController: BarcodeScannerController {
     
+    let databaseRef = Database.database().reference()
+    let currentUserID = Auth.auth().currentUser!.uid
+    
     var items = [Item]()
+    
+    var scanDestination: InventoryType = .pantry
+    var scanGroup = "personal"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +32,58 @@ class BarcodeScannerViewController: BarcodeScannerController {
         dismissalDelegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Clear the contents of items upon reload
+        items = []
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Debug messages
         print("Contents of items from barcode scanning: \(items.map {item in item.name})")
-        print("Transferring to PantryTableViewController...")
-        // Remove the blank row
-        if PantryDataModel.sharedInstance.items.last?.name == "" {
-            PantryDataModel.sharedInstance.items.removeLast()
-        }
-        // Append scanned items
-        PantryDataModel.sharedInstance.items += items
-        // Add back the blank row
-        PantryDataModel.sharedInstance.items.append(Item(name: "", checked: false, price: 0))
-        // Make a new blank scanned items list
-        items = [Item]()
+        saveItems()
     }
+    
+    private func saveItems() {
+        // TODO: Currently only saves to personal list, add flexibility for save destination
+        var destination: String
+        switch scanDestination {
+        case .pantry:
+            destination = "pantry"
+        case .list:
+            destination = "list"
+        default:
+            fatalError("Unexpected value for scanDestination: \(scanDestination)")
+        }
+        databaseRef.child("users/\(currentUserID)/\(destination)").runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+            var newList: [NSDictionary]
+            let currentItems = self.items.map{$0.toDict()}
+            if let oldList = currentData.value as? [NSDictionary] {
+                newList = oldList + currentItems
+                print("Old \(destination): \(oldList)")
+            }
+            else {
+                newList = currentItems
+                print("Old \(destination) doesn't exist, creating new one...")
+            }
+            
+            currentData.value = newList
+            return TransactionResult.success(withValue: currentData)
+            
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if committed {
+                print("Saved scanned items to \(destination).")
+            }
+            print("Value of data saved: \(snapshot?.value ?? "").")
+        }
+    }
+
     
 }
 
