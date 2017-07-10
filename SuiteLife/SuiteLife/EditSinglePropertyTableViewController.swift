@@ -96,21 +96,26 @@ class EditSinglePropertyViewController: UIViewController, UITextFieldDelegate {
     private func determineSaveButtonState() {
         // Check if the property must be unique and if the textfield has text in it.
         if (uniqueRequired!) && (textField.text != nil) {
-            // Disable saving, which means users must wait for the callback (and it must be successful) to save.
-            self.saveButton?.isEnabled = false
-            let usersRef = databaseRef.child("users")
-            // Query to see if any user has this property already.
-            usersRef.queryOrdered(byChild: propertyKey!).queryEqual(toValue: textField.text).observeSingleEvent(of: .value, with: {(snapshot) in
-                // If the property is taken, disable the save button.
-                self.saveButton.isEnabled = !snapshot.exists()
-                // Enable the save button if the property is taken by the current user.
-                for child in snapshot.children {
-                    if let childRef = child as? DataSnapshot {
-                        // Check if the current user ID is equal to the ID of the user trying to save the current property.
-                        self.saveButton?.isEnabled = (self.currentUserID == childRef.key)
+            if (searchable)! && ((textField.text?.characters.count)! < 3) { // Not enough characters here. We need at least 3 characters in a searchable field to be searchable.
+                saveButton?.isEnabled = false
+            }
+            else {
+                // Disable saving, which means users must wait for the callback (and it must be successful) to save.
+                self.saveButton?.isEnabled = false
+                let usersRef = databaseRef.child("users")
+                // Query to see if any user has this property already.
+                usersRef.queryOrdered(byChild: propertyKey!).queryEqual(toValue: textField.text).observeSingleEvent(of: .value, with: {(snapshot) in
+                    // If the property is taken, disable the save button.
+                    self.saveButton.isEnabled = !snapshot.exists()
+                    // Enable the save button if the property is taken by the current user.
+                    for child in snapshot.children {
+                        if let childRef = child as? DataSnapshot {
+                            // Check if the current user ID is equal to the ID of the user trying to save the current property.
+                            self.saveButton?.isEnabled = (self.currentUserID == childRef.key)
+                        }
                     }
-                }
-            })
+                })
+            }
         // If we get here, it must not be required that the property be unique, so if there is text in the box, we can allow saving.
         } else if textField.text != nil {
             saveButton?.isEnabled = true
