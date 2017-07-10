@@ -99,7 +99,6 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            // TODO: VALIDATION PLEASE WE WANT PRICES
             DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: PriceHelper.cleanPrice(price: textField?.text) * -1], onCompletion: self.tableView.reloadData)
             self.ious[indexPath.section]?.remove(at: indexPath.row)
         }))
@@ -108,7 +107,7 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    // I don't know if this gonna work.
+    // Makes sure the alert's text field is a price.
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return PriceHelper.validatePrice(price: string, alreadyText: textField.text!)
     }
