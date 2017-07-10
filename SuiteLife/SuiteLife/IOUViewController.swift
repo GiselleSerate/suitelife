@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class IOUViewController: UITableViewController {
+class IOUViewController: UITableViewController, UITextFieldDelegate {
     
     var alert: UIAlertView = UIAlertView(title: "Loading Your Items", message: "Please Wait...", delegate: nil, cancelButtonTitle: nil);
     
@@ -86,7 +86,13 @@ class IOUViewController: UITableViewController {
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
-            textField.text = "Price Here"
+            
+//            textField.addTarget(self, action: #selector(didChangeValue(_:)), for: .editingChanged)
+//            
+//            let newText = textField.text?.replacingCharacters(in: range, with: string)
+            
+            textField.delegate = self
+            textField.placeholder = "Price Here"
         }
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
@@ -94,13 +100,17 @@ class IOUViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             // TODO: VALIDATION PLEASE WE WANT PRICES
-            DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: (textField?.text as! NSString).integerValue * -1], onCompletion: self.tableView.reloadData)
+            DebtHelper.recordPersonalDebts(debtDict: [(self.ious[indexPath.section]?[indexPath.row].userID)!: PriceHelper.cleanPrice(price: textField?.text) * -1], onCompletion: self.tableView.reloadData)
             self.ious[indexPath.section]?.remove(at: indexPath.row)
-            // TODO: Reload after this. 
         }))
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // I don't know if this gonna work.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return PriceHelper.validatePrice(price: string, alreadyText: textField.text!)
     }
     
     

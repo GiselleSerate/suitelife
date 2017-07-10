@@ -10,6 +10,28 @@ import Foundation
 
 class PriceHelper {
     
+    static func validatePrice(price: String, alreadyText: String) -> Bool {
+        let inverseSetDot = NSCharacterSet(charactersIn:"0123456789.").inverted
+        
+        let components = price.components(separatedBy: inverseSetDot)
+        
+        let filtered = components.joined(separator: "")
+        
+        // String validation written assuming no pasting. Because pasting will break it. This is why I have extra validation in DidEndEditing.
+        
+        if filtered == price { // Typed/pasted string has only numbers or periods.
+            if price.contains(".") && (alreadyText.contains(".")) { // Too many periods.
+                return false
+            }
+            else { // The add string has a period, or nothing has a period. We are assuming only one period in the add string, if any.
+                return true
+            }
+        }
+        else { // The add string contains something you should not be able to add to a price, such as ?!*^.
+            return false
+        }
+    }
+    
     static func cleanPrice(price: String?) -> Int { // Returns an int of cents. Format as you wish upon return.
         
         print("I am being asked to clean '\(price!)'.")
