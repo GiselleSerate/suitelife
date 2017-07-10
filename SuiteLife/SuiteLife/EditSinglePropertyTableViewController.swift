@@ -96,12 +96,9 @@ class EditSinglePropertyViewController: UIViewController, UITextFieldDelegate {
     private func determineSaveButtonState() {
         // Check if the property must be unique and if the textfield has text in it.
         if (uniqueRequired!) && (textField.text != nil) {
-            if (searchable)! && ((textField.text?.characters.count)! < 3) { // Not enough characters here. We need at least 3 characters in a searchable field to be searchable.
-                saveButton?.isEnabled = false
-            }
-            else {
-                // Disable saving, which means users must wait for the callback (and it must be successful) to save.
-                self.saveButton?.isEnabled = false
+            // Disable saving, which means users must wait for the callback (and it must be successful) to save.
+            self.saveButton?.isEnabled = false
+            if !(self.searchable)! || !((self.textField.text?.characters.count)! < 3) { // Only re-enable save if the field is long enough.
                 let usersRef = databaseRef.child("users")
                 // Query to see if any user has this property already.
                 usersRef.queryOrdered(byChild: propertyKey!).queryEqual(toValue: textField.text).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -116,10 +113,15 @@ class EditSinglePropertyViewController: UIViewController, UITextFieldDelegate {
                     }
                 })
             }
+            
         // If we get here, it must not be required that the property be unique, so if there is text in the box, we can allow saving.
         } else if textField.text != nil {
             saveButton?.isEnabled = true
         } else {
+            saveButton?.isEnabled = false
+        }
+        if (searchable)! && ((textField.text?.characters.count)! < 3) { // Not enough characters here. We need at least 3 characters in a searchable field to be searchable.
+            // TODO: If you want to set an error message, maybe set it here.
             saveButton?.isEnabled = false
         }
     }
