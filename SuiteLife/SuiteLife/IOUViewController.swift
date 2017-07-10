@@ -158,8 +158,10 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
                     else if balance < 0 { // They owe you money.
                         oweDir = 1
                     }
-                    
-                    self.ious[oweDir]!.append(UserWithCash(name: name, handle: handle, userID: userID, balance: balance))
+                    let user = UserWithCash(name: name, handle: handle, userID: userID, balance: balance)
+                    if !self.ious[oweDir]!.contains(user) {
+                        self.ious[oweDir]!.append(user)
+                    }
                 }
                 self.tableView.reloadData()
             }) {(error) in
