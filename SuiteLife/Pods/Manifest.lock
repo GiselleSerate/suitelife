@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.5.0)
   - BarcodeScanner (2.0.0)
+  - Fingertips (0.5.0)
   - Firebase/Auth (4.0.2):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -58,6 +59,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BarcodeScanner
+  - Fingertips
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -79,6 +81,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BarcodeScanner: 266ab4b479d407b74bc4b473fa5020b4523ad9e3
+  Fingertips: 8e557eed25253fcb4bfa25ac4418f8e8add1ad9a
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
   FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -96,6 +99,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
   Tabman: c176297899fd28e087a6506f9b56b8ca05195aa5
 
-PODFILE CHECKSUM: 15d264c9b8639664d58067b3c591331a5c5ac75a
+PODFILE CHECKSUM: c688bc2dd961a88146d1c99f0ae296c5ffc741e4
 
 COCOAPODS: 1.2.1

@@ -16,4 +16,6 @@ target 'SuiteLife' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
+  # pod for showing screen presses
+  pod 'Fingertips'
 end
