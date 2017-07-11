@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 import FirebaseAuth
+import Fingertips
 
 
 @UIApplicationMain
@@ -17,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var ref: DatabaseReference!
     
-    var window: UIWindow?
+    var window: UIWindow? = MBFingerTipWindow(frame: UIScreen.main.bounds)
     
     //MARK: Default Methods
     
@@ -71,17 +72,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             Auth.auth().signIn(with: credential) { (user, error) in
                 if error == nil {
                     self.ref.child("users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value, with: {(snapshot) in
+                        
+                        // alert to remind us to remove fingertips
+                        let alert = UIAlertController(title: "Warning", message: "Fingertips enabled: change var window in Appdelegate.swift before releasing!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        
                         if snapshot.value! is NSNull  {
                             // Transition to a new account view controller.
                             let acctController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewAccountViewController")
                             let navController = UINavigationController(rootViewController: acctController)
                             // Transition to the acct controller from the sign-in
                             UIApplication.shared.keyWindow?.rootViewController = navController
+                            navController.present(alert, animated: true, completion: nil)
                         }
                         else {                             // you exist in the database
                             let tabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
                             // Transition to the tab controller from the sign-in
                             UIApplication.shared.keyWindow?.rootViewController = tabController
+                            tabController.present(alert, animated: true, completion: nil)
                         }
                     })
                 }
