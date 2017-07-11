@@ -309,44 +309,47 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     }
                 }
             }
-            if groupID != "personal" {
-                var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
-                print("ONCE")
-                print(myRef)
-                myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
-                    var newItems = self.transferItems[groupID]!.map{$0.toDict()}  as! [[String:Any]]
-                    print(newItems)
-                    var newArray: [[String: Any]] = []
-                    if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
-                        for item in newItems {
-                            data.append(item as! [String : Any])
-                        }
-                        print("NONNIL: The new \(self.notType) is \(data).")
-                        currentData.value = data as! NSArray
+            var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
+
+            if groupID == "personal" {
+                myRef = databaseRef.child("users/\(currentUserID)/\(notType)")
+            }
+            print("ONCE")
+            print(myRef)
+            myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+                var newItems = self.transferItems[groupID]!.map{$0.toDict()}  as! [[String:Any]]
+                print(newItems)
+                var newArray: [[String: Any]] = []
+                if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
+                    for item in newItems {
+                        data.append(item as! [String : Any])
                     }
-                    else { // There is no data stored in the database.
-//                        newArray = newItems // It's not getting the thing.
-                        print("NIL: The new \(self.notType) is \(newArray).")
-                    }
-                    print("We have set the stored \(self.notType) to be: \(currentData.value).")
-                    return TransactionResult.success(withValue: currentData)
-                    
-                }) { (error, committed, snapshot) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                    if committed {
-                        print("We believe it worked. \(snapshot?.value)")
-                    }
+                    print("NONNIL: The new \(self.notType) is \(data).")
+                    currentData.value = data as! NSArray
                 }
+                else { // There is no data stored in the database.
+                    //                        newArray = newItems // It's not getting the thing.
+                    print("NIL: The new \(self.notType) is \(newArray).")
+                }
+                print("We have set the stored \(self.notType) to be: \(currentData.value).")
+                return TransactionResult.success(withValue: currentData)
                 
-                
-                // Remember that balance is positive. Here is how much you spent.
-                if balance > 0 { // TODO: Maybe toast or alert this, to the effect of "Checking out with balance __. Are you sure?"
-                    recordGroupDebt(userID: Auth.auth().currentUser!.uid, groupID: groupID, amount: balance * -1)
+            }) { (error, committed, snapshot) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if committed {
+                    print("We believe it worked. \(snapshot?.value)")
                 }
             }
+            
+            
+            // Remember that balance is positive. Here is how much you spent.
+            if balance > 0 { // TODO: Maybe toast or alert this, to the effect of "Checking out with balance __. Are you sure?"
+                recordGroupDebt(userID: Auth.auth().currentUser!.uid, groupID: groupID, amount: balance * -1)
+            }
         }
+        
         
 
         saveItems() // Save to file.
