@@ -27,6 +27,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     // TODO: Deprecate groupIDs and store it in balances?
     
     var transferItems: [String:[Item]] = [:]
+    var savedItems: [String:[Item]] = [:]
     
     //MARK: Properties
     
@@ -271,13 +272,45 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Only the items that aren't blank get saved to file.
         for groupID in groupIDs {
             itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
-            let items = itemListPantryInstance.dict[type]![groupID]?.map {$0.toDict()}
+            
+            // Set reference accordingly.
+            var myRef = Database.database().reference().child("groups/\(groupID)/\(type)")
             if groupID == groupIDs.first {
-                Database.database().reference().child("users/\(userID)/\(type)").setValue(items)
+                myRef = Database.database().reference().child("users/\(userID)/\(type)")
             }
-            else {
-                Database.database().reference().child("groups/\(groupID)/\(type)").setValue(items)
+            
+            myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+                let newItems = self.itemListPantryInstance.dict[self.type]![groupID]!.map{$0.toDict()}  as! [[String:Any]]
+                print(newItems)
+                var newArray: [[String: Any]] = []
+                if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
+                    for item in newItems {
+                        // Is an item of this name already in the list? Only write if not. 
+                        if !(data.contains{$0["name"] as! String == item["name"] as! String}) {
+                            data.append(item as! [String : Any])
+                        }
+                    }
+                    print("NONNIL Save: The new \(self.type) is \(data).")
+                    currentData.value = data as! NSArray
+                }
+                else { // There is no data stored in the database.
+                    //                        newArray = newItems // It's not getting the thing.
+                    print("NIL Save: The new \(self.type) is \(newArray).")
+                }
+                print("We have set the stored \(self.type) to be: \(currentData.value).")
+                return TransactionResult.success(withValue: currentData)
+                
+            }) { (error, committed, snapshot) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if committed {
+                    print("We believe it worked. \(snapshot?.value)")
+                }
             }
+            
+            
+            
         }
     }
     
@@ -324,12 +357,12 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     for item in newItems {
                         data.append(item as! [String : Any])
                     }
-                    print("NONNIL: The new \(self.notType) is \(data).")
+                    print("NONNIL Transfer: The new \(self.notType) is \(data).")
                     currentData.value = data as! NSArray
                 }
                 else { // There is no data stored in the database.
                     //                        newArray = newItems // It's not getting the thing.
-                    print("NIL: The new \(self.notType) is \(newArray).")
+                    print("NIL Transfer: The new \(self.notType) is \(newArray).")
                 }
                 print("We have set the stored \(self.notType) to be: \(currentData.value).")
                 return TransactionResult.success(withValue: currentData)
