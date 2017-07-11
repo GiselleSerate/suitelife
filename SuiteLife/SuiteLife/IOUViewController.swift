@@ -137,37 +137,39 @@ class IOUViewController: UITableViewController, UITextFieldDelegate {
     
     func setDBVals(userID: String, balance: Int) { // Get name and handle from DB and populate ious.
         // TODO: IM REALLY SORRY ABOUT ALL OF THIS CODE
+        // Deletes the user if they already exist.
         if let userIndex = ious[0]?.index(where: {$0.userID == userID}) { // Already contains this person.
-            ious[0]?[userIndex].balance = balance
+            ious[0]?.remove(at: userIndex)
         }
         else if let userIndex = ious[1]?.index(where: {$0.userID == userID}) { // Already contains this person.
-            ious[1]?[userIndex].balance = balance
+            ious[1]?.remove(at: userIndex)
+//            ious[1]?[userIndex].balance = balance
         }
         else if let userIndex = ious[2]?.index(where: {$0.userID == userID}) { // Already contains this person.
-            ious[2]?[userIndex].balance = balance
+            ious[2]?.remove(at: userIndex)
+//            ious[2]?[userIndex].balance = balance
         }
-        else {
-            databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: {(snapshot) in
-                if let childRef = snapshot as? DataSnapshot {
-                    let name = childRef.childSnapshot(forPath: "name").value as! String
-                    let handle = childRef.childSnapshot(forPath: "handle").value as! String
-                    var oweDir = 0 // Default, you owe them money.
-                    if balance == 0 { // Neutral.
-                        oweDir = 2
-                    }
-                    else if balance < 0 { // They owe you money.
-                        oweDir = 1
-                    }
-                    let user = UserWithCash(name: name, handle: handle, userID: userID, balance: balance)
-                    if !self.ious[oweDir]!.contains(user) {
-                        self.ious[oweDir]!.append(user)
-                    }
+        databaseRef.child("users/\(userID)").observeSingleEvent(of: .value, with: {(snapshot) in
+            if let childRef = snapshot as? DataSnapshot {
+                let name = childRef.childSnapshot(forPath: "name").value as! String
+                let handle = childRef.childSnapshot(forPath: "handle").value as! String
+                var oweDir = 0 // Default, you owe them money.
+                if balance == 0 { // Neutral.
+                    oweDir = 2
                 }
-                self.tableView.reloadData()
-            }) {(error) in
-                print(error.localizedDescription)
+                else if balance < 0 { // They owe you money.
+                    oweDir = 1
+                }
+                let user = UserWithCash(name: name, handle: handle, userID: userID, balance: balance)
+                if !self.ious[oweDir]!.contains(user) {
+                    self.ious[oweDir]!.append(user)
+                }
             }
+            self.tableView.reloadData()
+        }) {(error) in
+            print(error.localizedDescription)
         }
+        
     }
 
     /*
