@@ -179,16 +179,18 @@
 
 - (BOOL)anyScreenIsMirrored
 {
-    if ( ! [UIScreen instancesRespondToSelector:@selector(mirroredScreen)])
-        return NO;
-
-    for (UIScreen *screen in [UIScreen screens])
-    {
-        if ([screen mirroredScreen] != nil)
-            return YES;
-    }
-
-    return NO;
+//    if ( ! [UIScreen instancesRespondToSelector:@selector(mirroredScreen)])
+//        return NO;
+//
+//    for (UIScreen *screen in [UIScreen screens])
+//    {
+//        if ([screen mirroredScreen] != nil)
+//            return YES;
+//    }
+//
+//    return NO;
+    // it wasn't detecting if it was mirrored before so...
+    return YES;
 }
 
 - (void)updateFingertipsAreActive;
