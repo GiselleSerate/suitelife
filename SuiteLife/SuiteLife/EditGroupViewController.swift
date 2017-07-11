@@ -74,6 +74,13 @@ class EditGroupViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         // Set the name.
         group.child("name").setValue(nameField.text)
+        
+        // Initialize pantry with a default item. Code for list is here too, but I shouldn't ever need it. 
+//        let newList: [[String:Any]] = [[Item(name: "Add items to your list here!", checked: false, price: 0).toDict()]]
+        let newPantry: [[String:Any]] = [[Item(name: "Add items to your pantry here!", checked: false, price: 0).toDict()]]
+//        group.child("list").setValue(newList)
+        group.child("pantry").setValue(newPantry)
+
         // TODO: replace line below with call to removeMembers() -- keep track of which members to remove
         // Clear the whole members tree.
         group.child("members").setValue(nil)
