@@ -15,6 +15,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     var alert: UIAlertView = UIAlertView(title: "", message: nil, delegate: nil, cancelButtonTitle: nil);
     
     let databaseRef = Database.database().reference()
+    let currentUserID = Auth.auth().currentUser!.uid
     
     // TODO: Should be in tab view controller???
     var groupIDs: [String] = ["personal"] // The groups the user is in.
@@ -24,6 +25,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     var balances: [String: [String: Int]] = [:]    // GroupID, then userID, then the amounts owed by the current user (so if we're paying, these should all be negative).
                                                     // Positive amounts are money that I should pay out.
     // TODO: Deprecate groupIDs and store it in balances?
+    
+    var transferItems: [String:[Item]] = [:]
     
     //MARK: Properties
     
@@ -191,8 +194,10 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         self.databaseRef.child("users/\(Auth.auth().currentUser!.uid)/groups").observeSingleEvent(of: .value, with: {(snapshot) in
             for child in snapshot.children {
                 if let childRef = child as? DataSnapshot {
-                    self.groupIDs.append(childRef.key)
-                    self.balances[childRef.key] = [:] // Add empty dictionary line.
+                    if !self.groupIDs.contains(childRef.key) {
+                        self.groupIDs.append(childRef.key)
+                        self.balances[childRef.key] = [:] // Add empty dictionary line.
+                    }
                 }
             }
             print("Here are the IDs of groups you are in. \(self.groupIDs)")
@@ -210,8 +215,10 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     func loadGroupNames() { // Just for header names.
         for groupID in groupIDs.filter({$0 != "personal"}) { // sssss
             self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
-                self.groupNames.append(snapshot.value as! String)
-                print("Here are the names of groups you are in. \(self.groupNames)")
+                if !self.groupNames.contains(snapshot.value as! String) {
+                    self.groupNames.append(snapshot.value as! String)
+                    print("Here are the names of groups you are in. \(self.groupNames)")
+                }
             }) {(error) in
                 print(error.localizedDescription)
             }
@@ -286,8 +293,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory
                                                         // to the opposing inventory (list -> pantry or vice versa)
 
-        
         for groupID in groupIDs {
+            transferItems[groupID] = [] // Empty buffer to transfer.
             var balance = 0
             for thing in itemListPantryInstance.dict[type]![groupID]! {
                 if thing.checked {
@@ -295,15 +302,49 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     thing.checked = false // Reset checkedness.
                     itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter() {$0 != thing} // Take the item out of this inventory.
                     itemListPantryInstance.dict[notType]![groupID]?.append(thing) // Put the item into the opposing inventory.
+                    transferItems[groupID]!.append(thing)
                     if type == .list && groupID != "personal" { // We're checking out, and I want to record this as a debt.
                         print("Here is an add to the overall debt to the amount: \(thing.price) (a number of cents).")
                         balance = balance + thing.price
                     }
                 }
             }
-            // Remember that balance is positive. Here is how much you spent.
-            if balance > 0 { // TODO: Maybe toast or alert this, to the effect of "Checking out with balance __. Are you sure?"
-                recordGroupDebt(userID: Auth.auth().currentUser!.uid, groupID: groupID, amount: balance * -1)
+            if groupID != "personal" {
+                var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
+                print("ONCE")
+                print(myRef)
+                myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+                    var newItems = self.transferItems[groupID]!.map{$0.toDict()}  as! [[String:Any]]
+                    print(newItems)
+                    var newArray: [[String: Any]] = []
+                    if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
+                        for item in newItems {
+                            data.append(item as! [String : Any])
+                        }
+                        print("NONNIL: The new \(self.notType) is \(data).")
+                        currentData.value = data as! NSArray
+                    }
+                    else { // There is no data stored in the database.
+//                        newArray = newItems // It's not getting the thing.
+                        print("NIL: The new \(self.notType) is \(newArray).")
+                    }
+                    print("We have set the stored \(self.notType) to be: \(currentData.value).")
+                    return TransactionResult.success(withValue: currentData)
+                    
+                }) { (error, committed, snapshot) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    if committed {
+                        print("We believe it worked. \(snapshot?.value)")
+                    }
+                }
+                
+                
+                // Remember that balance is positive. Here is how much you spent.
+                if balance > 0 { // TODO: Maybe toast or alert this, to the effect of "Checking out with balance __. Are you sure?"
+                    recordGroupDebt(userID: Auth.auth().currentUser!.uid, groupID: groupID, amount: balance * -1)
+                }
             }
         }
         
