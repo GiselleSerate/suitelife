@@ -442,7 +442,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         refreshControl.endRefreshing()
     }
     
-    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
+    func shallowRefresh() { // Refreshes from local source (essentially wrapper for reloadData).
+        
+        // Removes all blank lines and re-adds a blank line at the end of the inventory.
         print("Refreshing \(type).")
         for groupID in groupIDs { // Refresh every group individually.
             itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
@@ -450,14 +452,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         tableView.reloadData()
-    }
-    
-    func shallowRefresh() { // Refreshes from local source (essentially wrapper for reloadData).
-        
-    }
-    
-    func deepRefresh() { // Refreshes from Firebase.
-        
     }
     
     // MARK: Loading

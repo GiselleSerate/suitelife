@@ -113,11 +113,11 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
                 //Do nothing.
             }
             else if storedText == "" { // This cell is the last one, you want to replace the blank line.
-                controller?.refreshPage()
+                controller?.shallowRefresh()
             }
             else if item?.name == "" { // Delete this item, because you have made its text blank.
                 itemListPantryInstance.dict[type]![groupID!]!.remove(at: (itemListPantryInstance.dict[type]![groupID!]!.index(of: item!))!) // Delete item.
-                controller?.refreshPage() // Refresh the table.
+                controller?.shallowRefresh() // Refresh the table.
             }
             else { // Allow an edit. Do nothing. 
             }
