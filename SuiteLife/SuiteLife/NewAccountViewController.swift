@@ -64,6 +64,8 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             // Initialize pantry with a default item. Code for list not necessary, as the list always loads first.
             let newPantry: [[String:Any]] = [Item(name: "Add items to your pantry here!", checked: false, price: 0).toDict() as! Dictionary<String, Any>]
             databaseRef.child("users/\(currentUserID)/pantry").setValue(newPantry)
+            let newList: [[String:Any]] = [Item(name: "Add items to your list here!", checked: false, price: 0).toDict() as! Dictionary<String, Any>]
+            databaseRef.child("users/\(currentUserID)/list").setValue(newList)
             
             let tabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
             // Transition to the tab controller from the sign-in

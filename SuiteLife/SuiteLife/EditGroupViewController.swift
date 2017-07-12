@@ -79,6 +79,8 @@ class EditGroupViewController: UIViewController, UITableViewDelegate, UITableVie
         // Initialize pantry with a default item. Code for list not necessary, as the list always loads first.
         let newPantry: [[String:Any]] = [Item(name: "Add items to your pantry here!", checked: false, price: 0).toDict() as! Dictionary<String, Any>]
         group.child("pantry").setValue(newPantry)
+        let newList: [[String:Any]] = [Item(name: "Add items to your list here!", checked: false, price: 0).toDict() as! Dictionary<String, Any>]
+        group.child("list").setValue(newList)
 
         // TODO: replace line below with call to removeMembers() -- keep track of which members to remove
         // Clear the whole members tree.
