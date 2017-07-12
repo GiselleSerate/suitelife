@@ -370,6 +370,16 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter() {$0 != thing} // Take the item out of this inventory.
                     itemListPantryInstance.dict[notType]![groupID]?.append(thing) // Put the item into the opposing inventory.
                     transferItems[groupID]!.append(thing)
+                    
+                    // Put checkout item into deletion buffer.
+                    if var tempDelete = toDelete[groupID] {
+                        tempDelete.append(thing.uid.uuidString)
+                        toDelete[groupID] = tempDelete
+                    }
+                    else {
+                        toDelete[groupID] = [thing.uid.uuidString]
+                    }
+                    
                     if type == .list && groupID != "personal" { // We're checking out, and I want to record this as a debt.
                         print("Here is an add to the overall debt to the amount: \(thing.price) (a number of cents).")
                         balance = balance + thing.price
@@ -436,8 +446,13 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             // Randomly distribute extra cents; check if it doesn't add to total and add extra amount progressively to people's totals. This shouldn't be more than how many people there are, so you should run out of centsError by the time you get to the end of the people.
             
             for (key, value) in self.balances[groupID]! { // Fill the dictionary with debts to pass to recordPersonalDebts.
-                self.balances[groupID]?[key] = singleDebt + 1
-                centsError = centsError - 1
+                if centsError > 0 {
+                    self.balances[groupID]?[key] = singleDebt + 1
+                    centsError = centsError - 1
+                }
+                else {
+                    self.balances[groupID]?[key] = singleDebt
+                }
             }
             DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!, onCompletion: self.refreshPage) // Calling helper function IN the callback.
             self.refreshPage()
