@@ -12,34 +12,34 @@ import Firebase
 
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
+    
+    //MARK: Properties
+    
+    // Constants to find the user, database, local item arrays.
+    let userID = Auth.auth().currentUser!.uid
+    let databaseRef = Database.database().reference()
+    let itemListPantryInstance = ListPantryDataModel.sharedInstance
+    
+    // Loading alert.
     var alert: UIAlertView = UIAlertView(title: "", message: nil, delegate: nil, cancelButtonTitle: nil);
     
-    let databaseRef = Database.database().reference()
-    let currentUserID = Auth.auth().currentUser!.uid
-    
-    // TODO: Should be in tab view controller???
+    // Arrays to track what groups you are in.
     var groupIDs: [String] = ["personal"] // The groups the user is in.
     var groupNames: [String] = ["Personal"] // The names of this user's groups.
     
-    // Can't be local, because callbacks. Eh.
+    // Balance tracker.
     var balances: [String: [String: Int]] = [:]    // GroupID, then userID, then the amounts owed by the current user (so if we're paying, these should all be negative).
                                                     // Positive amounts are money that I should pay out.
-    // TODO: Deprecate groupIDs and store it in balances?
     
-    var transferItems: [String:[Item]] = [:]
-    var savedItems: [String:[Item]] = [:]
-    var toDelete: [String: [String]] = [:] // Contains groupID keys with arrays of strings to delete.
-    
-    //MARK: Properties
+    // Item buffers.
+    var transferItems: [String:[Item]] = [:]    // Contains groupID keys with arrays of Items to move to the opposing inventory.
+    var toDelete: [String: [String]] = [:]      // Contains groupID keys with arrays of strings to delete.
     
     var type: InventoryType = .list // By default, the view controller's type will be list.
     var notType: InventoryType = .pantry
     
-    let itemListPantryInstance = ListPantryDataModel.sharedInstance
     
-    let userID = Auth.auth().currentUser!.uid
-    
-    func setType(type: InventoryType) {
+    func setType(type: InventoryType) { // Called on initialization of this controller.
         if type == .pantry { // Switch the controller's type to pantry. Else, leave it as default, which is list.
             self.type = .pantry
             self.notType = .list
@@ -80,31 +80,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         saveItems()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    // MARK: Refresh
-    
-    // I hypothesize that Tabman is bad for this.
-    func handleRefresh(_ refreshControl: UIRefreshControl) { // For pulling to refresh.
-        print("Calling handleRefresh.")
-        loadGroupIDs()
-        refreshPage()
-        refreshControl.endRefreshing()
-    }
-    
-    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
-        print("Refreshing \(type).")
-        for groupID in groupIDs { // Refresh every group individually.
-            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
-            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
-        }
-        
-        tableView.reloadData()
-    }
    
     //MARK: TableViewController Methods
     
@@ -114,7 +89,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Make sure that section is bounded properly -- i.e. that groupIDs has loaded in
+        // Make sure that section is bounded properly -- i.e. that groupIDs has loaded in.
         if groupIDs.count > section {
             return itemListPantryInstance.dict[type]![groupIDs[section]]?.count ?? 0
         }
@@ -132,10 +107,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 fatalError("The dequeued cell is not an instance of InventoryTableViewCell.")
         }
         
-        // Configure the cell...
+        // Configure the cell.
         let groupID = groupIDs[indexPath.section]
         var item = itemListPantryInstance.dict[type]![groupID]?[indexPath.row]
-        
         cell.attachItem(&item!)
         cell.controller = self
         cell.type = self.type
@@ -146,10 +120,10 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     // Support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // Discover the group the items are from.
             let groupID = groupIDs[indexPath.section]
-            // Delete these things.
             
+            // Store these items to be deleted upon save.
             if var tempDelete = toDelete[groupID] {
                 tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!)
                 toDelete[groupID] = tempDelete
@@ -158,23 +132,18 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!]
             }
             
-            print("We are Attempting To Delete these things: \(toDelete[groupID])")
-            
+            // Delete these items from the local data source.
             itemListPantryInstance.dict[type]![groupID]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Implement if we want an add item button
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
     // Support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         
         let groupID = groupIDs[indexPath.section]
         if indexPath.row == itemListPantryInstance.dict[type]![groupID]?.index(where: {$0.name == ""}) {
-            // I don't want you to be able to drag my blank row. That's supposed to be at the bottom.
+            // You should not be able to edit my blank row.
             return false
         }
         else {
@@ -184,19 +153,22 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     // Support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        // Perform basic swap of items.
         let itemToMove = itemListPantryInstance.dict[type]![groupIDs[fromIndexPath.section]]?[fromIndexPath.row]
         itemListPantryInstance.dict[type]![groupIDs[fromIndexPath.section]]?.remove(at: fromIndexPath.row)
         itemListPantryInstance.dict[type]![groupIDs[to.section]]?.insert(itemToMove!, at: to.row)
-        if to.row == (itemListPantryInstance.dict[type]![groupIDs[to.section]]?.count)! - 1 { // When you move an item below the new item initialize slot, delete and recreate the blanks.
-            refreshPage()
+        
+        // When you move an item below the blank (new item) slot, delete and recreate the blanks.
+        if to.row == (itemListPantryInstance.dict[type]![groupIDs[to.section]]?.count)! - 1 {
+            shallowRefresh()
         }
     }
     
     // Show header titles.
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { // Ugh callbacks
-        var text = "Loading . . . "
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var text = "Loading . . . " // If you have not loaded the names yet, display this text.
         if groupNames.count > section { // Presume we have loaded this many things.
-            text = groupNames[section]
+            text = groupNames[section] // We have a group name for this section.
         }
         return text
     }
@@ -215,25 +187,24 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     }
                 }
             }
-            print("Here are the IDs of groups you are in. \(self.groupIDs)")
+            // self.groupIDs now contains the IDs of the groups that you are in.
             
             // Load items into list.
             print("Attempting to load \(self.type) items from memory...")
             self.loadGroupNames() // Less important to load names, but they exist. Call afterward.
             self.loadItems() // Load items after callback has happened.
-            self.refreshPage()
         }) {(error) in
             print(error.localizedDescription)
         }
     }
     
-    func loadGroupNames() { // Just for header names.
-        for groupID in groupIDs.filter({$0 != "personal"}) { // sssss
+    func loadGroupNames() { // For header names, get the names of the groups you're in.
+        for groupID in groupIDs.filter({$0 != "personal"}) {
             self.databaseRef.child("groups/\(groupID)/name").observeSingleEvent(of: .value, with: {(snapshot) in
                 if !self.groupNames.contains(snapshot.value as! String) {
                     self.groupNames.append(snapshot.value as! String)
-                    print("Here are the names of groups you are in. \(self.groupNames)")
                 }
+                self.shallowRefresh()
             }) {(error) in
                 print(error.localizedDescription)
             }
@@ -252,8 +223,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 print("No saved personal \(self.type) items, loading defaults...")
                 self.loadDefaults(groupID: "personal")
             }
-            self.refreshPage()
+            
             if self.groupIDs.count == 1 { // I am not in any groups besides my personal list.
+                self.shallowRefresh()
                 self.stopSpinner()
             }
         }) {(error) in
@@ -271,8 +243,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     print("No saved \(self.type) items for group \(groupID), loading defaults...")
                     self.loadDefaults(groupID: groupID)
                 }
-                self.refreshPage()
+                
                 if groupID == self.groupIDs.last {
+                    self.shallowRefresh()
                     self.stopSpinner()
                 }
             }) {(error) in
@@ -325,12 +298,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                         filteredData = data
                     }
                     
-                    print("NONNIL Save: The new \(self.type) is \(filteredData).")
+                    print("Save NONNIL: The new \(self.type) is \(filteredData).")
                     currentData.value = filteredData as! NSArray
-                    print("We have set the stored \(self.type) to be: \(currentData.value).")
                 }
                 else { // There was no data returned by the database yet.
-                    print("NIL Save: We have not yet gotten a response from the database.")
+                    print("Save NIL: Waiting on database.")
                 }
                 return TransactionResult.success(withValue: currentData)
                 
@@ -346,16 +318,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: Other Methods
+    // MARK: Checkout
     
-    func loadDefaults(groupID: String) {
-        let instruction1 = Item(name: "Add items to your \(type) here!", checked: false, price: 0)
-        itemListPantryInstance.dict[type]![groupID] = [instruction1]
-        refreshPage()
-    }
-    
-    func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory
-                                                        // to the opposing inventory (list -> pantry or vice versa)
+    func transferSelected(sender: UIBarButtonItem) {    // Transfers items from this inventory to the opposing inventory
 
         for groupID in groupIDs {
             
@@ -390,22 +355,22 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             // Prepare to transfer items by setting reference location.
             var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
             if groupID == "personal" {
-                myRef = databaseRef.child("users/\(currentUserID)/\(notType)")
+                myRef = databaseRef.child("users/\(userID)/\(notType)")
             }
             
-            // Transaction block that updates the array with the locally displayed values, excluding duplicates.
+            // Transaction block that updates the database with the locally displayed values, excluding duplicates.
             myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
                 var newItems = self.transferItems[groupID]!.map{$0.toDict()}  as! [[String:Any]]
                 var newArray: [[String: Any]] = []
-                if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
+                if var data = currentData.value as? [[String: Any]] { // The database has returned with our data.
                     for item in newItems {
                         data.append(item as! [String : Any])
                     }
-                    print("NONNIL Transfer: The new \(self.notType) is \(data).")
+                    print("Transfer NONNIL: The new \(self.notType) is \(data).")
                     currentData.value = data as! NSArray
                 }
-                else { // There is no data stored in the database.
-                    print("NIL Transfer: The new \(self.notType) is \(newArray).")
+                else { // The database has not yet returned with our data.
+                    print("Transfer NIL: Waiting for database.")
                 }
                 return TransactionResult.success(withValue: currentData)
                 
@@ -425,7 +390,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         
         
         saveItems() // Save to file.
-        refreshPage()
+        shallowRefresh()
     }
     
     func recordGroupDebt(userID: String, groupID: String, amount: Int) { // Records debt owed to this user by everyone in this group.
@@ -454,17 +419,50 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     self.balances[groupID]?[key] = singleDebt
                 }
             }
-            DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!, onCompletion: self.refreshPage) // Calling helper function IN the callback.
-            self.refreshPage()
+            DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!, onCompletion: nil)
         }) {(error) in
             print(error.localizedDescription)
         }
     }
 
     
+    //MARK: Default Handling
+    
+    func loadDefaults(groupID: String) { // Load a single item into the list (or pantry).
+        let instruction1 = Item(name: "Add items to your \(type) here!", checked: false, price: 0)
+        itemListPantryInstance.dict[type]![groupID] = [instruction1]
+        shallowRefresh()
+    }
+    
+    
+    // MARK: Refresh
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) { // Triggered on pull to refresh.
+        loadGroupIDs()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshPage() { // Removes all blank lines and re-adds a blank line at the end of the inventory.
+        print("Refreshing \(type).")
+        for groupID in groupIDs { // Refresh every group individually.
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
+            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func shallowRefresh() { // Refreshes from local source (essentially wrapper for reloadData).
+        
+    }
+    
+    func deepRefresh() { // Refreshes from Firebase.
+        
+    }
+    
     // MARK: Loading
     
-    func startSpinner() {
+    func startSpinner() { // Start loading animation.
         
         var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 50, y: 10, width: 37, height: 37)) as UIActivityIndicatorView
         loadingIndicator.center = self.view.center
@@ -480,7 +478,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         self.navigationController!.view.isUserInteractionEnabled = false
     }
     
-    func stopSpinner() {
+    func stopSpinner() { // Stop loading animation.
         alert.dismiss(withClickedButtonIndex: 0, animated: true)
         self.view.isUserInteractionEnabled = true
         self.navigationController!.view.isUserInteractionEnabled = true
