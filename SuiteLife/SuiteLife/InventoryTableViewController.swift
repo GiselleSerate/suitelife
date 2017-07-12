@@ -28,6 +28,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     var transferItems: [String:[Item]] = [:]
     var savedItems: [String:[Item]] = [:]
+    var toDelete: [String: [String]] = [:] // Contains groupID keys with arrays of strings to delete.
     
     //MARK: Properties
     
@@ -146,6 +147,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         if editingStyle == .delete {
             // Delete the row from the data source
             let groupID = groupIDs[indexPath.section]
+            toDelete[groupID]!.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!)
             itemListPantryInstance.dict[type]![groupID]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -289,9 +291,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 if var data = currentData.value as? [[String: Any]] { // The database has returned some data.
                     for item in newItems {
                         // Duplicates checked by uuids.
+                        // Adding:
                         if !(data.contains{$0["uidString"] as! String == item["uidString"] as! String}) { // I have an item that the database does not have.
-                            data.append(item as! [String : Any])
+                            data.append(item)
                         }
+                        // Editing:
                         else { // If it is a duplicate, support editing. This will probably make editing slightly unreliable, but adding should be bulletproof.
                             let dataIndex = data.index(where: {$0["uidString"] as! String == item["uidString"] as! String})
                             data[dataIndex!]["name"] = item["name"]
@@ -299,6 +303,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                             data[dataIndex!]["price"] = item["price"]
                         }
                     }
+                    // Deleting:
+                    data.filter{self.toDelete[groupID]!.contains($0["uidString"] as! String)}
                     print("NONNIL Save: The new \(self.type) is \(data).")
                     currentData.value = data as! NSArray
                     print("We have set the stored \(self.type) to be: \(currentData.value).")
