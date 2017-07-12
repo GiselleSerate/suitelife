@@ -72,6 +72,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadGroupIDs()
+        toDelete = [:] // Reset delete buffer to be empty.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -147,7 +148,18 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         if editingStyle == .delete {
             // Delete the row from the data source
             let groupID = groupIDs[indexPath.section]
-            toDelete[groupID]!.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!)
+            // Delete these things.
+            
+            if var tempDelete = toDelete[groupID] {
+                tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!)
+                toDelete[groupID] = tempDelete
+            }
+            else {
+                toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!]
+            }
+            
+            print("We are Attempting To Delete these things: \(toDelete[groupID])")
+            
             itemListPantryInstance.dict[type]![groupID]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -303,10 +315,18 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                             data[dataIndex!]["price"] = item["price"]
                         }
                     }
+                    
                     // Deleting:
-                    data.filter{self.toDelete[groupID]!.contains($0["uidString"] as! String)}
-                    print("NONNIL Save: The new \(self.type) is \(data).")
-                    currentData.value = data as! NSArray
+                    var filteredData: [[String: Any]]
+                    if let deleteStrings = self.toDelete[groupID] { // If there are things to delete, filter them out.
+                        filteredData = data.filter{!self.toDelete[groupID]!.contains($0["uidString"] as! String)}
+                    }
+                    else {
+                        filteredData = data
+                    }
+                    
+                    print("NONNIL Save: The new \(self.type) is \(filteredData).")
+                    currentData.value = filteredData as! NSArray
                     print("We have set the stored \(self.type) to be: \(currentData.value).")
                 }
                 else { // There was no data returned by the database yet.
