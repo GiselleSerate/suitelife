@@ -15,9 +15,10 @@ class Item: NSObject, NSCoding {
     var name: String
     var checked: Bool
     var price: Int
+    var uid: UUID
     
     override public var description: String {
-        return "Item Name: \(name), Checked: \(checked), Price: \(price)"
+        return "Item \(uid) with Name: \(name), Checked: \(checked), Price: \(price)"
     }
     
     //MARK: Archiving Paths
@@ -30,6 +31,16 @@ class Item: NSObject, NSCoding {
         static let name = "name"
         static let checked = "checked"
         static let price = "price"
+        static let uidString = "uidString"
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? Item else {
+            // Things which aren't Items can't be compared
+            return false
+        }
+        // Otherwise, compare the uids
+        return object.uid == self.uid
     }
     
     //MARK: Initialization
@@ -37,6 +48,14 @@ class Item: NSObject, NSCoding {
         self.name = name
         self.checked = checked
         self.price = price
+        self.uid = UUID()
+    }
+    
+    init(name: String, checked: Bool, price: Int, uidString: String) {
+        self.name = name
+        self.checked = checked
+        self.price = price
+        self.uid = UUID(uuidString: uidString)!
     }
     
     init(fromDictionary dict: NSDictionary) {
@@ -46,11 +65,12 @@ class Item: NSObject, NSCoding {
         self.name = dictionary[PropertyKey.name] as! String
         self.checked = dictionary[PropertyKey.checked] as! Bool
         self.price = dictionary[PropertyKey.price] as! Int
+        self.uid = UUID(uuidString: dictionary[PropertyKey.uidString] as! String)!
     }
     
     //MARK: Firebase
     func toDict() -> NSDictionary {
-        let dict = [PropertyKey.name: self.name as NSString, PropertyKey.checked: self.checked as NSNumber, PropertyKey.price: self.price as NSNumber]
+        let dict = [PropertyKey.name: self.name as NSString, PropertyKey.checked: self.checked as NSNumber, PropertyKey.price: self.price as NSNumber, PropertyKey.uidString: self.uid.uuidString as NSString]
         return dict as NSDictionary
     }
     
@@ -60,6 +80,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(checked, forKey: PropertyKey.checked)
         aCoder.encode(price, forKey: PropertyKey.price)
+        aCoder.encode(uid, forKey: PropertyKey.uidString)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -71,7 +92,11 @@ class Item: NSObject, NSCoding {
         }
         let checked = aDecoder.decodeBool(forKey: PropertyKey.checked)
         let price = aDecoder.decodeInt32(forKey: PropertyKey.price) // TODO: Figure out whether I should worry about Int32 vs Int64 or just whatever. I'm casting anyway.
-        
-        self.init(name: name, checked: checked, price: Int(price))
+        guard let uidString = aDecoder.decodeObject(forKey: PropertyKey.uidString) as? String else {
+            print("Failed to decode Uid")
+            self.init(name: name, checked: checked, price: Int(price))
+            return
+        }
+        self.init(name: name, checked: checked, price: Int(price), uidString: uidString)
     }
 }
