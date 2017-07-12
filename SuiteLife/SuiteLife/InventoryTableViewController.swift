@@ -288,9 +288,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 var newArray: [[String: Any]] = []
                 if var data = currentData.value as? [[String: Any]] { // The database has returned some data.
                     for item in newItems {
-                        // Duplicates counted by identical names.
-                        // Is an item of this name already in the list? Only write if not.
-                        if !(data.contains{$0["name"] as! String == item["name"] as! String}) {
+                        // Duplicates checked by uuids.
+                        if !(data.contains{$0["uidString"] as! String == item["uidString"] as! String}) {
                             data.append(item as! [String : Any])
                         }
                     }
