@@ -25,6 +25,8 @@
 		CB44B9DB1EF19EE10063D9EE /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DA1EF19EE10063D9EE /* InventoryTableViewCell.swift */; };
 		CB44B9DF1EF1A5380063D9EE /* ListPantryTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */; };
 		CB453EBD1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png in Resources */ = {isa = PBXBuildFile; fileRef = CB453EBC1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png */; };
+		CB453EC31F16C01800F56C36 /* oie_WVVfvmfTaHEu.png in Resources */ = {isa = PBXBuildFile; fileRef = CB453EC21F16C01800F56C36 /* oie_WVVfvmfTaHEu.png */; };
+		CB453EC51F16C19800F56C36 /* oie_9ZZHHV8eIe6n.png in Resources */ = {isa = PBXBuildFile; fileRef = CB453EC41F16C19700F56C36 /* oie_9ZZHHV8eIe6n.png */; };
 		CB499B3B1EF84B8A00B60AC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */; };
 		CB499B3D1EF8637400B60AC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */; };
 		CB4B7A8A1F040F5000C41DB2 /* PantryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4B7A891F040F5000C41DB2 /* PantryDataModel.swift */; };
@@ -68,6 +70,8 @@
 		CB44B9DA1EF19EE10063D9EE /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
 		CB44B9DE1EF1A5380063D9EE /* ListPantryTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPantryTabViewController.swift; sourceTree = "<group>"; };
 		CB453EBC1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oie_fS0SIrOjqtL3.png; sourceTree = "<group>"; };
+		CB453EC21F16C01800F56C36 /* oie_WVVfvmfTaHEu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oie_WVVfvmfTaHEu.png; sourceTree = "<group>"; };
+		CB453EC41F16C19700F56C36 /* oie_9ZZHHV8eIe6n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oie_9ZZHHV8eIe6n.png; sourceTree = "<group>"; };
 		CB499B391EF847B800B60AC3 /* SuiteLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuiteLife-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB499B3A1EF84B8A00B60AC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CB499B3C1EF8637400B60AC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		CB453EBB1F0EFACA00F56C36 /* UI Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB453EC41F16C19700F56C36 /* oie_9ZZHHV8eIe6n.png */,
+				CB453EC21F16C01800F56C36 /* oie_WVVfvmfTaHEu.png */,
 				CB453EBC1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png */,
 			);
 			name = "UI Resources";
@@ -316,7 +322,9 @@
 				CB453EBD1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png in Resources */,
 				CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */,
 				CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */,
+				CB453EC51F16C19800F56C36 /* oie_9ZZHHV8eIe6n.png in Resources */,
 				CB577BE41EEF4AA700903EE9 /* Assets.xcassets in Resources */,
+				CB453EC31F16C01800F56C36 /* oie_WVVfvmfTaHEu.png in Resources */,
 				CB577BE21EEF4AA700903EE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
