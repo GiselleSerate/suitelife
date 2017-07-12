@@ -289,8 +289,14 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 if var data = currentData.value as? [[String: Any]] { // The database has returned some data.
                     for item in newItems {
                         // Duplicates checked by uuids.
-                        if !(data.contains{$0["uidString"] as! String == item["uidString"] as! String}) {
+                        if !(data.contains{$0["uidString"] as! String == item["uidString"] as! String}) { // I have an item that the database does not have.
                             data.append(item as! [String : Any])
+                        }
+                        else { // If it is a duplicate, support editing. This will probably make editing slightly unreliable, but adding should be bulletproof.
+                            let dataIndex = data.index(where: {$0["uidString"] as! String == item["uidString"] as! String})
+                            data[dataIndex!]["name"] = item["name"]
+                            data[dataIndex!]["checked"] = item["checked"]
+                            data[dataIndex!]["price"] = item["price"]
                         }
                     }
                     print("NONNIL Save: The new \(self.type) is \(data).")
@@ -381,12 +387,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         
-
+        
         saveItems() // Save to file.
         refreshPage()
     }
     
-    // Randomly distribute extra cents; check if it doesn't add to total and add extra amount progressively to people's totals. This shouldn't be more than how many people there are, so you should run out of centsError by the time you get to the end of the people. 
     func recordGroupDebt(userID: String, groupID: String, amount: Int) { // Records debt owed to this user by everyone in this group.
         
         // Amount here is a negative number.
@@ -398,9 +403,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     self.balances[groupID]?[childRef.key] = 0 // Set each person's balances to 0.
                 }
             }
-
+            
             let singleDebt = amount/self.balances[groupID]!.count
             var centsError = amount - singleDebt * self.balances[groupID]!.count // Some cents error needs to be fixed.
+            
+            // Randomly distribute extra cents; check if it doesn't add to total and add extra amount progressively to people's totals. This shouldn't be more than how many people there are, so you should run out of centsError by the time you get to the end of the people.
             
             for (key, value) in self.balances[groupID]! { // Fill the dictionary with debts to pass to recordPersonalDebts.
                 self.balances[groupID]?[key] = singleDebt + 1
