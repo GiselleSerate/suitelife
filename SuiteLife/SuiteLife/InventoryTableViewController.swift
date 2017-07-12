@@ -279,13 +279,13 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 myRef = Database.database().reference().child("users/\(userID)/\(type)")
             }
             
+            // Transaction block that updates the array with the locally displayed values, excluding duplicates.
             myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
                 let newItems = self.itemListPantryInstance.dict[self.type]![groupID]!.map{$0.toDict()}  as! [[String:Any]]
-                print(newItems)
                 var newArray: [[String: Any]] = []
                 if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
                     for item in newItems {
-                        // Is an item of this name already in the list? Only write if not. 
+                        // Is an item of this name already in the list? Only write if not.
                         if !(data.contains{$0["name"] as! String == item["name"] as! String}) {
                             data.append(item as! [String : Any])
                         }
@@ -303,9 +303,6 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             }) { (error, committed, snapshot) in
                 if let error = error {
                     print(error.localizedDescription)
-                }
-                if committed {
-                    print("We believe it worked. \(snapshot?.value)")
                 }
             }
             
@@ -327,7 +324,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                                                         // to the opposing inventory (list -> pantry or vice versa)
 
         for groupID in groupIDs {
-            transferItems[groupID] = [] // Empty buffer to transfer.
+            transferItems[groupID] = [] // Empty the buffer of items to transfer.
             var balance = 0
             for thing in itemListPantryInstance.dict[type]![groupID]! {
                 if thing.checked {
@@ -342,16 +339,17 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     }
                 }
             }
+            
+            // Set reference accordingly.
             var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
-
             if groupID == "personal" {
                 myRef = databaseRef.child("users/\(currentUserID)/\(notType)")
             }
-            print("ONCE")
-            print(myRef)
+
+            
+            // Transaction block that updates the array with the locally displayed values, excluding duplicates.
             myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
                 var newItems = self.transferItems[groupID]!.map{$0.toDict()}  as! [[String:Any]]
-                print(newItems)
                 var newArray: [[String: Any]] = []
                 if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
                     for item in newItems {
@@ -361,18 +359,13 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     currentData.value = data as! NSArray
                 }
                 else { // There is no data stored in the database.
-                    //                        newArray = newItems // It's not getting the thing.
                     print("NIL Transfer: The new \(self.notType) is \(newArray).")
                 }
-                print("We have set the stored \(self.notType) to be: \(currentData.value).")
                 return TransactionResult.success(withValue: currentData)
                 
             }) { (error, committed, snapshot) in
                 if let error = error {
                     print(error.localizedDescription)
-                }
-                if committed {
-                    print("We believe it worked. \(snapshot?.value)")
                 }
             }
             
@@ -389,7 +382,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         refreshPage()
     }
     
-    // TODO: how are we dealing with split cents? Randomly distribute extra cents; check if it doesn't add to total and add extra amount to the first person's total.
+    // Randomly distribute extra cents; check if it doesn't add to total and add extra amount progressively to people's totals. This shouldn't be more than how many people there are, so you should run out of centsError by the time you get to the end of the people. 
     func recordGroupDebt(userID: String, groupID: String, amount: Int) { // Records debt owed to this user by everyone in this group.
         
         // Amount here is a negative number.
@@ -406,8 +399,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             var centsError = amount - singleDebt * self.balances[groupID]!.count // Some cents error needs to be fixed.
             
             for (key, value) in self.balances[groupID]! { // Fill the dictionary with debts to pass to recordPersonalDebts.
-                self.balances[groupID]?[key] = singleDebt + centsError
-                centsError = 0
+                self.balances[groupID]?[key] = singleDebt + 1
+                centsError = centsError - 1
             }
             DebtHelper.recordPersonalDebts(debtDict: self.balances[groupID]!, onCompletion: self.refreshPage) // Calling helper function IN the callback.
             self.refreshPage()
