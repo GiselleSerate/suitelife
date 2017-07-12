@@ -269,11 +269,14 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     func saveItems() {
         print("Saving \(self.type).")
-        // Only the items that aren't blank get saved to file.
+        
+        // Iterate over groups.
         for groupID in groupIDs {
+            
+            // Only the items that aren't blank get saved to file.
             itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
             
-            // Set reference accordingly.
+            // Set reference according to whether you're saving to the personal or group location.
             var myRef = Database.database().reference().child("groups/\(groupID)/\(type)")
             if groupID == groupIDs.first {
                 myRef = Database.database().reference().child("users/\(userID)/\(type)")
@@ -283,8 +286,9 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
                 let newItems = self.itemListPantryInstance.dict[self.type]![groupID]!.map{$0.toDict()}  as! [[String:Any]]
                 var newArray: [[String: Any]] = []
-                if var data = currentData.value as? [[String: Any]] { // There is some data stored in the database.
+                if var data = currentData.value as? [[String: Any]] { // The database has returned some data.
                     for item in newItems {
+                        // Duplicates counted by identical names.
                         // Is an item of this name already in the list? Only write if not.
                         if !(data.contains{$0["name"] as! String == item["name"] as! String}) {
                             data.append(item as! [String : Any])
@@ -292,12 +296,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     }
                     print("NONNIL Save: The new \(self.type) is \(data).")
                     currentData.value = data as! NSArray
+                    print("We have set the stored \(self.type) to be: \(currentData.value).")
                 }
-                else { // There is no data stored in the database.
-                    //                        newArray = newItems // It's not getting the thing.
-                    print("NIL Save: The new \(self.type) is \(newArray).")
+                else { // There was no data returned by the database yet.
+                    print("NIL Save: We have not yet gotten a response from the database.")
                 }
-                print("We have set the stored \(self.type) to be: \(currentData.value).")
                 return TransactionResult.success(withValue: currentData)
                 
             }) { (error, committed, snapshot) in
@@ -324,8 +327,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                                                         // to the opposing inventory (list -> pantry or vice versa)
 
         for groupID in groupIDs {
-            transferItems[groupID] = [] // Empty the buffer of items to transfer.
-            var balance = 0
+            
+            transferItems[groupID] = [] // Empty the buffer of items to transfer for this group.
+            var balance = 0 // The balance for each group.
+            
+            // Iterate over the list (or pantry) of this group.
             for thing in itemListPantryInstance.dict[type]![groupID]! {
                 if thing.checked {
                     print(thing)
@@ -340,12 +346,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 }
             }
             
-            // Set reference accordingly.
+            // Prepare to transfer items by setting reference location.
             var myRef = databaseRef.child("groups/\(groupID)/\(notType)")
             if groupID == "personal" {
                 myRef = databaseRef.child("users/\(currentUserID)/\(notType)")
             }
-
             
             // Transaction block that updates the array with the locally displayed values, excluding duplicates.
             myRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
