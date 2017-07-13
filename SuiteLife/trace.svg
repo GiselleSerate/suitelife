@@ -40,9 +40,9 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
      inkscape:cx="447.21662"
-     inkscape:cy="598.39146"
+     inkscape:cy="638.79756"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer5"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -124,7 +124,7 @@
      transform="translate(-253.71428,-403.21936)"
      id="g4232"
      inkscape:groupmode="layer"
-     inkscape:label="Text"
+     inkscape:label="Original"
      style="display:none"
      sodipodi:insensitive="true">
     <image
@@ -135,6 +135,19 @@
        id="image4234"
        x="253.71428"
        y="403.21936" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="White Background">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4166"
+       width="1024.2948"
+       height="1024.2948"
+       x="0"
+       y="-0.29472339"
+       ry="0" />
   </g>
   <g
      inkscape:label="House Template"
