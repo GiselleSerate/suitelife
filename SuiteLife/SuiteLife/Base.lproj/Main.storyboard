@@ -464,10 +464,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-KB-Xsf" userLabel="Title Stack">
-                                <rect key="frame" x="35" y="42" width="250" height="144"/>
+                                <rect key="frame" x="47.5" y="-39" width="225" height="225"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oie_9ZZHHV8eIe6n.png" translatesAutoresizingMaskIntoConstraints="NO" id="oqI-NN-Y24">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="144"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginScreenLg.png" translatesAutoresizingMaskIntoConstraints="NO" id="oqI-NN-Y24">
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="225"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -1295,7 +1295,7 @@
         <image name="barcodeIconSet" width="30" height="30"/>
         <image name="iouIconSet" width="30" height="30"/>
         <image name="listIconSet" width="29" height="25"/>
-        <image name="oie_9ZZHHV8eIe6n.png" width="250" height="144"/>
+        <image name="loginScreenLg.png" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Y2K-fl-9ki"/>

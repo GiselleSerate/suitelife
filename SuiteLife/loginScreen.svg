@@ -17,9 +17,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="loginScreen.svg"
-   inkscape:export-filename="/Users/cssummer17/suitelife/SuiteLife/loginScreen.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="/Users/cssummer17/suitelife/SuiteLife/loginScreenLg.png"
+   inkscape:export-xdpi="19.775393"
+   inkscape:export-ydpi="19.775393">
   <defs
      id="defs4">
     <clipPath
@@ -54,7 +54,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="62.040031"
+     inkscape:cx="-270.30015"
      inkscape:cy="667.82804"
      inkscape:document-units="px"
      inkscape:current-layer="layer5"
@@ -132,7 +132,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

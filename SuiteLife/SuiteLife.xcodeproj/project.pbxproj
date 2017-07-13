@@ -46,6 +46,7 @@
 		CBA5CCFA1F0D83B2003FEFB9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */; };
 		CBA5CCFC1F0D84F8003FEFB9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCFB1F0D84F8003FEFB9 /* Group.swift */; };
 		CBA5CCFE1F0D9237003FEFB9 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */; };
+		CBAB78611F181B1D0090E4A7 /* loginScreenLg.png in Resources */ = {isa = PBXBuildFile; fileRef = CBAB78601F181B1D0090E4A7 /* loginScreenLg.png */; };
 		CBC25F481EF499E400BAF68C /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		CBA5CCF91F0D83B2003FEFB9 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		CBA5CCFB1F0D84F8003FEFB9 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CBA5CCFD1F0D9237003FEFB9 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		CBAB78601F181B1D0090E4A7 /* loginScreenLg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginScreenLg.png; sourceTree = "<group>"; };
 		CBC25F471EF499E400BAF68C /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 		CB453EBB1F0EFACA00F56C36 /* UI Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CBAB78601F181B1D0090E4A7 /* loginScreenLg.png */,
 				CB453EC41F16C19700F56C36 /* oie_9ZZHHV8eIe6n.png */,
 				CB453EC21F16C01800F56C36 /* oie_WVVfvmfTaHEu.png */,
 				CB453EBC1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png */,
@@ -319,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAB78611F181B1D0090E4A7 /* loginScreenLg.png in Resources */,
 				CB453EBD1F0EFAF700F56C36 /* oie_fS0SIrOjqtL3.png in Resources */,
 				CB577BE71EEF4AA700903EE9 /* LaunchScreen.storyboard in Resources */,
 				CBA239E91F01796400006155 /* GoogleService-Info.plist in Resources */,
