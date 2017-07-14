@@ -158,6 +158,16 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         itemListPantryInstance.dict[type]![groupIDs[fromIndexPath.section]]?.remove(at: fromIndexPath.row)
         itemListPantryInstance.dict[type]![groupIDs[to.section]]?.insert(itemToMove!, at: to.row)
         
+        // Store this item to be deleted from the previous section upon save.
+        let groupID = groupIDs[fromIndexPath.section]
+        if var tempDelete = toDelete[groupID] {
+            tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uid.uuidString)!)
+            toDelete[groupID] = tempDelete
+        }
+        else {
+            toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uid.uuidString)!]
+        }
+        
         // When you move an item below the blank (new item) slot, delete and recreate the blanks.
         if to.row == (itemListPantryInstance.dict[type]![groupIDs[to.section]]?.count)! - 1 {
             shallowRefresh()
