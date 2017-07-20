@@ -125,11 +125,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
             
             // Store these items to be deleted upon save.
             if var tempDelete = toDelete[groupID] {
-                tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!)
+                tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uidString)!)
                 toDelete[groupID] = tempDelete
             }
             else {
-                toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uid.uuidString)!]
+                toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[indexPath.row].uidString)!]
             }
             
             // Delete these items from the local data source.
@@ -161,11 +161,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Store this item to be deleted from the previous section upon save.
         let groupID = groupIDs[fromIndexPath.section]
         if var tempDelete = toDelete[groupID] {
-            tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uid.uuidString)!)
+            tempDelete.append((itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uidString)!)
             toDelete[groupID] = tempDelete
         }
         else {
-            toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uid.uuidString)!]
+            toDelete[groupID] = [(itemListPantryInstance.dict[type]![groupID]?[fromIndexPath.row].uidString)!]
         }
         
         // When you move an item below the blank (new item) slot, delete and recreate the blanks.
@@ -348,11 +348,11 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                     
                     // Put checkout item into deletion buffer.
                     if var tempDelete = toDelete[groupID] {
-                        tempDelete.append(thing.uid.uuidString)
+                        tempDelete.append(thing.uidString)
                         toDelete[groupID] = tempDelete
                     }
                     else {
-                        toDelete[groupID] = [thing.uid.uuidString]
+                        toDelete[groupID] = [thing.uidString]
                     }
                     
                     if type == .list && groupID != "personal" { // We're checking out, and I want to record this as a debt.

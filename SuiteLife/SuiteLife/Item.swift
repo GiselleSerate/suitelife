@@ -15,10 +15,10 @@ class Item: NSObject, NSCoding {
     var name: String
     var checked: Bool
     var price: Int
-    var uid: UUID
+    var uidString: String
     
     override public var description: String {
-        return "Item \(uid) with Name: \(name), Checked: \(checked), Price: \(price)"
+        return "Item \(uidString) with Name: \(name), Checked: \(checked), Price: \(price)"
     }
     
     //MARK: Archiving Paths
@@ -40,7 +40,7 @@ class Item: NSObject, NSCoding {
             return false
         }
         // Otherwise, compare the uids
-        return object.uid == self.uid
+        return object.uidString == self.uidString
     }
     
     //MARK: Initialization
@@ -48,14 +48,14 @@ class Item: NSObject, NSCoding {
         self.name = name
         self.checked = checked
         self.price = price
-        self.uid = UUID()
+        self.uidString = UUID().uuidString
     }
     
     init(name: String, checked: Bool, price: Int, uidString: String) {
         self.name = name
         self.checked = checked
         self.price = price
-        self.uid = UUID(uuidString: uidString)!
+        self.uidString = uidString
     }
     
     init(fromDictionary dict: NSDictionary) {
@@ -65,12 +65,12 @@ class Item: NSObject, NSCoding {
         self.name = dictionary[PropertyKey.name] as! String
         self.checked = dictionary[PropertyKey.checked] as! Bool
         self.price = dictionary[PropertyKey.price] as! Int
-        self.uid = UUID(uuidString: dictionary[PropertyKey.uidString] as! String)!
+        self.uidString = dictionary[PropertyKey.uidString] as! String
     }
     
     //MARK: Firebase
     func toDict() -> NSDictionary {
-        let dict = [PropertyKey.name: self.name as NSString, PropertyKey.checked: self.checked as NSNumber, PropertyKey.price: self.price as NSNumber, PropertyKey.uidString: self.uid.uuidString as NSString]
+        let dict = [PropertyKey.name: self.name as NSString, PropertyKey.checked: self.checked as NSNumber, PropertyKey.price: self.price as NSNumber, PropertyKey.uidString: self.uidString as NSString]
         return dict as NSDictionary
     }
     
@@ -80,7 +80,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(checked, forKey: PropertyKey.checked)
         aCoder.encode(price, forKey: PropertyKey.price)
-        aCoder.encode(uid, forKey: PropertyKey.uidString)
+        aCoder.encode(uidString, forKey: PropertyKey.uidString)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
