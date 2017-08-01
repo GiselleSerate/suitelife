@@ -297,8 +297,8 @@
 				TargetAttributes = {
 					CB577BD81EEF4AA700903EE9 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 66W5UQXAS2;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 588DGVCG3P;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -549,14 +549,15 @@
 			baseConfigurationReference = 458A92D14D03CA1FBF9E629C /* Pods-SuiteLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66W5UQXAS2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 588DGVCG3P;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
+				PRODUCT_BUNDLE_IDENTIFIER = cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8e62be59-ecb0-46ca-8f06-c45582a64d11";
+				PROVISIONING_PROFILE_SPECIFIER = SuiteLife;
 				SWIFT_OBJC_BRIDGING_HEADER = "SuiteLife/SuiteLife-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -567,14 +568,15 @@
 			baseConfigurationReference = 817DFD56C089B6817A8880F0 /* Pods-SuiteLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66W5UQXAS2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 588DGVCG3P;
 				INFOPLIST_FILE = SuiteLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cssummer17.SuiteLife;
+				PRODUCT_BUNDLE_IDENTIFIER = cssummer17.SuiteLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8e62be59-ecb0-46ca-8f06-c45582a64d11";
+				PROVISIONING_PROFILE_SPECIFIER = SuiteLife;
 				SWIFT_OBJC_BRIDGING_HEADER = "SuiteLife/SuiteLife-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
