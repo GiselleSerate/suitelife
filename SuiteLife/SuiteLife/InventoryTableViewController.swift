@@ -10,6 +10,8 @@ import UIKit
 import os.log
 import Firebase
 
+let ITEMENTRYUID = "itemEntry"
+
 class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     
     
@@ -109,6 +111,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Configure the cell.
         let groupID = groupIDs[indexPath.section]
+        print(type)
         var item = itemListPantryInstance.dict[type]![groupID]?[indexPath.row]
         cell.attachItem(&item!)
         cell.controller = self
@@ -142,7 +145,7 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         let groupID = groupIDs[indexPath.section]
-        if indexPath.row == itemListPantryInstance.dict[type]![groupID]?.index(where: {$0.name == ""}) {
+        if indexPath.row == itemListPantryInstance.dict[type]![groupID]?.index(where: {$0.uidString == ITEMENTRYUID}) {
             // You should not be able to edit my blank row.
             return false
         }
@@ -270,8 +273,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Iterate over groups.
         for groupID in groupIDs {
             
-            // Only the items that aren't blank get saved to file.
-            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
+            // Only the items that aren't phantom get saved to file.
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.uidString != ITEMENTRYUID}
             
             // Set reference according to whether you're saving to the personal or group location.
             var myRef = Database.database().reference().child("groups/\(groupID)/\(type)")
@@ -313,6 +316,34 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
                 }
                 else { // There was no data returned by the database yet.
                     print("Save NIL: Waiting on database.")
+                    
+                    var data = [[String: Any]]()
+                    
+                    for item in newItems {
+                        // Duplicates checked by uuids.
+                        // Adding:
+                        if !(data.contains{$0["uidString"] as! String == item["uidString"] as! String}) { // I have an item that the database does not have.
+                            data.append(item)
+                        }
+                            // Editing:
+                        else { // If it is a duplicate, support editing. This will probably make editing slightly unreliable, but adding should be bulletproof.
+                            let dataIndex = data.index(where: {$0["uidString"] as! String == item["uidString"] as! String})
+                            data[dataIndex!]["name"] = item["name"]
+                            data[dataIndex!]["checked"] = item["checked"]
+                            data[dataIndex!]["price"] = item["price"]
+                        }
+                    }
+                    
+                    // Deleting:
+                    var filteredData: [[String: Any]]
+                    if let deleteStrings = self.toDelete[groupID] { // If there are things to delete, filter them out.
+                        filteredData = data.filter{!self.toDelete[groupID]!.contains($0["uidString"] as! String)}
+                    }
+                    else {
+                        filteredData = data
+                    }
+                    
+                    currentData.value = filteredData as! NSArray
                 }
                 return TransactionResult.success(withValue: currentData)
                 
@@ -457,8 +488,8 @@ class InventoryTableViewController: UITableViewController, UITextFieldDelegate {
         // Removes all blank lines and re-adds a blank line at the end of the inventory.
         print("Refreshing \(type).")
         for groupID in groupIDs { // Refresh every group individually.
-            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.name != ""}
-            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0)) // Do only once per group.
+            itemListPantryInstance.dict[type]![groupID] = itemListPantryInstance.dict[type]![groupID]?.filter{$0.uidString != ITEMENTRYUID}
+            itemListPantryInstance.dict[type]![groupID]?.append(Item(name: "", checked: false, price: 0, uidString: ITEMENTRYUID)) // Do only once per group.
         }
         
         tableView.reloadData()

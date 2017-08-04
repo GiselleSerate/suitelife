@@ -109,17 +109,9 @@ class InventoryTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         if textField.tag == TextFieldType.name { // Did you just finish editing the name label?
             
-            if item?.name == "" && storedText == "" { // You took this text and it was blank and now it's blank again.
-                //Do nothing.
-            }
-            else if storedText == "" { // This cell is the last one, you want to replace the blank line.
+            if item?.uidString == ITEMENTRYUID { // If it's the phantom item, give it a real uuid and allow an edit. Else, allow an edit anyway.
+                item?.uidString = UUID().uuidString
                 controller?.shallowRefresh()
-            }
-            else if item?.name == "" { // Delete this item, because you have made its text blank.
-                itemListPantryInstance.dict[type]![groupID!]!.remove(at: (itemListPantryInstance.dict[type]![groupID!]!.index(of: item!))!) // Delete item.
-                controller?.shallowRefresh() // Refresh the table.
-            }
-            else { // Allow an edit. Do nothing. 
             }
         }
     }
